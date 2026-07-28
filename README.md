@@ -12,14 +12,14 @@ KairoUI is a production-grade, enterprise-focused React UI platform built as a T
 
 ## Technology
 
-| Layer          | Choice           |
-| -------------- | ---------------- |
-| Language       | TypeScript       |
-| Framework      | React            |
-| Build          | Vite             |
-| Testing        | Vitest           |
-| Documentation  | Storybook        |
-| Package Mgmt   | pnpm (monorepo)  |
+| Layer         | Choice          |
+| ------------- | --------------- |
+| Language      | TypeScript      |
+| Framework     | React           |
+| Build         | Vite            |
+| Testing       | Vitest          |
+| Documentation | Storybook       |
+| Package Mgmt  | pnpm (monorepo) |
 
 ## Repository Structure
 
@@ -39,10 +39,10 @@ This repository is under active development. See individual task branches and th
 
 ## Prerequisites
 
-| Tool   | Version       |
-| ------ | ------------- |
-| Node.js | >= 20.0.0    |
-| pnpm    | 9.15.4       |
+| Tool    | Version   |
+| ------- | --------- |
+| Node.js | >= 20.0.0 |
+| pnpm    | 9.15.4    |
 
 This project uses [pnpm workspaces](https://pnpm.io/workspaces). The `packageManager` field in `package.json` declares the exact pnpm version; [corepack](https://nodejs.org/api/corepack.html) or a global install can be used to activate it.
 

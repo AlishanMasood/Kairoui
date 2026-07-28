@@ -54,11 +54,11 @@ Subpath exports (e.g. `@kairoui/tokens/css`) are allowed only when:
 
 Current approved subpath exports:
 
-| Package | Subpath | Purpose |
-| ------- | ------- | ------- |
-| `@kairoui/core` | `./styles.css` | Component base styles |
-| `@kairoui/tokens` | `./css` | CSS custom property definitions |
-| `@kairoui/theme` | `./styles.css` | Theme runtime styles |
+| Package           | Subpath        | Purpose                         |
+| ----------------- | -------------- | ------------------------------- |
+| `@kairoui/core`   | `./styles.css` | Component base styles           |
+| `@kairoui/tokens` | `./css`        | CSS custom property definitions |
+| `@kairoui/theme`  | `./styles.css` | Theme runtime styles            |
 
 All packages also export `./package.json` for tooling introspection.
 
@@ -118,14 +118,14 @@ CSS is **never** imported as a side effect of importing JS. This keeps the bound
 
 ## Field Reference
 
-| Field | Purpose |
-| ----- | ------- |
-| `exports` | Definitive public API map (takes precedence over `main`/`types`) |
-| `main` | Fallback entry for tools that don't support `exports` |
-| `module` | ESM entry hint for legacy bundlers (Webpack 4, etc.) |
-| `types` | TypeScript entry for tools that don't read `exports.types` |
-| `sideEffects` | Tree-shaking hint — `false` or array of side-effect patterns |
-| `files` | Whitelist of published content (only `dist/`) |
+| Field         | Purpose                                                          |
+| ------------- | ---------------------------------------------------------------- |
+| `exports`     | Definitive public API map (takes precedence over `main`/`types`) |
+| `main`        | Fallback entry for tools that don't support `exports`            |
+| `module`      | ESM entry hint for legacy bundlers (Webpack 4, etc.)             |
+| `types`       | TypeScript entry for tools that don't read `exports.types`       |
+| `sideEffects` | Tree-shaking hint — `false` or array of side-effect patterns     |
+| `files`       | Whitelist of published content (only `dist/`)                    |
 
 ## Development vs Production
 

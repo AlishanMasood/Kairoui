@@ -9,6 +9,7 @@ All options are set in `tooling/tsconfig/base.json` and inherited by every packa
 ### Core Strict Mode (`strict: true`)
 
 Enables the full `strict` family:
+
 - `noImplicitAny`
 - `strictNullChecks`
 - `strictFunctionTypes`
@@ -20,26 +21,26 @@ Enables the full `strict` family:
 
 ### Additional Strict Options
 
-| Option | Rationale |
-| ------ | --------- |
-| `noUncheckedIndexedAccess` | Forces `T | undefined` on index signatures — prevents silent null errors on dynamic access |
-| `exactOptionalPropertyTypes` | Distinguishes `{ x?: T }` from `{ x: T | undefined }` — prevents accidental `undefined` assignment to optional props |
-| `noImplicitOverride` | Requires explicit `override` keyword — catches accidental method overrides in class hierarchies |
-| `noFallthroughCasesInSwitch` | Prevents unintentional switch fallthrough — requires explicit `break` or `return` |
-| `noImplicitReturns` | All code paths in a function must return a value — catches silent `undefined` returns |
-| `noPropertyAccessFromIndexSignature` | Forces bracket notation for index signature access — makes dynamic property access explicit |
-| `useUnknownInCatchVariables` | Catch variables are `unknown` not `any` — forces safe error handling |
-| `noUnusedLocals` | Errors on unused variables — keeps code clean |
-| `noUnusedParameters` | Errors on unused function parameters — prefix with `_` if intentionally unused |
-| `forceConsistentCasingInFileNames` | Prevents case-sensitivity bugs across OS platforms |
+| Option                               | Rationale                                                                                       |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `noUncheckedIndexedAccess`           | Forces `T                                                                                       | undefined` on index signatures — prevents silent null errors on dynamic access |
+| `exactOptionalPropertyTypes`         | Distinguishes `{ x?: T }` from `{ x: T                                                          | undefined }`— prevents accidental`undefined` assignment to optional props      |
+| `noImplicitOverride`                 | Requires explicit `override` keyword — catches accidental method overrides in class hierarchies |
+| `noFallthroughCasesInSwitch`         | Prevents unintentional switch fallthrough — requires explicit `break` or `return`               |
+| `noImplicitReturns`                  | All code paths in a function must return a value — catches silent `undefined` returns           |
+| `noPropertyAccessFromIndexSignature` | Forces bracket notation for index signature access — makes dynamic property access explicit     |
+| `useUnknownInCatchVariables`         | Catch variables are `unknown` not `any` — forces safe error handling                            |
+| `noUnusedLocals`                     | Errors on unused variables — keeps code clean                                                   |
+| `noUnusedParameters`                 | Errors on unused function parameters — prefix with `_` if intentionally unused                  |
+| `forceConsistentCasingInFileNames`   | Prevents case-sensitivity bugs across OS platforms                                              |
 
 ## Intentionally Not Enabled
 
-| Option | Reason |
-| ------ | ------ |
-| `noUncheckedSideEffectImports` | Not yet available in all TS versions we support; CSS imports would require declarations |
-| `noImplicitAny` (standalone) | Already included via `strict: true` |
-| `strictNullChecks` (standalone) | Already included via `strict: true` |
+| Option                          | Reason                                                                                  |
+| ------------------------------- | --------------------------------------------------------------------------------------- |
+| `noUncheckedSideEffectImports`  | Not yet available in all TS versions we support; CSS imports would require declarations |
+| `noImplicitAny` (standalone)    | Already included via `strict: true`                                                     |
+| `strictNullChecks` (standalone) | Already included via `strict: true`                                                     |
 
 ## TypeScript Suppression Policy
 
@@ -47,7 +48,7 @@ Enables the full `strict` family:
 
 1. **Never use `any`** as a type annotation. Use `unknown` and narrow.
 2. **Never use `@ts-ignore`**. Use `@ts-expect-error` with a mandatory explanation comment.
-3. **`@ts-expect-error` requires justification**: the comment must explain *why* it's necessary and link to a tracking issue if applicable.
+3. **`@ts-expect-error` requires justification**: the comment must explain _why_ it's necessary and link to a tracking issue if applicable.
 4. **Blanket type casts (`as any`, `as unknown as T`)** are prohibited unless:
    - Interfacing with an untyped third-party API where proper types cannot be declared
    - The cast is documented and isolated in a single utility function

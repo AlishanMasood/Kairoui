@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+storybook-static/
+
+# Generated files
+pnpm-lock.yaml
+*.tsbuildinfo
+
+# Tool caches
+.turbo/
+.vite/
+.cache/
+
+# IDE
+.vs/
+.idea/

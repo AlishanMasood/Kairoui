@@ -6,10 +6,10 @@ Workspace members here provide shared tooling consumed by other packages and app
 
 ## Planned tooling packages
 
-| Package | Purpose |
-| ------- | ------- |
-| `eslint-config` | Shared ESLint configuration |
-| `tsconfig` | Shared TypeScript configuration presets |
-| `vite-config` | Shared Vite build configuration |
+| Package         | Purpose                                 |
+| --------------- | --------------------------------------- |
+| `eslint-config` | Shared ESLint configuration             |
+| `tsconfig`      | Shared TypeScript configuration presets |
+| `vite-config`   | Shared Vite build configuration         |
 
 > Tooling packages will be created in subsequent tasks.

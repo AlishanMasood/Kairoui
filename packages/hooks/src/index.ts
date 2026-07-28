@@ -1,2 +1,2 @@
 // @kairoui/hooks — Entry point
-export { };
+export {};

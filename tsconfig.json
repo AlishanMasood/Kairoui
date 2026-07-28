@@ -1,28 +1,28 @@
 {
-    "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "@kairoui/tsconfig/base.json",
-    "compilerOptions": {
-        "noEmit": true
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@kairoui/tsconfig/base.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [],
+  "references": [
+    {
+      "path": "packages/core"
     },
-    "include": [],
-    "references": [
-        {
-            "path": "packages/core"
-        },
-        {
-            "path": "packages/tokens"
-        },
-        {
-            "path": "packages/theme"
-        },
-        {
-            "path": "packages/hooks"
-        },
-        {
-            "path": "packages/icons"
-        },
-        {
-            "path": "packages/utils"
-        }
-    ]
+    {
+      "path": "packages/tokens"
+    },
+    {
+      "path": "packages/theme"
+    },
+    {
+      "path": "packages/hooks"
+    },
+    {
+      "path": "packages/icons"
+    },
+    {
+      "path": "packages/utils"
+    }
+  ]
 }

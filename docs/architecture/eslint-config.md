@@ -8,15 +8,15 @@ Uses ESLint 9 flat config (`eslint.config.mjs`). All configuration lives in one 
 
 ## Plugin Stack
 
-| Plugin | Purpose |
-| ------ | ------- |
-| `@eslint/js` | Core JavaScript rules |
-| `typescript-eslint` | TypeScript type-aware linting (strict preset) |
-| `eslint-plugin-react` | React-specific rules |
-| `eslint-plugin-react-hooks` | Hooks rules of hooks & exhaustive-deps |
-| `eslint-plugin-jsx-a11y` | JSX accessibility (strict preset) |
-| `eslint-plugin-import-x` | Import ordering, cycles, boundary enforcement |
-| `eslint-config-prettier` | Disables formatting rules that conflict with Prettier |
+| Plugin                      | Purpose                                               |
+| --------------------------- | ----------------------------------------------------- |
+| `@eslint/js`                | Core JavaScript rules                                 |
+| `typescript-eslint`         | TypeScript type-aware linting (strict preset)         |
+| `eslint-plugin-react`       | React-specific rules                                  |
+| `eslint-plugin-react-hooks` | Hooks rules of hooks & exhaustive-deps                |
+| `eslint-plugin-jsx-a11y`    | JSX accessibility (strict preset)                     |
+| `eslint-plugin-import-x`    | Import ordering, cycles, boundary enforcement         |
+| `eslint-config-prettier`    | Disables formatting rules that conflict with Prettier |
 
 ## Notable Decisions
 
@@ -44,6 +44,7 @@ import { internal } from "@kairoui/core/src/internals";
 ### Test File Relaxations
 
 Test files (`*.test.ts`, `*.spec.ts`, `__tests__/`) relax certain type-safety rules where test ergonomics outweigh strictness:
+
 - `no-non-null-assertion` — tests often assert known state
 - `no-unsafe-assignment` / `no-unsafe-member-access` — mock objects
 

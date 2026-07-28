@@ -108,11 +108,7 @@ export default defineConfig(
       "import-x/no-internal-modules": [
         "error",
         {
-          allow: [
-            "@kairoui/*/package.json",
-            "@kairoui/tsconfig/*.json",
-            "eslint/config",
-          ],
+          allow: ["@kairoui/*/package.json", "@kairoui/tsconfig/*.json", "eslint/config"],
         },
       ],
     },
@@ -120,11 +116,7 @@ export default defineConfig(
 
   // ─── Test files ───────────────────────────────────────────────────
   {
-    files: [
-      "**/*.test.{ts,tsx}",
-      "**/*.spec.{ts,tsx}",
-      "**/__tests__/**/*.{ts,tsx}",
-    ],
+    files: ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "**/__tests__/**/*.{ts,tsx}"],
     rules: {
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
