@@ -1,10 +1,12 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "KairoUI Node Tooling",
-  "extends": "./base.json",
-  "compilerOptions": {
-    "lib": ["ES2022"],
-    "module": "ESNext",
-    "moduleResolution": "bundler"
-  }
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "KairoUI Node Tooling",
+    "extends": "./base.json",
+    "compilerOptions": {
+        "lib": [
+            "ES2022"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "bundler"
+    }
 }
