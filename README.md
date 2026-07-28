@@ -24,12 +24,14 @@ KairoUI is a production-grade, enterprise-focused React UI platform built as a T
 ## Repository Structure
 
 ```
-packages/       — publishable packages (components, tokens, utilities)
-apps/           — internal applications (docs site, playground, etc.)
-tools/          — internal build and developer tooling
+packages/       — publishable KairoUI packages (components, tokens, utilities)
+apps/           — runnable internal applications (docs site, playground)
+tooling/        — shared internal configurations and build scripts
+docs/           — product, architecture, governance, and contributor documentation
+.github/        — GitHub workflows and repository templates
 ```
 
-> Directories are created incrementally as tasks progress.
+Each `packages/*`, `apps/*`, and `tooling/*` directory is a pnpm workspace member. See the README inside each directory for details.
 
 ## Status
 
