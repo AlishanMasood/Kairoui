@@ -52,6 +52,19 @@ This project uses [pnpm workspaces](https://pnpm.io/workspaces). The `packageMan
 pnpm install
 ```
 
+## Scripts
+
+| Command             | Description                                               |
+| ------------------- | --------------------------------------------------------- |
+| `pnpm check`        | Run all non-mutating quality checks (format, lint, types) |
+| `pnpm lint`         | Run ESLint across the workspace                           |
+| `pnpm lint:fix`     | Run ESLint with auto-fix                                  |
+| `pnpm format`       | Format all files with Prettier                            |
+| `pnpm format:check` | Verify formatting without writing changes                 |
+| `pnpm typecheck`    | Run TypeScript type checking via project references       |
+
+> `pnpm check` is the single command to verify the repository is in a valid state. It is non-mutating and returns a non-zero exit code on any failure.
+
 ## License
 
 License selection is pending final approval. See [`LICENSE`](./LICENSE) for details.
