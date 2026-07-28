@@ -35,9 +35,20 @@ tools/          — internal build and developer tooling
 
 This repository is under active development. See individual task branches and the project board for progress.
 
+## Prerequisites
+
+| Tool   | Version       |
+| ------ | ------------- |
+| Node.js | >= 20.0.0    |
+| pnpm    | 9.15.4       |
+
+This project uses [pnpm workspaces](https://pnpm.io/workspaces). The `packageManager` field in `package.json` declares the exact pnpm version; [corepack](https://nodejs.org/api/corepack.html) or a global install can be used to activate it.
+
 ## Getting Started
 
-> Setup instructions will be added once dependencies and tooling are configured.
+```bash
+pnpm install
+```
 
 ## License
 

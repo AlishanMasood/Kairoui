@@ -1,0 +1,11 @@
+{
+  "name": "kairoui",
+  "version": "0.0.0",
+  "private": true,
+  "description": "KairoUI — Enterprise React UI Platform",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {}
+}
