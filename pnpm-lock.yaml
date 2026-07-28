@@ -7,3 +7,15 @@ settings:
 importers:
 
   .: {}
+
+  packages/core: {}
+
+  packages/hooks: {}
+
+  packages/icons: {}
+
+  packages/theme: {}
+
+  packages/tokens: {}
+
+  packages/utils: {}

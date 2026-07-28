@@ -1,0 +1,13 @@
+{
+  "name": "@kairoui/icons",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Icon system providing optimized, accessible SVG icons as React components for the KairoUI platform.",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["dist"],
+  "scripts": {},
+  "keywords": ["kairoui", "icons", "svg", "react"],
+  "license": "SEE LICENSE IN ../../LICENSE"
+}

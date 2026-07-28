@@ -1,0 +1,13 @@
+{
+  "name": "@kairoui/core",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Foundation primitives, base component architecture, and core abstractions for the KairoUI platform.",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["dist"],
+  "scripts": {},
+  "keywords": ["kairoui", "core", "react", "ui"],
+  "license": "SEE LICENSE IN ../../LICENSE"
+}

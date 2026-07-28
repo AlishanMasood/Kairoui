@@ -1,0 +1,13 @@
+{
+  "name": "@kairoui/theme",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Theme engine providing runtime theming, token resolution, and theme context for KairoUI components.",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": ["dist"],
+  "scripts": {},
+  "keywords": ["kairoui", "theme", "theming", "design-system"],
+  "license": "SEE LICENSE IN ../../LICENSE"
+}
