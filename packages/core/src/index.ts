@@ -1,2 +1,2 @@
 // @kairoui/core — Entry point
-export {};
+export { };

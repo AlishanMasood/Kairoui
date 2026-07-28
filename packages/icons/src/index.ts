@@ -1,2 +1,2 @@
 // @kairoui/icons — Entry point
-export {};
+export { };
