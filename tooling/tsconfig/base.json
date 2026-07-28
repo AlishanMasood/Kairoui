@@ -8,7 +8,6 @@
         "lib": [
             "ES2022"
         ],
-
         "strict": true,
         "noUncheckedIndexedAccess": true,
         "exactOptionalPropertyTypes": true,
@@ -19,14 +18,12 @@
         "useUnknownInCatchVariables": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
         "verbatimModuleSyntax": true,
-
         "declaration": true,
         "declarationMap": true,
         "sourceMap": true,

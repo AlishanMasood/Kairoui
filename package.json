@@ -8,10 +8,22 @@
         "node": ">=20.0.0"
     },
     "scripts": {
-        "typecheck": "tsc --build"
+        "typecheck": "tsc --build",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
     },
     "devDependencies": {
+        "@eslint/js": "^9.39.5",
         "@kairoui/tsconfig": "workspace:*",
-        "typescript": "^5.7.0"
+        "eslint": "^9.39.5",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-import-x": "^4.17.1",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^7.1.1",
+        "globals": "^17.8.0",
+        "jiti": "^2.7.0",
+        "typescript": "^5.7.0",
+        "typescript-eslint": "^8.65.0"
     }
 }
