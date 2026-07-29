@@ -3,13 +3,38 @@ import { defineConfig } from "vitest/config";
 /**
  * Root Vitest configuration — shared defaults for all packages.
  *
- * Individual packages can override settings via their own vitest.config.ts.
- * For example, packages with React components can set `environment: "jsdom"`.
+ * Uses Vitest "projects" to separate environments:
+ * - React packages (core, hooks, icons) → happy-dom + RTL setup
+ * - Non-DOM packages (utils, tokens, theme) → node environment
  */
 export default defineConfig({
   test: {
-    // Test file patterns
-    include: ["packages/*/src/**/*.{test,spec}.{ts,tsx}"],
+    // Workspace projects with different environments
+    projects: [
+      {
+        test: {
+          name: "react",
+          include: [
+            "packages/core/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/hooks/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/icons/src/**/*.{test,spec}.{ts,tsx}",
+          ],
+          environment: "happy-dom",
+          setupFiles: ["./tooling/test/setup-react.ts"],
+        },
+      },
+      {
+        test: {
+          name: "node",
+          include: [
+            "packages/utils/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/tokens/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/theme/src/**/*.{test,spec}.{ts,tsx}",
+          ],
+          environment: "node",
+        },
+      },
+    ],
 
     // Exclude non-test directories
     exclude: [
@@ -20,15 +45,8 @@ export default defineConfig({
       "**/.{git,cache,output}/**",
     ],
 
-    // Default environment — Node for utilities, tokens, etc.
-    // Override to "jsdom" in packages that test DOM/React components.
-    environment: "node",
-
     // Globals disabled — prefer explicit imports for clarity
     globals: false,
-
-    // TypeScript/TSX handled natively by Vite's esbuild transform
-    // No extra config needed for .ts/.tsx support
 
     // Coverage configuration
     coverage: {
@@ -50,7 +68,9 @@ export default defineConfig({
 
     // Reporter configuration
     reporters: process.env.CI ? ["default", "junit"] : ["default"],
-    outputFile: process.env.CI ? { junit: "./test-results/junit.xml" } : undefined,
+    outputFile: process.env.CI
+      ? { junit: "./test-results/junit.xml" }
+      : undefined,
 
     // Performance
     pool: "forks",

@@ -23,6 +23,9 @@
     },
     {
       "path": "packages/utils"
+    },
+    {
+      "path": "tooling/test"
     }
   ]
 }
