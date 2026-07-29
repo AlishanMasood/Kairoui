@@ -4,7 +4,7 @@
 export { tokenPathToCssVar, camelToKebab, cssVarToTokenSlug } from "./naming";
 
 // Primitive token values
-export { neutral } from "./primitives";
+export { neutral, blue } from "./primitives";
 
 // Public type contracts
 export type {
