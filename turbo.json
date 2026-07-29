@@ -7,36 +7,30 @@
       "outputs": ["dist/**"],
       "outputLogs": "new-only"
     },
-
     "clean": {
       "cache": false,
       "outputLogs": "new-only"
     },
-
     "dev": {
       "cache": false,
       "persistent": true
     },
-
     "@kairoui/storybook#build": {
       "dependsOn": ["^build"],
       "inputs": [".storybook/**", "stories/**", "package.json"],
       "outputs": ["storybook-static/**"],
       "outputLogs": "new-only"
     },
-
     "@kairoui/storybook#dev": {
       "cache": false,
       "persistent": true
     },
-
     "@kairoui/docs#build": {
       "inputs": ["docs/**", "src/**", "docusaurus.config.ts", "sidebars.ts", "package.json"],
       "outputs": ["build/**"],
       "outputLogs": "new-only",
       "env": ["NODE_ENV"]
     },
-
     "@kairoui/docs#dev": {
       "cache": false,
       "persistent": true
