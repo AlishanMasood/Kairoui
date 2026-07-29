@@ -33,7 +33,7 @@ export default defineConfig(
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ["*.config.*js"],
+          allowDefaultProject: ["*.config.*js", "*.config.*ts"],
         },
         tsconfigRootDir: import.meta.dirname,
       },
@@ -108,7 +108,12 @@ export default defineConfig(
       "import-x/no-internal-modules": [
         "error",
         {
-          allow: ["@kairoui/*/package.json", "@kairoui/tsconfig/*.json", "eslint/config"],
+          allow: [
+            "@kairoui/*/package.json",
+            "@kairoui/tsconfig/*.json",
+            "eslint/config",
+            "vitest/*",
+          ],
         },
       ],
     },
