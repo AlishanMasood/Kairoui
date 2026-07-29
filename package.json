@@ -8,6 +8,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
     "typecheck": "tsc --build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -16,13 +18,11 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "build": "pnpm -r --filter \"./packages/**\" build",
-    "clean": "pnpm -r --filter \"./packages/**\" clean",
-    "storybook": "pnpm --filter @kairoui/storybook dev",
-    "storybook:build": "pnpm --filter @kairoui/storybook build",
-    "docs:dev": "pnpm --filter @kairoui/docs dev",
-    "docs:build": "pnpm --filter @kairoui/docs build",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:run",
+    "storybook": "turbo run dev --filter=@kairoui/storybook",
+    "storybook:build": "turbo run build --filter=@kairoui/storybook",
+    "docs:dev": "turbo run dev --filter=@kairoui/docs",
+    "docs:build": "turbo run build --filter=@kairoui/docs",
+    "check": "turbo run build && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:run",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -61,6 +61,7 @@
     "react-dom": "^19.2.8",
     "rimraf": "^6.1.3",
     "tsup": "^8.5.1",
+    "turbo": "^2.10.7",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.65.0",
     "vitest": "^3"

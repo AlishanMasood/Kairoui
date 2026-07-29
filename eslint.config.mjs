@@ -21,6 +21,7 @@ export default defineConfig(
       "**/storybook-static/**",
       "**/.turbo/**",
       "**/.vite/**",
+      "**/.docusaurus/**",
     ],
   },
 
@@ -39,6 +40,7 @@ export default defineConfig(
             "packages/*/tsup.config.ts",
             "tooling/tsup/config.ts",
           ],
+          maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 16,
         },
         tsconfigRootDir: import.meta.dirname,
       },

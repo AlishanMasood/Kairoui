@@ -69,9 +69,7 @@ export default defineConfig({
 
     // Reporter configuration
     reporters: process.env.CI ? ["default", "junit"] : ["default"],
-    outputFile: process.env.CI
-      ? { junit: "./test-results/junit.xml" }
-      : undefined,
+    outputFile: process.env.CI ? { junit: "./test-results/junit.xml" } : undefined,
 
     // Performance
     pool: "forks",
