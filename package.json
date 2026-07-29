@@ -16,6 +16,8 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "storybook": "pnpm --filter @kairoui/storybook dev",
+    "storybook:build": "pnpm --filter @kairoui/storybook build",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:run",
     "prepare": "husky"
   },

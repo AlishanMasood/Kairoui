@@ -61,8 +61,8 @@ export default defineConfig(
   {
     files: ["packages/*/src/**/*.{ts,tsx}", "apps/*/src/**/*.{ts,tsx}"],
     plugins: {
-      // @ts-expect-error -- plugin types not fully compatible with flat config typings
       react: reactPlugin,
+      // @ts-expect-error -- plugin types not fully compatible with flat config typings
       "react-hooks": reactHooksPlugin,
       "jsx-a11y": jsxA11yPlugin,
     },
