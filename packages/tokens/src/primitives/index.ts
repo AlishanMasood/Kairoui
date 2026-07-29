@@ -1,4 +1,4 @@
 /**
  * Primitive token exports.
  */
-export { neutral, blue } from "./colors";
+export { neutral, blue, green, red, orange, teal } from "./colors";
