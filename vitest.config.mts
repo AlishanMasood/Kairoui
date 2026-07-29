@@ -18,6 +18,7 @@ export default defineConfig({
             "packages/core/src/**/*.{test,spec}.{ts,tsx}",
             "packages/hooks/src/**/*.{test,spec}.{ts,tsx}",
             "packages/icons/src/**/*.{test,spec}.{ts,tsx}",
+            "tooling/test/**/*.{test,spec}.{ts,tsx}",
           ],
           environment: "happy-dom",
           setupFiles: ["./tooling/test/setup-react.ts"],

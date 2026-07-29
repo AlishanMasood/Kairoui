@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@kairoui/tsconfig/base.json",
+  "extends": "@kairoui/tsconfig/react-library.json",
   "compilerOptions": {
     "composite": true,
     "noEmit": true,
     "types": ["vitest/globals"]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }
