@@ -1,2 +1,96 @@
 // @kairoui/tokens — Entry point
+
+// Naming utilities
 export { tokenPathToCssVar, camelToKebab, cssVarToTokenSlug } from "./naming";
+
+// Public type contracts
+export type {
+  // Value types
+  ColorValue,
+  LengthValue,
+  DurationValue,
+  FontWeightValue,
+  ShadowValue,
+  EasingValue,
+  OpacityValue,
+  ZIndexValue,
+  BreakpointValue,
+  RatioValue,
+  FontFamilyValue,
+  TokenValue,
+  // Reference types
+  LiteralRef,
+  PrimitiveRef,
+  SemanticRef,
+  ComponentRef,
+  TokenRef,
+  ResolvedToken,
+  // Primitive contracts
+  ColorScaleStep,
+  ColorScale,
+  PrimitiveColorHue,
+  PrimitiveColors,
+  SpacingKey,
+  PrimitiveSpacing,
+  FontSizeKey,
+  FontWeightKey,
+  LineHeightKey,
+  LetterSpacingKey,
+  PrimitiveFontSizes,
+  PrimitiveFontWeights,
+  PrimitiveLineHeights,
+  PrimitiveLetterSpacings,
+  PrimitiveFontFamilies,
+  RadiusKey,
+  PrimitiveRadii,
+  ShadowKey,
+  PrimitiveShadows,
+  DurationKey,
+  EasingKey,
+  PrimitiveDurations,
+  PrimitiveEasings,
+  ZIndexKey,
+  PrimitiveZIndices,
+  OpacityKey,
+  PrimitiveOpacities,
+  BreakpointKey,
+  PrimitiveBreakpoints,
+  PrimitiveTokens,
+  // Semantic contracts
+  SemanticBackgroundColors,
+  SemanticTextColors,
+  SemanticBorderColors,
+  SemanticInteractiveColors,
+  SemanticStatusColors,
+  SemanticFocusColors,
+  SemanticDestructiveColors,
+  SemanticColors,
+  SemanticSpacing,
+  SemanticControlHeights,
+  SemanticElevation,
+  SemanticTokens,
+  // Component contracts
+  InteractionState,
+  ButtonTokens,
+  InputTokens,
+  DialogTokens,
+  TabTokens,
+  ComponentTokens,
+  // Theme contracts
+  ThemeName,
+  ThemeDefinition,
+  PartialThemeOverride,
+  DensityName,
+  DensityDefinition,
+  PartialDensityOverride,
+  // Validation contracts
+  ValidationSeverity,
+  ValidationErrorCode,
+  ValidationError,
+  ValidationResult,
+  TokenManifest,
+  ManifestEntry,
+} from "./types";
+
+// Reference factory functions
+export { literal, primitiveRef, semanticRef, componentRef } from "./types";
