@@ -17,11 +17,11 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
+    "*.{js,jsx,mjs,cjs,ts,tsx}": [
+      "eslint --fix --max-warnings 0",
       "prettier --write"
     ],
-    "*.{json,md,yml,yaml,mjs,cjs}": [
+    "*.{json,md,yml,yaml,css,html}": [
       "prettier --write"
     ]
   },

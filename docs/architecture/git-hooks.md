@@ -50,6 +50,28 @@ Run lint-staged manually to see detailed output:
 pnpm lint-staged --debug
 ```
 
+## What Runs During Pre-commit
+
+When you `git commit`, the pre-commit hook triggers `pnpm lint-staged`, which runs **only on staged files**:
+
+| File pattern                    | Commands                                                | Purpose                  |
+| ------------------------------- | ------------------------------------------------------- | ------------------------ |
+| `*.{js,jsx,mjs,cjs,ts,tsx}`     | `eslint --fix --max-warnings 0` then `prettier --write` | Lint + auto-fix + format |
+| `*.{json,md,yml,yaml,css,html}` | `prettier --write`                                      | Format only              |
+
+**What is NOT run in pre-commit:**
+
+- Full type checking (`tsc --build`) — too slow for staged-only checks; runs in CI
+- Full repository lint — only staged files are checked
+- Tests — reserved for CI
+
+**Behavior:**
+
+- ESLint applies safe auto-fixes (`--fix`) and fails on any remaining error or warning (`--max-warnings 0`)
+- Prettier reformats files in-place; the formatted result is what gets committed
+- If any command fails, the commit is blocked and staged files are reverted to their original state
+- Unstaged changes in partially staged files are safely stashed and restored
+
 ## Configuration
 
 - **Husky**: `.husky/pre-commit` — the hook script
