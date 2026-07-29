@@ -23,6 +23,9 @@
     "docs:dev": "turbo run dev --filter=@kairoui/docs",
     "docs:build": "turbo run build --filter=@kairoui/docs",
     "release:publish": "pnpm build && pnpm changeset publish",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:status": "changeset status",
     "check": "turbo run build && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:run",
     "prepare": "husky"
   },
@@ -36,6 +39,8 @@
     ]
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.31.1",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@eslint/js": "^9.39.5",
@@ -66,5 +71,10 @@
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.65.0",
     "vitest": "^3"
+  },
+  "pnpm": {
+    "overrides": {
+      "human-id": "3.0.1"
+    }
   }
 }

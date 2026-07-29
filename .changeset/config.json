@@ -1,0 +1,24 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "changelog": ["@changesets/changelog-github", { "repo": "kairoui/kairoui" }],
+  "commit": false,
+  "fixed": [
+    [
+      "@kairoui/core",
+      "@kairoui/tokens",
+      "@kairoui/theme",
+      "@kairoui/hooks",
+      "@kairoui/icons",
+      "@kairoui/utils"
+    ]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@kairoui/storybook", "@kairoui/docs", "@kairoui/tsconfig"],
+  "privatePackages": {
+    "version": false,
+    "tag": false
+  }
+}
