@@ -14,3 +14,4 @@ export type { SizeLabel } from "./sizing";
 export { borderWidth, borderStyle, radius, focusRing } from "./borders";
 export type { BorderStyle } from "./borders";
 export { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } from "./typography";
+export { shadow } from "./shadows";
