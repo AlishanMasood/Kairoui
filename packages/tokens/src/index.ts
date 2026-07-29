@@ -19,6 +19,7 @@ export type { BorderStyle } from "./primitives";
 export { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } from "./primitives";
 export { shadow } from "./primitives";
 export { duration, easing } from "./primitives";
+export { opacity, zIndex } from "./primitives";
 
 // Public type contracts
 export type {
