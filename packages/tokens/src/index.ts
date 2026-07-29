@@ -20,6 +20,7 @@ export { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } from "./p
 export { shadow } from "./primitives";
 export { duration, easing } from "./primitives";
 export { opacity, zIndex } from "./primitives";
+export { breakpoint } from "./primitives";
 
 // Public type contracts
 export type {

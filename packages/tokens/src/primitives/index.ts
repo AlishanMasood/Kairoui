@@ -17,3 +17,4 @@ export { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } from "./t
 export { shadow } from "./shadows";
 export { duration, easing } from "./motion";
 export { opacity, zIndex } from "./layering";
+export { breakpoint } from "./breakpoints";
