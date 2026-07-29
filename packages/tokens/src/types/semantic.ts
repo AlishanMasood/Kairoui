@@ -9,36 +9,93 @@ import type { ColorValue, LengthValue, ShadowValue } from "./values";
 
 // ─── Semantic Color Roles ────────────────────────────────────────────
 
-/** Background role tokens */
+/**
+ * Background role tokens.
+ *
+ * | Role     | Purpose                                                |
+ * | -------- | ------------------------------------------------------ |
+ * | page     | Main page/app background                               |
+ * | surface  | Default card/panel background                          |
+ * | muted    | De-emphasized surfaces (sidebars, wells, code blocks)  |
+ * | raised   | Elevated surfaces (popovers, dropdowns)                |
+ * | inverse  | Inverse surface for contrast (tooltips, badges)        |
+ * | overlay  | Semi-transparent backdrop behind modals/drawers        |
+ * | hover    | Background on hover state (interactive rows/areas)     |
+ * | active   | Background on active/pressed state                     |
+ * | selected | Background for selected items (table rows, list items) |
+ */
 export interface SemanticBackgroundColors {
   readonly page: ColorValue;
   readonly surface: ColorValue;
-  readonly elevated: ColorValue;
-  readonly sunken: ColorValue;
+  readonly muted: ColorValue;
+  readonly raised: ColorValue;
+  readonly inverse: ColorValue;
   readonly overlay: ColorValue;
+  readonly hover: ColorValue;
+  readonly active: ColorValue;
+  readonly selected: ColorValue;
 }
 
-/** Text role tokens */
+/**
+ * Text role tokens.
+ *
+ * | Role      | Purpose                                             |
+ * | --------- | --------------------------------------------------- |
+ * | primary   | Default body text, highest contrast                 |
+ * | secondary | Supporting text, descriptions, metadata             |
+ * | muted     | De-emphasized text (timestamps, hints)              |
+ * | disabled  | Text on disabled controls (reduced opacity effect)  |
+ * | inverse   | Text on inverse/dark backgrounds                    |
+ * | link      | Hyperlink text (resting state)                      |
+ * | linkHover | Hyperlink text on hover                             |
+ */
 export interface SemanticTextColors {
   readonly primary: ColorValue;
   readonly secondary: ColorValue;
-  readonly tertiary: ColorValue;
+  readonly muted: ColorValue;
   readonly disabled: ColorValue;
   readonly inverse: ColorValue;
   readonly link: ColorValue;
+  readonly linkHover: ColorValue;
 }
 
-/** Border role tokens */
+/**
+ * Border role tokens.
+ *
+ * | Role        | Purpose                                            |
+ * | ----------- | -------------------------------------------------- |
+ * | subtle      | Very light borders (dividers between same-surfaces)|
+ * | default     | Standard border (inputs, cards, panels)            |
+ * | strong      | Emphasized borders (active sections, key dividers) |
+ * | interactive | Borders on interactive elements (hovered inputs)   |
+ * | focus       | Border/outline color when element has focus         |
+ * | disabled    | Border on disabled controls                        |
+ */
 export interface SemanticBorderColors {
-  readonly default: ColorValue;
   readonly subtle: ColorValue;
+  readonly default: ColorValue;
   readonly strong: ColorValue;
   readonly interactive: ColorValue;
   readonly focus: ColorValue;
   readonly disabled: ColorValue;
 }
 
-/** Interactive state tokens */
+/**
+ * Interactive/action color tokens.
+ *
+ * These represent the primary brand interaction color in various states.
+ *
+ * | Role        | Purpose                                           |
+ * | ----------- | ------------------------------------------------- |
+ * | default     | Primary action resting state (buttons, links)     |
+ * | hover       | Primary action on hover                           |
+ * | active      | Primary action being pressed                      |
+ * | selected    | Selected/toggled state background                 |
+ * | subtle      | Soft interactive background (ghost actions)       |
+ * | subtleHover | Soft interactive background on hover              |
+ * | disabled    | Interactive element when disabled                  |
+ * | readOnly    | Interactive element in read-only state             |
+ */
 export interface SemanticInteractiveColors {
   readonly default: ColorValue;
   readonly hover: ColorValue;
@@ -46,9 +103,15 @@ export interface SemanticInteractiveColors {
   readonly selected: ColorValue;
   readonly subtle: ColorValue;
   readonly subtleHover: ColorValue;
+  readonly disabled: ColorValue;
+  readonly readOnly: ColorValue;
 }
 
-/** Status tokens */
+/**
+ * Status color tokens.
+ *
+ * Each status has a standard (strong) and subtle (background) variant.
+ */
 export interface SemanticStatusColors {
   readonly success: ColorValue;
   readonly successSubtle: ColorValue;
@@ -60,13 +123,32 @@ export interface SemanticStatusColors {
   readonly infoSubtle: ColorValue;
 }
 
-/** Focus tokens */
+/**
+ * Focus indicator tokens.
+ *
+ * | Role      | Purpose                                    |
+ * | --------- | ------------------------------------------ |
+ * | ring      | Primary focus ring color                   |
+ * | innerRing | Inner ring for double-ring focus patterns  |
+ */
 export interface SemanticFocusColors {
   readonly ring: ColorValue;
   readonly innerRing: ColorValue;
 }
 
-/** Destructive action tokens */
+/**
+ * Destructive action tokens.
+ *
+ * Used for dangerous/irreversible actions (delete, remove, disconnect).
+ *
+ * | Role    | Purpose                                        |
+ * | ------- | ---------------------------------------------- |
+ * | default | Destructive button/action resting state         |
+ * | hover   | Destructive action on hover                    |
+ * | active  | Destructive action being pressed               |
+ * | subtle  | Soft destructive background (inline warnings)  |
+ * | text    | Text color for destructive context              |
+ */
 export interface SemanticDestructiveColors {
   readonly default: ColorValue;
   readonly hover: ColorValue;
