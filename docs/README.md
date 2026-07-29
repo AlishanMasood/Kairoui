@@ -31,6 +31,7 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for the entry point. Detailed guides:
 ## Architecture Decisions
 
 - [Design Token Architecture](architecture/token-architecture.md)
+- [Token Naming Standard](architecture/token-naming.md)
 - [ESLint Configuration](architecture/eslint-config.md)
 - [Git Hooks](architecture/git-hooks.md)
 - [Package Export Strategy](architecture/package-exports.md)
