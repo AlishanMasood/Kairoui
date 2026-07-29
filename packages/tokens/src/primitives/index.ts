@@ -11,3 +11,5 @@ export {
   recommendedTouchTarget,
 } from "./sizing";
 export type { SizeLabel } from "./sizing";
+export { borderWidth, borderStyle, radius, focusRing } from "./borders";
+export type { BorderStyle } from "./borders";
