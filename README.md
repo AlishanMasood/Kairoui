@@ -17,8 +17,9 @@ KairoUI is a production-grade, enterprise-focused React UI platform built as a T
 | Language      | TypeScript      |
 | Framework     | React           |
 | Build         | Vite            |
-| Testing       | Vitest          |
-| Documentation | Storybook       |
+| Testing       | Vitest + RTL    |
+| Component Dev | Storybook       |
+| Documentation | Docusaurus      |
 | Package Mgmt  | pnpm (monorepo) |
 
 ## Repository Structure
@@ -54,14 +55,20 @@ pnpm install
 
 ## Scripts
 
-| Command             | Description                                               |
-| ------------------- | --------------------------------------------------------- |
-| `pnpm check`        | Run all non-mutating quality checks (format, lint, types) |
-| `pnpm lint`         | Run ESLint across the workspace                           |
-| `pnpm lint:fix`     | Run ESLint with auto-fix                                  |
-| `pnpm format`       | Format all files with Prettier                            |
-| `pnpm format:check` | Verify formatting without writing changes                 |
-| `pnpm typecheck`    | Run TypeScript type checking via project references       |
+| Command              | Description                                               |
+| -------------------- | --------------------------------------------------------- |
+| `pnpm check`         | Run all non-mutating quality checks (format, lint, types) |
+| `pnpm lint`          | Run ESLint across the workspace                           |
+| `pnpm lint:fix`      | Run ESLint with auto-fix                                  |
+| `pnpm format`        | Format all files with Prettier                            |
+| `pnpm format:check`  | Verify formatting without writing changes                 |
+| `pnpm typecheck`     | Run TypeScript type checking via project references       |
+| `pnpm test`          | Run tests in watch mode                                   |
+| `pnpm test:run`      | Run tests once (CI mode)                                  |
+| `pnpm test:coverage` | Run tests with coverage report                            |
+| `pnpm storybook`     | Start Storybook dev server (port 6006)                    |
+| `pnpm docs:dev`      | Start documentation dev server (port 3000)                |
+| `pnpm docs:build`    | Build documentation for production                        |
 
 > `pnpm check` is the single command to verify the repository is in a valid state. It is non-mutating and returns a non-zero exit code on any failure.
 
