@@ -1,0 +1,125 @@
+name: Release
+
+# Triggered manually or by Changesets PR merge
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Dry run (validate without publishing)"
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths:
+      - ".changeset/**"
+      - "packages/*/package.json"
+      - "packages/*/CHANGELOG.md"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false # Never cancel in-progress releases
+
+permissions:
+  contents: write # For creating tags and GitHub releases
+  pull-requests: write # For Changesets PR
+  id-token: write # For npm provenance (trusted publishing)
+
+env:
+  NODE_VERSION: "22"
+  TURBO_TELEMETRY_DISABLED: 1
+
+jobs:
+  # ─── Validate ──────────────────────────────────────────────────────
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for Changesets
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Run tests
+        run: pnpm test:run
+
+  # ─── Release ───────────────────────────────────────────────────────
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [validate]
+    # Only release from main branch, never from PRs
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Create Release PR or Publish
+        if: ${{ !inputs.dry-run }}
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          publish: pnpm release:publish
+          title: "chore: version packages"
+          commit: "Version Packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Dry run — Version check
+        if: ${{ inputs.dry-run }}
+        run: |
+          echo "🏷️  Dry run mode — no packages will be published"
+          pnpm changeset status || echo "No changesets found (expected for dry-run)"
+          echo ""
+          echo "Publishable packages:"
+          pnpm -r --filter './packages/*' exec -- node -e "
+            const pkg = require('./package.json');
+            if (!pkg.private) console.log(pkg.name + '@' + pkg.version);
+          " 2>/dev/null || echo "  (all packages currently private)"
