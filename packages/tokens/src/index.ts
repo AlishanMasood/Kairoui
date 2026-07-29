@@ -16,6 +16,7 @@ export {
 export type { SizeLabel } from "./primitives";
 export { borderWidth, borderStyle, radius, focusRing } from "./primitives";
 export type { BorderStyle } from "./primitives";
+export { fontFamily, fontSize, fontWeight, lineHeight, letterSpacing } from "./primitives";
 
 // Public type contracts
 export type {
