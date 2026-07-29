@@ -18,7 +18,11 @@
   "files": [
     "dist"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch"
+  },
   "keywords": [
     "kairoui",
     "utils",
