@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en" data-kui-theme="light" data-kui-density="comfortable">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KairoUI Token Fixture</title>
+    <link rel="stylesheet" href="../packages/tokens/dist/tokens.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/themes/light.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/themes/dark.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/comfortable.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/standard.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/compact.css" />
+    <style>
+      /* Fixture layout — uses token variables, no raw values except resets */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--kui-typography-body-font-family);
+        font-size: var(--kui-typography-body-font-size);
+        line-height: var(--kui-typography-body-line-height);
+        color: var(--kui-color-text-primary);
+        background: var(--kui-color-bg-page);
+      }
+
+      .fixture-controls {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        gap: var(--kui-space-inline-md);
+        padding: var(--kui-space-inline-sm) var(--kui-space-page-gutter);
+        background: var(--kui-color-bg-surface);
+        border-bottom: 1px solid var(--kui-color-border-default);
+      }
+
+      .fixture-controls label {
+        font-size: var(--kui-typography-label-font-size);
+        font-weight: var(--kui-typography-label-font-weight);
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-inline-xs);
+      }
+
+      .fixture-controls select {
+        font-size: var(--kui-typography-body-font-size);
+        padding: var(--kui-space-inline-xs) var(--kui-space-inline-sm);
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 4px;
+        background: var(--kui-color-bg-surface);
+        color: var(--kui-color-text-primary);
+      }
+
+      main {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: var(--kui-space-page-gutter);
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-section-gap);
+      }
+
+      section {
+        padding: var(--kui-space-section-padding);
+        background: var(--kui-color-bg-surface);
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 8px;
+      }
+
+      h1 {
+        font-family: var(--kui-typography-display-font-family);
+        font-size: var(--kui-typography-display-font-size);
+        font-weight: var(--kui-typography-display-font-weight);
+        letter-spacing: var(--kui-typography-display-letter-spacing);
+        line-height: var(--kui-typography-display-line-height);
+        margin: 0 0 var(--kui-space-inline-md);
+      }
+
+      h2 {
+        font-family: var(--kui-typography-page-title-font-family);
+        font-size: var(--kui-typography-page-title-font-size);
+        font-weight: var(--kui-typography-page-title-font-weight);
+        letter-spacing: var(--kui-typography-page-title-letter-spacing);
+        line-height: var(--kui-typography-page-title-line-height);
+        margin: 0 0 var(--kui-space-inline-sm);
+      }
+
+      h3 {
+        font-family: var(--kui-typography-section-title-font-family);
+        font-size: var(--kui-typography-section-title-font-size);
+        font-weight: var(--kui-typography-section-title-font-weight);
+        line-height: var(--kui-typography-section-title-line-height);
+        margin: 0 0 var(--kui-space-inline-xs);
+      }
+
+      p {
+        margin: 0 0 var(--kui-space-inline-sm);
+      }
+
+      .text-secondary {
+        color: var(--kui-color-text-secondary);
+      }
+
+      .text-muted {
+        color: var(--kui-color-text-muted);
+      }
+
+      /* Surface hierarchy demo */
+      .surface-stack {
+        display: flex;
+        gap: var(--kui-space-inline-md);
+        flex-wrap: wrap;
+      }
+
+      .surface-card {
+        flex: 1;
+        min-width: 140px;
+        padding: var(--kui-space-content-card-padding);
+        border-radius: 8px;
+        text-align: center;
+        font-size: var(--kui-typography-caption-font-size);
+        color: var(--kui-color-text-secondary);
+      }
+
+      .surface-page {
+        background: var(--kui-color-bg-page);
+        border: 1px solid var(--kui-color-border-default);
+      }
+
+      .surface-surface {
+        background: var(--kui-color-bg-surface);
+        border: 1px solid var(--kui-color-border-default);
+      }
+
+      .surface-raised {
+        background: var(--kui-color-bg-raised);
+        box-shadow: var(--kui-elevation-raised);
+        border: 1px solid var(--kui-color-border-subtle);
+      }
+
+      .surface-overlay {
+        background: var(--kui-color-bg-surface);
+        box-shadow: var(--kui-elevation-overlay);
+      }
+
+      .surface-modal {
+        background: var(--kui-color-bg-surface);
+        box-shadow: var(--kui-elevation-modal);
+      }
+
+      /* Border demo */
+      .border-row {
+        display: flex;
+        gap: var(--kui-space-inline-md);
+        margin-bottom: var(--kui-space-inline-sm);
+      }
+
+      .border-sample {
+        width: 80px;
+        height: 40px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--kui-typography-caption-font-size);
+        color: var(--kui-color-text-muted);
+      }
+
+      /* Focus frame */
+      .focus-demo {
+        display: flex;
+        gap: var(--kui-space-inline-md);
+        flex-wrap: wrap;
+      }
+
+      .focus-target {
+        padding: var(--kui-space-inline-sm) var(--kui-space-inline-md);
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 6px;
+        background: var(--kui-color-bg-surface);
+        color: var(--kui-color-text-primary);
+        font-size: var(--kui-typography-body-font-size);
+        cursor: pointer;
+      }
+
+      .focus-target:focus-visible {
+        outline: 2px solid var(--kui-color-focus-ring);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 2px var(--kui-color-focus-inner-ring);
+      }
+
+      /* Active rail */
+      .tab-bar {
+        display: flex;
+        border-bottom: 1px solid var(--kui-color-border-default);
+        gap: 0;
+      }
+
+      .tab-item {
+        position: relative;
+        padding: var(--kui-space-inline-sm) var(--kui-space-inline-md);
+        font-size: var(--kui-typography-label-font-size);
+        font-weight: var(--kui-typography-label-font-weight);
+        color: var(--kui-color-text-secondary);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .tab-item:focus-visible {
+        outline: 2px solid var(--kui-color-focus-ring);
+        outline-offset: -2px;
+        box-shadow: 0 0 0 2px var(--kui-color-focus-inner-ring);
+      }
+
+      .tab-item[aria-selected="true"] {
+        color: var(--kui-color-interactive-default);
+        font-weight: 600;
+      }
+
+      .tab-item[aria-selected="true"]::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--kui-color-interactive-default);
+        border-radius: 9999px;
+      }
+
+      /* Selected surface */
+      .list-box {
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .list-item {
+        padding: var(--kui-space-inline-sm) var(--kui-space-inline-md);
+        border-bottom: 1px solid var(--kui-color-border-subtle);
+        cursor: pointer;
+        font-size: var(--kui-typography-body-font-size);
+      }
+
+      .list-item:last-child {
+        border-bottom: none;
+      }
+
+      .list-item:hover {
+        background: var(--kui-color-bg-hover);
+      }
+
+      .list-item:focus-visible {
+        outline: 2px solid var(--kui-color-focus-ring);
+        outline-offset: -2px;
+      }
+
+      .list-item[aria-selected="true"] {
+        background: var(--kui-interaction-selected-bg);
+        border-left: 2px solid var(--kui-interaction-selected-border);
+        color: var(--kui-interaction-selected-text);
+      }
+
+      /* Status markers */
+      .status-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-inline-sm);
+      }
+
+      .status-alert {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-inline-sm);
+        padding: var(--kui-space-inline-sm) var(--kui-space-inline-md);
+        border-radius: 6px;
+        font-size: var(--kui-typography-body-font-size);
+      }
+
+      .status-alert--success {
+        background: var(--kui-color-status-success-subtle);
+        border: 1px solid var(--kui-color-status-success-border);
+        color: var(--kui-color-status-success-text);
+      }
+
+      .status-alert--warning {
+        background: var(--kui-color-status-warning-subtle);
+        border: 1px solid var(--kui-color-status-warning-border);
+        color: var(--kui-color-status-warning-text);
+      }
+
+      .status-alert--error {
+        background: var(--kui-color-status-error-subtle);
+        border: 1px solid var(--kui-color-status-error-border);
+        color: var(--kui-color-status-error-text);
+      }
+
+      .status-alert--info {
+        background: var(--kui-color-status-info-subtle);
+        border: 1px solid var(--kui-color-status-info-border);
+        color: var(--kui-color-status-info-text);
+      }
+
+      .status-icon {
+        flex-shrink: 0;
+        font-size: 1rem;
+      }
+
+      .status-alert--success .status-icon {
+        color: var(--kui-color-status-success-icon);
+      }
+
+      .status-alert--warning .status-icon {
+        color: var(--kui-color-status-warning-icon);
+      }
+
+      .status-alert--error .status-icon {
+        color: var(--kui-color-status-error-icon);
+      }
+
+      .status-alert--info .status-icon {
+        color: var(--kui-color-status-info-icon);
+      }
+
+      /* Spacing demo */
+      .spacing-row {
+        display: flex;
+        align-items: center;
+        gap: var(--kui-space-inline-sm);
+        margin-bottom: var(--kui-space-inline-xs);
+      }
+
+      .spacing-bar {
+        height: 16px;
+        background: var(--kui-color-interactive-default);
+        border-radius: 2px;
+        opacity: 0.7;
+      }
+
+      .spacing-label {
+        font-size: var(--kui-typography-caption-font-size);
+        font-family: var(--kui-typography-code-font-family);
+        color: var(--kui-color-text-muted);
+        min-width: 120px;
+      }
+
+      /* Density comparison */
+      .density-panel {
+        padding: var(--kui-space-content-card-padding);
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 6px;
+      }
+
+      .density-panel input,
+      .density-panel button {
+        height: var(--kui-control-height-md);
+        padding: 0 var(--kui-space-inline-md);
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 4px;
+        font-size: var(--kui-typography-body-font-size);
+        background: var(--kui-color-bg-surface);
+        color: var(--kui-color-text-primary);
+      }
+
+      .density-panel button {
+        background: var(--kui-color-interactive-default);
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .density-panel button:focus-visible {
+        outline: 2px solid var(--kui-color-focus-ring);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 2px var(--kui-color-focus-inner-ring);
+      }
+
+      .density-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kui-space-form-field-gap);
+      }
+
+      .density-form label {
+        font-size: var(--kui-typography-label-font-size);
+        font-weight: var(--kui-typography-label-font-weight);
+        margin-bottom: var(--kui-space-form-label-gap);
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fixture-controls">
+      <label>
+        Theme:
+        <select id="theme-switcher">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+      <label>
+        Density:
+        <select id="density-switcher">
+          <option value="comfortable">Comfortable</option>
+          <option value="standard">Standard</option>
+          <option value="compact">Compact</option>
+        </select>
+      </label>
+    </div>
+
+    <main>
+      <!-- Typography Roles -->
+      <section>
+        <h2>Typography Roles</h2>
+        <h1>Display Heading</h1>
+        <h2>Page Title</h2>
+        <h3>Section Title</h3>
+        <p>
+          Body text — the default reading size for content paragraphs. This uses
+          <code>--kui-typography-body-*</code> tokens.
+        </p>
+        <p class="text-secondary">Secondary text for supporting information.</p>
+        <p class="text-muted">Muted text for de-emphasized content.</p>
+      </section>
+
+      <!-- Surface Hierarchy -->
+      <section>
+        <h2>Surface Hierarchy</h2>
+        <p class="text-secondary">Page → Surface → Raised → Overlay → Modal</p>
+        <div class="surface-stack">
+          <div class="surface-card surface-page">Page</div>
+          <div class="surface-card surface-surface">Surface</div>
+          <div class="surface-card surface-raised">Raised</div>
+          <div class="surface-card surface-overlay">Overlay</div>
+          <div class="surface-card surface-modal">Modal</div>
+        </div>
+      </section>
+
+      <!-- Borders -->
+      <section>
+        <h2>Borders</h2>
+        <div class="border-row">
+          <div class="border-sample" style="border: 1px solid var(--kui-color-border-subtle)">
+            subtle
+          </div>
+          <div class="border-sample" style="border: 1px solid var(--kui-color-border-default)">
+            default
+          </div>
+          <div class="border-sample" style="border: 1px solid var(--kui-color-border-strong)">
+            strong
+          </div>
+          <div class="border-sample" style="border: 2px solid var(--kui-color-border-interactive)">
+            interactive
+          </div>
+          <div class="border-sample" style="border: 2px solid var(--kui-color-border-focus)">
+            focus
+          </div>
+        </div>
+      </section>
+
+      <!-- Focus Frame -->
+      <section>
+        <h2>Focus Frame</h2>
+        <p class="text-secondary">
+          Tab through these elements to see the Kairo Focus Frame (double ring).
+        </p>
+        <div class="focus-demo">
+          <button class="focus-target">Button</button>
+          <a href="#" class="focus-target">Link</a>
+          <input class="focus-target" value="Input" />
+          <button class="focus-target">Another Action</button>
+        </div>
+      </section>
+
+      <!-- Active Rail -->
+      <section>
+        <h2>Active Rail</h2>
+        <p class="text-secondary">2px accent bar marks the active tab.</p>
+        <div class="tab-bar" role="tablist">
+          <button class="tab-item" role="tab" aria-selected="true" tabindex="0">Dashboard</button>
+          <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">Settings</button>
+          <button class="tab-item" role="tab" aria-selected="false" tabindex="-1">Profile</button>
+        </div>
+      </section>
+
+      <!-- Selected Surface -->
+      <section>
+        <h2>Selected Surface</h2>
+        <p class="text-secondary">Accent-tinted background + stronger border for selected items.</p>
+        <div class="list-box" role="listbox" aria-label="Example list">
+          <div class="list-item" role="option" aria-selected="false" tabindex="0">
+            Design tokens
+          </div>
+          <div class="list-item" role="option" aria-selected="true" tabindex="-1">
+            Components (selected)
+          </div>
+          <div class="list-item" role="option" aria-selected="false" tabindex="-1">Patterns</div>
+          <div class="list-item" role="option" aria-selected="false" tabindex="-1">Utilities</div>
+        </div>
+      </section>
+
+      <!-- Status Markers -->
+      <section>
+        <h2>Status Markers</h2>
+        <p class="text-secondary">Color + icon + text — never color-only.</p>
+        <div class="status-grid">
+          <div class="status-alert status-alert--success">
+            <span class="status-icon" aria-hidden="true">✓</span>
+            <span><strong>Success:</strong> Operation completed.</span>
+          </div>
+          <div class="status-alert status-alert--warning">
+            <span class="status-icon" aria-hidden="true">⚠</span>
+            <span><strong>Warning:</strong> Check configuration.</span>
+          </div>
+          <div class="status-alert status-alert--error">
+            <span class="status-icon" aria-hidden="true">✕</span>
+            <span><strong>Error:</strong> Action failed.</span>
+          </div>
+          <div class="status-alert status-alert--info">
+            <span class="status-icon" aria-hidden="true">ℹ</span>
+            <span><strong>Info:</strong> Update available.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spacing & Radius -->
+      <section>
+        <h2>Spacing &amp; Radius</h2>
+        <div>
+          <div class="spacing-row">
+            <span class="spacing-label">inline-xs</span>
+            <div class="spacing-bar" style="width: var(--kui-space-inline-xs)"></div>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">inline-sm</span>
+            <div class="spacing-bar" style="width: var(--kui-space-inline-sm)"></div>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">inline-md</span>
+            <div class="spacing-bar" style="width: var(--kui-space-inline-md)"></div>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">form-field-gap</span>
+            <div class="spacing-bar" style="width: var(--kui-space-form-field-gap)"></div>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">page-gutter</span>
+            <div class="spacing-bar" style="width: var(--kui-space-page-gutter)"></div>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">section-padding</span>
+            <div class="spacing-bar" style="width: var(--kui-space-section-padding)"></div>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">section-gap</span>
+            <div class="spacing-bar" style="width: var(--kui-space-section-gap)"></div>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">page-gap</span>
+            <div class="spacing-bar" style="width: var(--kui-space-page-gap)"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Density Comparison -->
+      <section>
+        <h2>Density Comparison</h2>
+        <p class="text-secondary">
+          Switch density above to see controls adapt. Control height, spacing, and padding change —
+          colors and typography remain constant.
+        </p>
+        <div class="density-panel">
+          <div class="density-form">
+            <div>
+              <label for="density-name">Name</label>
+              <input id="density-name" type="text" placeholder="Enter name" />
+            </div>
+            <div>
+              <label for="density-email">Email</label>
+              <input id="density-email" type="email" placeholder="Enter email" />
+            </div>
+            <div>
+              <button type="button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Minimal JS to switch theme/density data attributes
+      document.getElementById("theme-switcher").addEventListener("change", function (e) {
+        document.documentElement.dataset.kuiTheme = e.target.value;
+      });
+      document.getElementById("density-switcher").addEventListener("change", function (e) {
+        document.documentElement.dataset.kuiDensity = e.target.value;
+      });
+    </script>
+  </body>
+</html>
