@@ -5,7 +5,14 @@
  * They are the primary mechanism for theming.
  */
 
-import type { ColorValue, LengthValue, ShadowValue } from "./values";
+import type {
+  ColorValue,
+  FontFamilyValue,
+  FontWeightValue,
+  LengthValue,
+  RatioValue,
+  ShadowValue,
+} from "./values";
 
 // ─── Semantic Color Roles ────────────────────────────────────────────
 
@@ -246,11 +253,68 @@ export interface SemanticElevation {
   readonly toast: ShadowValue;
 }
 
+// ─── Semantic Typography ─────────────────────────────────────────────
+
+/**
+ * A single typography role definition.
+ *
+ * Each role specifies the complete typographic treatment for a semantic purpose.
+ * Optional `numericVariant` signals tabular-nums or other numeric font features.
+ */
+export interface TypographyRole {
+  readonly fontFamily: FontFamilyValue;
+  readonly fontSize: LengthValue;
+  readonly lineHeight: RatioValue;
+  readonly fontWeight: FontWeightValue;
+  readonly letterSpacing: LengthValue;
+}
+
+/**
+ * Numeric typography extension — adds tabular number behavior.
+ */
+export interface NumericTypographyRole extends TypographyRole {
+  readonly fontVariantNumeric: "tabular-nums" | "normal";
+}
+
+/**
+ * Semantic typography roles.
+ *
+ * | Role             | Use                                    | Misuse                                |
+ * | ---------------- | -------------------------------------- | ------------------------------------- |
+ * | display          | Dashboard hero metrics, large KPIs     | Body text, section content            |
+ * | pageTitle        | Top-level page heading (one per page)  | Multiple per page, section headings   |
+ * | sectionTitle     | Section/card headings                  | Body text, navigation labels          |
+ * | componentTitle   | Component-level headings (dialogs, panels) | Page titles, body text            |
+ * | body             | Default body text                      | Headings, labels                      |
+ * | bodyStrong       | Emphasized body text (bold inline)     | Full paragraphs, headings             |
+ * | label            | Form labels, button text               | Body paragraphs, headings             |
+ * | metadata         | Timestamps, counts, secondary info     | Primary content, actions              |
+ * | caption          | Table captions, footnotes, help text   | Body text, labels                     |
+ * | code             | Code snippets, file names, commands    | Body text, headings                   |
+ * | numeric          | Table numbers, prices, data values     | Body text, labels                     |
+ * | numericEmphasized| Prominent metrics, dashboard totals    | Body text, secondary numbers          |
+ */
+export interface SemanticTypography {
+  readonly display: TypographyRole;
+  readonly pageTitle: TypographyRole;
+  readonly sectionTitle: TypographyRole;
+  readonly componentTitle: TypographyRole;
+  readonly body: TypographyRole;
+  readonly bodyStrong: TypographyRole;
+  readonly label: TypographyRole;
+  readonly metadata: TypographyRole;
+  readonly caption: TypographyRole;
+  readonly code: TypographyRole;
+  readonly numeric: NumericTypographyRole;
+  readonly numericEmphasized: NumericTypographyRole;
+}
+
 // ─── Full Semantic Collection ────────────────────────────────────────
 
 /** Complete semantic token collection */
 export interface SemanticTokens {
   readonly color: SemanticColors;
+  readonly typography: SemanticTypography;
   readonly spacing: SemanticSpacing;
   readonly control: {
     readonly height: SemanticControlHeights;
