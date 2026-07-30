@@ -6,3 +6,7 @@
 export type { ApplyThemeOptions, ApplyThemeResult } from "./apply-theme";
 
 export { applyTheme, removeTheme, readThemeMode, readDensity } from "./apply-theme";
+
+export type { ScopedThemeOptions, ScopedThemeResult } from "./scoped-theme";
+
+export { applyScopedTheme, removeScopedTheme } from "./scoped-theme";
