@@ -108,19 +108,56 @@ export interface SemanticInteractiveColors {
 }
 
 /**
- * Status color tokens.
+ * Roles available within a single status category.
  *
- * Each status has a standard (strong) and subtle (background) variant.
+ * | Role       | Purpose                                              |
+ * | ---------- | ---------------------------------------------------- |
+ * | subtle     | Very light background tint (banners, toasts)         |
+ * | muted      | Slightly stronger background (badges, pills)         |
+ * | emphasis   | Strong/saturated background (filled badges, actions) |
+ * | border     | Border for status-colored containers                 |
+ * | text       | Status-appropriate text color on neutral backgrounds |
+ * | icon       | Status-appropriate icon color                        |
+ * | action     | Strong action/button background for this status      |
+ *
+ * ## Business State Mapping (examples — not encoded here)
+ *
+ * Business states map to semantic statuses at the application layer:
+ * - approved, completed, paid → success
+ * - overdue, at-risk, expiring → warning
+ * - failed, rejected, blocked → danger (error)
+ * - processing, pending, in-review → info
+ * - draft, archived, inactive → neutral
+ *
+ * These mappings are NOT tokens. They are application-level decisions.
+ * Status tokens provide the visual vocabulary; applications choose which to use.
+ */
+export interface StatusRoles {
+  readonly subtle: ColorValue;
+  readonly muted: ColorValue;
+  readonly emphasis: ColorValue;
+  readonly border: ColorValue;
+  readonly text: ColorValue;
+  readonly icon: ColorValue;
+  readonly action: ColorValue;
+}
+
+/**
+ * Complete semantic status color collection.
+ *
+ * Five status categories cover all enterprise feedback needs:
+ * - success: positive outcomes, completion, approval
+ * - warning: caution, non-critical issues, approaching limits
+ * - error: failures, critical issues, destructive feedback
+ * - info: neutral information, guidance, processing
+ * - neutral: default/inactive states, drafts, archived items
  */
 export interface SemanticStatusColors {
-  readonly success: ColorValue;
-  readonly successSubtle: ColorValue;
-  readonly warning: ColorValue;
-  readonly warningSubtle: ColorValue;
-  readonly error: ColorValue;
-  readonly errorSubtle: ColorValue;
-  readonly info: ColorValue;
-  readonly infoSubtle: ColorValue;
+  readonly success: StatusRoles;
+  readonly warning: StatusRoles;
+  readonly error: StatusRoles;
+  readonly info: StatusRoles;
+  readonly neutral: StatusRoles;
 }
 
 /**

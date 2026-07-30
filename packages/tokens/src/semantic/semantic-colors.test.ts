@@ -4,6 +4,7 @@ import type {
   SemanticTextColors,
   SemanticBorderColors,
   SemanticInteractiveColors,
+  StatusRoles,
   SemanticStatusColors,
   SemanticFocusColors,
   SemanticDestructiveColors,
@@ -85,19 +86,24 @@ describe("semantic color contracts", () => {
   });
 
   describe("SemanticStatusColors", () => {
-    it("requires all status pairs", () => {
+    it("requires all five status categories", () => {
       type RequiredKeys = keyof SemanticStatusColors;
-      const keys: RequiredKeys[] = [
-        "success",
-        "successSubtle",
-        "warning",
-        "warningSubtle",
-        "error",
-        "errorSubtle",
-        "info",
-        "infoSubtle",
+      const keys: RequiredKeys[] = ["success", "warning", "error", "info", "neutral"];
+      expect(keys).toHaveLength(5);
+    });
+
+    it("each status has all required roles", () => {
+      type RequiredRoles = keyof StatusRoles;
+      const roles: RequiredRoles[] = [
+        "subtle",
+        "muted",
+        "emphasis",
+        "border",
+        "text",
+        "icon",
+        "action",
       ];
-      expect(keys).toHaveLength(8);
+      expect(roles).toHaveLength(7);
     });
   });
 
@@ -133,9 +139,9 @@ describe("semantic color contracts", () => {
     });
 
     it("total semantic color roles across all groups", () => {
-      // background: 9 + text: 7 + border: 6 + interactive: 8 + status: 8 + focus: 2 + destructive: 5
-      const total = 9 + 7 + 6 + 8 + 8 + 2 + 5;
-      expect(total).toBe(45);
+      // background: 9 + text: 7 + border: 6 + interactive: 8 + status: 5×7=35 + focus: 2 + destructive: 5
+      const total = 9 + 7 + 6 + 8 + 35 + 2 + 5;
+      expect(total).toBe(72);
     });
   });
 });

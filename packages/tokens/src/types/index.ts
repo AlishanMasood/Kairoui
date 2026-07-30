@@ -72,6 +72,7 @@ export type {
   SemanticTextColors,
   SemanticBorderColors,
   SemanticInteractiveColors,
+  StatusRoles,
   SemanticStatusColors,
   SemanticFocusColors,
   SemanticDestructiveColors,
