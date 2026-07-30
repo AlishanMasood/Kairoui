@@ -59,3 +59,20 @@ export {
   validateDensityValue,
   THEME_CONSTANTS,
 } from "./validate";
+
+export type {
+  SerializedTheme,
+  SerializedDefinition,
+  CssVariableRecord,
+  DebugManifest,
+} from "./serialize";
+
+export {
+  serializeTheme,
+  serializeDefinition,
+  serializeThemeToJson,
+  parseSerializedTheme,
+  toCssVariableRecord,
+  toDebugManifest,
+  THEME_SERIALIZATION_VERSION,
+} from "./serialize";
