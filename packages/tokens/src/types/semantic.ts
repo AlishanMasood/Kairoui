@@ -214,20 +214,54 @@ export interface SemanticColors {
 
 // ─── Semantic Spacing ────────────────────────────────────────────────
 
-/** Semantic spacing roles (density-aware) */
+/**
+ * Semantic spacing roles.
+ *
+ * All values reference primitive spacing tokens. Roles marked with (D)
+ * are density-aware and will be remapped by compact/spacious density modes.
+ *
+ * | Group    | Role         | D | Purpose                                       |
+ * | -------- | ------------ | - | --------------------------------------------- |
+ * | inline   | xs           | D | Tight icon-to-text, badge gaps                |
+ * | inline   | sm           | D | Standard icon-to-label, inline element gaps   |
+ * | inline   | md           | D | Control-to-control in toolbars, button groups |
+ * | form     | fieldGap     | D | Vertical gap between form fields              |
+ * | form     | sectionGap   | D | Gap between form sections/fieldsets           |
+ * | form     | labelGap     | D | Gap between label and its control             |
+ * | content  | cardPadding  | D | Internal padding of cards/panels              |
+ * | content  | dialogPadding| D | Internal padding of dialogs                   |
+ * | content  | toolbarGap   | D | Gap between toolbar items                     |
+ * | content  | listItemGap  | D | Gap between list/menu items                   |
+ * | content  | tableCell    | D | Table cell internal padding                   |
+ * | section  | gap          |   | Vertical gap between page sections            |
+ * | section  | padding      |   | Internal padding of major sections            |
+ * | page     | gutter       |   | Horizontal page edge gutter                   |
+ * | page     | gap          |   | Gap between top-level page regions            |
+ */
 export interface SemanticSpacing {
-  readonly component: {
-    readonly gap: LengthValue;
-    readonly padding: LengthValue;
-    readonly paddingSmall: LengthValue;
-    readonly paddingLarge: LengthValue;
+  readonly inline: {
+    readonly xs: LengthValue;
+    readonly sm: LengthValue;
+    readonly md: LengthValue;
+  };
+  readonly form: {
+    readonly fieldGap: LengthValue;
+    readonly sectionGap: LengthValue;
+    readonly labelGap: LengthValue;
+  };
+  readonly content: {
+    readonly cardPadding: LengthValue;
+    readonly dialogPadding: LengthValue;
+    readonly toolbarGap: LengthValue;
+    readonly listItemGap: LengthValue;
+    readonly tableCell: LengthValue;
   };
   readonly section: {
     readonly gap: LengthValue;
     readonly padding: LengthValue;
   };
   readonly page: {
-    readonly margin: LengthValue;
+    readonly gutter: LengthValue;
     readonly gap: LengthValue;
   };
 }
