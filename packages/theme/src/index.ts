@@ -98,3 +98,18 @@ export type {
 } from "./css-variables";
 
 export { generateCssVariables } from "./css-variables";
+
+export type { PreferenceSource, TrackedPreference, VersionedPreference } from "./preference";
+
+export {
+  validateMode,
+  validateDensity,
+  validateResolvedMode,
+  isValidPreference,
+  parsePreference,
+  parseVersionedPreference,
+  toVersionedPreference,
+  coercePreference,
+  DEFAULT_PREFERENCE,
+  PREFERENCE_VERSION,
+} from "./preference";
