@@ -35,3 +35,7 @@ export {
   isColorSchemeSupported,
   subscribeToColorScheme,
 } from "./system-color-scheme";
+
+export type { ThemeStorageAdapter, LocalStorageAdapterOptions } from "./storage";
+
+export { createLocalStorageAdapter } from "./storage";

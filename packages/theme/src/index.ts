@@ -113,3 +113,7 @@ export {
   DEFAULT_PREFERENCE,
   PREFERENCE_VERSION,
 } from "./preference";
+
+export type { ThemeStorageAdapter, MemoryAdapterOptions } from "./storage";
+
+export { createMemoryAdapter, noopStorageAdapter } from "./storage";
