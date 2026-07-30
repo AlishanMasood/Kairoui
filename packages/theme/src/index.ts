@@ -89,3 +89,12 @@ export {
   VALID_THEME_VALUES,
   VALID_DENSITY_VALUES,
 } from "./selectors";
+
+export type {
+  CssVariables,
+  CssVariableDuplicate,
+  CssVariableError,
+  CssVariableOptions,
+} from "./css-variables";
+
+export { generateCssVariables } from "./css-variables";
