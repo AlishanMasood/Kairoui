@@ -25,6 +25,10 @@ export { breakpoint } from "./primitives";
 // Theme definitions
 export { lightTheme, darkTheme } from "./themes";
 
+// Density definitions
+export { comfortable, standard, compact, densities } from "./density";
+export type { DensityTokens } from "./density";
+
 // Public type contracts
 export type {
   // Value types

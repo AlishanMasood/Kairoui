@@ -59,11 +59,11 @@ describe("Token type contracts — compile-time validation", () => {
   describe("DensityName constraint", () => {
     it("accepts valid density names", () => {
       const comfortable: DensityName = "comfortable";
+      const std: DensityName = "standard";
       const compact: DensityName = "compact";
-      const spacious: DensityName = "spacious";
       expect(comfortable).toBe("comfortable");
+      expect(std).toBe("standard");
       expect(compact).toBe("compact");
-      expect(spacious).toBe("spacious");
     });
   });
 

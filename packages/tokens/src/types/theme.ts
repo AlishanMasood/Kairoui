@@ -30,7 +30,7 @@ export type PartialThemeOverride = DeepPartialTokenRefMap<SemanticTokens>;
 // ─── Density ─────────────────────────────────────────────────────────
 
 /** Approved density names */
-export type DensityName = "comfortable" | "compact" | "spacious";
+export type DensityName = "comfortable" | "standard" | "compact";
 
 /**
  * A density definition overrides spacing and sizing semantic tokens.
