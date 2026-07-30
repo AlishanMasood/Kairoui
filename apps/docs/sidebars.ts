@@ -15,6 +15,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Tokens",
+      items: ["tokens/overview"],
+    },
+    {
+      type: "category",
       label: "Components",
       items: ["components/overview"],
     },
