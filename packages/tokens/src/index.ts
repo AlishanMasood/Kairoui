@@ -38,6 +38,16 @@ export type {
   ResolveThemeOptions,
 } from "./override";
 
+// CSS variable generation
+export { generateCss, generateThemeCss, generateDensityCss } from "./css";
+export type {
+  CssDeclaration,
+  CssGenerationResult,
+  CssGenerationError,
+  CssGenerationMetadata,
+  GenerateCssOptions,
+} from "./css";
+
 // Public type contracts
 export type {
   // Value types
