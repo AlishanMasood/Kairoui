@@ -126,6 +126,16 @@ export {
 } from "./validation";
 export type { SchemaValidationResult } from "./validation";
 
+// Contrast validation
+export {
+  contrastRatio,
+  relativeLuminance,
+  checkContrast,
+  checkAllContrasts,
+  formatFailure,
+} from "./validation/contrast";
+export type { ContrastCheckResult, ContrastPairing } from "./validation/contrast";
+
 // Public type contracts
 export type {
   // Value types

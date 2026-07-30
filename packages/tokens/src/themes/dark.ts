@@ -122,9 +122,9 @@ export const darkTheme: SemanticTokens = {
       innerRing: neutral["900"],
     },
     destructive: {
-      default: red["500"],
-      hover: red["400"],
-      active: red["300"],
+      default: red["600"],
+      hover: red["500"],
+      active: red["400"],
       subtle: "rgba(239, 68, 68, 0.1)",
       text: "#ffffff",
     },
