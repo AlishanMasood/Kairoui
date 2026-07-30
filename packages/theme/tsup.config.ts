@@ -1,3 +1,6 @@
 import { createConfig } from "../../tooling/tsup/config";
 
-export default createConfig();
+export default createConfig({
+  entry: ["src/index.ts", "src/dom.ts", "src/server.ts"],
+  tsconfig: "tsconfig.build.json",
+});
