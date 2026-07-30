@@ -12,6 +12,21 @@
     "./css": {
       "import": "./dist/tokens.css"
     },
+    "./css/light": {
+      "import": "./dist/themes/light.css"
+    },
+    "./css/dark": {
+      "import": "./dist/themes/dark.css"
+    },
+    "./css/density/comfortable": {
+      "import": "./dist/density/comfortable.css"
+    },
+    "./css/density/standard": {
+      "import": "./dist/density/standard.css"
+    },
+    "./css/density/compact": {
+      "import": "./dist/density/compact.css"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
@@ -24,7 +39,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node --import tsx src/scripts/generate-css.ts",
+    "build:css": "node --import tsx src/scripts/generate-css.ts",
     "clean": "rimraf dist",
     "dev": "tsup --watch"
   },
