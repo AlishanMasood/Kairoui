@@ -83,6 +83,8 @@ export type {
   SemanticSpacing,
   SemanticControlHeights,
   SemanticElevation,
+  InteractionStateVisuals,
+  SemanticInteractionStates,
   SemanticTokens,
 } from "./semantic";
 

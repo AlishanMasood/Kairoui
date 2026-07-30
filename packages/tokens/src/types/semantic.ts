@@ -7,9 +7,12 @@
 
 import type {
   ColorValue,
+  DurationValue,
+  EasingValue,
   FontFamilyValue,
   FontWeightValue,
   LengthValue,
+  OpacityValue,
   RatioValue,
   ShadowValue,
 } from "./values";
@@ -343,6 +346,77 @@ export interface SemanticTypography {
   readonly numericEmphasized: NumericTypographyRole;
 }
 
+// ─── Semantic Interaction States ─────────────────────────────────────
+
+/**
+ * Visual treatment properties for a single interaction state.
+ *
+ * These define VISUAL tokens only. Behavioral concerns (event handlers,
+ * pointer-events, aria attributes) belong to component implementations.
+ *
+ * ## Visual vs Behavioral
+ *
+ * Visual (defined here):
+ * - background, border, text, icon colors
+ * - opacity treatment
+ * - focus ring visibility
+ * - transition timing
+ *
+ * Behavioral (NOT defined here, belongs to components):
+ * - cursor style
+ * - pointer-events
+ * - aria-disabled / aria-readonly
+ * - tab order changes
+ * - event handler attachment
+ *
+ * ## Accessibility: invalid/valid must not rely solely on color
+ *
+ * The `invalid` and `valid` states include border changes, but components
+ * MUST also provide non-color indicators (icons, text messages) to communicate
+ * validity to users who cannot perceive color differences.
+ */
+export interface InteractionStateVisuals {
+  readonly background: ColorValue;
+  readonly border: ColorValue;
+  readonly text: ColorValue;
+  readonly icon: ColorValue;
+  readonly opacity: OpacityValue;
+  readonly focusRing: "visible" | "hidden";
+  readonly transitionDuration: DurationValue;
+  readonly transitionEasing: EasingValue;
+}
+
+/**
+ * Complete set of interaction state visual contracts.
+ *
+ * | State    | Motion     | Focus Ring | Notes                                    |
+ * | -------- | ---------- | ---------- | ---------------------------------------- |
+ * | default  | —          | hidden     | Resting visual state                     |
+ * | hover    | fast       | hidden     | Pointer over interactive element         |
+ * | active   | fast       | hidden     | Element being pressed/activated          |
+ * | focused  | fast       | visible    | Keyboard focus on element                |
+ * | selected | fast       | hidden     | Toggled/selected state                   |
+ * | disabled | instant    | hidden     | Non-interactive, reduced opacity         |
+ * | readOnly | instant    | hidden     | Visible but not editable                 |
+ * | loading  | normal     | hidden     | Awaiting async operation                 |
+ * | dragging | fast       | hidden     | Element being dragged                    |
+ * | invalid  | fast       | hidden     | Failed validation (pair with icon/text!) |
+ * | valid    | fast       | hidden     | Passed validation (pair with icon/text!) |
+ */
+export interface SemanticInteractionStates {
+  readonly default: InteractionStateVisuals;
+  readonly hover: InteractionStateVisuals;
+  readonly active: InteractionStateVisuals;
+  readonly focused: InteractionStateVisuals;
+  readonly selected: InteractionStateVisuals;
+  readonly disabled: InteractionStateVisuals;
+  readonly readOnly: InteractionStateVisuals;
+  readonly loading: InteractionStateVisuals;
+  readonly dragging: InteractionStateVisuals;
+  readonly invalid: InteractionStateVisuals;
+  readonly valid: InteractionStateVisuals;
+}
+
 // ─── Full Semantic Collection ────────────────────────────────────────
 
 /** Complete semantic token collection */
@@ -354,4 +428,5 @@ export interface SemanticTokens {
     readonly height: SemanticControlHeights;
   };
   readonly elevation: SemanticElevation;
+  readonly interaction: SemanticInteractionStates;
 }

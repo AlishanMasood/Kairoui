@@ -91,6 +91,8 @@ export type {
   SemanticSpacing,
   SemanticControlHeights,
   SemanticElevation,
+  InteractionStateVisuals,
+  SemanticInteractionStates,
   SemanticTokens,
   // Component contracts
   InteractionState,
