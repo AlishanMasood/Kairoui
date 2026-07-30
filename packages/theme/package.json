@@ -37,5 +37,8 @@
     "theming",
     "design-system"
   ],
-  "license": "SEE LICENSE IN ../../LICENSE"
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "dependencies": {
+    "@kairoui/tokens": "workspace:*"
+  }
 }

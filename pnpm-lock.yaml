@@ -188,7 +188,11 @@ importers:
 
   packages/icons: {}
 
-  packages/theme: {}
+  packages/theme:
+    dependencies:
+      '@kairoui/tokens':
+        specifier: workspace:*
+        version: link:../tokens
 
   packages/tokens: {}
 

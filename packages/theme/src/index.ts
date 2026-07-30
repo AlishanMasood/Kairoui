@@ -17,3 +17,12 @@ export type {
 } from "./types";
 
 export { createTheme, validateTheme } from "./create-theme";
+
+export type {
+  ResolvedTheme,
+  ResolvedThemeMetadata,
+  ResolutionWarning,
+  ResolveThemeOptions,
+} from "./resolve-theme";
+
+export { resolveTheme, resolveThemeSync } from "./resolve-theme";
