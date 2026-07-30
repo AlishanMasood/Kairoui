@@ -22,3 +22,16 @@ export {
   getManagedProperties,
   getManagedAttributes,
 } from "./cleanup";
+
+export type {
+  ColorSchemeListener,
+  ColorSchemeSubscription,
+  MatchMediaProvider,
+  ColorSchemeDetectorOptions,
+} from "./system-color-scheme";
+
+export {
+  getSystemColorScheme,
+  isColorSchemeSupported,
+  subscribeToColorScheme,
+} from "./system-color-scheme";
