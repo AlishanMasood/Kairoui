@@ -35,3 +35,15 @@ export type {
 } from "./compose-themes";
 
 export { composeThemes } from "./compose-themes";
+
+export type { MergeError, MergeResult } from "./merge";
+
+export {
+  mergeThemeOverrides,
+  mergeColorOverrides,
+  mergeTypographyOverrides,
+  mergeSpacingOverrides,
+  mergeElevationOverrides,
+  mergeMetadata,
+  applyPartialOverride,
+} from "./merge";
