@@ -26,3 +26,12 @@ export type {
 } from "./resolve-theme";
 
 export { resolveTheme, resolveThemeSync } from "./resolve-theme";
+
+export type {
+  CompositionLayer,
+  CompositionMetadata,
+  CompositionError,
+  CompositionResult,
+} from "./compose-themes";
+
+export { composeThemes } from "./compose-themes";
