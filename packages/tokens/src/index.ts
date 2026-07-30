@@ -63,6 +63,18 @@ export type {
   SwitchContract,
   FormFieldContract,
 } from "./components";
+export { surfaceTokens } from "./components";
+export type {
+  SurfaceContracts,
+  SurfaceTokens,
+  CardContract,
+  DialogContract,
+  DrawerContract,
+  MenuContract,
+  PopoverContract,
+  TooltipContract,
+  ToastContract,
+} from "./components";
 
 // Theme override utilities
 export { resolveTheme } from "./override";

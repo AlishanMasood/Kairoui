@@ -19,3 +19,16 @@ export type {
   SwitchContract,
   FormFieldContract,
 } from "./form-controls";
+
+export { surfaceTokens } from "./surfaces";
+export type {
+  SurfaceContracts,
+  SurfaceTokens,
+  CardContract,
+  DialogContract,
+  DrawerContract,
+  MenuContract,
+  PopoverContract,
+  TooltipContract,
+  ToastContract,
+} from "./surfaces";
