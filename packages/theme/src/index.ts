@@ -76,3 +76,16 @@ export {
   toDebugManifest,
   THEME_SERIALIZATION_VERSION,
 } from "./serialize";
+
+export {
+  THEME_ATTRIBUTE,
+  DENSITY_ATTRIBUTE,
+  THEME_DATASET_KEY,
+  DENSITY_DATASET_KEY,
+  themeSelector,
+  densitySelector,
+  ROOT_THEME_SELECTOR,
+  DARK_THEME_SELECTOR,
+  VALID_THEME_VALUES,
+  VALID_DENSITY_VALUES,
+} from "./selectors";
