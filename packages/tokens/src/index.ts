@@ -29,6 +29,15 @@ export { lightTheme, darkTheme } from "./themes";
 export { comfortable, standard, compact, densities } from "./density";
 export type { DensityTokens } from "./density";
 
+// Theme override utilities
+export { resolveTheme } from "./override";
+export type {
+  PartialSemanticOverride,
+  ResolvedThemeResult,
+  ThemeOverrideError,
+  ResolveThemeOptions,
+} from "./override";
+
 // Public type contracts
 export type {
   // Value types
