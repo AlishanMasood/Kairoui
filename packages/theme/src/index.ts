@@ -47,3 +47,15 @@ export {
   mergeMetadata,
   applyPartialOverride,
 } from "./merge";
+
+export type { ValidationCategory, ValidationDiagnostic, ValidationReport } from "./validate";
+
+export {
+  validateThemeDefinition,
+  validateOverrides,
+  validateResolvedTheme,
+  validateThemeName,
+  validateBaseMode,
+  validateDensityValue,
+  THEME_CONSTANTS,
+} from "./validate";
