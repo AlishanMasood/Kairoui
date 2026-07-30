@@ -10,3 +10,15 @@ export { applyTheme, removeTheme, readThemeMode, readDensity } from "./apply-the
 export type { ScopedThemeOptions, ScopedThemeResult } from "./scoped-theme";
 
 export { applyScopedTheme, removeScopedTheme } from "./scoped-theme";
+
+export type { CleanupResult } from "./cleanup";
+
+export {
+  trackAttribute,
+  trackCssProperty,
+  untrackCssProperty,
+  cleanupTheme,
+  hasThemeState,
+  getManagedProperties,
+  getManagedAttributes,
+} from "./cleanup";
