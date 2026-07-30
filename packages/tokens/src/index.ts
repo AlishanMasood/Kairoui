@@ -48,6 +48,10 @@ export type {
   GenerateCssOptions,
 } from "./css";
 
+// JSON manifest generation
+export { flattenToManifest, buildManifest, MANIFEST_SCHEMA_VERSION } from "./manifest";
+export type { ManifestToken, TokenManifestJson, GenerateManifestOptions } from "./manifest";
+
 // Public type contracts
 export type {
   // Value types

@@ -27,6 +27,9 @@
     "./css/density/compact": {
       "import": "./dist/density/compact.css"
     },
+    "./manifest": {
+      "import": "./dist/tokens.json"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",

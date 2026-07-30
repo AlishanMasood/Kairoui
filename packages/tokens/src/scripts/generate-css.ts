@@ -13,6 +13,7 @@ import { generateCss, generateThemeCss, generateDensityCss } from "../css/index"
 import { lightTheme } from "../themes/light";
 import { darkTheme } from "../themes/dark";
 import { comfortable, standard, compact } from "../density/index";
+import { buildManifest } from "../manifest/index";
 import type { SemanticTokens } from "../types/semantic";
 
 const DIST = join(import.meta.dirname, "../../dist");
@@ -106,6 +107,23 @@ function generateIndexCss(): void {
   writeWithNotice(join(DIST, "index.css"), content);
 }
 
+// ─── Generate JSON manifest ──────────────────────────────────────────
+
+function generateManifestFile(): void {
+  const manifest = buildManifest([
+    {
+      tokens: themeToRecord(lightTheme),
+      options: { layer: "semantic", themes: ["light", "dark"] },
+    },
+    {
+      tokens: comfortable as unknown as Record<string, unknown>,
+      options: { layer: "density", densityApplicable: true },
+    },
+  ]);
+
+  writeFileSync(join(DIST, "tokens.json"), JSON.stringify(manifest, null, 2) + "\n", "utf-8");
+}
+
 // ─── Main ────────────────────────────────────────────────────────────
 
 export function generate(): void {
@@ -114,6 +132,7 @@ export function generate(): void {
   generateDensityFiles();
   generateCombinedFile();
   generateIndexCss();
+  generateManifestFile();
 }
 
 // Run if executed directly
