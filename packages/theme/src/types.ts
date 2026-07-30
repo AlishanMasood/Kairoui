@@ -53,27 +53,67 @@ export interface ThemePreference {
 
 // ─── Theme Override ──────────────────────────────────────────────────
 
+/** Deeply partial version of a type — all nested properties become optional. */
+export type DeepPartial<T> = {
+  readonly [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
+
 /**
- * A partial set of semantic token overrides applied on top of a base theme.
- *
- * Only supported semantic token paths may be overridden.
- * The structure mirrors SemanticTokens but every property is optional.
+ * Semantic override groups for theme customization.
+ * Each group maps to a top-level key in SemanticTokens.
  */
-export type ThemeOverride = Record<string, unknown>;
+export interface ThemeOverrides {
+  readonly color?: DeepPartial<{
+    readonly background: Record<string, string>;
+    readonly text: Record<string, string>;
+    readonly border: Record<string, string>;
+    readonly interactive: Record<string, string>;
+    readonly status: Record<string, Record<string, string>>;
+    readonly focus: Record<string, string>;
+    readonly destructive: Record<string, string>;
+  }>;
+  readonly typography?: DeepPartial<Record<string, Record<string, string>>>;
+  readonly spacing?: DeepPartial<Record<string, Record<string, string>>>;
+  readonly elevation?: DeepPartial<Record<string, string>>;
+}
 
 // ─── Theme Definition ────────────────────────────────────────────────
 
+/** Input accepted by `createTheme()`. */
+export interface CreateThemeInput {
+  readonly name: string;
+  readonly base: ResolvedThemeMode;
+  readonly description?: string;
+  readonly defaultDensity?: DensityMode;
+  readonly overrides?: ThemeOverrides;
+  readonly metadata?: Readonly<Record<string, string>>;
+}
+
 /**
- * A complete theme definition that the engine can apply at runtime.
+ * A validated, immutable theme definition returned by `createTheme()`.
  *
- * Contains a name, an optional base theme to extend, and optional overrides.
- * Built-in themes (`"light"`, `"dark"`) are pre-defined in `@kairoui/tokens`.
- * Custom themes extend a built-in base with partial overrides.
+ * Contains all configuration needed to resolve the theme at runtime.
+ * The definition is unresolved — it stores overrides, not computed values.
  */
 export interface ThemeDefinition {
   readonly name: string;
   readonly base: ResolvedThemeMode;
-  readonly overrides?: ThemeOverride;
+  readonly description: string;
+  readonly defaultDensity: DensityMode;
+  readonly overrides: ThemeOverrides;
+  readonly metadata: Readonly<Record<string, string>>;
+}
+
+/** Validation error from `createTheme()`. */
+export interface ThemeValidationError {
+  readonly path: string;
+  readonly message: string;
+}
+
+/** Result of theme validation. */
+export interface ThemeValidationResult {
+  readonly valid: boolean;
+  readonly errors: readonly ThemeValidationError[];
 }
 
 // ─── Theme Scope ─────────────────────────────────────────────────────

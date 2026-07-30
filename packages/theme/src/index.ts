@@ -4,10 +4,16 @@ export type {
   ResolvedThemeMode,
   DensityMode,
   ThemePreference,
-  ThemeOverride,
+  ThemeOverrides,
   ThemeDefinition,
   ThemeScope,
   ThemeTarget,
   StorageAdapter,
   ThemeEngine,
+  CreateThemeInput,
+  ThemeValidationError,
+  ThemeValidationResult,
+  DeepPartial,
 } from "./types";
+
+export { createTheme, validateTheme } from "./create-theme";
