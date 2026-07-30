@@ -16,7 +16,7 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Tokens",
-      items: ["tokens/overview"],
+      items: ["tokens/overview", "tokens/visual-signatures"],
     },
     {
       type: "category",
