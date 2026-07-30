@@ -42,6 +42,15 @@ export type {
   ControlTransitionTokens,
 } from "./controls";
 
+// Component token contracts
+export { buttonTokens } from "./components";
+export type {
+  ButtonContract,
+  ButtonVariantTokens,
+  ButtonStateColors,
+  ButtonSizeTokens,
+} from "./components";
+
 // Theme override utilities
 export { resolveTheme } from "./override";
 export type {
