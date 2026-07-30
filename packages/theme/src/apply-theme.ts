@@ -21,6 +21,10 @@ export interface ApplyThemeResult {
 
 // Track managed CSS properties per element
 const managedProperties = new WeakMap<HTMLElement, Set<string>>();
+// Cache last-applied values to skip redundant DOM writes
+const lastAppliedValues = new WeakMap<HTMLElement, Map<string, string>>();
+const lastAppliedMode = new WeakMap<HTMLElement, string>();
+const lastAppliedDensity = new WeakMap<HTMLElement, string>();
 
 // ─── Validation ──────────────────────────────────────────────────────
 
@@ -49,19 +53,30 @@ export function applyTheme(target: HTMLElement, options: ApplyThemeOptions): App
 
   const { mode, density, cssVariables } = options;
 
-  // Apply data attributes
-  target.setAttribute(THEME_ATTRIBUTE, mode);
-  target.setAttribute(DENSITY_ATTRIBUTE, density);
+  // Apply data attributes only if changed
+  if (lastAppliedMode.get(target) !== mode) {
+    target.setAttribute(THEME_ATTRIBUTE, mode);
+    lastAppliedMode.set(target, mode);
+  }
+  if (lastAppliedDensity.get(target) !== density) {
+    target.setAttribute(DENSITY_ATTRIBUTE, density);
+    lastAppliedDensity.set(target, density);
+  }
 
   // Get previously managed properties for this element
   const previouslyManaged = managedProperties.get(target) ?? new Set<string>();
+  const previousValues = lastAppliedValues.get(target) ?? new Map<string, string>();
   const currentManaged = new Set<string>();
+  const currentValues = new Map<string, string>();
 
-  // Apply new CSS custom properties
+  // Apply new CSS custom properties, skipping unchanged values
   if (cssVariables) {
     for (const [name, value] of Object.entries(cssVariables)) {
-      target.style.setProperty(name, value);
       currentManaged.add(name);
+      currentValues.set(name, value);
+      if (previousValues.get(name) !== value) {
+        target.style.setProperty(name, value);
+      }
     }
   }
 
@@ -74,6 +89,7 @@ export function applyTheme(target: HTMLElement, options: ApplyThemeOptions): App
 
   // Update tracked set
   managedProperties.set(target, currentManaged);
+  lastAppliedValues.set(target, currentValues);
 
   return {
     target,
@@ -103,6 +119,9 @@ export function removeTheme(target: unknown): void {
     }
     managedProperties.delete(target);
   }
+  lastAppliedValues.delete(target);
+  lastAppliedMode.delete(target);
+  lastAppliedDensity.delete(target);
 }
 
 /** Read the current resolved theme mode from an element. */

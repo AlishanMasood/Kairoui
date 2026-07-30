@@ -23,6 +23,10 @@ export interface ScopedThemeResult {
 const scopedManagedProperties = new WeakMap<HTMLElement, Set<string>>();
 // Track which attributes were set by the scope (so cleanup only removes what we set)
 const scopedManagedAttributes = new WeakMap<HTMLElement, Set<string>>();
+// Cache last-applied values to skip redundant DOM writes
+const scopedLastValues = new WeakMap<HTMLElement, Map<string, string>>();
+const scopedLastMode = new WeakMap<HTMLElement, string>();
+const scopedLastDensity = new WeakMap<HTMLElement, string>();
 
 // ─── Validation ──────────────────────────────────────────────────────
 
@@ -60,35 +64,47 @@ export function applyScopedTheme(
   // Track which attributes we manage on this element
   const managedAttrs = scopedManagedAttributes.get(target) ?? new Set<string>();
 
-  // Apply mode if provided
+  // Apply mode if provided, skip if unchanged
   if (mode !== undefined) {
-    target.setAttribute(THEME_ATTRIBUTE, mode);
+    if (scopedLastMode.get(target) !== mode) {
+      target.setAttribute(THEME_ATTRIBUTE, mode);
+      scopedLastMode.set(target, mode);
+    }
     managedAttrs.add(THEME_ATTRIBUTE);
   } else if (managedAttrs.has(THEME_ATTRIBUTE)) {
-    // Previously set by scope, now omitted — remove it
     target.removeAttribute(THEME_ATTRIBUTE);
     managedAttrs.delete(THEME_ATTRIBUTE);
+    scopedLastMode.delete(target);
   }
 
-  // Apply density if provided
+  // Apply density if provided, skip if unchanged
   if (density !== undefined) {
-    target.setAttribute(DENSITY_ATTRIBUTE, density);
+    if (scopedLastDensity.get(target) !== density) {
+      target.setAttribute(DENSITY_ATTRIBUTE, density);
+      scopedLastDensity.set(target, density);
+    }
     managedAttrs.add(DENSITY_ATTRIBUTE);
   } else if (managedAttrs.has(DENSITY_ATTRIBUTE)) {
     target.removeAttribute(DENSITY_ATTRIBUTE);
     managedAttrs.delete(DENSITY_ATTRIBUTE);
+    scopedLastDensity.delete(target);
   }
 
   scopedManagedAttributes.set(target, managedAttrs);
 
-  // Handle CSS custom properties
+  // Handle CSS custom properties with diff
   const previouslyManaged = scopedManagedProperties.get(target) ?? new Set<string>();
+  const previousValues = scopedLastValues.get(target) ?? new Map<string, string>();
   const currentManaged = new Set<string>();
+  const currentValues = new Map<string, string>();
 
   if (cssVariables) {
     for (const [name, value] of Object.entries(cssVariables)) {
-      target.style.setProperty(name, value);
       currentManaged.add(name);
+      currentValues.set(name, value);
+      if (previousValues.get(name) !== value) {
+        target.style.setProperty(name, value);
+      }
     }
   }
 
@@ -100,6 +116,7 @@ export function applyScopedTheme(
   }
 
   scopedManagedProperties.set(target, currentManaged);
+  scopedLastValues.set(target, currentValues);
 
   return {
     target,
@@ -137,6 +154,10 @@ export function removeScopedTheme(target: unknown): void {
     }
     scopedManagedProperties.delete(target);
   }
+
+  scopedLastValues.delete(target);
+  scopedLastMode.delete(target);
+  scopedLastDensity.delete(target);
 }
 
 // ─── Internal ────────────────────────────────────────────────────────
