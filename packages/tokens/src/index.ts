@@ -29,6 +29,19 @@ export { lightTheme, darkTheme } from "./themes";
 export { comfortable, standard, compact, densities } from "./density";
 export type { DensityTokens } from "./density";
 
+// Shared control tokens
+export { sharedControlTokens } from "./controls";
+export type {
+  SharedControlTokens,
+  ControlSizeTokens,
+  ControlBorderTokens,
+  ControlFocusTokens,
+  ControlDisabledTokens,
+  ControlReadOnlyTokens,
+  ControlLoadingTokens,
+  ControlTransitionTokens,
+} from "./controls";
+
 // Theme override utilities
 export { resolveTheme } from "./override";
 export type {
