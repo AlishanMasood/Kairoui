@@ -112,6 +112,20 @@ export type {
 export { flattenToManifest, buildManifest, MANIFEST_SCHEMA_VERSION } from "./manifest";
 export type { ManifestToken, TokenManifestJson, GenerateManifestOptions } from "./manifest";
 
+// Token validation
+export {
+  validateTokenSchema,
+  validateThemeStructure,
+  validateDensityStructure,
+  validateNoDuplicateCssVars,
+  validateNoPrivateLeakage,
+  validateOverrideKeys,
+  validateStateNames,
+  validateSizeNames,
+  validateLeafValues,
+} from "./validation";
+export type { SchemaValidationResult } from "./validation";
+
 // Public type contracts
 export type {
   // Value types
