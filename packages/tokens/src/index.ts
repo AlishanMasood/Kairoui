@@ -22,6 +22,9 @@ export { duration, easing } from "./primitives";
 export { opacity, zIndex } from "./primitives";
 export { breakpoint } from "./primitives";
 
+// Theme definitions
+export { lightTheme } from "./themes";
+
 // Public type contracts
 export type {
   // Value types
