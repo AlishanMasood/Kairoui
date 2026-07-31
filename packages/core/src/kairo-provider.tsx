@@ -10,8 +10,15 @@ import type { InternalThemeContextValue } from "./theme-context";
 export interface KairoProviderProps {
   readonly children: ReactNode;
   readonly theme?: ThemeDefinition;
+  // Uncontrolled
   readonly defaultMode?: ThemeMode;
   readonly defaultDensity?: DensityMode;
+  // Controlled mode
+  readonly mode?: ThemeMode;
+  readonly onModeChange?: (mode: ThemeMode) => void;
+  // Controlled density
+  readonly density?: DensityMode;
+  readonly onDensityChange?: (density: DensityMode) => void;
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────
@@ -94,38 +101,75 @@ export function KairoProvider({
   theme,
   defaultMode,
   defaultDensity,
+  mode: controlledMode,
+  onModeChange,
+  density: controlledDensity,
+  onDensityChange,
 }: KairoProviderProps): ReactNode {
   const [scopeId] = useState(() => `kairo-${String(++scopeCounter)}`);
 
+  const isModeControlled = controlledMode !== undefined;
+  const isDensityControlled = controlledDensity !== undefined;
+
+  // Warn about conflicting props (runs in effect to avoid ref-during-render)
+  useEffect(() => {
+    if (isModeControlled && defaultMode !== undefined) {
+      console.warn(
+        "KairoUI: KairoProvider received both `mode` and `defaultMode`. " +
+          "A controlled component should not have `defaultMode`. Use one or the other.",
+      );
+    }
+    if (isDensityControlled && defaultDensity !== undefined) {
+      console.warn(
+        "KairoUI: KairoProvider received both `density` and `defaultDensity`. " +
+          "A controlled component should not have `defaultDensity`. Use one or the other.",
+      );
+    }
+    // Only warn on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Uncontrolled state
   const initialMode = defaultMode ?? readPersistedMode() ?? DEFAULT_PREFERENCE.mode;
   const initialDensity = defaultDensity ?? readPersistedDensity() ?? DEFAULT_PREFERENCE.density;
 
-  const [mode, setModeState] = useState<ThemeMode>(initialMode);
-  const [density, setDensityState] = useState<DensityMode>(initialDensity);
+  const [internalMode, setInternalMode] = useState<ThemeMode>(initialMode);
+  const [internalDensity, setInternalDensity] = useState<DensityMode>(initialDensity);
   const [systemPref, setSystemPref] = useState<ResolvedThemeMode>(getSystemPreference);
 
-  const resolvedMode = resolveMode(mode, systemPref);
+  // Effective values
+  const effectiveMode = isModeControlled ? controlledMode : internalMode;
+  const effectiveDensity = isDensityControlled ? controlledDensity : internalDensity;
+  const resolvedMode = resolveMode(effectiveMode, systemPref);
 
   const setMode = useCallback(
     (newMode: ThemeMode) => {
-      setModeState(newMode);
-      persistPreference(newMode, density);
+      if (isModeControlled) {
+        onModeChange?.(newMode);
+      } else {
+        setInternalMode(newMode);
+        persistPreference(newMode, effectiveDensity);
+      }
     },
-    [density],
+    [isModeControlled, onModeChange, effectiveDensity],
   );
 
   const setDensity = useCallback(
     (newDensity: DensityMode) => {
-      setDensityState(newDensity);
-      persistPreference(mode, newDensity);
+      if (isDensityControlled) {
+        onDensityChange?.(newDensity);
+      } else {
+        setInternalDensity(newDensity);
+        persistPreference(effectiveMode, newDensity);
+      }
     },
-    [mode],
+    [isDensityControlled, onDensityChange, effectiveMode],
   );
 
   // Listen for system preference changes
   useEffect(() => {
     if (!isBrowser) return;
-    if (mode !== "system") return;
+    if (effectiveMode !== "system") return;
 
     let mql: MediaQueryList;
     try {
@@ -142,21 +186,21 @@ export function KairoProvider({
     return () => {
       mql.removeEventListener("change", handler);
     };
-  }, [mode]);
+  }, [effectiveMode]);
 
   // Apply to DOM
   useEffect(() => {
-    applyToDOM(resolvedMode, density);
+    applyToDOM(resolvedMode, effectiveDensity);
     return () => {
       cleanupDOM();
     };
-  }, [resolvedMode, density]);
+  }, [resolvedMode, effectiveDensity]);
 
   const contextValue = useMemo<InternalThemeContextValue>(
     () => ({
-      mode,
+      mode: effectiveMode,
       resolvedMode,
-      density,
+      density: effectiveDensity,
       themeName: theme?.name ?? "",
       isNested: false,
       definition: theme ?? null,
@@ -164,7 +208,7 @@ export function KairoProvider({
       setMode,
       setDensity,
     }),
-    [mode, resolvedMode, density, theme, scopeId, setMode, setDensity],
+    [effectiveMode, resolvedMode, effectiveDensity, theme, scopeId, setMode, setDensity],
   );
 
   return <KairoThemeContext.Provider value={contextValue}>{children}</KairoThemeContext.Provider>;
