@@ -143,3 +143,7 @@ export {
   warnDeprecatedApi,
   warnInvalidNestedScope,
 } from "./diagnostics";
+
+export type { ThemeInspectionReport, ResolvedThemeInspectionReport } from "./inspect";
+
+export { inspectTheme, inspectResolvedTheme } from "./inspect";

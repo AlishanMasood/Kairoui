@@ -1,9 +1,11 @@
 // Deduplication set for warnings that should only fire once per session
 const emittedWarnings = new Set<string>();
 
+declare const process: { env: Record<string, string | undefined> } | undefined;
+
 function isDev(): boolean {
   try {
-    return process.env["NODE_ENV"] !== "production";
+    return typeof process !== "undefined" && process.env["NODE_ENV"] !== "production";
   } catch {
     return true;
   }
