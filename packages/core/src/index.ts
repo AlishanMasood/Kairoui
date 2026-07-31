@@ -10,3 +10,7 @@ export { KairoProvider } from "./kairo-provider";
 export type { KairoScopeProviderProps } from "./kairo-scope-provider";
 
 export { KairoScopeProvider } from "./kairo-scope-provider";
+
+export type { UseThemeResult } from "./use-theme";
+
+export { useTheme } from "./use-theme";
