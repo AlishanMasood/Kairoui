@@ -147,11 +147,13 @@ describe("@kairoui/theme package boundaries", () => {
       expect(js).not.toContain("from 'react'");
     });
 
-    it("server bundle does not contain browser globals at top level", () => {
+    it("server bundle does not call browser globals at module level", () => {
       const js = readFileSync(join(DIST, "server.js"), "utf-8");
-      expect(js).not.toContain("window.");
-      expect(js).not.toContain("document.");
-      expect(js).not.toContain("localStorage.");
+      // Remove template literal strings (no-flash script content) before checking
+      const withoutTemplates = js.replace(/`[^`]*`/gs, "");
+      expect(withoutTemplates).not.toContain("window.");
+      expect(withoutTemplates).not.toContain("document.");
+      expect(withoutTemplates).not.toContain("localStorage.");
     });
 
     it("index.d.ts exports expected types", () => {
