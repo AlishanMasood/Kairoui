@@ -22,3 +22,5 @@ export { useThemeMode } from "./use-theme-mode";
 export type { UseDensityResult } from "./use-density";
 
 export { useDensity } from "./use-density";
+
+export { useResolvedTheme } from "./use-resolved-theme";
