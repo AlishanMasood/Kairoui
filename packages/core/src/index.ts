@@ -1,2 +1,4 @@
 // @kairoui/core — Entry point
-export {};
+export type { KairoThemeContextValue, InternalThemeContextValue } from "./theme-context";
+
+export { KairoThemeContext, isOutsideProvider } from "./theme-context";
