@@ -282,7 +282,7 @@ function CustomThemePreview() {
 
 const meta = {
   title: "Theme/Preview",
-  parameters: { layout: "fullscreen" },
+  parameters: { layout: "fullscreen", kairoTheme: { disable: true } },
 } satisfies Meta;
 
 export default meta;
