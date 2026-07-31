@@ -11,7 +11,12 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Architecture",
-      items: ["architecture/overview", "architecture/packages", "architecture/theme-engine"],
+      items: [
+        "architecture/overview",
+        "architecture/packages",
+        "architecture/theme-engine",
+        "architecture/ssr-hydration",
+      ],
     },
     {
       type: "category",
