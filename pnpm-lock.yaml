@@ -147,6 +147,12 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@kairoui/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@kairoui/theme':
+        specifier: workspace:*
+        version: link:../../packages/theme
       '@kairoui/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
