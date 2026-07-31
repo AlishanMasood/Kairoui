@@ -3,4 +3,6 @@
 // Exports for SSR: no-flash script generation, server-safe defaults.
 // Never accesses browser globals.
 
-export {};
+export type { NoFlashScriptOptions } from "./no-flash-script";
+
+export { getNoFlashScript, getNoFlashScriptReadable } from "./no-flash-script";
