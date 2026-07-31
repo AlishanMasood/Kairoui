@@ -18,3 +18,7 @@ export { useTheme } from "./use-theme";
 export type { UseThemeModeResult } from "./use-theme-mode";
 
 export { useThemeMode } from "./use-theme-mode";
+
+export type { UseDensityResult } from "./use-density";
+
+export { useDensity } from "./use-density";
