@@ -117,3 +117,11 @@ export {
 export type { ThemeStorageAdapter, MemoryAdapterOptions } from "./storage";
 
 export { createMemoryAdapter, noopStorageAdapter } from "./storage";
+
+export type {
+  ResolutionInputs,
+  ResolvedPreference,
+  PreferenceResolutionWarning,
+} from "./resolve-preference";
+
+export { resolvePreference } from "./resolve-preference";
