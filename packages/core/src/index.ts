@@ -28,3 +28,12 @@ export { useResolvedTheme } from "./use-resolved-theme";
 export type { UseSystemColorSchemeOptions } from "./use-system-color-scheme";
 
 export { useSystemColorScheme } from "./use-system-color-scheme";
+
+export {
+  useThemeName,
+  useRequestedMode,
+  useResolvedMode,
+  useCurrentDensity,
+  useIsNested,
+  useIsSystemMode,
+} from "./selectors";
