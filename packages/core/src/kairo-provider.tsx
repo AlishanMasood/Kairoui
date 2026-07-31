@@ -18,7 +18,7 @@ export interface ServerState {
 
 /** Props for the KairoProvider component. */
 export interface KairoProviderProps {
-  readonly children: ReactNode;
+  readonly children?: ReactNode;
   readonly theme?: ThemeDefinition;
   readonly target?: ThemeTarget;
   readonly serverState?: ServerState;
