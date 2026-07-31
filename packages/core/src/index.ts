@@ -14,3 +14,7 @@ export { KairoScopeProvider } from "./kairo-scope-provider";
 export type { UseThemeResult } from "./use-theme";
 
 export { useTheme } from "./use-theme";
+
+export type { UseThemeModeResult } from "./use-theme-mode";
+
+export { useThemeMode } from "./use-theme-mode";
