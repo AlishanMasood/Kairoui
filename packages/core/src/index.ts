@@ -24,3 +24,7 @@ export type { UseDensityResult } from "./use-density";
 export { useDensity } from "./use-density";
 
 export { useResolvedTheme } from "./use-resolved-theme";
+
+export type { UseSystemColorSchemeOptions } from "./use-system-color-scheme";
+
+export { useSystemColorScheme } from "./use-system-color-scheme";
