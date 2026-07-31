@@ -118,6 +118,8 @@ export default defineConfig(
           allow: [
             "@kairoui/*/package.json",
             "@kairoui/tsconfig/*.json",
+            "@kairoui/theme/server",
+            "@kairoui/theme/dom",
             "@testing-library/*/**",
             "eslint/config",
             "vitest/*",
