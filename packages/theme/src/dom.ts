@@ -39,3 +39,7 @@ export {
 export type { ThemeStorageAdapter, LocalStorageAdapterOptions } from "./storage";
 
 export { createLocalStorageAdapter } from "./storage";
+
+export type { CrossTabListener, CrossTabSyncOptions, CrossTabSync } from "./cross-tab-sync";
+
+export { createCrossTabSync } from "./cross-tab-sync";
