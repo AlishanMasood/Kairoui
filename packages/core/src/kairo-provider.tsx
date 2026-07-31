@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useMemo, type ReactNode } from "react";
+import { useState, useCallback, useEffect, useMemo, type ReactNode, type RefObject } from "react";
 import type { ThemeMode, DensityMode, ThemeDefinition, ResolvedThemeMode } from "@kairoui/theme";
 import { DEFAULT_PREFERENCE } from "@kairoui/theme";
 import { KairoThemeContext } from "./theme-context";
@@ -6,10 +6,14 @@ import type { InternalThemeContextValue } from "./theme-context";
 
 // ─── Types ───────────────────────────────────────────────────────────
 
+/** Accepted target types for theme application. */
+export type ThemeTarget = HTMLElement | RefObject<HTMLElement | null> | null;
+
 /** Props for the KairoProvider component. */
 export interface KairoProviderProps {
   readonly children: ReactNode;
   readonly theme?: ThemeDefinition;
+  readonly target?: ThemeTarget;
   // Uncontrolled
   readonly defaultMode?: ThemeMode;
   readonly defaultDensity?: DensityMode;
@@ -39,16 +43,30 @@ function getSystemPreference(): ResolvedThemeMode {
   }
 }
 
-function applyToDOM(mode: ResolvedThemeMode, density: DensityMode): void {
-  if (!isBrowser) return;
-  document.documentElement.setAttribute("data-kui-theme", mode);
-  document.documentElement.setAttribute("data-kui-density", density);
+function applyToElement(
+  el: HTMLElement | null | undefined,
+  mode: ResolvedThemeMode,
+  density: DensityMode,
+): void {
+  if (!el) return;
+  el.setAttribute("data-kui-theme", mode);
+  el.setAttribute("data-kui-density", density);
 }
 
-function cleanupDOM(): void {
-  if (!isBrowser) return;
-  document.documentElement.removeAttribute("data-kui-theme");
-  document.documentElement.removeAttribute("data-kui-density");
+function cleanupElement(el: HTMLElement | null | undefined): void {
+  if (!el) return;
+  el.removeAttribute("data-kui-theme");
+  el.removeAttribute("data-kui-density");
+}
+
+function resolveTarget(target: ThemeTarget | undefined): HTMLElement | null {
+  if (target === null || target === undefined) {
+    return isBrowser ? document.documentElement : null;
+  }
+  if ("current" in target) {
+    return target.current;
+  }
+  return target;
 }
 
 function persistPreference(mode: ThemeMode, density: DensityMode): void {
@@ -99,6 +117,7 @@ let scopeCounter = 0;
 export function KairoProvider({
   children,
   theme,
+  target,
   defaultMode,
   defaultDensity,
   mode: controlledMode,
@@ -188,13 +207,14 @@ export function KairoProvider({
     };
   }, [effectiveMode]);
 
-  // Apply to DOM
+  // Apply to DOM target
   useEffect(() => {
-    applyToDOM(resolvedMode, effectiveDensity);
+    const el = resolveTarget(target);
+    applyToElement(el, resolvedMode, effectiveDensity);
     return () => {
-      cleanupDOM();
+      cleanupElement(el);
     };
-  }, [resolvedMode, effectiveDensity]);
+  }, [resolvedMode, effectiveDensity, target]);
 
   const contextValue = useMemo<InternalThemeContextValue>(
     () => ({
