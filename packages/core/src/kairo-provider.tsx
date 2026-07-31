@@ -9,11 +9,19 @@ import type { InternalThemeContextValue } from "./theme-context";
 /** Accepted target types for theme application. */
 export type ThemeTarget = HTMLElement | RefObject<HTMLElement | null> | null;
 
+/** Server-provided initial state for hydration safety. */
+export interface ServerState {
+  readonly mode?: ThemeMode;
+  readonly resolvedMode?: ResolvedThemeMode;
+  readonly density?: DensityMode;
+}
+
 /** Props for the KairoProvider component. */
 export interface KairoProviderProps {
   readonly children: ReactNode;
   readonly theme?: ThemeDefinition;
   readonly target?: ThemeTarget;
+  readonly serverState?: ServerState;
   // Uncontrolled
   readonly defaultMode?: ThemeMode;
   readonly defaultDensity?: DensityMode;
@@ -69,6 +77,14 @@ function resolveTarget(target: ThemeTarget | undefined): HTMLElement | null {
   return target;
 }
 
+// Read the current DOM attributes set by the no-flash script
+function readDomMode(): ResolvedThemeMode | null {
+  if (!isBrowser) return null;
+  const val = document.documentElement.getAttribute("data-kui-theme");
+  if (val === "light" || val === "dark") return val;
+  return null;
+}
+
 function persistPreference(mode: ThemeMode, density: DensityMode): void {
   if (!isBrowser) return;
   try {
@@ -118,6 +134,7 @@ export function KairoProvider({
   children,
   theme,
   target,
+  serverState,
   defaultMode,
   defaultDensity,
   mode: controlledMode,
@@ -148,13 +165,25 @@ export function KairoProvider({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Uncontrolled state
-  const initialMode = defaultMode ?? readPersistedMode() ?? DEFAULT_PREFERENCE.mode;
-  const initialDensity = defaultDensity ?? readPersistedDensity() ?? DEFAULT_PREFERENCE.density;
+  // Hydration-safe initialization:
+  // 1. controlled props (highest priority)
+  // 2. DOM attributes (set by no-flash script, matches current visual)
+  // 3. serverState prop (from SSR serialization)
+  // 4. defaultMode/defaultDensity props
+  // 5. persisted preference (localStorage)
+  // 6. KairoUI defaults
+  const initialMode =
+    defaultMode ?? readPersistedMode() ?? serverState?.mode ?? DEFAULT_PREFERENCE.mode;
+  const initialDensity =
+    defaultDensity ?? readPersistedDensity() ?? serverState?.density ?? DEFAULT_PREFERENCE.density;
+
+  // For system preference: use DOM attribute if set (hydration), then server state, then detect
+  const initialSystemPref: ResolvedThemeMode =
+    readDomMode() ?? serverState?.resolvedMode ?? getSystemPreference();
 
   const [internalMode, setInternalMode] = useState<ThemeMode>(initialMode);
   const [internalDensity, setInternalDensity] = useState<DensityMode>(initialDensity);
-  const [systemPref, setSystemPref] = useState<ResolvedThemeMode>(getSystemPreference);
+  const [systemPref, setSystemPref] = useState<ResolvedThemeMode>(initialSystemPref);
 
   // Effective values
   const effectiveMode = isModeControlled ? controlledMode : internalMode;

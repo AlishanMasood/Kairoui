@@ -3,7 +3,7 @@ export type { KairoThemeContextValue, InternalThemeContextValue } from "./theme-
 
 export { KairoThemeContext, isOutsideProvider } from "./theme-context";
 
-export type { KairoProviderProps } from "./kairo-provider";
+export type { KairoProviderProps, ThemeTarget, ServerState } from "./kairo-provider";
 
 export { KairoProvider } from "./kairo-provider";
 
