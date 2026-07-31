@@ -125,3 +125,21 @@ export type {
 } from "./resolve-preference";
 
 export { resolvePreference } from "./resolve-preference";
+
+export {
+  devWarn,
+  devWarnAlways,
+  resetDevWarnings,
+  warnInvalidThemeDefinition,
+  warnUnknownOverrideKey,
+  warnControlledUncontrolledSwitch,
+  warnMissingProvider,
+  warnInvalidPersistedData,
+  warnUnsupportedStorage,
+  warnInvalidTarget,
+  warnDuplicateTarget,
+  warnDomApplicationFailed,
+  warnInvalidServerState,
+  warnDeprecatedApi,
+  warnInvalidNestedScope,
+} from "./diagnostics";
