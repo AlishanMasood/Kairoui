@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en" data-kui-theme="light" data-kui-density="comfortable">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KairoUI Vanilla Theme Fixture</title>
+    <link rel="stylesheet" href="../packages/tokens/dist/tokens.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/comfortable.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/standard.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/compact.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--kui-typography-body-font-family, system-ui, sans-serif);
+        font-size: var(--kui-typography-body-font-size, 1rem);
+        line-height: var(--kui-typography-body-line-height, 1.5);
+        color: var(--kui-color-text-primary);
+        background: var(--kui-color-bg-page);
+        padding: 2rem;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+      }
+
+      .controls {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 4px;
+        background: var(--kui-color-bg-surface);
+        color: var(--kui-color-text-primary);
+        cursor: pointer;
+        font-size: inherit;
+      }
+
+      button:hover {
+        background: var(--kui-color-bg-subtle);
+      }
+
+      button:focus-visible {
+        outline: 2px solid var(--kui-color-focus-ring);
+        outline-offset: 2px;
+      }
+
+      button.active {
+        background: var(--kui-color-interactive-default);
+        color: #fff;
+        border-color: var(--kui-color-interactive-default);
+      }
+
+      .card {
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background: var(--kui-color-bg-surface);
+      }
+
+      .scoped-region {
+        border: 2px dashed var(--kui-color-border-subtle);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+
+      .status {
+        font-family: monospace;
+        font-size: 0.85rem;
+        background: var(--kui-color-bg-subtle);
+        padding: 1rem;
+        border-radius: 4px;
+        margin-top: 1rem;
+        white-space: pre-wrap;
+      }
+
+      fieldset {
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      legend {
+        font-weight: bold;
+        padding: 0 0.5rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>KairoUI Vanilla Theme Fixture</h1>
+
+    <fieldset>
+      <legend>Theme Mode</legend>
+      <div class="controls">
+        <button id="btn-light" class="active">Light</button>
+        <button id="btn-dark">Dark</button>
+        <button id="btn-system">System</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Density</legend>
+      <div class="controls">
+        <button id="btn-comfortable" class="active">Comfortable</button>
+        <button id="btn-standard">Standard</button>
+        <button id="btn-compact">Compact</button>
+      </div>
+    </fieldset>
+
+    <div class="card">
+      <p>
+        This card uses the page-level theme and density. Try switching modes and densities above.
+      </p>
+      <button id="btn-focus-test">Focus test (press Tab)</button>
+    </div>
+
+    <fieldset>
+      <legend>Scoped Dark Region</legend>
+      <div id="scoped-dark" class="scoped-region">
+        <p>This region is always dark, regardless of the page theme.</p>
+        <button>Button in dark scope</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Local Compact Region</legend>
+      <div id="scoped-compact" class="scoped-region">
+        <p>This region uses compact density, regardless of the page density.</p>
+        <button>Button in compact scope</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Actions</legend>
+      <div class="controls">
+        <button id="btn-cleanup">Cleanup scoped regions</button>
+        <button id="btn-reapply">Reapply scoped regions</button>
+        <button id="btn-clear-pref">Clear persisted preference</button>
+      </div>
+    </fieldset>
+
+    <div id="status" class="status">Loading...</div>
+
+    <script type="module">
+      import {
+        applyTheme,
+        removeTheme,
+        applyScopedTheme,
+        removeScopedTheme,
+        getSystemColorScheme,
+        subscribeToColorScheme,
+      } from "../packages/theme/dist/dom.js";
+
+      const STORAGE_KEY = "kui-theme-preference";
+      const root = document.documentElement;
+      const statusEl = document.getElementById("status");
+
+      let currentMode = "light";
+      let currentDensity = "comfortable";
+      let systemUnsubscribe = null;
+      let scopedDarkResult = null;
+      let scopedCompactResult = null;
+
+      // --- Persistence (same format as KairoProvider) ---
+      function persistPreference() {
+        try {
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify({ version: 1, mode: currentMode, density: currentDensity }),
+          );
+        } catch {
+          /* quota or security error */
+        }
+      }
+
+      function loadPreference() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return null;
+          const parsed = JSON.parse(raw);
+          if (parsed.version !== 1) return null;
+          return parsed;
+        } catch {
+          return null;
+        }
+      }
+
+      // --- Theme Application ---
+      function resolveMode(mode) {
+        if (mode === "light" || mode === "dark") return mode;
+        return getSystemColorScheme();
+      }
+
+      function applyCurrentTheme() {
+        const resolvedMode = resolveMode(currentMode);
+        applyTheme(root, { mode: resolvedMode, density: currentDensity });
+        updateStatus();
+        updateButtons();
+      }
+
+      function updateStatus() {
+        const resolvedMode = resolveMode(currentMode);
+        const attrs = `data-kui-theme="${root.getAttribute("data-kui-theme")}" data-kui-density="${root.getAttribute("data-kui-density")}"`;
+        statusEl.textContent = [
+          `Mode: ${currentMode} (resolved: ${resolvedMode})`,
+          `Density: ${currentDensity}`,
+          `System preference: ${getSystemColorScheme()}`,
+          `HTML attributes: ${attrs}`,
+          `Persisted: ${localStorage.getItem(STORAGE_KEY) ?? "none"}`,
+        ].join("\n");
+      }
+
+      function updateButtons() {
+        document
+          .querySelectorAll("[id^=btn-light],[id^=btn-dark],[id^=btn-system]")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById(`btn-${currentMode}`)?.classList.add("active");
+
+        document
+          .querySelectorAll("[id^=btn-comfortable],[id^=btn-standard],[id^=btn-compact]")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById(`btn-${currentDensity}`)?.classList.add("active");
+      }
+
+      // --- System Preference Response ---
+      function setupSystemListener() {
+        if (systemUnsubscribe) systemUnsubscribe();
+        if (currentMode === "system") {
+          systemUnsubscribe = subscribeToColorScheme(() => {
+            applyCurrentTheme();
+          });
+        } else {
+          systemUnsubscribe = null;
+        }
+      }
+
+      // --- Scoped Regions ---
+      function applyScopedRegions() {
+        const darkEl = document.getElementById("scoped-dark");
+        const compactEl = document.getElementById("scoped-compact");
+        scopedDarkResult = applyScopedTheme(darkEl, { mode: "dark" });
+        scopedCompactResult = applyScopedTheme(compactEl, { density: "compact" });
+      }
+
+      function cleanupScopedRegions() {
+        if (scopedDarkResult) {
+          scopedDarkResult.cleanup();
+          scopedDarkResult = null;
+        }
+        if (scopedCompactResult) {
+          scopedCompactResult.cleanup();
+          scopedCompactResult = null;
+        }
+      }
+
+      // --- Mode Buttons ---
+      document.getElementById("btn-light").addEventListener("click", () => {
+        currentMode = "light";
+        persistPreference();
+        setupSystemListener();
+        applyCurrentTheme();
+      });
+
+      document.getElementById("btn-dark").addEventListener("click", () => {
+        currentMode = "dark";
+        persistPreference();
+        setupSystemListener();
+        applyCurrentTheme();
+      });
+
+      document.getElementById("btn-system").addEventListener("click", () => {
+        currentMode = "system";
+        persistPreference();
+        setupSystemListener();
+        applyCurrentTheme();
+      });
+
+      // --- Density Buttons ---
+      document.getElementById("btn-comfortable").addEventListener("click", () => {
+        currentDensity = "comfortable";
+        persistPreference();
+        applyCurrentTheme();
+      });
+
+      document.getElementById("btn-standard").addEventListener("click", () => {
+        currentDensity = "standard";
+        persistPreference();
+        applyCurrentTheme();
+      });
+
+      document.getElementById("btn-compact").addEventListener("click", () => {
+        currentDensity = "compact";
+        persistPreference();
+        applyCurrentTheme();
+      });
+
+      // --- Action Buttons ---
+      document.getElementById("btn-cleanup").addEventListener("click", () => {
+        cleanupScopedRegions();
+        updateStatus();
+      });
+
+      document.getElementById("btn-reapply").addEventListener("click", () => {
+        applyScopedRegions();
+        updateStatus();
+      });
+
+      document.getElementById("btn-clear-pref").addEventListener("click", () => {
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch {
+          /* ignore */
+        }
+        updateStatus();
+      });
+
+      // --- Initialize ---
+      const saved = loadPreference();
+      if (saved) {
+        currentMode = saved.mode;
+        currentDensity = saved.density;
+      }
+      applyCurrentTheme();
+      setupSystemListener();
+      applyScopedRegions();
+    </script>
+  </body>
+</html>
