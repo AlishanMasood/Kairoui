@@ -52,6 +52,8 @@ export {
   generateId,
   resetIdCounter,
 } from "./string";
+export { cx } from "./cx";
+export type { ClassValue } from "./cx";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
