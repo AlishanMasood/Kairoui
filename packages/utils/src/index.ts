@@ -39,6 +39,8 @@ export {
   first,
 } from "./array";
 export { sameValue, shallowEqual, arrayShallowEqual, objectShallowEqual } from "./equality";
+export { merge, mergeAll, nestedMerge } from "./merge";
+export type { NestedMergeOptions } from "./merge";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
