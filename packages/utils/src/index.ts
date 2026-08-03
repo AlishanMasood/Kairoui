@@ -1,6 +1,18 @@
 // @kairoui/utils — Entry point
 
 export { invariant, warning, warnOnce, errorOnce } from "./assertion";
+export {
+  isDefined,
+  isNullish,
+  isString,
+  isNumber,
+  isFiniteNumber,
+  isBoolean,
+  isFunction,
+  isObject,
+  isPlainObject,
+  isPromiseLike,
+} from "./type-guards";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
