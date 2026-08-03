@@ -1,5 +1,7 @@
 // @kairoui/utils — Entry point
 
+export { invariant, warning, warnOnce, errorOnce } from "./assertion";
+
 /**
  * A no-op function. Useful as a default callback or placeholder.
  */
