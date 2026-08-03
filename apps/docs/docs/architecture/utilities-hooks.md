@@ -159,22 +159,145 @@ Internal utilities live in files not re-exported from `index.ts`. They are still
 
 ## Naming Conventions
 
-### @kairoui/utils
+### Function Prefix Rules
 
-| Pattern           | Example                                                          |
-| ----------------- | ---------------------------------------------------------------- |
-| Pure functions    | `camelCase` verb or noun: `clamp()`, `identity()`, `isElement()` |
-| Type utilities    | `PascalCase`: `Prettify<T>`, `RequiredKeys<T>`                   |
-| Constants         | `UPPER_SNAKE_CASE`: `EMPTY_OBJECT`                               |
-| Factory functions | `create` prefix: `createIdGenerator()`                           |
+| Prefix     | Meaning                                   | Returns                         | Example                                        |
+| ---------- | ----------------------------------------- | ------------------------------- | ---------------------------------------------- |
+| `is*`      | Boolean type guard or predicate           | `boolean` (with type narrowing) | `isElement()`, `isHTMLElement()`, `isString()` |
+| `has*`     | Existence/presence check                  | `boolean`                       | `hasProperty()`, `hasOwn()`                    |
+| `can*`     | Capability or feature check               | `boolean`                       | `canUseDOM()`, `canFocus()`                    |
+| `get*`     | Read without mutation                     | The requested value             | `getOwnerDocument()`, `getActiveElement()`     |
+| `set*`     | Explicit mutation of a value              | `void` or the new value         | `setAttribute()`                               |
+| `create*`  | Factory — produces a new instance         | The created object/function     | `createIdGenerator()`, `createContext()`       |
+| `resolve*` | Derives final value from inputs           | The resolved value              | `resolvePreference()`, `resolveRef()`          |
+| `merge*`   | Combines two or more values of same shape | Merged value                    | `mergeRefs()`, `mergeProps()`                  |
+| `compose*` | Combines behaviors or functions           | Combined function/handler       | `composeEventHandlers()`                       |
+| `to*`      | Converts from one form to another         | Converted value                 | `toArray()`, `toString()`                      |
+| `from*`    | Constructs from a specific source         | Constructed value               | `fromEntries()`                                |
+| `use*`     | React hook (**only** for hooks)           | Hook result                     | `useControllableState()`                       |
 
-### @kairoui/hooks
+**The `use*` prefix is reserved exclusively for React hooks.** Never name a plain function with `use*`.
 
-| Pattern       | Example                                                  |
-| ------------- | -------------------------------------------------------- |
-| Hooks         | `use` prefix: `useControllableState()`, `useMergedRef()` |
-| Return types  | `Use[Name]Result`: `UseControllableStateResult<T>`       |
-| Options types | `Use[Name]Options`: `UseControllableStateOptions<T>`     |
+### Utility Function Names — @kairoui/utils
+
+| Category             | Pattern                             | Examples                                                             |
+| -------------------- | ----------------------------------- | -------------------------------------------------------------------- |
+| Type guards          | `is` + PascalNoun                   | `isElement`, `isHTMLElement`, `isDocument`, `isString`, `isFunction` |
+| Boolean predicates   | `is`/`has`/`can` + descriptive noun | `canUseDOM`, `hasProperty`, `isServer`                               |
+| Object utilities     | verb + noun                         | `pick`, `omit`, `shallowEqual`                                       |
+| Array utilities      | verb or `to` + noun                 | `toArray`, `compact`, `groupBy`                                      |
+| Number utilities     | verb                                | `clamp`, `roundTo`                                                   |
+| String utilities     | descriptive verb phrase             | `camelToKebab`, `kebabToCamel`                                       |
+| Function composition | `compose` / `call` + noun           | `composeEventHandlers`, `callAll`                                    |
+| ID generation        | `generate` / `create` + noun        | `generateId`, `createIdGenerator`                                    |
+| Assertion            | verb                                | `invariant`, `warning`, `assertNever`                                |
+| Environment          | `is`/`can` + noun                   | `canUseDOM`, `isServer`                                              |
+| No-op/identity       | noun                                | `noop`, `identity`                                                   |
+
+### React Hook Names — @kairoui/hooks
+
+| Category            | Pattern                  | Examples                                        |
+| ------------------- | ------------------------ | ----------------------------------------------- |
+| State hooks         | `use` + noun/verb        | `useControllableState`, `useToggle`             |
+| Ref hooks           | `use` + ref descriptor   | `useMergedRef`, `useCallbackRef`, `usePrevious` |
+| Event hooks         | `use` + event noun       | `useEventCallback`, `useEventListener`          |
+| DOM hooks           | `use` + DOM concept      | `useFocusVisible`, `useMediaQuery`              |
+| Lifecycle hooks     | `use` + lifecycle phase  | `useMountEffect`, `useUpdateEffect`             |
+| Interaction hooks   | `use` + interaction verb | `usePress`, `useKeyboard`, `useLongPress`       |
+| Accessibility hooks | `use` + a11y concept     | `useAnnounce`, `useAriaDescribedBy`             |
+| Layout hooks        | `use` + layout concept   | `useIsomorphicEffect`                           |
+| ID hooks            | `use` + "Id"             | `useId`                                         |
+
+### Type Names
+
+| Kind                | Pattern                         | Examples                                        |
+| ------------------- | ------------------------------- | ----------------------------------------------- |
+| Type utilities      | `PascalCase` descriptive noun   | `Prettify<T>`, `RequiredKeys<T>`, `Merge<A, B>` |
+| Hook options        | `Use[HookName]Options`          | `UseControllableStateOptions<T>`                |
+| Hook return         | `Use[HookName]Result`           | `UseControllableStateResult<T>`                 |
+| Function options    | `[FunctionName]Options`         | `CreateIdGeneratorOptions`                      |
+| Event handler type  | `[Event]Handler`                | `PressHandler`, `KeyboardHandler`               |
+| Generic constraints | Single uppercase or descriptive | `T`, `TValue`, `TElement extends HTMLElement`   |
+
+### Constant Names
+
+| Kind             | Pattern            | Examples                      |
+| ---------------- | ------------------ | ----------------------------- |
+| Immutable values | `UPPER_SNAKE_CASE` | `EMPTY_OBJECT`, `EMPTY_ARRAY` |
+| Default options  | `DEFAULT_*`        | `DEFAULT_ID_PREFIX`           |
+
+### Callback Prop Conventions
+
+Event/change callback props follow this pattern:
+
+```
+on[Thing]Change    — value changed
+on[Thing]          — event occurred (no "Change" when the prop IS the event)
+```
+
+| Pattern           | When to use            | Examples                                |
+| ----------------- | ---------------------- | --------------------------------------- |
+| `onChange`        | Primary value changed  | `onChange` on an input                  |
+| `onOpenChange`    | Boolean state changed  | `onOpenChange(open: boolean)`           |
+| `onValueChange`   | Explicit value changed | `onValueChange(value: T)`               |
+| `onModeChange`    | Named enum changed     | `onModeChange(mode: ThemeMode)`         |
+| `onDensityChange` | Named enum changed     | `onDensityChange(density: DensityMode)` |
+| `onPress`         | Interaction event      | `onPress(event: PressEvent)`            |
+| `onKeyDown`       | Native event forwarded | `onKeyDown(event: KeyboardEvent)`       |
+| `onFocusChange`   | Focus state changed    | `onFocusChange(isFocused: boolean)`     |
+
+**Rules:**
+
+- Always use `on` prefix for callbacks passed as props.
+- Use `Change` suffix when communicating a new value (not an event object).
+- The callback argument should be the **new value**, not the event, unless forwarding a native event.
+- Never use `handle*` in public APIs — that is for internal implementation only.
+
+### File Naming
+
+| Kind             | Pattern                                   | Examples                                         |
+| ---------------- | ----------------------------------------- | ------------------------------------------------ |
+| Utility module   | `kebab-case.ts`                           | `dom-guards.ts`, `shallow-equal.ts`              |
+| Hook module      | `use-kebab-case.ts`                       | `use-controllable-state.ts`, `use-merged-ref.ts` |
+| Test file        | `[module].test.ts` or `[module].test.tsx` | `dom-guards.test.ts`, `use-merged-ref.test.tsx`  |
+| Type-only module | `types.ts`                                | `types.ts` (one per package)                     |
+| Internal module  | no special prefix; just not in `index.ts` | `internal-helpers.ts`                            |
+| Entry point      | `index.ts`                                | `index.ts`                                       |
+
+### Test Naming
+
+| Kind           | Pattern                                | Example                                 |
+| -------------- | -------------------------------------- | --------------------------------------- |
+| Test file      | Same name as source + `.test.ts(x)`    | `assertion.test.ts`                     |
+| Describe block | Module or function name                | `describe("invariant", ...)`            |
+| Test case      | Describes behavior, not implementation | `it("throws when condition is false")`  |
+| Boundary test  | `boundaries.test.ts`                   | `packages/utils/src/boundaries.test.ts` |
+
+### Internal Module Naming
+
+Internal modules (not exported from `index.ts`):
+
+- Use descriptive `kebab-case` file names — no `helper`, `common`, `misc`, `shared`, or `temp`.
+- Unexported helpers within a file may use a `_` prefix: `function _normalizeInput(...)`.
+- Never name a file `utils2.ts`, `helpers.ts`, `stuff.ts`, or similar vague names.
+
+### Forbidden Names
+
+These names are too vague and must never be used for files, exports, or functions:
+
+```
+helper / helpers
+common
+misc / miscellaneous
+shared
+doThing / handleData
+utils2 / utils3
+temp / tmp
+stuff
+data
+manager (unless genuinely managing lifecycle)
+service (unless genuinely a service boundary)
+```
 
 ---
 
