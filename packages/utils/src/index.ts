@@ -25,6 +25,19 @@ export {
   removeUndefined,
   createNullObject,
 } from "./object";
+export {
+  toArray,
+  compact,
+  unique,
+  uniqueBy,
+  groupBy,
+  partition,
+  clampIndex,
+  moveItem,
+  arrayEqual,
+  last,
+  first,
+} from "./array";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
