@@ -14,6 +14,7 @@
       *::after {
         box-sizing: border-box;
       }
+
       body {
         margin: 0;
         font-family: var(--kui-typography-body-font-family, system-ui, sans-serif);
@@ -21,17 +22,20 @@
         background: var(--kui-color-bg-page);
         padding: 2rem;
       }
+
       h1,
       h2,
       h3 {
         margin: 0 0 0.5rem;
       }
+
       .controls {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
         margin-bottom: 1rem;
       }
+
       button {
         padding: 0.4rem 0.8rem;
         border: 1px solid var(--kui-color-border-default);
@@ -41,18 +45,22 @@
         cursor: pointer;
         font-size: inherit;
       }
+
       button:hover {
         background: var(--kui-color-bg-subtle);
       }
+
       button:focus-visible {
         outline: 2px solid var(--kui-color-focus-ring);
         outline-offset: 2px;
       }
+
       button.active {
         background: var(--kui-color-interactive-default);
         color: #fff;
         border-color: var(--kui-color-interactive-default);
       }
+
       .section {
         border: 1px solid var(--kui-color-border-default);
         border-radius: 8px;
@@ -60,20 +68,24 @@
         margin-bottom: 1rem;
         background: var(--kui-color-bg-surface);
       }
+
       .scoped-region {
         border: 2px dashed var(--kui-color-border-subtle);
         border-radius: 8px;
         padding: 1rem;
         margin-top: 0.5rem;
       }
+
       .sibling-row {
         display: flex;
         gap: 1rem;
         margin-top: 0.5rem;
       }
+
       .sibling-row > * {
         flex: 1;
       }
+
       pre {
         font-size: 0.8rem;
         background: var(--kui-color-bg-subtle);
@@ -85,6 +97,7 @@
       }
     </style>
   </head>
+
   <body>
     <h1>Multi-Theme Fixture</h1>
 
