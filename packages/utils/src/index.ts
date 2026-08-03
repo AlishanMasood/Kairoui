@@ -38,6 +38,7 @@ export {
   last,
   first,
 } from "./array";
+export { sameValue, shallowEqual, arrayShallowEqual, objectShallowEqual } from "./equality";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
