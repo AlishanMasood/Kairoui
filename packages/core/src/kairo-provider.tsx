@@ -1,4 +1,12 @@
-import { useState, useCallback, useEffect, useMemo, type ReactNode, type RefObject } from "react";
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  type ReactNode,
+  type RefObject,
+} from "react";
 import type { ThemeMode, DensityMode, ThemeDefinition, ResolvedThemeMode } from "@kairoui/theme";
 import { DEFAULT_PREFERENCE } from "@kairoui/theme";
 import { KairoThemeContext } from "./theme-context";
@@ -190,16 +198,24 @@ export function KairoProvider({
   const effectiveDensity = isDensityControlled ? controlledDensity : internalDensity;
   const resolvedMode = resolveMode(effectiveMode, systemPref);
 
+  // Refs for cross-dimension persistence without coupling callback identities
+  const effectiveModeRef = useRef(effectiveMode);
+  const effectiveDensityRef = useRef(effectiveDensity);
+  useEffect(() => {
+    effectiveModeRef.current = effectiveMode;
+    effectiveDensityRef.current = effectiveDensity;
+  });
+
   const setMode = useCallback(
     (newMode: ThemeMode) => {
       if (isModeControlled) {
         onModeChange?.(newMode);
       } else {
         setInternalMode(newMode);
-        persistPreference(newMode, effectiveDensity);
+        persistPreference(newMode, effectiveDensityRef.current);
       }
     },
-    [isModeControlled, onModeChange, effectiveDensity],
+    [isModeControlled, onModeChange],
   );
 
   const setDensity = useCallback(
@@ -208,10 +224,10 @@ export function KairoProvider({
         onDensityChange?.(newDensity);
       } else {
         setInternalDensity(newDensity);
-        persistPreference(effectiveMode, newDensity);
+        persistPreference(effectiveModeRef.current, newDensity);
       }
     },
-    [isDensityControlled, onDensityChange, effectiveMode],
+    [isDensityControlled, onDensityChange],
   );
 
   // Listen for system preference changes
