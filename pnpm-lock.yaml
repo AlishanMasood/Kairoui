@@ -197,7 +197,14 @@ importers:
         specifier: ^18.0.0 || ^19.0.0
         version: 19.2.8
 
-  packages/hooks: {}
+  packages/hooks:
+    dependencies:
+      '@kairoui/utils':
+        specifier: workspace:*
+        version: link:../utils
+      react:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.8
 
   packages/icons: {}
 

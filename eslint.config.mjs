@@ -120,6 +120,8 @@ export default defineConfig(
             "@kairoui/tsconfig/*.json",
             "@kairoui/theme/server",
             "@kairoui/theme/dom",
+            "@kairoui/utils/dom",
+            "@kairoui/utils/events",
             "@testing-library/*/**",
             "react-dom/server",
             "eslint/config",
