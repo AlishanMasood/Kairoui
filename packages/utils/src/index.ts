@@ -13,6 +13,18 @@ export {
   isPlainObject,
   isPromiseLike,
 } from "./type-guards";
+export {
+  objectKeys,
+  objectEntries,
+  objectFromEntries,
+  pick,
+  omit,
+  mapValues,
+  filterObject,
+  hasOwn,
+  removeUndefined,
+  createNullObject,
+} from "./object";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
