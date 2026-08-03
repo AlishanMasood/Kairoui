@@ -112,7 +112,7 @@ describe("Next.js integration pattern", () => {
 
       // Simulate: no-flash script runs before React
       const script = getNoFlashScript();
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
       new ScriptRunner(script)();
 
       expect(document.documentElement.getAttribute("data-kui-theme")).toBe("dark");

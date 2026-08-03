@@ -68,7 +68,6 @@ describe("hydration behavior — comprehensive", () => {
         JSON.stringify({ version: PREFERENCE_VERSION, mode: "dark", density: "compact" }),
       );
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       new ScriptRunner(getNoFlashScript())();
 
       expect(document.documentElement.getAttribute("data-kui-theme")).toBe("dark");
@@ -88,7 +87,6 @@ describe("hydration behavior — comprehensive", () => {
         JSON.stringify({ version: PREFERENCE_VERSION, mode: "light", density: "standard" }),
       );
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       new ScriptRunner(getNoFlashScript())();
 
       const { result } = renderHook(useCtx, {
@@ -226,7 +224,6 @@ describe("hydration behavior — comprehensive", () => {
         JSON.stringify({ version: PREFERENCE_VERSION, mode: "system", density: "comfortable" }),
       );
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       new ScriptRunner(getNoFlashScript())();
 
       const resolvedFromDom = document.documentElement.getAttribute("data-kui-theme");
@@ -251,7 +248,6 @@ describe("hydration behavior — comprehensive", () => {
 
       // Script should not throw
       expect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         new ScriptRunner(getNoFlashScript())();
       }).not.toThrow();
 
@@ -266,7 +262,6 @@ describe("hydration behavior — comprehensive", () => {
         JSON.stringify({ version: PREFERENCE_VERSION, mode: "light", density: "compact" }),
       );
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       new ScriptRunner(getNoFlashScript())();
 
       expect(document.documentElement.getAttribute("data-kui-density")).toBe("compact");

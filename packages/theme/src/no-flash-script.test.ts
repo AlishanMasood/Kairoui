@@ -9,7 +9,6 @@ import { getNoFlashScript, getNoFlashScriptReadable } from "./no-flash-script";
 
 const ScriptRunner = Function;
 function runScript(script: string) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   new ScriptRunner(script)();
 }
 
