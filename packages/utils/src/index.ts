@@ -78,6 +78,8 @@ export {
   resolveBooleanAria,
 } from "./aria";
 export type { BooleanAriaAttribute } from "./aria";
+export { resolveInteractionState } from "./interaction-state";
+export type { InteractionStateInput, InteractionStateResult } from "./interaction-state";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
