@@ -69,6 +69,15 @@ export type {
   EnumDataAttributes,
   DataAttributeOptions,
 } from "./data-attributes";
+export {
+  mergeAriaTokenList,
+  mergeAriaLabelledBy,
+  mergeAriaDescribedBy,
+  mergeAriaControls,
+  mergeAriaOwns,
+  resolveBooleanAria,
+} from "./aria";
+export type { BooleanAriaAttribute } from "./aria";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
