@@ -41,6 +41,17 @@ export {
 export { sameValue, shallowEqual, arrayShallowEqual, objectShallowEqual } from "./equality";
 export { merge, mergeAll, nestedMerge } from "./merge";
 export type { NestedMergeOptions } from "./merge";
+export {
+  joinId,
+  sanitizeIdPart,
+  toKebabCase,
+  toDataAttributeName,
+  toAriaId,
+  capitalize,
+  trimWhitespace,
+  generateId,
+  resetIdCounter,
+} from "./string";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
