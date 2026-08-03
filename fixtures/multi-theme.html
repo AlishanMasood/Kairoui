@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en" data-kui-theme="light" data-kui-density="comfortable">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KairoUI Multi-Theme Fixture</title>
+    <link rel="stylesheet" href="../packages/tokens/dist/tokens.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/comfortable.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/standard.css" />
+    <link rel="stylesheet" href="../packages/tokens/dist/density/compact.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--kui-typography-body-font-family, system-ui, sans-serif);
+        color: var(--kui-color-text-primary);
+        background: var(--kui-color-bg-page);
+        padding: 2rem;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 0.5rem;
+      }
+      .controls {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      button {
+        padding: 0.4rem 0.8rem;
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 4px;
+        background: var(--kui-color-bg-surface);
+        color: var(--kui-color-text-primary);
+        cursor: pointer;
+        font-size: inherit;
+      }
+      button:hover {
+        background: var(--kui-color-bg-subtle);
+      }
+      button:focus-visible {
+        outline: 2px solid var(--kui-color-focus-ring);
+        outline-offset: 2px;
+      }
+      button.active {
+        background: var(--kui-color-interactive-default);
+        color: #fff;
+        border-color: var(--kui-color-interactive-default);
+      }
+      .section {
+        border: 1px solid var(--kui-color-border-default);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background: var(--kui-color-bg-surface);
+      }
+      .scoped-region {
+        border: 2px dashed var(--kui-color-border-subtle);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 0.5rem;
+      }
+      .sibling-row {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+      .sibling-row > * {
+        flex: 1;
+      }
+      pre {
+        font-size: 0.8rem;
+        background: var(--kui-color-bg-subtle);
+        padding: 0.75rem;
+        border-radius: 4px;
+        overflow: auto;
+        white-space: pre-wrap;
+        margin: 0.5rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Multi-Theme Fixture</h1>
+
+    <fieldset>
+      <legend>Active Theme Layer</legend>
+      <div class="controls">
+        <button id="btn-default" class="active">Default Kairo</button>
+        <button id="btn-org">Organization</button>
+        <button id="btn-product">Product</button>
+        <button id="btn-app">Application</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Runtime Mode</legend>
+      <div class="controls">
+        <button id="btn-light" class="active">Light</button>
+        <button id="btn-dark">Dark</button>
+      </div>
+    </fieldset>
+
+    <div class="section">
+      <h2>Page Content (inherits active theme)</h2>
+      <p>This region uses the currently selected composed theme.</p>
+      <button>Interactive element</button>
+    </div>
+
+    <h2>Scoped Regions</h2>
+    <div class="sibling-row">
+      <div id="scope-dark" class="scoped-region">
+        <h3>Dark Region</h3>
+        <p>Always dark, independent of page theme.</p>
+        <button>Dark button</button>
+      </div>
+      <div id="scope-compact" class="scoped-region">
+        <h3>Compact Region</h3>
+        <p>Always compact density.</p>
+        <button>Compact button</button>
+      </div>
+    </div>
+
+    <h2>Nested Provider</h2>
+    <div id="scope-nested-outer" class="scoped-region">
+      <h3>Outer (dark)</h3>
+      <div id="scope-nested-inner" class="scoped-region">
+        <h3>Inner (compact density, inherits dark)</h3>
+        <button>Nested button</button>
+      </div>
+    </div>
+
+    <fieldset>
+      <legend>Actions</legend>
+      <div class="controls">
+        <button id="btn-cleanup">Cleanup All Scopes</button>
+        <button id="btn-reapply">Reapply All Scopes</button>
+      </div>
+    </fieldset>
+
+    <h2>Theme Inspection</h2>
+    <pre id="inspection-output">Loading...</pre>
+
+    <script type="module">
+      import {
+        applyTheme,
+        removeTheme,
+        applyScopedTheme,
+        removeScopedTheme,
+        cleanupTheme,
+        hasThemeState,
+      } from "../packages/theme/dist/dom.js";
+      import { createTheme, composeThemes, inspectTheme } from "../packages/theme/dist/index.js";
+
+      const root = document.documentElement;
+      const inspectionEl = document.getElementById("inspection-output");
+
+      // ─── Theme Definitions ────────────────────────────────────────
+
+      const defaultTheme = createTheme({
+        name: "kairo-default",
+        base: "light",
+        description: "Default KairoUI theme with no overrides",
+      });
+
+      const orgTheme = createTheme({
+        name: "acme-org",
+        base: "light",
+        description: "Acme Corp organization theme",
+        metadata: { organization: "Acme Corp" },
+        overrides: {
+          color: {
+            interactive: { default: "#e63946", hover: "#c1121f" },
+            focus: { ring: "#e63946" },
+          },
+        },
+      });
+
+      const productResult = composeThemes([
+        orgTheme,
+        {
+          name: "acme-dashboard",
+          description: "Dashboard product layer",
+          defaultDensity: "standard",
+          metadata: { product: "Dashboard" },
+          overrides: {
+            color: {
+              background: { surface: "#fafbfc" },
+            },
+          },
+        },
+      ]);
+
+      const appResult = composeThemes([
+        productResult.definition,
+        {
+          name: "acme-dashboard-v2",
+          description: "Application-level override for v2",
+          overrides: {
+            color: {
+              interactive: { active: "#780000" },
+              border: { default: "#dee2e6" },
+            },
+          },
+        },
+      ]);
+
+      const themes = {
+        default: defaultTheme,
+        org: orgTheme,
+        product: productResult.definition,
+        app: appResult.definition,
+      };
+
+      let activeThemeKey = "default";
+      let activeMode = "light";
+      let scopeResults = [];
+
+      // ─── Apply Theme ──────────────────────────────────────────────
+
+      function applyActiveTheme() {
+        applyTheme(root, { mode: activeMode, density: "comfortable" });
+        updateInspection();
+        updateButtons();
+      }
+
+      function updateButtons() {
+        document
+          .querySelectorAll("[id^=btn-default],[id^=btn-org],[id^=btn-product],[id^=btn-app]")
+          .forEach((b) => {
+            b.classList.remove("active");
+          });
+        document.getElementById(`btn-${activeThemeKey}`)?.classList.add("active");
+
+        document.querySelectorAll("[id^=btn-light],[id^=btn-dark]").forEach((b) => {
+          b.classList.remove("active");
+        });
+        document.getElementById(`btn-${activeMode}`)?.classList.add("active");
+      }
+
+      function updateInspection() {
+        const theme = themes[activeThemeKey];
+        const report = inspectTheme(theme);
+        const lines = [
+          `Theme: ${report.name}`,
+          `Base: ${report.base}`,
+          `Description: ${report.description}`,
+          `Default Density: ${report.defaultDensity}`,
+          `Override Groups: ${report.overrideGroups.join(", ") || "(none)"}`,
+          `Override Count: ${report.overrideCount}`,
+          `Metadata Keys: ${report.metadataKeys.join(", ") || "(none)"}`,
+          "",
+          `Active Mode: ${activeMode}`,
+          `Scoped Regions Active: ${scopeResults.length}`,
+        ];
+        if (activeThemeKey === "product" || activeThemeKey === "app") {
+          const meta = activeThemeKey === "product" ? productResult.metadata : appResult.metadata;
+          lines.push("", `Composition Chain: ${meta.chain.join(" → ")}`);
+          lines.push(`Layer Count: ${meta.layerCount}`);
+        }
+        inspectionEl.textContent = lines.join("\n");
+      }
+
+      // ─── Scoped Regions ───────────────────────────────────────────
+
+      function applyScopedRegions() {
+        cleanupScopedRegions();
+        const darkEl = document.getElementById("scope-dark");
+        const compactEl = document.getElementById("scope-compact");
+        const outerEl = document.getElementById("scope-nested-outer");
+        const innerEl = document.getElementById("scope-nested-inner");
+
+        scopeResults = [
+          applyScopedTheme(darkEl, { mode: "dark" }),
+          applyScopedTheme(compactEl, { density: "compact" }),
+          applyScopedTheme(outerEl, { mode: "dark" }),
+          applyScopedTheme(innerEl, { density: "compact" }),
+        ];
+        updateInspection();
+      }
+
+      function cleanupScopedRegions() {
+        for (const result of scopeResults) {
+          result.cleanup();
+        }
+        scopeResults = [];
+        updateInspection();
+      }
+
+      // ─── Event Listeners ──────────────────────────────────────────
+
+      document.getElementById("btn-default").addEventListener("click", () => {
+        activeThemeKey = "default";
+        applyActiveTheme();
+      });
+      document.getElementById("btn-org").addEventListener("click", () => {
+        activeThemeKey = "org";
+        applyActiveTheme();
+      });
+      document.getElementById("btn-product").addEventListener("click", () => {
+        activeThemeKey = "product";
+        applyActiveTheme();
+      });
+      document.getElementById("btn-app").addEventListener("click", () => {
+        activeThemeKey = "app";
+        applyActiveTheme();
+      });
+
+      document.getElementById("btn-light").addEventListener("click", () => {
+        activeMode = "light";
+        applyActiveTheme();
+      });
+      document.getElementById("btn-dark").addEventListener("click", () => {
+        activeMode = "dark";
+        applyActiveTheme();
+      });
+
+      document.getElementById("btn-cleanup").addEventListener("click", cleanupScopedRegions);
+      document.getElementById("btn-reapply").addEventListener("click", applyScopedRegions);
+
+      // ─── Initialize ───────────────────────────────────────────────
+
+      applyActiveTheme();
+      applyScopedRegions();
+    </script>
+  </body>
+</html>
