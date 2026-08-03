@@ -273,3 +273,128 @@ Phase 4 does **not** implement:
 - Portal, layer, or focus-trap managers
 - Scroll lock or presence animations
 - Any visual components (Button, Input, etc.)
+
+---
+
+## Public and Internal API Boundaries
+
+### API Visibility Categories
+
+| Category                         | Package          | Visibility          | Consumer Access                   |
+| -------------------------------- | ---------------- | ------------------- | --------------------------------- |
+| Framework-independent utilities  | `@kairoui/utils` | **Public**          | Any package or consumer           |
+| React hooks                      | `@kairoui/hooks` | **Public**          | React packages and consumers      |
+| Component infrastructure helpers | `@kairoui/hooks` | **Internal**        | Only within `@kairoui/hooks`      |
+| Testing helpers                  | `@kairoui/utils` | **Internal**        | Only within test files            |
+| DOM-only utilities               | `@kairoui/utils` | **Public**          | Guarded by `canUseDOM()`          |
+| Server-safe utilities            | `@kairoui/utils` | **Public**          | Universal                         |
+| Deprecated APIs                  | Either           | **Public (frozen)** | Consumers, with migration warning |
+
+### Criteria for Public Exposure
+
+An API may be exported publicly only when **all** of these criteria are satisfied:
+
+1. **Broad usefulness** — Used by two or more packages, or documented consumer demand.
+2. **Stable behavior** — Contract is well-defined; edge cases are tested.
+3. **Clear ownership** — One package owns the implementation. No shared mutable state.
+4. **Long-term supportability** — Team is willing to maintain the API across major versions.
+5. **No dependency on component internals** — Does not reach into another package's private state.
+6. **No access to private runtime state** — Does not require undocumented context, refs, or closures.
+
+If an API fails any criterion, it remains **internal** until the gap is resolved.
+
+### Approved Import Paths
+
+| Import                        | Status       | Notes                             |
+| ----------------------------- | ------------ | --------------------------------- |
+| `@kairoui/utils`              | **Approved** | Root entry — all public utilities |
+| `@kairoui/hooks`              | **Approved** | Root entry — all public hooks     |
+| `@kairoui/utils/package.json` | **Approved** | Package metadata access           |
+| `@kairoui/hooks/package.json` | **Approved** | Package metadata access           |
+
+### Forbidden Import Paths
+
+| Import                          | Status        | Enforcement                    |
+| ------------------------------- | ------------- | ------------------------------ |
+| `@kairoui/utils/src/*`          | **Forbidden** | `import-x/no-internal-modules` |
+| `@kairoui/hooks/src/*`          | **Forbidden** | `import-x/no-internal-modules` |
+| `@kairoui/utils/dist/*`         | **Forbidden** | `import-x/no-internal-modules` |
+| `@kairoui/hooks/dist/*`         | **Forbidden** | `import-x/no-internal-modules` |
+| `@kairoui/utils/src/internal/*` | **Forbidden** | Not exported; lint rule backup |
+| `@kairoui/hooks/src/internal/*` | **Forbidden** | Not exported; lint rule backup |
+
+Deep imports into any `@kairoui/*` package are already blocked by the existing ESLint rule `import-x/no-internal-modules`. Only explicitly allowed sub-paths (declared in `package.json` `exports`) are accessible.
+
+### Internal-Only API Rules
+
+Internal utilities and hooks:
+
+1. Live in files that are **not** re-exported from `index.ts`.
+2. May use a `_` prefix convention for unexported helpers within a file (e.g., `_normalizeOptions`).
+3. Are still tested — test files may import directly from the source file within the same package.
+4. May be promoted to public via a future task (add to `index.ts`, document, test boundary).
+5. Must never be imported cross-package. The lint rule enforces this.
+
+### Package Boundary Test Plan
+
+Each package must include a **boundary test file** that validates:
+
+#### `@kairoui/utils` — `src/boundaries.test.ts`
+
+```
+- All public exports are importable from the package entry point
+- No module-level browser globals (import in node environment succeeds)
+- No React dependency (no 'react' in dist output)
+- No @kairoui/* dependencies (truly independent)
+- sideEffects is false
+- exports field matches dist files
+- package.json files field is ["dist"]
+```
+
+#### `@kairoui/hooks` — `src/boundaries.test.ts`
+
+```
+- All public hooks are importable from the package entry point
+- React is a peer dependency, not bundled
+- @kairoui/utils is the only runtime dependency
+- No module-level browser globals (SSR import succeeds)
+- No theme or core dependency
+- sideEffects is false
+- exports field matches dist files
+- package.json files field is ["dist"]
+```
+
+These tests are modeled on the existing `packages/theme/src/boundaries.test.ts` pattern.
+
+### Export Graduation Process
+
+```
+Internal → Public:
+1. Utility is used by ≥2 packages (or explicit consumer request)
+2. Add to index.ts re-exports
+3. Add JSDoc with @public tag
+4. Add to boundary test assertions
+5. Document in architecture reference
+6. Commit with "promote [name] to public API" note
+```
+
+```
+Public → Deprecated:
+1. Add @deprecated JSDoc tag with migration path
+2. Add runtime warning() on first call (dev mode only)
+3. Remove from documentation "recommended" sections
+4. Maintain for ≥1 minor version
+5. Remove in next major version
+```
+
+### Summary of Enforcement Mechanisms
+
+| Mechanism                       | What it enforces                                |
+| ------------------------------- | ----------------------------------------------- |
+| `import-x/no-internal-modules`  | No deep imports into `@kairoui/*` packages      |
+| `package.json` `exports` field  | Only declared entry points are resolvable       |
+| `sideEffects: false`            | Tree-shaking; unused internals are eliminated   |
+| `files: ["dist"]`               | Only built output is published                  |
+| Boundary tests                  | Public API completeness; no accidental breakage |
+| `node` test environment (utils) | Catches module-level browser globals            |
+| happy-dom SSR tests (hooks)     | Catches server-unsafe hook behavior             |
