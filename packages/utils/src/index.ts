@@ -54,6 +54,8 @@ export {
 } from "./string";
 export { cx } from "./cx";
 export type { ClassValue } from "./cx";
+export { resolveStateClasses, stateClasses } from "./state-classes";
+export type { ComponentState, StateMap, StateClassOptions } from "./state-classes";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
