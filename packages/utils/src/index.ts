@@ -13,3 +13,15 @@ export function noop(): void {
 export function identity<T>(value: T): T {
   return value;
 }
+
+/**
+ * Returns true when running in a browser environment with DOM access.
+ * Safe to call on the server — returns false without throwing.
+ */
+export const canUseDOM: boolean =
+  typeof (globalThis as Record<string, unknown>)["document"] !== "undefined";
+
+/**
+ * Returns true when running in a server (non-browser) environment.
+ */
+export const isServer: boolean = !canUseDOM;

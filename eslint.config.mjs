@@ -174,6 +174,66 @@ export default defineConfig(
     },
   },
 
+  // ─── Package boundary: @kairoui/utils must not import React ───────
+  {
+    files: ["packages/utils/src/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            { name: "react", message: "@kairoui/utils must be framework-independent." },
+            { name: "react-dom", message: "@kairoui/utils must be framework-independent." },
+            {
+              name: "react/jsx-runtime",
+              message: "@kairoui/utils must be framework-independent.",
+            },
+          ],
+          patterns: [
+            {
+              group: ["@kairoui/theme", "@kairoui/theme/*"],
+              message: "utils must not depend on theme.",
+            },
+            {
+              group: ["@kairoui/core", "@kairoui/core/*"],
+              message: "utils must not depend on core.",
+            },
+            {
+              group: ["@kairoui/hooks", "@kairoui/hooks/*"],
+              message: "utils must not depend on hooks.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  // ─── Package boundary: @kairoui/hooks must not import theme/core ──
+  {
+    files: ["packages/hooks/src/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["@kairoui/theme", "@kairoui/theme/*"],
+              message: "hooks must not depend on theme.",
+            },
+            {
+              group: ["@kairoui/core", "@kairoui/core/*"],
+              message: "hooks must not depend on core.",
+            },
+            {
+              group: ["@kairoui/tokens", "@kairoui/tokens/*"],
+              message: "hooks must not depend on tokens.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+
   // ─── Prettier compat (must be last) ──────────────────────────────
   prettierConfig,
 );

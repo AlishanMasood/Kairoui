@@ -53,23 +53,36 @@ describe("@kairoui/hooks package boundaries", () => {
       const deps = Object.keys(pkg["dependencies"] ?? {});
       expect(deps).not.toContain("@kairoui/theme");
       expect(deps).not.toContain("@kairoui/core");
+      expect(deps).not.toContain("@kairoui/tokens");
     });
   });
 
-  describe("isolation", () => {
+  describe("framework isolation", () => {
     it("React is external, not bundled", () => {
       const js = readFileSync(join(DIST, "index.js"), "utf-8");
-      // If hooks import react, it should be as an external import
-      // The empty barrel currently has no react import, which is fine
       expect(js).not.toContain("function createElement");
       expect(js).not.toContain("function useState");
     });
 
+    it("does not depend on @kairoui/theme or @kairoui/core", () => {
+      const js = readFileSync(join(DIST, "index.js"), "utf-8");
+      expect(js).not.toContain("@kairoui/theme");
+      expect(js).not.toContain("@kairoui/core");
+      expect(js).not.toContain("@kairoui/tokens");
+    });
+  });
+
+  describe("server safety", () => {
     it("no module-level browser globals", () => {
       const js = readFileSync(join(DIST, "index.js"), "utf-8");
       expect(js).not.toContain("document.");
       expect(js).not.toContain("window.");
       expect(js).not.toContain("localStorage");
+    });
+
+    it("importing in node environment does not throw", async () => {
+      // This test runs in happy-dom but validates the import succeeds
+      await expect(import("@kairoui/hooks")).resolves.toBeDefined();
     });
   });
 });
