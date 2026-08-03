@@ -56,6 +56,8 @@ export { cx } from "./cx";
 export type { ClassValue } from "./cx";
 export { resolveStateClasses, stateClasses } from "./state-classes";
 export type { ComponentState, StateMap, StateClassOptions } from "./state-classes";
+export { resolveVariantClasses, variantClasses } from "./variant-classes";
+export type { VariantValues, ResolveVariantClassesOptions } from "./variant-classes";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
