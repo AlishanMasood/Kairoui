@@ -58,6 +58,17 @@ export { resolveStateClasses, stateClasses } from "./state-classes";
 export type { ComponentState, StateMap, StateClassOptions } from "./state-classes";
 export { resolveVariantClasses, variantClasses } from "./variant-classes";
 export type { VariantValues, ResolveVariantClassesOptions } from "./variant-classes";
+export {
+  resolveBooleanDataAttributes,
+  resolveEnumDataAttributes,
+  resolveDataAttributes,
+} from "./data-attributes";
+export type {
+  DataAttributeValue,
+  BooleanDataAttributes,
+  EnumDataAttributes,
+  DataAttributeOptions,
+} from "./data-attributes";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
