@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { createStableCallback } from "./callback";
+import { createStableCallback, createEventCallback } from "./callback";
 
 describe("createStableCallback", () => {
   it("call invokes the initial function", () => {
@@ -79,5 +79,94 @@ describe("createStableCallback", () => {
     stable.update(() => 3);
     stable.update(() => 4);
     expect(stable.call()).toBe(4);
+  });
+});
+
+describe("createEventCallback", () => {
+  it("invoke calls the initial function", () => {
+    const fn = vi.fn().mockReturnValue(10);
+    const ec = createEventCallback(fn);
+    expect(ec.invoke()).toBe(10);
+    expect(fn).toHaveBeenCalled();
+  });
+
+  it("invoke passes arguments through", () => {
+    const fn = vi.fn((a: number, b: number) => a + b);
+    const ec = createEventCallback(fn);
+    expect(ec.invoke(2, 3)).toBe(5);
+  });
+
+  it("invoke returns undefined when no callback is set", () => {
+    const ec = createEventCallback<() => number>();
+    expect(ec.invoke()).toBeUndefined();
+  });
+
+  it("invoke returns undefined after clearing with update(undefined)", () => {
+    const fn = vi.fn().mockReturnValue(1);
+    const ec = createEventCallback(fn);
+    ec.update(undefined);
+    expect(ec.invoke()).toBeUndefined();
+    expect(fn).not.toHaveBeenCalled();
+  });
+
+  it("invoke calls the latest function after update", () => {
+    const first = vi.fn().mockReturnValue("a");
+    const second = vi.fn().mockReturnValue("b");
+    const ec = createEventCallback(first);
+    expect(ec.invoke()).toBe("a");
+    ec.update(second);
+    expect(ec.invoke()).toBe("b");
+  });
+
+  it("invoke is a no-op when disabled", () => {
+    const fn = vi.fn().mockReturnValue(99);
+    const ec = createEventCallback(fn);
+    ec.setDisabled(true);
+    expect(ec.invoke()).toBeUndefined();
+    expect(fn).not.toHaveBeenCalled();
+  });
+
+  it("invoke resumes after re-enabling", () => {
+    const fn = vi.fn().mockReturnValue(42);
+    const ec = createEventCallback(fn);
+    ec.setDisabled(true);
+    ec.setDisabled(false);
+    expect(ec.invoke()).toBe(42);
+  });
+
+  it("disabled property reflects state", () => {
+    const ec = createEventCallback(() => {});
+    expect(ec.disabled).toBe(false);
+    ec.setDisabled(true);
+    expect(ec.disabled).toBe(true);
+    ec.setDisabled(false);
+    expect(ec.disabled).toBe(false);
+  });
+
+  it("invoke reference is stable across updates", () => {
+    const ec = createEventCallback(() => 1);
+    const ref1 = ec.invoke;
+    ec.update(() => 2);
+    const ref2 = ec.invoke;
+    expect(ref1).toBe(ref2);
+  });
+
+  it("does not swallow errors", () => {
+    const ec = createEventCallback(() => {
+      throw new Error("event error");
+    });
+    expect(() => {
+      ec.invoke();
+    }).toThrow("event error");
+  });
+
+  it("errors not thrown when disabled", () => {
+    const ec = createEventCallback(() => {
+      throw new Error("should not throw");
+    });
+    ec.setDisabled(true);
+    expect(() => {
+      ec.invoke();
+    }).not.toThrow();
   });
 });

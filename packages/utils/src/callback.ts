@@ -36,3 +36,56 @@ export function createStableCallback<T extends (...args: never[]) => unknown>(
 
   return { call: call, update };
 }
+
+/**
+ * An event callback container that supports optional (possibly undefined) callbacks
+ * and a disabled state. The `invoke` reference is stable.
+ */
+export interface EventCallback<T extends (...args: never[]) => unknown> {
+  /** Invoke the current callback if present and not disabled. Returns undefined when skipped. */
+  invoke: (...args: Parameters<T>) => ReturnType<T> | undefined;
+  /** Update the stored callback. Pass undefined to clear. */
+  update: (fn: T | undefined) => void;
+  /** Enable or disable invocation. When disabled, invoke is a no-op. */
+  setDisabled: (disabled: boolean) => void;
+  /** Whether the callback is currently disabled. */
+  readonly disabled: boolean;
+}
+
+/**
+ * Creates an event callback container.
+ *
+ * - If no callback is set (undefined), `invoke` is a no-op returning undefined.
+ * - If disabled, `invoke` is a no-op returning undefined.
+ * - Otherwise, `invoke` calls the latest callback with all arguments.
+ * - The `invoke` reference identity is stable — safe for event listener registration.
+ * - Errors from the callback are not swallowed.
+ */
+export function createEventCallback<T extends (...args: never[]) => unknown>(
+  initial?: T,
+): EventCallback<T> {
+  let current: T | undefined = initial;
+  let isDisabled = false;
+
+  const invoke = (...args: Parameters<T>): ReturnType<T> | undefined => {
+    if (isDisabled || current == null) return undefined;
+    return current(...args) as ReturnType<T>;
+  };
+
+  const update = (fn: T | undefined): void => {
+    current = fn;
+  };
+
+  const setDisabled = (disabled: boolean): void => {
+    isDisabled = disabled;
+  };
+
+  return {
+    invoke: invoke,
+    update,
+    setDisabled,
+    get disabled() {
+      return isDisabled;
+    },
+  };
+}
