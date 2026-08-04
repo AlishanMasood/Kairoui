@@ -73,3 +73,12 @@ export {
   normalizePointerType,
 } from "./pointer";
 export type { PointerEventLike, PointerType } from "./pointer";
+
+export {
+  isDefaultPrevented,
+  isCancelable,
+  preventDefaultIfNeeded,
+  stopPropagationIfNeeded,
+  cancelEvent,
+} from "./cancel-event";
+export type { CancelableEventLike } from "./cancel-event";
