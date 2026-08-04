@@ -104,12 +104,22 @@ describe("@kairoui/utils package boundaries", () => {
 
     it("canUseDOM is exported and returns false in node", async () => {
       const { canUseDOM } = await import("@kairoui/utils");
-      expect(canUseDOM).toBe(false);
+      expect(canUseDOM()).toBe(false);
     });
 
     it("isServer is exported and returns true in node", async () => {
       const { isServer } = await import("@kairoui/utils");
-      expect(isServer).toBe(true);
+      expect(isServer()).toBe(true);
+    });
+
+    it("canUseWindow is exported and callable", async () => {
+      const { canUseWindow } = await import("@kairoui/utils");
+      expect(canUseWindow).toBeTypeOf("function");
+    });
+
+    it("canUseDocument is exported and callable", async () => {
+      const { canUseDocument } = await import("@kairoui/utils");
+      expect(canUseDocument).toBeTypeOf("function");
     });
   });
 
