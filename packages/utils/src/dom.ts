@@ -36,3 +36,20 @@ export {
   hasHorizontalScrollbar,
 } from "./scrollbar";
 export type { ScrollableElement, ScrollbarDocument } from "./scrollbar";
+
+export {
+  getElementRect,
+  getComputedStyleValue,
+  parsePxValue,
+  isElementVisible,
+  hasOverflowX,
+  hasOverflowY,
+  getViewportRect,
+  isRectContained,
+} from "./measurement";
+export type {
+  MeasurableElement,
+  MeasurableWindow,
+  StyleDeclaration,
+  DOMRectLike,
+} from "./measurement";
