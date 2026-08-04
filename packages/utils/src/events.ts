@@ -58,3 +58,18 @@ export {
   isNavigationKey,
 } from "./keyboard";
 export type { KeyboardEventLike } from "./keyboard";
+
+export {
+  isPrimaryPointer,
+  isLeftClick,
+  isRightClick,
+  isMiddleClick,
+  isModifiedClick,
+  isTouchPointer,
+  isPenPointer,
+  isMousePointer,
+  isVirtualClick,
+  getPointerCoordinates,
+  normalizePointerType,
+} from "./pointer";
+export type { PointerEventLike, PointerType } from "./pointer";
