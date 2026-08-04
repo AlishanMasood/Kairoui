@@ -19,3 +19,11 @@ export {
 
 export { isFocusable, isTabbable, getTabIndex } from "./focusable";
 export type { FocusableElement } from "./focusable";
+
+export {
+  getActiveElement,
+  getDeepActiveElement,
+  containsActiveElement,
+  hasFocusWithin,
+} from "./active-element";
+export type { ActiveElementDocument, ActiveElementNode } from "./active-element";
