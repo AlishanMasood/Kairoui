@@ -11,3 +11,4 @@ export { useEventCallback } from "./use-event-callback";
 export { useMergedRefs } from "./use-merged-refs";
 export { useId } from "./use-id";
 export type { UseIdOptions } from "./use-id";
+export { useIsMounted } from "./use-is-mounted";
