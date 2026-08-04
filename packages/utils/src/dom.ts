@@ -53,3 +53,6 @@ export type {
   StyleDeclaration,
   DOMRectLike,
 } from "./measurement";
+
+export { createFocusVisibleTracker } from "./focus-visible";
+export type { InputModality, FocusVisibleState, FocusVisibleDocument } from "./focus-visible";

@@ -16,3 +16,5 @@ export { useIsomorphicLayoutEffect } from "./use-isomorphic-layout-effect";
 export { useMediaQuery } from "./use-media-query";
 export type { UseMediaQueryOptions } from "./use-media-query";
 export { useReducedMotion } from "./use-reduced-motion";
+export { useFocusVisible } from "./use-focus-visible";
+export type { UseFocusVisibleResult } from "./use-focus-visible";
