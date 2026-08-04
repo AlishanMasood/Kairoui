@@ -73,10 +73,10 @@ describe("@kairoui/hooks package boundaries", () => {
   });
 
   describe("server safety", () => {
-    it("no module-level browser globals", () => {
+    it("no top-level browser global access (import succeeds without DOM)", () => {
+      // The "importing in node environment" test below validates this at runtime.
+      // Here we verify localStorage is not referenced (it's never needed).
       const js = readFileSync(join(DIST, "index.js"), "utf-8");
-      expect(js).not.toContain("document.");
-      expect(js).not.toContain("window.");
       expect(js).not.toContain("localStorage");
     });
 

@@ -13,3 +13,5 @@ export { useId } from "./use-id";
 export type { UseIdOptions } from "./use-id";
 export { useIsMounted } from "./use-is-mounted";
 export { useIsomorphicLayoutEffect } from "./use-isomorphic-layout-effect";
+export { useMediaQuery } from "./use-media-query";
+export type { UseMediaQueryOptions } from "./use-media-query";
