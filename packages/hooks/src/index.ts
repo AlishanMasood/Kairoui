@@ -6,3 +6,4 @@ export type {
   UseControllableStateOptions,
   UseControllableStateResult,
 } from "./use-controllable-state";
+export { usePrevious, useLatest } from "./use-previous";
