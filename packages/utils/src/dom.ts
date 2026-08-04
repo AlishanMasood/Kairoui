@@ -27,3 +27,12 @@ export {
   hasFocusWithin,
 } from "./active-element";
 export type { ActiveElementDocument, ActiveElementNode } from "./active-element";
+
+export {
+  measureScrollbarWidth,
+  getElementScrollbarWidth,
+  getElementScrollbarHeight,
+  hasVerticalScrollbar,
+  hasHorizontalScrollbar,
+} from "./scrollbar";
+export type { ScrollableElement, ScrollbarDocument } from "./scrollbar";
