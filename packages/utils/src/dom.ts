@@ -16,3 +16,6 @@ export {
   isWindow,
   isShadowRoot,
 } from "./dom-guards";
+
+export { isFocusable, isTabbable, getTabIndex } from "./focusable";
+export type { FocusableElement } from "./focusable";
