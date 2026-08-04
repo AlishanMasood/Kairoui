@@ -80,6 +80,8 @@ export {
 export type { BooleanAriaAttribute } from "./aria";
 export { resolveInteractionState } from "./interaction-state";
 export type { InteractionStateInput, InteractionStateResult } from "./interaction-state";
+export { assignRef } from "./ref";
+export type { CallbackRef, MutableRefObject, AssignableRef } from "./ref";
 
 /**
  * A no-op function. Useful as a default callback or placeholder.
