@@ -89,8 +89,9 @@ describe("useLatest", () => {
   });
 
   it("works with null values", () => {
+    const initial: { value: string | null } = { value: "hello" };
     const { result, rerender } = renderHook(({ value }) => useLatest(value), {
-      initialProps: { value: "hello" },
+      initialProps: initial,
     });
     rerender({ value: null });
     expect(result.current.current).toBeNull();

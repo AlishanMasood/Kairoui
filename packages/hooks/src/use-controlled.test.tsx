@@ -97,6 +97,7 @@ describe("useControlled", () => {
 
     it("warns when switching from controlled to uncontrolled", () => {
       const spy = vi.spyOn(console, "warn").mockImplementation(noop);
+      const initial: { controlled: string | undefined } = { controlled: "initial" };
       const { rerender } = renderHook(
         ({ controlled }: { controlled: string | undefined }) =>
           useControlled({
@@ -105,7 +106,7 @@ describe("useControlled", () => {
             name: "ControlledFirst",
             state: "value",
           }),
-        { initialProps: { controlled: "initial" } },
+        { initialProps: initial },
       );
       rerender({ controlled: undefined });
       expect(spy).toHaveBeenCalledWith(

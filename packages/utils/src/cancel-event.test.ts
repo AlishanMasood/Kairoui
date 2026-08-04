@@ -39,7 +39,8 @@ describe("isCancelable", () => {
   });
 
   it("returns true when cancelable is undefined (default)", () => {
-    expect(isCancelable(mockEvent({ cancelable: undefined }))).toBe(true);
+    const event: CancelableEventLike = { defaultPrevented: false };
+    expect(isCancelable(event)).toBe(true);
   });
 });
 
@@ -66,7 +67,7 @@ describe("preventDefaultIfNeeded", () => {
   });
 
   it("handles event without preventDefault method", () => {
-    const event = mockEvent({ preventDefault: undefined });
+    const event: CancelableEventLike = { defaultPrevented: false, cancelable: true };
     const result = preventDefaultIfNeeded(event);
     expect(result).toBe(true);
   });
@@ -81,7 +82,7 @@ describe("stopPropagationIfNeeded", () => {
   });
 
   it("returns false when stopPropagation is not available", () => {
-    const event = mockEvent({ stopPropagation: undefined });
+    const event: CancelableEventLike = { defaultPrevented: false };
     const result = stopPropagationIfNeeded(event);
     expect(result).toBe(false);
   });

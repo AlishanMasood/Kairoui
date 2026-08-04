@@ -75,7 +75,9 @@ describe("useMediaQuery", () => {
   it("re-subscribes when query changes", () => {
     const mql1 = createMockMatchMedia(true);
     const mql2 = createMockMatchMedia(false);
-    window.matchMedia = vi.fn((q: string) => (q.includes("768") ? mql1 : mql2));
+    window.matchMedia = vi.fn((q: string) =>
+      q.includes("768") ? mql1 : mql2,
+    ) as unknown as typeof window.matchMedia;
     const { result, rerender } = renderHook(({ query }) => useMediaQuery(query), {
       initialProps: { query: "(min-width: 768px)" },
     });

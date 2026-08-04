@@ -6,10 +6,10 @@ describe("useEventCallback", () => {
   describe("stable identity", () => {
     it("returns a stable function reference across renders", () => {
       const { result, rerender } = renderHook(({ fn }) => useEventCallback(fn), {
-        initialProps: { fn: () => "a" },
+        initialProps: { fn: (): string => "a" },
       });
       const ref1 = result.current;
-      rerender({ fn: () => "b" });
+      rerender({ fn: (): string => "b" });
       expect(result.current).toBe(ref1);
     });
 

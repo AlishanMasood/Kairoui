@@ -227,11 +227,11 @@ describe("composeCallbacks", () => {
 
   it("propagates errors immediately", () => {
     const fn1 = vi.fn();
-    const fn2 = () => {
+    const fn2 = (): void => {
       throw new Error("fail");
     };
     const fn3 = vi.fn();
-    const composed = composeCallbacks(fn1, fn2, fn3);
+    const composed = composeCallbacks<() => void>(fn1, fn2, fn3);
     expect(() => {
       composed();
     }).toThrow("fail");
