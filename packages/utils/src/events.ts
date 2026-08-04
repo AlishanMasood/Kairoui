@@ -44,3 +44,17 @@ export function composeEventHandlers<E extends ComposableEvent>(
     }
   };
 }
+
+export {
+  Keys,
+  isEnterKey,
+  isSpaceKey,
+  isEscapeKey,
+  isArrowKey,
+  isActivationKey,
+  hasModifier,
+  isCtrlOrMeta,
+  isPrintableKey,
+  isNavigationKey,
+} from "./keyboard";
+export type { KeyboardEventLike } from "./keyboard";
