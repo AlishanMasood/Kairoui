@@ -3,3 +3,6 @@
 
 export { isEventOutside, isNodeOutside } from "./outside";
 export type { NodeLike, OutsideEventLike, IsOutsideOptions } from "./outside";
+
+export { getOwnerDocument, getOwnerWindow } from "./owner";
+export type { OwnerNode, OwnerDocument, OwnerWindow } from "./owner";
