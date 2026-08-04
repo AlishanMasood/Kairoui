@@ -18,3 +18,8 @@ export type { UseMediaQueryOptions } from "./use-media-query";
 export { useReducedMotion } from "./use-reduced-motion";
 export { useFocusVisible } from "./use-focus-visible";
 export type { UseFocusVisibleResult } from "./use-focus-visible";
+export { useAccessibilityRelationships } from "./use-accessibility-relationships";
+export type {
+  UseAccessibilityRelationshipsOptions,
+  AccessibilityRelationships,
+} from "./use-accessibility-relationships";
