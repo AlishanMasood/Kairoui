@@ -6,3 +6,13 @@ export type { NodeLike, OutsideEventLike, IsOutsideOptions } from "./outside";
 
 export { getOwnerDocument, getOwnerWindow } from "./owner";
 export type { OwnerNode, OwnerDocument, OwnerWindow } from "./owner";
+
+export {
+  isNode,
+  isElement,
+  isHTMLElement,
+  isSVGElement,
+  isDocument,
+  isWindow,
+  isShadowRoot,
+} from "./dom-guards";
