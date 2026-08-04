@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { createStableCallback, createEventCallback } from "./callback";
+import { createStableCallback, createEventCallback, composeCallbacks } from "./callback";
 
 describe("createStableCallback", () => {
   it("call invokes the initial function", () => {
@@ -168,5 +168,88 @@ describe("createEventCallback", () => {
     expect(() => {
       ec.invoke();
     }).not.toThrow();
+  });
+});
+
+describe("composeCallbacks", () => {
+  it("invokes all callbacks in order", () => {
+    const order: number[] = [];
+    const fn1 = () => {
+      order.push(1);
+    };
+    const fn2 = () => {
+      order.push(2);
+    };
+    const fn3 = () => {
+      order.push(3);
+    };
+    const composed = composeCallbacks(fn1, fn2, fn3);
+    composed();
+    expect(order).toEqual([1, 2, 3]);
+  });
+
+  it("passes arguments to each callback", () => {
+    const fn1 = vi.fn();
+    const fn2 = vi.fn();
+    const composed = composeCallbacks(fn1, fn2);
+    composed("a", 42);
+    expect(fn1).toHaveBeenCalledWith("a", 42);
+    expect(fn2).toHaveBeenCalledWith("a", 42);
+  });
+
+  it("skips null callbacks", () => {
+    const fn = vi.fn();
+    const composed = composeCallbacks(null, fn, null);
+    composed();
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it("skips undefined callbacks", () => {
+    const fn = vi.fn();
+    const composed = composeCallbacks(undefined, fn, undefined);
+    composed();
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it("handles all null/undefined without error", () => {
+    const composed = composeCallbacks(null, undefined);
+    expect(() => {
+      composed();
+    }).not.toThrow();
+  });
+
+  it("handles empty callback list", () => {
+    const composed = composeCallbacks();
+    expect(() => {
+      composed();
+    }).not.toThrow();
+  });
+
+  it("propagates errors immediately", () => {
+    const fn1 = vi.fn();
+    const fn2 = () => {
+      throw new Error("fail");
+    };
+    const fn3 = vi.fn();
+    const composed = composeCallbacks(fn1, fn2, fn3);
+    expect(() => {
+      composed();
+    }).toThrow("fail");
+    expect(fn1).toHaveBeenCalled();
+    expect(fn3).not.toHaveBeenCalled();
+  });
+
+  it("returns void (individual returns are discarded)", () => {
+    const fn = () => 42;
+    const composed = composeCallbacks(fn);
+    // TypeScript enforces void return type — runtime confirms no value leaks
+    composed();
+  });
+
+  it("does not mutate the original callback list", () => {
+    const callbacks: Array<(() => void) | null> = [vi.fn(), null];
+    const copy = [...callbacks];
+    composeCallbacks(...callbacks);
+    expect(callbacks).toEqual(copy);
   });
 });

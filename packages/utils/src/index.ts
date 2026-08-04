@@ -82,7 +82,7 @@ export { resolveInteractionState } from "./interaction-state";
 export type { InteractionStateInput, InteractionStateResult } from "./interaction-state";
 export { assignRef, composeRefs } from "./ref";
 export type { CallbackRef, MutableRefObject, AssignableRef } from "./ref";
-export { createStableCallback, createEventCallback } from "./callback";
+export { createStableCallback, createEventCallback, composeCallbacks } from "./callback";
 export type { StableCallback, EventCallback } from "./callback";
 
 /**

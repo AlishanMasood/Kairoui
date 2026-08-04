@@ -89,3 +89,22 @@ export function createEventCallback<T extends (...args: never[]) => unknown>(
     },
   };
 }
+
+/**
+ * Composes multiple callbacks into a single function that invokes each in order.
+ * - Null/undefined callbacks are skipped.
+ * - Arguments are forwarded to each callback.
+ * - Returns void (last-return is not meaningful for composed side-effects).
+ * - Errors propagate immediately — subsequent callbacks are NOT called after a throw.
+ */
+export function composeCallbacks<T extends (...args: never[]) => unknown>(
+  ...callbacks: readonly (T | null | undefined)[]
+): (...args: Parameters<T>) => void {
+  return (...args: Parameters<T>): void => {
+    for (const cb of callbacks) {
+      if (cb != null) {
+        cb(...args);
+      }
+    }
+  };
+}
