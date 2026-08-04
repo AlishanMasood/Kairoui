@@ -7,3 +7,4 @@ export type {
   UseControllableStateResult,
 } from "./use-controllable-state";
 export { usePrevious, useLatest } from "./use-previous";
+export { useEventCallback } from "./use-event-callback";
