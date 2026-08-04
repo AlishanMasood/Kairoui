@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { assignRef } from "./ref";
+import { assignRef, composeRefs } from "./ref";
 import type { MutableRefObject } from "./ref";
 
 describe("assignRef", () => {
@@ -84,5 +84,101 @@ describe("assignRef", () => {
       assignRef(ref, el);
       expect(ref.current).toBe(el);
     });
+  });
+});
+
+describe("composeRefs", () => {
+  it("assigns value to multiple callback refs", () => {
+    const fn1 = vi.fn();
+    const fn2 = vi.fn();
+    const composed = composeRefs(fn1, fn2);
+    composed("value");
+    expect(fn1).toHaveBeenCalledWith("value");
+    expect(fn2).toHaveBeenCalledWith("value");
+  });
+
+  it("assigns value to multiple object refs", () => {
+    const ref1: MutableRefObject<string | null> = { current: null };
+    const ref2: MutableRefObject<string | null> = { current: null };
+    const composed = composeRefs(ref1, ref2);
+    composed("hello");
+    expect(ref1.current).toBe("hello");
+    expect(ref2.current).toBe("hello");
+  });
+
+  it("handles mix of callback and object refs", () => {
+    const fn = vi.fn();
+    const ref: MutableRefObject<string | null> = { current: null };
+    const composed = composeRefs(fn, ref);
+    composed("mixed");
+    expect(fn).toHaveBeenCalledWith("mixed");
+    expect(ref.current).toBe("mixed");
+  });
+
+  it("skips null and undefined refs", () => {
+    const fn = vi.fn();
+    const composed = composeRefs(null, fn, undefined);
+    composed("ok");
+    expect(fn).toHaveBeenCalledWith("ok");
+  });
+
+  it("handles all null/undefined refs without error", () => {
+    const composed = composeRefs(null, undefined);
+    expect(() => {
+      composed("value");
+    }).not.toThrow();
+  });
+
+  it("handles empty refs list", () => {
+    const composed = composeRefs();
+    expect(() => {
+      composed("value");
+    }).not.toThrow();
+  });
+
+  it("assigns in order", () => {
+    const order: number[] = [];
+    const fn1 = () => {
+      order.push(1);
+    };
+    const fn2 = () => {
+      order.push(2);
+    };
+    const fn3 = () => {
+      order.push(3);
+    };
+    const composed = composeRefs(fn1, fn2, fn3);
+    composed("x");
+    expect(order).toEqual([1, 2, 3]);
+  });
+
+  it("assigns null on cleanup", () => {
+    const ref1: MutableRefObject<string | null> = { current: "old" };
+    const fn = vi.fn();
+    const composed = composeRefs(ref1, fn);
+    composed(null);
+    expect(ref1.current).toBeNull();
+    expect(fn).toHaveBeenCalledWith(null);
+  });
+
+  it("does not swallow errors from individual refs", () => {
+    const bad = () => {
+      throw new Error("ref failed");
+    };
+    const composed = composeRefs(bad);
+    expect(() => {
+      composed("value");
+    }).toThrow("ref failed");
+  });
+
+  it("can be called multiple times with different values", () => {
+    const ref: MutableRefObject<string | null> = { current: null };
+    const composed = composeRefs(ref);
+    composed("first");
+    expect(ref.current).toBe("first");
+    composed("second");
+    expect(ref.current).toBe("second");
+    composed(null);
+    expect(ref.current).toBeNull();
   });
 });

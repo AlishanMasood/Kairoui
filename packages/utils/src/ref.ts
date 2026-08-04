@@ -28,3 +28,16 @@ export function assignRef<T>(ref: AssignableRef<T>, value: T | null): void {
     ref.current = value;
   }
 }
+
+/**
+ * Composes multiple refs into a single callback ref.
+ * Assigns the value to each ref in order. Null/undefined refs are skipped.
+ * Errors from individual refs are not swallowed.
+ */
+export function composeRefs<T>(...refs: readonly AssignableRef<T>[]): (instance: T | null) => void {
+  return (instance: T | null) => {
+    for (const ref of refs) {
+      assignRef(ref, instance);
+    }
+  };
+}
