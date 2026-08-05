@@ -20,3 +20,7 @@ export type {
 } from "./composition/merge-types";
 
 export { PROP_SOURCE_PRIORITY, DEFAULT_CATEGORY_STRATEGIES } from "./composition/merge-types";
+
+// Class-name composition
+export { mergeClassNames, mergeClassNameSources } from "./composition/merge-class-names";
+export type { ClassNameSources } from "./composition/merge-class-names";
