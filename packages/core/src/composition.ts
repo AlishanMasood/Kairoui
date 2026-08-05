@@ -24,3 +24,7 @@ export { PROP_SOURCE_PRIORITY, DEFAULT_CATEGORY_STRATEGIES } from "./composition
 // Class-name composition
 export { mergeClassNames, mergeClassNameSources } from "./composition/merge-class-names";
 export type { ClassNameSources } from "./composition/merge-class-names";
+
+// Style-object composition
+export { mergeStyles } from "./composition/merge-styles";
+export type { StyleObject, StyleSource } from "./composition/merge-styles";
