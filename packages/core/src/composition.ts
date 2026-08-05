@@ -28,3 +28,11 @@ export type { ClassNameSources } from "./composition/merge-class-names";
 // Style-object composition
 export { mergeStyles } from "./composition/merge-styles";
 export type { StyleObject, StyleSource } from "./composition/merge-styles";
+
+// Event-handler composition
+export { mergeEventHandlers, composeHandlers } from "./composition/merge-event-handlers";
+export type {
+  EventHandlerSource,
+  EventHandlerSources,
+  MergeEventHandlersOptions,
+} from "./composition/merge-event-handlers";
