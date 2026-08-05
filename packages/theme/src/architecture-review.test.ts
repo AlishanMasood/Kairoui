@@ -42,9 +42,9 @@ describe("Phase 3 architecture consistency review", () => {
       expect(deps).toEqual(["@kairoui/tokens"]);
     });
 
-    it("core package depends only on theme", () => {
-      const deps = Object.keys(corePkg.dependencies ?? {});
-      expect(deps).toEqual(["@kairoui/theme"]);
+    it("core package depends on hooks, theme, and utils", () => {
+      const deps = Object.keys(corePkg.dependencies ?? {}).sort();
+      expect(deps).toEqual(["@kairoui/hooks", "@kairoui/theme", "@kairoui/utils"]);
     });
   });
 

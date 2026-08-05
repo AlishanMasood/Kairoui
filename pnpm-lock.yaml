@@ -190,9 +190,15 @@ importers:
 
   packages/core:
     dependencies:
+      '@kairoui/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@kairoui/theme':
         specifier: workspace:*
         version: link:../theme
+      '@kairoui/utils':
+        specifier: workspace:*
+        version: link:../utils
       react:
         specifier: ^18.0.0 || ^19.0.0
         version: 19.2.8
