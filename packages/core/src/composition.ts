@@ -1,11 +1,22 @@
 // @kairoui/core/composition — Component composition infrastructure
 //
-// This entry point will export composition primitives used by all KairoUI components:
-// - Prop merging (mergeProps)
-// - Component factory (createComponent)
-// - Slot resolution
-// - Polymorphic rendering (asChild)
-//
-// APIs are added here only when intentionally approved. Internal utilities
-// remain unexported until promoted to public.
-export {};
+// This entry point exports composition primitives used by all KairoUI components:
+// - Prop merging contracts and types
+// - Component factory (future)
+// - Slot resolution (future)
+// - Polymorphic rendering (future)
+
+// Public types — contracts for prop composition
+export type {
+  MergeStrategy,
+  PropSource,
+  PropCategory,
+  CategoryStrategyMap,
+  MergePlanEntry,
+  MergePlan,
+  PropSourceRecord,
+  MergeDiagnostic,
+  ProtectedPropDefinition,
+} from "./composition/merge-types";
+
+export { PROP_SOURCE_PRIORITY, DEFAULT_CATEGORY_STRATEGIES } from "./composition/merge-types";
