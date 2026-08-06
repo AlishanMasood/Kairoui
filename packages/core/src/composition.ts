@@ -53,3 +53,7 @@ export type {
   AriaBooleanMap,
   AriaScalarSources,
 } from "./composition/merge-aria";
+
+// Data-attribute composition
+export { mergeDataAttributes } from "./composition/merge-data-attributes";
+export type { DataAttrValue, DataAttributeSources } from "./composition/merge-data-attributes";
