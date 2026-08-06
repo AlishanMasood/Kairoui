@@ -57,3 +57,10 @@ export type {
 // Data-attribute composition
 export { mergeDataAttributes } from "./composition/merge-data-attributes";
 export type { DataAttrValue, DataAttributeSources } from "./composition/merge-data-attributes";
+
+// Interaction-state reconciliation
+export { reconcileInteractionState } from "./composition/reconcile-interaction";
+export type {
+  ReconcileInteractionInput,
+  ReconcileInteractionResult,
+} from "./composition/reconcile-interaction";
