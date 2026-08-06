@@ -68,3 +68,6 @@ export type {
 // Ref composition
 export { composeComponentRefs } from "./composition/compose-refs";
 export type { RefSources, AssignableRef } from "./composition/compose-refs";
+
+// Generic prop merging
+export { mergeProps, mergePropsAll } from "./composition/merge-props";
