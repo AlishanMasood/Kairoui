@@ -36,3 +36,20 @@ export type {
   EventHandlerSources,
   MergeEventHandlersOptions,
 } from "./composition/merge-event-handlers";
+
+// ARIA composition
+export {
+  mergeAriaRelationship,
+  mergeAriaRelationships,
+  reconcileAriaBoolean,
+  reconcileAriaBooleans,
+  reconcileAriaScalar,
+} from "./composition/merge-aria";
+export type {
+  AriaRelationshipAttribute,
+  AriaRelationshipSources,
+  AriaRelationshipMap,
+  AriaBooleanSources,
+  AriaBooleanMap,
+  AriaScalarSources,
+} from "./composition/merge-aria";
