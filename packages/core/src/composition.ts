@@ -64,3 +64,7 @@ export type {
   ReconcileInteractionInput,
   ReconcileInteractionResult,
 } from "./composition/reconcile-interaction";
+
+// Ref composition
+export { composeComponentRefs } from "./composition/compose-refs";
+export type { RefSources, AssignableRef } from "./composition/compose-refs";
