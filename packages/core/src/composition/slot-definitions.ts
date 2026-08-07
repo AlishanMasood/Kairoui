@@ -11,7 +11,7 @@ export interface SlotDefinition {
   /** Whether this slot is exposed publicly (covered by semver). */
   readonly public: boolean;
   /** Optional ARIA role for this slot. */
-  readonly role?: string;
+  readonly role?: string | undefined;
   /** Metadata component name for data-kui-slot attribute. */
   readonly slotName: string;
 }
@@ -41,16 +41,13 @@ export interface DefineSlotOptions {
  * Creates a slot definition with defaults applied.
  */
 export function defineSlot(name: string, options: DefineSlotOptions = {}): SlotDefinition {
-  const def: SlotDefinition = {
+  return {
     defaultElement: options.defaultElement ?? "div",
     required: options.required ?? false,
     public: options.public ?? true,
+    role: options.role,
     slotName: name,
   };
-  if (options.role !== undefined) {
-    return { ...def, role: options.role };
-  }
-  return def;
 }
 
 /**

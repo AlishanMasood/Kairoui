@@ -18,8 +18,8 @@ describe("Polymorphic system validation", () => {
 
       render(createElement(Button, { disabled: true, type: "submit", "data-testid": "np" }, "Go"));
       const el = screen.getByTestId("np");
-      expect(el.disabled).toBe(true);
-      expect(el.type).toBe("submit");
+      expect((el as HTMLButtonElement).disabled).toBe(true);
+      expect((el as HTMLButtonElement).type).toBe("submit");
     });
 
     it("passes valid native props when as=a", () => {
@@ -38,8 +38,8 @@ describe("Polymorphic system validation", () => {
       );
       const el = screen.getByTestId("link");
       expect(el.tagName).toBe("A");
-      expect(el.href).toContain("/page");
-      expect(el.target).toBe("_blank");
+      expect((el as HTMLAnchorElement).href).toContain("/page");
+      expect((el as HTMLAnchorElement).target).toBe("_blank");
     });
   });
 

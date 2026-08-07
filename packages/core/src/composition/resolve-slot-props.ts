@@ -5,9 +5,9 @@ import type { SlotDefinition } from "./slot-definitions";
 /** Consumer-provided slot overrides. */
 export interface SlotOverrides<Names extends string> {
   /** Slot element replacements (e.g., { root: "a" }). */
-  slots?: Partial<Record<Names, ElementType>>;
+  slots?: Partial<Record<Names, ElementType>> | undefined;
   /** Additional props per slot (merged with internal props). */
-  slotProps?: Partial<Record<Names, Record<string, unknown>>>;
+  slotProps?: Partial<Record<Names, Record<string, unknown>>> | undefined;
 }
 
 /** Result of resolving a single slot's props. */
@@ -66,10 +66,10 @@ export function resolveSlotProps(options: {
  */
 export function resolveAllSlotProps<Names extends string>(options: {
   definitions: Readonly<Record<Names, SlotDefinition>>;
-  internalProps?: Partial<Record<Names, Record<string, unknown>>>;
-  accessibilityProps?: Partial<Record<Names, Record<string, unknown>>>;
-  stateProps?: Partial<Record<Names, Record<string, unknown>>>;
-  overrides?: SlotOverrides<Names>;
+  internalProps?: Partial<Record<Names, Record<string, unknown>>> | undefined;
+  accessibilityProps?: Partial<Record<Names, Record<string, unknown>>> | undefined;
+  stateProps?: Partial<Record<Names, Record<string, unknown>>> | undefined;
+  overrides?: SlotOverrides<Names> | undefined;
 }): Record<Names, ResolvedSlotProps> {
   const { definitions, internalProps, accessibilityProps, stateProps, overrides } = options;
   const result = {} as Record<Names, ResolvedSlotProps>;

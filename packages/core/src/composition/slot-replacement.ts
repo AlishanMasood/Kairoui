@@ -201,13 +201,16 @@ export type SlotReplacementProp<T extends SlotDefinitionMap> = Partial<
  * Type guard: checks if an element type is a ForwardRef component.
  * Useful for determining whether ref forwarding will work.
  */
+// React uses Symbol.for so the same symbol is shared across realms
+const REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref");
+
 export function isForwardRefComponent(
   element: ElementType,
 ): element is ForwardRefExoticComponent<Record<string, unknown>> {
   return (
     typeof element === "object" &&
     "$$typeof" in element &&
-    String((element as Record<string, unknown>)["$$typeof"]) === "Symbol(react.forward_ref)"
+    (element as Record<string | symbol, unknown>)["$$typeof"] === REACT_FORWARD_REF_TYPE
   );
 }
 

@@ -61,22 +61,14 @@ const ButtonImpl = forwardRef<
   const Element: ElementType = as ?? "button";
   const isDisabled: boolean = disabled || loading;
 
-  const hasOverrides = slotOverrides != null || slotPropsOverrides != null;
-  const overrides: SlotOverrides<ButtonSlotNames> | undefined = hasOverrides
-    ? {
-        ...(slotOverrides ? { slots: slotOverrides } : {}),
-        ...(slotPropsOverrides ? { slotProps: slotPropsOverrides } : {}),
-      }
-    : undefined;
-
-  const resolveOptions = {
+  const resolved = resolveAllSlotProps({
     definitions: buttonSlots,
     internalProps: {
-      root: { "data-kui-component": "Button" } as Record<string, unknown>,
-      startIcon: { "aria-hidden": "true" } as Record<string, unknown>,
-      content: {} as Record<string, unknown>,
-      endIcon: { "aria-hidden": "true" } as Record<string, unknown>,
-      loadingIndicator: { "aria-hidden": "true" } as Record<string, unknown>,
+      root: { "data-kui-component": "Button" },
+      startIcon: { "aria-hidden": "true" },
+      content: {},
+      endIcon: { "aria-hidden": "true" },
+      loadingIndicator: { "aria-hidden": "true" },
     },
     accessibilityProps: {
       root: {
@@ -87,20 +79,20 @@ const ButtonImpl = forwardRef<
             : { "aria-disabled": "true" }
           : {}),
         ...(loading ? { "aria-busy": "true" } : {}),
-      } as Record<string, unknown>,
+      },
     },
     stateProps: {
       root: {
         "data-state": loading ? "loading" : isDisabled ? "disabled" : "default",
         ...(loading ? { "data-loading": "" } : {}),
         ...(isDisabled ? { "data-disabled": "" } : {}),
-      } as Record<string, unknown>,
+      },
     },
-  };
-
-  const resolved = overrides
-    ? resolveAllSlotProps({ ...resolveOptions, overrides })
-    : resolveAllSlotProps(resolveOptions);
+    overrides: {
+      slots: { ...slotOverrides, root: slotOverrides?.root ?? Element },
+      slotProps: slotPropsOverrides,
+    },
+  });
 
   // Merge root slot props with consumer rest props and ref
   const rootProps = mergeProps(resolved.root.props, restProps as Record<string, unknown>);
@@ -108,11 +100,9 @@ const ButtonImpl = forwardRef<
 
   const hasStartIcon = startIcon != null;
   const hasEndIcon = endIcon != null;
-  const rootEl: ElementType =
-    (slotOverrides as Record<string, ElementType> | undefined)?.["root"] ?? Element;
 
   const rootElement = renderSlot(
-    { element: rootEl, props: rootProps },
+    { element: resolved.root.element, props: rootProps },
     <>
       {renderOptionalSlot(resolved.startIcon, hasStartIcon, startIcon)}
       {renderSlot(resolved.content, children)}

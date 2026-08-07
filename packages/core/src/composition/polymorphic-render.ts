@@ -1,7 +1,7 @@
 import { createElement, forwardRef } from "react";
 import type { ElementType, ReactElement, Ref } from "react";
 import { mergeProps } from "./merge-props";
-import type { PolymorphicComponent, PolymorphicProps } from "./polymorphic-types";
+import type { PolymorphicComponent } from "./polymorphic-types";
 
 export interface CreatePolymorphicOptions<OwnProps, DefaultElement extends ElementType> {
   /** Display name for React DevTools. */
@@ -24,21 +24,24 @@ export interface CreatePolymorphicOptions<OwnProps, DefaultElement extends Eleme
  * - Integrates with composition-layer merging (events, classNames, ARIA, refs).
  */
 export function createPolymorphicComponent<
-  OwnProps extends Record<string, unknown>,
+  OwnProps extends object,
   DefaultElement extends ElementType,
 >(
   options: CreatePolymorphicOptions<OwnProps, DefaultElement>,
 ): PolymorphicComponent<OwnProps, DefaultElement> {
   const { displayName, defaultElement, useProps } = options;
 
-  const Component = forwardRef<unknown, PolymorphicProps<OwnProps, ElementType>>((props, ref) => {
-    const { as, ...restProps } = props;
-    const Element = as ?? defaultElement;
-    const ownProps = restProps as unknown as OwnProps & { as?: ElementType };
-    const internalProps = useProps(ownProps, ref);
-    const mergedProps = mergeProps(internalProps, restProps as Record<string, unknown>);
+  // Internal render props type avoids distributing OwnProps over ElementType union
+  type RenderProps = OwnProps & { as?: ElementType } & Record<string, unknown>;
 
-    return createElement(Element, mergedProps);
+  const Component = forwardRef<unknown, RenderProps>(function PolymorphicInner(props, ref) {
+    const elementProp = (props as { as?: ElementType }).as;
+    const { as: _, ...restProps } = props;
+    const Element: ElementType = elementProp ?? defaultElement;
+    const ownProps = props as unknown as OwnProps & { as?: ElementType };
+    const internalProps = useProps(ownProps, ref);
+
+    return renderPolymorphic(Element, internalProps, restProps);
   });
 
   Component.displayName = displayName;

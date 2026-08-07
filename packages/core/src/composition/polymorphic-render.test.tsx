@@ -97,12 +97,7 @@ describe("createPolymorphicComponent", () => {
       useProps: useProps,
     });
 
-    render(
-      createElement(Button, { variant: "primary", "data-testid": "own" } as Record<
-        string,
-        unknown
-      >),
-    );
+    render(<Button variant="primary" data-testid="own" />);
     expect(useProps).toHaveBeenCalled();
   });
 });
