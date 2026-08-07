@@ -88,3 +88,6 @@ export type {
 // Polymorphic rendering
 export { createPolymorphicComponent, renderPolymorphic } from "./composition/polymorphic-render";
 export type { CreatePolymorphicOptions } from "./composition/polymorphic-render";
+
+// asChild rendering
+export { renderAsChild } from "./composition/as-child";
