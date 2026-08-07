@@ -84,3 +84,7 @@ export type {
   HTMLElementType,
   NativePolymorphicProps,
 } from "./composition/polymorphic-types";
+
+// Polymorphic rendering
+export { createPolymorphicComponent, renderPolymorphic } from "./composition/polymorphic-render";
+export type { CreatePolymorphicOptions } from "./composition/polymorphic-render";
