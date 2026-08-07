@@ -61,14 +61,22 @@ const ButtonImpl = forwardRef<
   const Element: ElementType = as ?? "button";
   const isDisabled: boolean = disabled || loading;
 
-  const resolved = resolveAllSlotProps({
+  const hasOverrides = slotOverrides != null || slotPropsOverrides != null;
+  const overrides: SlotOverrides<ButtonSlotNames> | undefined = hasOverrides
+    ? {
+        ...(slotOverrides ? { slots: slotOverrides } : {}),
+        ...(slotPropsOverrides ? { slotProps: slotPropsOverrides } : {}),
+      }
+    : undefined;
+
+  const resolveOptions = {
     definitions: buttonSlots,
     internalProps: {
-      root: { "data-kui-component": "Button" },
-      startIcon: { "aria-hidden": "true" },
-      content: {},
-      endIcon: { "aria-hidden": "true" },
-      loadingIndicator: { "aria-hidden": "true" },
+      root: { "data-kui-component": "Button" } as Record<string, unknown>,
+      startIcon: { "aria-hidden": "true" } as Record<string, unknown>,
+      content: {} as Record<string, unknown>,
+      endIcon: { "aria-hidden": "true" } as Record<string, unknown>,
+      loadingIndicator: { "aria-hidden": "true" } as Record<string, unknown>,
     },
     accessibilityProps: {
       root: {
@@ -79,20 +87,20 @@ const ButtonImpl = forwardRef<
             : { "aria-disabled": "true" }
           : {}),
         ...(loading ? { "aria-busy": "true" } : {}),
-      },
+      } as Record<string, unknown>,
     },
     stateProps: {
       root: {
         "data-state": loading ? "loading" : isDisabled ? "disabled" : "default",
         ...(loading ? { "data-loading": "" } : {}),
         ...(isDisabled ? { "data-disabled": "" } : {}),
-      },
+      } as Record<string, unknown>,
     },
-    overrides: {
-      slots: slotOverrides,
-      slotProps: slotPropsOverrides,
-    },
-  });
+  };
+
+  const resolved = overrides
+    ? resolveAllSlotProps({ ...resolveOptions, overrides })
+    : resolveAllSlotProps(resolveOptions);
 
   // Merge root slot props with consumer rest props and ref
   const rootProps = mergeProps(resolved.root.props, restProps as Record<string, unknown>);
