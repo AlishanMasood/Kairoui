@@ -102,3 +102,7 @@ export type {
   PublicSlotNames,
   RequiredSlotNames,
 } from "./composition/slot-definitions";
+
+// Slot prop composition
+export { resolveSlotProps, resolveAllSlotProps } from "./composition/resolve-slot-props";
+export type { SlotOverrides, ResolvedSlotProps } from "./composition/resolve-slot-props";
