@@ -71,3 +71,16 @@ export type { RefSources, AssignableRef } from "./composition/compose-refs";
 
 // Generic prop merging
 export { mergeProps, mergePropsAll } from "./composition/merge-props";
+
+// Polymorphic type system
+export type {
+  AsElementType,
+  PropsOf,
+  PolymorphicOwnProps,
+  PolymorphicProps,
+  PolymorphicRef,
+  PolymorphicComponent,
+  IntrinsicElementType,
+  HTMLElementType,
+  NativePolymorphicProps,
+} from "./composition/polymorphic-types";
