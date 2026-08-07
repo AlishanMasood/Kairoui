@@ -106,3 +106,6 @@ export type {
 // Slot prop composition
 export { resolveSlotProps, resolveAllSlotProps } from "./composition/resolve-slot-props";
 export type { SlotOverrides, ResolvedSlotProps } from "./composition/resolve-slot-props";
+
+// Slot rendering
+export { renderSlot, renderOptionalSlot, renderSlots } from "./composition/render-slot";
