@@ -91,3 +91,14 @@ export type { CreatePolymorphicOptions } from "./composition/polymorphic-render"
 
 // asChild rendering
 export { renderAsChild } from "./composition/as-child";
+
+// Slot definitions
+export { defineSlot, defineSlots } from "./composition/slot-definitions";
+export type {
+  SlotDefinition,
+  SlotDefinitionMap,
+  DefineSlotOptions,
+  SlotNames,
+  PublicSlotNames,
+  RequiredSlotNames,
+} from "./composition/slot-definitions";
