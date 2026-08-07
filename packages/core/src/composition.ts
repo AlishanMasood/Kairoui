@@ -109,3 +109,22 @@ export type { SlotOverrides, ResolvedSlotProps } from "./composition/resolve-slo
 
 // Slot rendering
 export { renderSlot, renderOptionalSlot, renderSlots } from "./composition/render-slot";
+
+// Slot replacement
+export {
+  validateSlotReplacement,
+  validateSlotReplacements,
+  resolveSlotElement,
+  resolveSlotElements,
+  createSlotReplacements,
+  isForwardRefComponent,
+  checkRefSupport,
+} from "./composition/slot-replacement";
+export type {
+  SlotReplacement,
+  SlotReplacementMap,
+  SlotReplacementDiagnostic,
+  SlotReplacementValidation,
+  ReplaceableSlotNames,
+  SlotReplacementProp,
+} from "./composition/slot-replacement";

@@ -3,9 +3,10 @@ import { render, screen } from "@testing-library/react";
 import { createElement } from "react";
 import { renderSlot, renderOptionalSlot, renderSlots } from "./render-slot";
 import type { ResolvedSlotProps } from "./resolve-slot-props";
+import type { ElementType } from "react";
 
-function resolved(element: string, props: Record<string, unknown> = {}): ResolvedSlotProps {
-  return { element, props: { ...props, "data-kui-slot": element } };
+function resolved(element: ElementType, props: Record<string, unknown> = {}): ResolvedSlotProps {
+  return { element, props: { ...props, "data-kui-slot": element as string } };
 }
 
 describe("renderSlot", () => {
