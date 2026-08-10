@@ -59,8 +59,19 @@ export function createComponent<
     };
 
     // Extract own/known keys from props to get consumer rest props
-    const { as: _as, asChild: _ac, ...consumerProps } = props;
-    const restProps = consumerProps as Record<string, unknown>;
+    const { as: _as, asChild: _ac, children: _ch, ...consumerProps } = props;
+    let restProps = consumerProps as Record<string, unknown>;
+
+    // Remove consumed own props so they don't leak to the DOM
+    if (result.consumedProps && result.consumedProps.length > 0) {
+      const filtered: Record<string, unknown> = {};
+      const consumed = new Set(result.consumedProps);
+      for (const key of Object.keys(restProps)) {
+        if (!consumed.has(key)) filtered[key] = restProps[key];
+      }
+      restProps = filtered;
+    }
+
     const resolvedChildren: ReactNode =
       result.children ?? (props as { children?: ReactNode }).children;
 

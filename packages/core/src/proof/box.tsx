@@ -1,19 +1,13 @@
-import { createPolymorphicComponent } from "../composition/polymorphic-render";
-import type { PolymorphicComponent } from "../composition/polymorphic-types";
+import { createComponent } from "../composition/create-component";
 
 /**
  * Internal proof component — validates the composition architecture end-to-end.
- *
- * NOT a production component. Do not export from the package.
- * This exercises: polymorphic `as`, ref forwarding, prop merging, ARIA, events, data-attrs.
+ * Migrated to createComponent factory (KUI-COMP-030).
  */
-export const Box: PolymorphicComponent<Record<string, unknown>, "div"> = createPolymorphicComponent<
-  Record<string, unknown>,
-  "div"
->({
+export const Box = createComponent<Record<string, unknown>, "div">({
   displayName: "Box",
   defaultElement: "div",
-  useProps: (_props, ref) => {
-    return { ref, "data-kui-component": "Box" };
-  },
+  useComponent: ({ ref }) => ({
+    rootProps: { ref },
+  }),
 });

@@ -88,6 +88,9 @@ export interface ComponentRenderResult<Slots extends string = never> {
   /** Internal props for the root element. Factory merges these with consumer props. */
   rootProps: Record<string, unknown>;
 
+  /** Own prop keys consumed by the component (will not pass to the DOM). */
+  consumedProps?: readonly string[] | undefined;
+
   /** Component state for data-attribute generation. */
   state?: ComponentState | undefined;
 
