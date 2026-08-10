@@ -2,8 +2,13 @@ import type { ReactNode } from "react";
 import { defineSlots } from "../composition/slot-definitions";
 import { resolveAllSlotProps } from "../composition/resolve-slot-props";
 import { renderSlot, renderOptionalSlot } from "../composition/render-slot";
-import type { SlotOverrides } from "../composition/resolve-slot-props";
 import { createComponent } from "../composition/create-component";
+import {
+  resolveDisabledProps,
+  resolveButtonType,
+  computeComponentState,
+} from "../composition/authoring-helpers";
+import type { SlotConsumerProps } from "../composition/authoring-helpers";
 
 // ─── Slot Definitions ───────────────────────────────────────────────
 
@@ -19,15 +24,13 @@ const buttonSlots = defineSlots({
 
 // ─── Props ──────────────────────────────────────────────────────────
 
-export interface ButtonOwnProps {
+export interface ButtonOwnProps extends SlotConsumerProps<ButtonSlotNames> {
   children?: ReactNode;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   loading?: boolean;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
-  slots?: SlotOverrides<ButtonSlotNames>["slots"];
-  slotProps?: SlotOverrides<ButtonSlotNames>["slotProps"];
 }
 
 // ─── Component ──────────────────────────────────────────────────────
@@ -51,7 +54,7 @@ export const Button = createComponent<ButtonOwnProps, "button">({
       slotProps: slotPropsOverrides,
     } = props;
 
-    const isDisabled = disabled || loading;
+    const state = computeComponentState({ disabled, loading });
 
     const resolved = resolveAllSlotProps({
       definitions: buttonSlots,
@@ -64,36 +67,22 @@ export const Button = createComponent<ButtonOwnProps, "button">({
       overrides: { slots: slotOverrides, slotProps: slotPropsOverrides },
     });
 
-    const hasStartIcon = startIcon != null;
-    const hasEndIcon = endIcon != null;
-
-    const slotChildren = (
-      <>
-        {renderOptionalSlot(resolved.startIcon, hasStartIcon, startIcon)}
-        {renderSlot(resolved.content, children)}
-        {renderOptionalSlot(resolved.endIcon, hasEndIcon, endIcon)}
-        {renderOptionalSlot(resolved.loadingIndicator, loading, "Loading…")}
-      </>
-    );
-
     return {
       rootProps: { ref },
       consumedProps: ["startIcon", "endIcon", "loading", "disabled", "type", "slots", "slotProps"],
-      state: {
-        disabled: isDisabled,
-        loading,
-        dataState: loading ? "loading" : isDisabled ? "disabled" : "default",
-      },
+      state,
       accessibilityProps: {
-        ...(element === "button" ? { type } : {}),
-        ...(isDisabled
-          ? element === "button"
-            ? { disabled: true }
-            : { "aria-disabled": "true" }
-          : {}),
-        ...(loading ? { "aria-busy": "true" } : {}),
+        ...resolveButtonType(element, type),
+        ...resolveDisabledProps(element, state.disabled, state.loading),
       },
-      children: slotChildren,
+      children: (
+        <>
+          {renderOptionalSlot(resolved.startIcon, startIcon != null, startIcon)}
+          {renderSlot(resolved.content, children)}
+          {renderOptionalSlot(resolved.endIcon, endIcon != null, endIcon)}
+          {renderOptionalSlot(resolved.loadingIndicator, loading, "Loading…")}
+        </>
+      ),
     };
   },
 });
