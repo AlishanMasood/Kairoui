@@ -24,6 +24,7 @@ export function renderAsChild(options: {
   children: ReactNode;
   componentName: string;
   internalRef?: AssignableRef<unknown>;
+  as?: ElementType;
 }): ReactElement {
   const {
     asChild,
@@ -33,9 +34,18 @@ export function renderAsChild(options: {
     children,
     componentName,
     internalRef,
+    as: asProp,
   } = options;
 
+  if (asChild && asProp) {
+    warning(
+      false,
+      `${componentName}: Both \`as\` and \`asChild\` were provided. \`asChild\` takes precedence; \`as\` is ignored.`,
+    );
+  }
+
   if (!asChild) {
+    const element = asProp ?? defaultElement;
     const merged = mergeProps(internalProps, consumerProps);
     if (internalRef && merged["ref"]) {
       merged["ref"] = composeRefs(internalRef, merged["ref"] as AssignableRef<unknown>);
@@ -43,7 +53,7 @@ export function renderAsChild(options: {
       merged["ref"] = internalRef;
     }
     merged["children"] = children;
-    return createElement(defaultElement, merged);
+    return createElement(element, merged);
   }
 
   // asChild mode: merge onto the single child
