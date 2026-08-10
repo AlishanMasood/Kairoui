@@ -1,4 +1,5 @@
 import type { StyleProperties } from "./style-contract";
+import { warning } from "@kairoui/utils";
 
 // ─── Variant Value Config ───────────────────────────────────────────
 
@@ -107,6 +108,16 @@ export function defineVariants<
     (axisValues as Record<string, readonly string[]>)[axis] = Object.keys(
       input.variants[axis] as Record<string, unknown>,
     ).sort();
+  }
+
+  // Validate defaults reference valid axis values
+  for (const axis of axisNames) {
+    const defaultValue = String(input.defaultVariants[axis]);
+    const validValues = (axisValues as Record<string, readonly string[]>)[axis] ?? [];
+    warning(
+      validValues.includes(defaultValue),
+      `${componentName}: Default variant "${defaultValue}" for axis "${axis}" is not a valid value. Valid values: ${validValues.join(", ")}.`,
+    );
   }
 
   return Object.freeze({
