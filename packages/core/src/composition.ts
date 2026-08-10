@@ -128,3 +128,17 @@ export type {
   ReplaceableSlotNames,
   SlotReplacementProp,
 } from "./composition/slot-replacement";
+
+// Composition diagnostics
+export {
+  warnInvalidPolymorphicTarget,
+  warnAsChildConflict,
+  warnAsChildInvalidChildren,
+  warnInternalSlotReplacement,
+  warnInvalidSlotReplacement,
+  warnUnknownSlot,
+  warnMissingRequiredSlot,
+  warnProtectedPropConflict,
+  warnSlotRefNotForwarded,
+  isValidElementType,
+} from "./composition/diagnostics";
