@@ -4,6 +4,7 @@ import type {
   TokenReference,
   ComponentStyleContract,
 } from "./style-contract";
+import type { SlotDefinitionMap, SlotNames } from "./slot-definitions";
 
 // ─── Token Reference Helper ─────────────────────────────────────────
 
@@ -69,3 +70,36 @@ export function defineCustomProperties(
 ): Readonly<Record<string, string | TokenReference>> {
   return Object.freeze({ ...properties });
 }
+
+// ─── Slot Style Helpers ─────────────────────────────────────────────
+
+/**
+ * Defines a single slot's style (base + states).
+ * Returns a frozen, immutable SlotStyleDefinition.
+ */
+export function defineSlotStyle(input: BaseSlotStyleInput): Readonly<SlotStyleDefinition> {
+  return Object.freeze({
+    base: input.base ? Object.freeze({ ...input.base }) : undefined,
+    states: input.states ? Object.freeze({ ...input.states }) : undefined,
+  });
+}
+
+/**
+ * Extracts slot names from a SlotDefinitionMap and creates a typed style contract.
+ * Ensures style slots exactly match the component's slot definitions.
+ */
+export function defineStylesFromSlots<T extends SlotDefinitionMap>(
+  componentName: string,
+  _slotDefinitions: T,
+  styles: Readonly<Record<SlotNames<T>, BaseSlotStyleInput>>,
+): ComponentStyleContract<SlotNames<T>> {
+  return defineBaseStyles(componentName, styles);
+}
+
+/**
+ * Type helper: extracts the slot names from a SlotDefinitionMap for use in style contracts.
+ * Ensures style definitions are typed to match the component's actual slots.
+ */
+export type SlotStylesFor<T extends SlotDefinitionMap> = Readonly<
+  Record<SlotNames<T>, BaseSlotStyleInput>
+>;
