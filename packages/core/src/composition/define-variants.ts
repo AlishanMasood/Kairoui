@@ -120,6 +120,51 @@ export function defineVariants<
     );
   }
 
+  // Validate each axis has at least one value
+  for (const axis of axisNames) {
+    const values = (axisValues as Record<string, readonly string[]>)[axis] ?? [];
+    warning(
+      values.length >= 1,
+      `${componentName}: Variant axis "${axis}" must have at least one value.`,
+    );
+  }
+
+  // Validate compound variant conditions reference valid axes and values
+  if (input.compoundVariants) {
+    const axisNameSet = new Set<string>(axisNames);
+    for (let i = 0; i < input.compoundVariants.length; i++) {
+      const compound = input.compoundVariants[i];
+      if (!compound) continue;
+      for (const [axis, value] of Object.entries(compound.condition)) {
+        warning(
+          axisNameSet.has(axis),
+          `${componentName}: Compound variant #${String(i + 1)} references unknown axis "${axis}". Valid axes: ${axisNames.join(", ")}.`,
+        );
+        if (axisNameSet.has(axis)) {
+          const validValues = (axisValues as Record<string, readonly string[]>)[axis] ?? [];
+          warning(
+            validValues.includes(String(value)),
+            `${componentName}: Compound variant #${String(i + 1)} has invalid value "${String(value)}" for axis "${axis}". Valid values: ${validValues.join(", ")}.`,
+          );
+        }
+      }
+    }
+  }
+
+  // Validate slot variant references
+  if (input.slotVariants) {
+    const axisNameSet = new Set<string>(axisNames);
+    const slotEntries = Object.entries(input.slotVariants);
+    for (const [slot, axisMap] of slotEntries) {
+      for (const axis of Object.keys(axisMap as Record<string, unknown>)) {
+        warning(
+          axisNameSet.has(axis),
+          `${componentName}: Slot variant for "${slot}" references unknown axis "${axis}". Valid axes: ${axisNames.join(", ")}.`,
+        );
+      }
+    }
+  }
+
   return Object.freeze({
     componentName,
     variants: input.variants,
