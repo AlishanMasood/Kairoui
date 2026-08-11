@@ -9,6 +9,7 @@ import {
 import { tokenToCssValue } from "./resolve-tokens";
 import type { CssLayer } from "./css-layers";
 import { generateLayerOrder, wrapInLayer } from "./css-layers";
+import { deduplicateContracts, deduplicateRules } from "./deduplicate-css";
 
 // ─── CSS Value Resolution ───────────────────────────────────────────
 
@@ -151,14 +152,16 @@ export function generateStylesheet(
   contracts: readonly GenerateCssInput[],
   options?: GenerateStylesheetOptions,
 ): string {
-  const sorted = [...contracts].sort((a, b) => {
+  const unique = deduplicateContracts(contracts);
+
+  const sorted = [...unique].sort((a, b) => {
     const nameA = a.componentName ?? a.contract.name;
     const nameB = b.componentName ?? b.contract.name;
     return nameA.localeCompare(nameB);
   });
 
   const sections = sorted
-    .map((input) => generateComponentCss(input))
+    .map((input) => deduplicateRules(generateComponentCss(input)))
     .filter((css) => css.length > 0);
 
   let output = sections.join("\n\n");

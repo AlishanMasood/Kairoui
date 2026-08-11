@@ -146,3 +146,11 @@ export {
 // CSS layers
 export { CSS_LAYERS, generateLayerOrder, wrapInLayer } from "./composition/css-layers";
 export type { CssLayer } from "./composition/css-layers";
+
+// CSS deduplication and metrics
+export {
+  deduplicateRules,
+  deduplicateContracts,
+  measureCssSize,
+} from "./composition/deduplicate-css";
+export type { CssSizeMetrics } from "./composition/deduplicate-css";
