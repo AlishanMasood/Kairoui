@@ -4,7 +4,9 @@
   "compilerOptions": {
     "composite": true,
     "noEmit": true,
-    "rootDir": "."
+    "paths": {
+      "@kairoui/core/src/*": ["../../packages/core/src/*"]
+    }
   },
   "include": [".storybook/**/*.ts", ".storybook/**/*.tsx", "stories/**/*.ts", "stories/**/*.tsx"],
   "exclude": ["node_modules", "storybook-static"]
