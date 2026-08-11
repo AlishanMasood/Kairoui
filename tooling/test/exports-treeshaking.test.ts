@@ -308,3 +308,76 @@ describe("Bundle size sanity", () => {
     });
   }
 });
+
+// ─── React peer dependency and bundling ─────────────────────────────
+
+describe("React peer dependency handling", () => {
+  const reactPackages = ["hooks", "core"];
+  const nonReactPackages = ["utils", "tokens", "theme"];
+
+  for (const pkg of reactPackages) {
+    it(`@kairoui/${pkg}: declares react as peerDependency`, () => {
+      const pkgJson = readPkgJson(pkg);
+      const peers = pkgJson as { peerDependencies?: Record<string, string> };
+      expect(peers.peerDependencies?.["react"]).toBeDefined();
+    });
+
+    it(`@kairoui/${pkg}: peer range supports React 18 and 19`, () => {
+      const pkgJson = readPkgJson(pkg) as { peerDependencies?: Record<string, string> };
+      const range = pkgJson.peerDependencies?.["react"] ?? "";
+      expect(range).toContain("^18");
+      expect(range).toContain("^19");
+    });
+  }
+
+  for (const pkg of nonReactPackages) {
+    it(`@kairoui/${pkg}: does not depend on react`, () => {
+      const pkgJson = readPkgJson(pkg) as {
+        dependencies?: Record<string, string>;
+        peerDependencies?: Record<string, string>;
+      };
+      expect(pkgJson.dependencies?.["react"]).toBeUndefined();
+      expect(pkgJson.peerDependencies?.["react"]).toBeUndefined();
+    });
+
+    it(`@kairoui/${pkg}: built output does not import react`, () => {
+      const content = readFileSync(resolve(PACKAGES_DIR, pkg, "dist/index.js"), "utf-8");
+      expect(content).not.toMatch(/from ['"]react['"]/);
+      expect(content).not.toMatch(/from ['"]react-dom['"]/);
+      expect(content).not.toMatch(/from ['"]react\/jsx-runtime['"]/);
+    });
+  }
+
+  it("@kairoui/hooks: externalizes react (import, not bundled)", () => {
+    const content = readFileSync(resolve(PACKAGES_DIR, "hooks/dist/index.js"), "utf-8");
+    expect(content).toMatch(/from ['"]react['"]/);
+    expect(content).not.toContain("__SECRET_INTERNALS");
+    expect(content).not.toContain("ReactCurrentDispatcher");
+  });
+
+  it("@kairoui/core: externalizes react (import, not bundled)", () => {
+    const content = readFileSync(resolve(PACKAGES_DIR, "core/dist/index.js"), "utf-8");
+    expect(content).toMatch(/from ['"]react['"]/);
+    expect(content).not.toContain("__SECRET_INTERNALS");
+  });
+
+  it("@kairoui/core composition: externalizes react", () => {
+    const content = readFileSync(resolve(PACKAGES_DIR, "core/dist/composition.js"), "utf-8");
+    expect(content).toMatch(/from ['"]react['"]/);
+    expect(content).not.toContain("__SECRET_INTERNALS");
+  });
+
+  it("@kairoui/core: externalizes react/jsx-runtime", () => {
+    const content = readFileSync(resolve(PACKAGES_DIR, "core/dist/index.js"), "utf-8");
+    expect(content).toMatch(/from ['"]react\/jsx-runtime['"]/);
+  });
+
+  it("no package bundles react-dom", () => {
+    for (const pkg of [...reactPackages, ...nonReactPackages]) {
+      const content = readFileSync(resolve(PACKAGES_DIR, pkg, "dist/index.js"), "utf-8");
+      expect(content).not.toMatch(/from ['"]react-dom['"]/);
+      expect(content).not.toContain("createRoot");
+      expect(content).not.toContain("hydrateRoot");
+    }
+  });
+});
