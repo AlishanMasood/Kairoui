@@ -31,6 +31,15 @@ function toKebab(str: string): string {
   return str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
+/** Checks if a variant axis is boolean (has "true" and optionally "false" as keys). */
+function isBooleanAxis(axisKeys: readonly string[]): boolean {
+  return (
+    axisKeys.includes("true") &&
+    axisKeys.length <= 2 &&
+    (axisKeys.length === 1 || axisKeys.includes("false"))
+  );
+}
+
 /** Generates a variant class name: kui-{component}--{value}. */
 function variantClassName(componentName: string, value: string): string {
   return `kui-${componentName}--${toKebab(value)}`;
@@ -102,7 +111,15 @@ export function resolveVariants<
     }
 
     (values as Record<string, string>)[axis] = resolved;
-    classNames.push(variantClassName(definition.componentName, resolved));
+
+    // Boolean axes: use axis name as class for true, skip for false
+    if (isBooleanAxis(axisKeys)) {
+      if (resolved === "true") {
+        classNames.push(variantClassName(definition.componentName, axis));
+      }
+    } else {
+      classNames.push(variantClassName(definition.componentName, resolved));
+    }
 
     // Merge styles from the variant value
     const valueStyles = (axisConfig as Record<string, StyleProperties>)[resolved];
