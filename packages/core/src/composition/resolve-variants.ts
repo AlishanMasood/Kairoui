@@ -41,6 +41,19 @@ function slotVariantClassName(componentName: string, slot: string, value: string
   return `kui-${componentName}__${toKebab(slot)}--${toKebab(value)}`;
 }
 
+// ─── Compound Matching ──────────────────────────────────────────────
+
+/** Checks if all conditions in a compound match the resolved values. */
+function matchesCompound(
+  condition: Readonly<Record<string, unknown>>,
+  resolvedValues: Readonly<Record<string, unknown>>,
+): boolean {
+  for (const [axis, required] of Object.entries(condition)) {
+    if (resolvedValues[axis] !== required) return false;
+  }
+  return true;
+}
+
 // ─── Variant Resolution ─────────────────────────────────────────────
 
 /**
@@ -96,6 +109,18 @@ export function resolveVariants<
     if (valueStyles) {
       for (const key of Object.keys(valueStyles)) {
         const val = valueStyles[key];
+        if (val !== undefined) {
+          mergedStyles[key] = val;
+        }
+      }
+    }
+  }
+
+  // Resolve compound variants (declaration order, all matching compounds apply)
+  for (const compound of definition.compoundVariants) {
+    if (matchesCompound(compound.condition, values)) {
+      for (const key of Object.keys(compound.styles)) {
+        const val = compound.styles[key];
         if (val !== undefined) {
           mergedStyles[key] = val;
         }
