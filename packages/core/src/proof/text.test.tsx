@@ -55,20 +55,18 @@ describe("Text: default rendering", () => {
     expect(screen.getByTestId("text").style.color).toBe("red");
   });
 
-  it("applies typography CSS variables via internal style", () => {
+  it("applies base class for typography styling", () => {
     render(<Text data-testid="text" />);
     const el = screen.getByTestId("text");
-    const style = el.getAttribute("style") ?? "";
-    // happy-dom preserves font-family var() but may strip others; SSR test validates all
-    expect(style).toContain("--kui-typography-body-font-family");
+    expect(el.className).toContain("kui-text");
   });
 
-  it("consumer style merges with internal typography style", () => {
+  it("consumer style is applied alongside base class", () => {
     render(<Text data-testid="text" style={{ color: "blue", fontSize: "2rem" }} />);
     const el = screen.getByTestId("text");
     expect(el.style.color).toBe("blue");
-    // Consumer fontSize overrides internal
     expect(el.style.fontSize).toBe("2rem");
+    expect(el.className).toContain("kui-text");
   });
 });
 
@@ -393,10 +391,9 @@ describe("Text: SSR", () => {
     expect(html).toContain("Link");
   });
 
-  it("includes typography CSS variables in SSR", () => {
+  it("includes base class in SSR output", () => {
     const html = renderToString(<Text>Styled</Text>);
-    expect(html).toContain("--kui-typography-body-font-family");
-    expect(html).toContain("--kui-typography-body-font-size");
+    expect(html).toContain("kui-text");
   });
 
   it("preserves ARIA attributes in SSR", () => {
@@ -525,13 +522,10 @@ describe("Text: composition architecture", () => {
     expect(screen.getByTestId("merge").className).toContain("consumer-text");
   });
 
-  it("internal typography style merges with consumer style", () => {
+  it("consumer style merges with base class", () => {
     render(<Text data-testid="style-merge" style={{ letterSpacing: "0.05em" }} />);
     const el = screen.getByTestId("style-merge");
-    const style = el.getAttribute("style") ?? "";
-    // Internal styles preserved
-    expect(style).toContain("--kui-typography-body-font-family");
-    // Consumer styles added
+    expect(el.className).toContain("kui-text");
     expect(el.style.letterSpacing).toBe("0.05em");
   });
 

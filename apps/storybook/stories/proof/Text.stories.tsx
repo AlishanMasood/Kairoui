@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Text } from "../../../../packages/core/src/proof/text";
+import { Text, textStyleContract } from "../../../../packages/core/src/proof/text";
+import { generateComponentCss } from "../../../../packages/core/src/composition/generate-css";
 
 const meta = {
   title: "Proof/Text",
@@ -97,4 +98,66 @@ export const SemanticElements: Story = {
       </Text>
     </div>
   ),
+};
+
+export const BaseClass: Story = {
+  name: "Base class (kui-text)",
+  render: () => (
+    <div>
+      <Text>Text with base class applied</Text>
+      <p style={{ marginTop: "8px", fontSize: "12px", color: "#666" }}>
+        Inspect element to see <code>.kui-text</code> class
+      </p>
+    </div>
+  ),
+};
+
+export const ConsumerOverride: Story = {
+  name: "Consumer className + style",
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+      <style>{`.custom-text { color: darkorange; text-decoration: underline; }`}</style>
+      <Text className="custom-text">Consumer className merged with kui-text</Text>
+      <Text style={{ fontSize: "1.25rem", fontWeight: 600 }}>Consumer inline style override</Text>
+    </div>
+  ),
+};
+
+export const TokenOverride: Story = {
+  name: "Token custom property override",
+  render: () => (
+    <div>
+      <style>{`.kui-text { --kui-text-font-size: 1.25rem; --kui-text-color: darkblue; }`}</style>
+      <Text>Typography controlled via custom properties</Text>
+      <p style={{ marginTop: "8px", fontSize: "12px", color: "#666" }}>
+        Override <code>--kui-text-font-size</code> and <code>--kui-text-color</code> via CSS
+      </p>
+    </div>
+  ),
+};
+
+export const GeneratedCss: Story = {
+  name: "Generated CSS output",
+  render: () => {
+    const css = generateComponentCss({ contract: textStyleContract });
+    return (
+      <div>
+        <Text as="p" style={{ marginBottom: "12px" }}>
+          Text styled via the contract below
+        </Text>
+        <pre
+          style={{
+            background: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "16px",
+            borderRadius: "4px",
+            fontSize: "13px",
+            overflow: "auto",
+          }}
+        >
+          {css}
+        </pre>
+      </div>
+    );
+  },
 };
