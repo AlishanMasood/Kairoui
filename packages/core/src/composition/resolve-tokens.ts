@@ -1,5 +1,5 @@
 import type { StyleProperties, TokenReference } from "./style-contract";
-import { warning } from "@kairoui/utils";
+import { warning, toKebabCase } from "@kairoui/utils";
 
 // ─── Token Path Validation ──────────────────────────────────────────
 
@@ -35,11 +35,6 @@ const ABBREVIATIONS: Readonly<Record<string, string>> = {
   spacing: "space",
 };
 
-/** Convert camelCase to kebab-case. */
-function camelToKebab(str: string): string {
-  return str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-}
-
 /** Apply abbreviations to a path segment. */
 function abbreviate(segment: string): string {
   const abbr = ABBREVIATIONS[segment];
@@ -60,7 +55,7 @@ function abbreviate(segment: string): string {
  */
 export function tokenToVar(path: string): string {
   const segments = path.split(".");
-  const transformed = segments.map((s) => camelToKebab(abbreviate(s)));
+  const transformed = segments.map((s) => toKebabCase(abbreviate(s)));
   return `--kui-${transformed.join("-")}`;
 }
 

@@ -1,4 +1,5 @@
 import type { StyleProperties, TokenReference } from "./style-contract";
+import { toKebabCase } from "@kairoui/utils";
 
 // ─── Owner State ────────────────────────────────────────────────────
 
@@ -100,7 +101,7 @@ export function stateToDataAttributes(state: OwnerState): Record<string, string>
   const attrs: Record<string, string> = {};
   for (const name of STATE_PRIORITY) {
     if (state[name] === true) {
-      attrs[`data-${camelToKebab(name)}`] = "";
+      attrs[`data-${toKebabCase(name)}`] = "";
     }
   }
   return attrs;
@@ -114,13 +115,8 @@ export function resolveDataState(state: OwnerState): string {
   for (let i = STATE_PRIORITY.length - 1; i >= 0; i--) {
     const name = STATE_PRIORITY[i];
     if (name !== undefined && state[name] === true) {
-      return camelToKebab(name);
+      return toKebabCase(name);
     }
   }
   return "default";
-}
-
-/** Converts camelCase to kebab-case. */
-function camelToKebab(str: string): string {
-  return str.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
 }

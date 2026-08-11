@@ -1,46 +1,43 @@
+import { toKebabCase } from "@kairoui/utils";
+
 /** Prefix for all KairoUI CSS classes. */
 const PREFIX = "kui-";
-
-/** Converts camelCase to kebab-case. */
-function toKebab(str: string): string {
-  return str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-}
 
 // ─── Component Classes ──────────────────────────────────────────────
 
 /** Generates the root class for a component: `kui-{name}`. */
 export function componentClass(componentName: string): string {
-  return `${PREFIX}${toKebab(componentName)}`;
+  return `${PREFIX}${toKebabCase(componentName)}`;
 }
 
 // ─── Slot Classes ───────────────────────────────────────────────────
 
 /** Generates a slot class: `kui-{component}__{slot}`. */
 export function slotClass(componentName: string, slotName: string): string {
-  return `${PREFIX}${toKebab(componentName)}__${toKebab(slotName)}`;
+  return `${PREFIX}${toKebabCase(componentName)}__${toKebabCase(slotName)}`;
 }
 
 // ─── Variant Classes ────────────────────────────────────────────────
 
 /** Generates a variant modifier class: `kui-{component}--{value}`. */
 export function variantClass(componentName: string, value: string): string {
-  return `${PREFIX}${toKebab(componentName)}--${toKebab(value)}`;
+  return `${PREFIX}${toKebabCase(componentName)}--${toKebabCase(value)}`;
 }
 
 /** Generates a boolean variant class: `kui-{component}--{axis}`. */
 export function booleanVariantClass(componentName: string, axisName: string): string {
-  return `${PREFIX}${toKebab(componentName)}--${toKebab(axisName)}`;
+  return `${PREFIX}${toKebabCase(componentName)}--${toKebabCase(axisName)}`;
 }
 
 /** Generates a compound variant class: `kui-{component}--{v1}-{v2}`. */
 export function compoundVariantClass(componentName: string, values: readonly string[]): string {
   const sorted = [...values].sort();
-  return `${PREFIX}${toKebab(componentName)}--${sorted.map(toKebab).join("-")}`;
+  return `${PREFIX}${toKebabCase(componentName)}--${sorted.map(toKebabCase).join("-")}`;
 }
 
 /** Generates a slot variant class: `kui-{component}__{slot}--{value}`. */
 export function slotVariantClass(componentName: string, slotName: string, value: string): string {
-  return `${PREFIX}${toKebab(componentName)}__${toKebab(slotName)}--${toKebab(value)}`;
+  return `${PREFIX}${toKebabCase(componentName)}__${toKebabCase(slotName)}--${toKebabCase(value)}`;
 }
 
 // ─── State Selectors ────────────────────────────────────────────────
@@ -63,7 +60,7 @@ const STATE_SELECTORS: Readonly<Record<string, string>> = {
 
 /** Returns the CSS selector for a state name. */
 export function stateSelector(stateName: string): string {
-  return STATE_SELECTORS[stateName] ?? `[data-${toKebab(stateName)}]`;
+  return STATE_SELECTORS[stateName] ?? `[data-${toKebabCase(stateName)}]`;
 }
 
 /** Generates a state selector scoped to a component: `.kui-button[data-disabled]`. */

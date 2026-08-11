@@ -1,6 +1,6 @@
 import type { StyleProperties, TokenReference } from "./style-contract";
 import type { VariantAxisConfig, VariantDefinition, VariantPropsFrom } from "./define-variants";
-import { warning } from "@kairoui/utils";
+import { warning, toKebabCase } from "@kairoui/utils";
 
 // ─── Resolution Output ──────────────────────────────────────────────
 
@@ -26,11 +26,6 @@ export interface ResolvedSlotVariants {
 
 // ─── Class Name Generation ──────────────────────────────────────────
 
-/** Converts a camelCase axis name to kebab-case. */
-function toKebab(str: string): string {
-  return str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-}
-
 /** Checks if a variant axis is boolean (has "true" and optionally "false" as keys). */
 function isBooleanAxis(axisKeys: readonly string[]): boolean {
   return (
@@ -42,12 +37,12 @@ function isBooleanAxis(axisKeys: readonly string[]): boolean {
 
 /** Generates a variant class name: kui-{component}--{value}. */
 function variantClassName(componentName: string, value: string): string {
-  return `kui-${componentName}--${toKebab(value)}`;
+  return `kui-${componentName}--${toKebabCase(value)}`;
 }
 
 /** Generates a slot variant class name: kui-{component}__{slot}--{value}. */
 function slotVariantClassName(componentName: string, slot: string, value: string): string {
-  return `kui-${componentName}__${toKebab(slot)}--${toKebab(value)}`;
+  return `kui-${componentName}__${toKebabCase(slot)}--${toKebabCase(value)}`;
 }
 
 // ─── Compound Matching ──────────────────────────────────────────────

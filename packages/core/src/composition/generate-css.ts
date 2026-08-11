@@ -10,6 +10,7 @@ import { tokenToCssValue } from "./resolve-tokens";
 import type { CssLayer } from "./css-layers";
 import { generateLayerOrder, wrapInLayer } from "./css-layers";
 import { deduplicateContracts, deduplicateRules } from "./deduplicate-css";
+import { toKebabCase } from "@kairoui/utils";
 
 // ─── CSS Value Resolution ───────────────────────────────────────────
 
@@ -18,16 +19,12 @@ function resolveCssValue(value: string | TokenReference): string {
   return tokenToCssValue(value.token, value.fallback);
 }
 
-function toKebabProperty(prop: string): string {
-  return prop.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-}
-
 // ─── CSS Rule Generation ────────────────────────────────────────────
 
 function generateProperties(props: StyleProperties, indent: string): string {
   const lines: string[] = [];
   for (const [key, value] of Object.entries(props)) {
-    lines.push(`${indent}${toKebabProperty(key)}: ${resolveCssValue(value)};`);
+    lines.push(`${indent}${toKebabCase(key)}: ${resolveCssValue(value)};`);
   }
   return lines.join("\n");
 }
@@ -108,7 +105,7 @@ export function generateComponentCss(input: GenerateCssInput): string {
     for (const compound of contract.compoundVariants) {
       if (Object.keys(compound.styles).length === 0) continue;
       const condValues = Object.values(compound.condition).filter(Boolean).sort();
-      const cls = `${componentClass(name)}--${(condValues as string[]).map((v) => toKebabProperty(v)).join("-")}`;
+      const cls = `${componentClass(name)}--${(condValues as string[]).map((v) => toKebabCase(v)).join("-")}`;
       const rule = generateRule(`.${cls}`, compound.styles);
       if (rule) sections.push(rule);
     }
