@@ -22,6 +22,7 @@ export default defineConfig(
       "**/.turbo/**",
       "**/.vite/**",
       "**/.docusaurus/**",
+      ".size-baseline/**",
     ],
   },
 
@@ -39,6 +40,7 @@ export default defineConfig(
             "*.config.*ts",
             "packages/*/tsup.config.ts",
             "packages/*/scripts/*.ts",
+            "scripts/*.ts",
             "tooling/tsup/config.ts",
           ],
           maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 16,
