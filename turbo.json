@@ -3,7 +3,14 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "tsconfig.json", "tsup.config.ts", "package.json"],
+      "inputs": [
+        "src/**",
+        "scripts/**",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "tsup.config.ts",
+        "package.json"
+      ],
       "outputs": ["dist/**"],
       "outputLogs": "new-only"
     },
