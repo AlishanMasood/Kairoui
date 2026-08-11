@@ -3,7 +3,8 @@ import { useRef, useEffect, useState } from "react";
 
 // Internal proof component — imported directly (not from public API)
 // This validates the composition architecture end-to-end in Storybook
-import { Box } from "../../../../packages/core/src/proof/box";
+import { Box, boxStyleContract } from "../../../../packages/core/src/proof/box";
+import { generateComponentCss } from "../../../../packages/core/src/composition/generate-css";
 
 const meta = {
   title: "Proof/Box",
@@ -115,5 +116,65 @@ export const Nested: Story = {
         Footer
       </Box>
     </Box>
+  ),
+};
+
+export const BaseClass: Story = {
+  name: "Base class (kui-box)",
+  render: () => (
+    <div>
+      <Box data-testid="styled">Box with base class</Box>
+      <p style={{ marginTop: "8px", fontSize: "12px", color: "#666" }}>
+        Inspect element to see <code>.kui-box</code> class applied
+      </p>
+    </div>
+  ),
+};
+
+export const ConsumerClassOverride: Story = {
+  name: "Consumer className override",
+  render: () => (
+    <div>
+      <style>{`.custom-highlight { border: 2px dashed orange; padding: 12px; }`}</style>
+      <Box className="custom-highlight">Consumer className merged with kui-box</Box>
+    </div>
+  ),
+};
+
+export const GeneratedCss: Story = {
+  name: "Generated CSS output",
+  render: () => {
+    const css = generateComponentCss({ contract: boxStyleContract });
+    return (
+      <div>
+        <Box style={{ padding: "12px", marginBottom: "12px" }}>
+          This Box&apos;s styles are defined by the contract below
+        </Box>
+        <pre
+          style={{
+            background: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "16px",
+            borderRadius: "4px",
+            fontSize: "13px",
+            overflow: "auto",
+          }}
+        >
+          {css}
+        </pre>
+      </div>
+    );
+  },
+};
+
+export const TokenReference: Story = {
+  name: "Token reference in CSS",
+  render: () => (
+    <div>
+      <style>{`.kui-box { --kui-box-bg: #e0f2fe; }`}</style>
+      <Box style={{ padding: "16px" }}>
+        Background uses token: <code>color.surface.default</code> (overridden to light blue here)
+      </Box>
+    </div>
   ),
 };
