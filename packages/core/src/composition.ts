@@ -142,3 +142,7 @@ export {
   warnSlotRefNotForwarded,
   isValidElementType,
 } from "./composition/diagnostics";
+
+// CSS layers
+export { CSS_LAYERS, generateLayerOrder, wrapInLayer } from "./composition/css-layers";
+export type { CssLayer } from "./composition/css-layers";

@@ -7,6 +7,8 @@ import {
   stateSelector,
 } from "./class-generation";
 import { tokenToCssValue } from "./resolve-tokens";
+import type { CssLayer } from "./css-layers";
+import { generateLayerOrder, wrapInLayer } from "./css-layers";
 
 // ─── CSS Value Resolution ───────────────────────────────────────────
 
@@ -138,7 +140,17 @@ export function generateComponentCss(input: GenerateCssInput): string {
  * Generates CSS for multiple component contracts.
  * Components are sorted alphabetically for deterministic output.
  */
-export function generateStylesheet(contracts: readonly GenerateCssInput[]): string {
+export interface GenerateStylesheetOptions {
+  /** Wrap output in the specified CSS layer. Defaults to undefined (no layer). */
+  readonly layer?: CssLayer | undefined;
+  /** Prepend `@layer` order declaration. Defaults to false. */
+  readonly includeLayerOrder?: boolean | undefined;
+}
+
+export function generateStylesheet(
+  contracts: readonly GenerateCssInput[],
+  options?: GenerateStylesheetOptions,
+): string {
   const sorted = [...contracts].sort((a, b) => {
     const nameA = a.componentName ?? a.contract.name;
     const nameB = b.componentName ?? b.contract.name;
@@ -149,5 +161,15 @@ export function generateStylesheet(contracts: readonly GenerateCssInput[]): stri
     .map((input) => generateComponentCss(input))
     .filter((css) => css.length > 0);
 
-  return sections.join("\n\n");
+  let output = sections.join("\n\n");
+
+  if (options?.layer && output) {
+    output = wrapInLayer(options.layer, output);
+  }
+
+  if (options?.includeLayerOrder) {
+    output = output ? `${generateLayerOrder()}\n\n${output}` : generateLayerOrder();
+  }
+
+  return output;
 }
