@@ -154,3 +154,30 @@ export {
   measureCssSize,
 } from "./composition/deduplicate-css";
 export type { CssSizeMetrics } from "./composition/deduplicate-css";
+
+// CSS generation
+export { generateComponentCss, generateStylesheet } from "./composition/generate-css";
+export type { GenerateCssInput, GenerateStylesheetOptions } from "./composition/generate-css";
+
+// Style contract types
+export type {
+  ComponentStyleContract,
+  StyleProperties,
+  TokenReference,
+  SlotStyleDefinition,
+  CSSVarReference,
+  CSSClassName,
+  StyleMetadata,
+  ConsumerStyleOverrides,
+} from "./composition/style-contract";
+
+// Class name generation
+export {
+  componentClass,
+  slotClass,
+  variantClass,
+  booleanVariantClass,
+  compoundVariantClass,
+  stateSelector,
+  buildClassList,
+} from "./composition/class-generation";

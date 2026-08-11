@@ -28,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && tsx scripts/generate-css.ts",
     "clean": "rimraf dist",
     "dev": "tsup --watch"
   },

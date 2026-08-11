@@ -38,6 +38,7 @@ export default defineConfig(
             "*.config.*js",
             "*.config.*ts",
             "packages/*/tsup.config.ts",
+            "packages/*/scripts/*.ts",
             "tooling/tsup/config.ts",
           ],
           maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 16,
