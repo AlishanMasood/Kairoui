@@ -33,3 +33,7 @@ export { surfaceStyles } from "./surface.styles";
 export { Divider } from "./divider";
 export type { DividerProps, DividerOrientation } from "./divider";
 export { dividerStyles } from "./divider.styles";
+
+export { Spacer } from "./spacer";
+export type { SpacerProps } from "./spacer";
+export { spacerStyles } from "./spacer.styles";
