@@ -2,12 +2,21 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@kairoui/tsconfig/react-library.json",
   "compilerOptions": {
-    "composite": true,
     "noEmit": true,
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
     "paths": {
       "@kairoui/core/src/*": ["../../packages/core/src/*"]
     }
   },
-  "include": [".storybook/**/*.ts", ".storybook/**/*.tsx", "stories/**/*.ts", "stories/**/*.tsx"],
+  "include": [
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "stories/**/*.ts",
+    "stories/**/*.tsx",
+    "../../packages/core/src/**/*.ts",
+    "../../packages/core/src/**/*.tsx"
+  ],
   "exclude": ["node_modules", "storybook-static"]
 }
