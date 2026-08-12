@@ -29,3 +29,7 @@ export { containerStyles } from "./container.styles";
 export { Surface } from "./surface";
 export type { SurfaceProps, SurfaceElevation, SurfaceRadius } from "./surface";
 export { surfaceStyles } from "./surface.styles";
+
+export { Divider } from "./divider";
+export type { DividerProps, DividerOrientation } from "./divider";
+export { dividerStyles } from "./divider.styles";
