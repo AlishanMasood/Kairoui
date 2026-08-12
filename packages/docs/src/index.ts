@@ -16,3 +16,6 @@ export type { PackageInstallProps } from "./package-install";
 
 export { ImportStatement } from "./import-statement";
 export type { ImportStatementProps } from "./import-statement";
+
+export { CodeBlock } from "./code-block";
+export type { CodeBlockProps } from "./code-block";
