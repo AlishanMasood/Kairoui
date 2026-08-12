@@ -17,3 +17,7 @@ export { flexStyles } from "./flex.styles";
 export { Stack } from "./stack";
 export type { StackProps } from "./stack";
 export { stackStyles } from "./stack.styles";
+
+export { Grid } from "./grid";
+export type { GridProps } from "./grid";
+export { gridStyles } from "./grid.styles";
