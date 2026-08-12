@@ -21,3 +21,7 @@ export { stackStyles } from "./stack.styles";
 export { Grid } from "./grid";
 export type { GridProps } from "./grid";
 export { gridStyles } from "./grid.styles";
+
+export { Container } from "./container";
+export type { ContainerProps, ContainerSize } from "./container";
+export { containerStyles } from "./container.styles";
