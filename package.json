@@ -20,6 +20,7 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "size-check": "vitest run tooling/test/bundle-budgets.test.ts",
     "storybook": "turbo run dev --filter=@kairoui/storybook",
     "storybook:build": "turbo run build --filter=@kairoui/storybook",
     "docs:dev": "turbo run dev --filter=@kairoui/docs",
