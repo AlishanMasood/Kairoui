@@ -41,3 +41,7 @@ export { spacerStyles } from "./spacer.styles";
 export { Center } from "./center";
 export type { CenterProps } from "./center";
 export { centerStyles } from "./center.styles";
+
+export { AspectRatio } from "./aspect-ratio";
+export type { AspectRatioProps } from "./aspect-ratio";
+export { aspectRatioStyles } from "./aspect-ratio.styles";
