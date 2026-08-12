@@ -19,23 +19,23 @@ describe("Text: style contract", () => {
 
   it("has custom properties referencing typography tokens", () => {
     const props = textStyleContract.customProperties!;
-    expect(props["--kui-text-font-family"]).toEqual({
+    expect(props["--kui-text-font"]).toEqual({
       token: "typography.body.fontFamily",
       fallback: "inherit",
     });
-    expect(props["--kui-text-font-size"]).toEqual({
+    expect(props["--kui-text-size"]).toEqual({
       token: "typography.body.fontSize",
       fallback: "0.875rem",
     });
-    expect(props["--kui-text-line-height"]).toEqual({
+    expect(props["--kui-text-leading"]).toEqual({
       token: "typography.body.lineHeight",
       fallback: "1.5",
     });
-    expect(props["--kui-text-font-weight"]).toEqual({
+    expect(props["--kui-text-weight"]).toEqual({
       token: "typography.body.fontWeight",
       fallback: "400",
     });
-    expect(props["--kui-text-letter-spacing"]).toEqual({
+    expect(props["--kui-text-tracking"]).toEqual({
       token: "typography.body.letterSpacing",
       fallback: "0em",
     });
@@ -51,11 +51,11 @@ describe("Text: style contract", () => {
 
   it("base styles use component-scoped custom properties", () => {
     const base = textStyleContract.slots["root"].base!;
-    expect(base["fontFamily"]).toBe("var(--kui-text-font-family)");
-    expect(base["fontSize"]).toBe("var(--kui-text-font-size)");
-    expect(base["lineHeight"]).toBe("var(--kui-text-line-height)");
-    expect(base["fontWeight"]).toBe("var(--kui-text-font-weight)");
-    expect(base["letterSpacing"]).toBe("var(--kui-text-letter-spacing)");
+    expect(base["fontFamily"]).toBe("var(--kui-text-font)");
+    expect(base["fontSize"]).toBe("var(--kui-text-size)");
+    expect(base["lineHeight"]).toBe("var(--kui-text-leading)");
+    expect(base["fontWeight"]).toBe("var(--kui-text-weight)");
+    expect(base["letterSpacing"]).toBe("var(--kui-text-tracking)");
     expect(base["color"]).toBe("var(--kui-text-color)");
   });
 
@@ -138,25 +138,21 @@ describe("Text: CSS generation", () => {
 
   it("generates custom properties with token var() references", () => {
     const css = generateComponentCss({ contract: textStyleContract });
-    expect(css).toContain(
-      "--kui-text-font-family: var(--kui-typography-body-font-family, inherit);",
-    );
-    expect(css).toContain("--kui-text-font-size: var(--kui-typography-body-font-size, 0.875rem);");
-    expect(css).toContain("--kui-text-line-height: var(--kui-typography-body-line-height, 1.5);");
-    expect(css).toContain("--kui-text-font-weight: var(--kui-typography-body-font-weight, 400);");
-    expect(css).toContain(
-      "--kui-text-letter-spacing: var(--kui-typography-body-letter-spacing, 0em);",
-    );
+    expect(css).toContain("--kui-text-font: var(--kui-typography-body-font-family, inherit);");
+    expect(css).toContain("--kui-text-size: var(--kui-typography-body-font-size, 0.875rem);");
+    expect(css).toContain("--kui-text-leading: var(--kui-typography-body-line-height, 1.5);");
+    expect(css).toContain("--kui-text-weight: var(--kui-typography-body-font-weight, 400);");
+    expect(css).toContain("--kui-text-tracking: var(--kui-typography-body-letter-spacing, 0em);");
     expect(css).toContain("--kui-text-color: var(--kui-color-fg-default, inherit);");
   });
 
   it("generates base style declarations using custom properties", () => {
     const css = generateComponentCss({ contract: textStyleContract });
-    expect(css).toContain("font-family: var(--kui-text-font-family);");
-    expect(css).toContain("font-size: var(--kui-text-font-size);");
-    expect(css).toContain("line-height: var(--kui-text-line-height);");
-    expect(css).toContain("font-weight: var(--kui-text-font-weight);");
-    expect(css).toContain("letter-spacing: var(--kui-text-letter-spacing);");
+    expect(css).toContain("font-family: var(--kui-text-font);");
+    expect(css).toContain("font-size: var(--kui-text-size);");
+    expect(css).toContain("line-height: var(--kui-text-leading);");
+    expect(css).toContain("font-weight: var(--kui-text-weight);");
+    expect(css).toContain("letter-spacing: var(--kui-text-tracking);");
     expect(css).toContain("color: var(--kui-text-color);");
     expect(css).toContain("margin: 0;");
   });
@@ -169,8 +165,8 @@ describe("Text: CSS generation", () => {
 
   it("custom properties section comes before base styles", () => {
     const css = generateComponentCss({ contract: textStyleContract });
-    const propIdx = css.indexOf("--kui-text-font-family:");
-    const baseIdx = css.indexOf("font-family: var(--kui-text-font-family)");
+    const propIdx = css.indexOf("--kui-text-font:");
+    const baseIdx = css.indexOf("font-family: var(--kui-text-font)");
     expect(propIdx).toBeLessThan(baseIdx);
   });
 });

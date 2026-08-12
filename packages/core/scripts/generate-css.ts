@@ -8,12 +8,12 @@ import { resolve } from "node:path";
 import { generateStylesheet } from "../src/composition/generate-css";
 import { generateLayerOrder } from "../src/composition/css-layers";
 import { boxStyles } from "../src/primitives/box.styles";
-import { textStyleContract } from "../src/proof/text.styles";
+import { textStyles } from "../src/primitives/text.styles";
 import { buttonStyleContract } from "../src/proof/button.styles";
 
 const contracts = [
   { contract: boxStyles },
-  { contract: textStyleContract },
+  { contract: textStyles },
   { contract: buttonStyleContract },
 ];
 
