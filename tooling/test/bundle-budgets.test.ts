@@ -40,6 +40,7 @@ const BUDGETS: BudgetEntry[] = [
   { pkg: "hooks", file: "dist/index.js", baseline: 6572, maxRaw: 10000, maxGzip: 3000 },
   { pkg: "core", file: "dist/index.js", baseline: 14427, maxRaw: 22000, maxGzip: 5000 },
   { pkg: "core", file: "dist/composition.js", baseline: 30382, maxRaw: 46000, maxGzip: 11000 },
+  { pkg: "core", file: "dist/primitives/index.js", baseline: 22676, maxRaw: 34000, maxGzip: 7000 },
   { pkg: "core", file: "dist/styles.css", baseline: 4252, maxRaw: 15000, maxGzip: 3000 },
 ];
 
