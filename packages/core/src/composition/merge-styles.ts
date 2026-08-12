@@ -24,25 +24,28 @@ export type StyleSource = StyleObject | undefined | null;
  * - Returns the single source directly if only one is non-empty (no unnecessary copy).
  */
 export function mergeStyles(...sources: readonly StyleSource[]): StyleObject | undefined {
-  let count = 0;
+  let result: Record<string, unknown> | undefined;
   let single: StyleObject | undefined;
+  let count = 0;
 
   for (const source of sources) {
-    if (source == null || Object.keys(source).length === 0) continue;
-    count++;
-    single = source;
+    if (source == null) continue;
+    let hasKeys = false;
+    for (const key in source) {
+      if (!Object.prototype.hasOwnProperty.call(source, key)) continue;
+      hasKeys = true;
+      if (count >= 1) {
+        if (!result) result = { ...(single as Record<string, unknown>) };
+        result[key] = (source as Record<string, unknown>)[key];
+      }
+    }
+    if (hasKeys) {
+      if (count === 0) single = source;
+      count++;
+    }
   }
 
   if (count === 0) return undefined;
   if (count === 1) return single;
-
-  const result: Record<string, unknown> = {};
-  for (const source of sources) {
-    if (source == null) continue;
-    for (const key of Object.keys(source)) {
-      result[key] = (source as Record<string, unknown>)[key];
-    }
-  }
-
   return result as StyleObject;
 }

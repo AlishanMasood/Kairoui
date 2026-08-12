@@ -43,9 +43,18 @@ export function mergeProps<B extends Record<string, unknown>, O extends Record<s
   base: B,
   override: O,
 ): B & O {
+  // Fast path: empty override returns base unchanged
+  let hasOverrideKeys = false;
+  for (const _ in override) {
+    hasOverrideKeys = true;
+    break;
+  }
+  if (!hasOverrideKeys) return base as B & O;
+
   const result: Record<string, unknown> = { ...base };
 
-  for (const key of Object.keys(override)) {
+  for (const key in override) {
+    if (!Object.prototype.hasOwnProperty.call(override, key)) continue;
     const baseValue = result[key];
     const overrideValue = (override as Record<string, unknown>)[key];
 

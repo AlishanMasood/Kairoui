@@ -39,17 +39,18 @@ export function resolveSlotProps(options: {
 }): ResolvedSlotProps {
   const {
     definition,
-    internalProps = {},
-    accessibilityProps = {},
-    stateProps = {},
-    consumerProps = {},
+    internalProps,
+    accessibilityProps,
+    stateProps,
+    consumerProps,
     elementOverride,
   } = options;
 
-  // Merge in precedence order: internal < a11y < state < consumer
-  let merged = mergeProps(internalProps, accessibilityProps);
-  merged = mergeProps(merged, stateProps);
-  merged = mergeProps(merged, consumerProps);
+  // Merge only non-empty sources to avoid unnecessary spread copies
+  let merged: Record<string, unknown> = internalProps ?? {};
+  if (accessibilityProps) merged = mergeProps(merged, accessibilityProps);
+  if (stateProps) merged = mergeProps(merged, stateProps);
+  if (consumerProps) merged = mergeProps(merged, consumerProps);
 
   // Add slot metadata
   merged["data-kui-slot"] = definition.slotName;

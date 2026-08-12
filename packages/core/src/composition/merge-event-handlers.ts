@@ -48,23 +48,47 @@ export function mergeEventHandlers<E extends ComposableEvent>(
   options: MergeEventHandlersOptions = {},
 ): ((event: E) => void) | undefined {
   const { checkDefaultPrevented = true } = options;
-  const handlers = [
-    sources.consumer,
-    sources.slot,
-    sources.accessibility,
-    sources.internal,
-    sources.child,
-  ].filter((h): h is (event: E) => void => h != null);
 
-  if (handlers.length === 0) return undefined;
-  if (handlers.length === 1) return handlers[0];
+  // Avoid allocating an array for the common 0-1 handler case
+  const a = sources.consumer ?? undefined;
+  const b = sources.slot ?? undefined;
+  const c = sources.accessibility ?? undefined;
+  const d = sources.internal ?? undefined;
+  const e = sources.child ?? undefined;
 
-  // For two handlers, reuse the Phase 4 utility directly
-  if (handlers.length === 2) {
+  let count = 0;
+  let first: ((event: E) => void) | undefined;
+  if (a) {
+    count++;
+    first = a;
+  }
+  if (b) {
+    count++;
+    first ??= b;
+  }
+  if (c) {
+    count++;
+    first ??= c;
+  }
+  if (d) {
+    count++;
+    first ??= d;
+  }
+  if (e) {
+    count++;
+    first ??= e;
+  }
+
+  if (count === 0) return undefined;
+  if (count === 1) return first;
+
+  // 2+ handlers: collect into array
+  const handlers = [a, b, c, d, e].filter((h): h is (event: E) => void => h != null);
+
+  if (count === 2) {
     return composeEventHandlers(handlers[0], handlers[1], { checkDefaultPrevented });
   }
 
-  // For 3+ handlers, chain them with defaultPrevented checks
   return (event: E): void => {
     for (const handler of handlers) {
       if (checkDefaultPrevented && event.defaultPrevented) return;

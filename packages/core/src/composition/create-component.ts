@@ -11,8 +11,9 @@ import type {
 } from "./component-factory-contract";
 
 /** Generates data-* attributes from component state. */
-function stateToDataAttrs(state: ComponentState | undefined): Record<string, unknown> {
-  if (!state) return {};
+function stateToDataAttrs(state: ComponentState | undefined): Record<string, unknown> | undefined {
+  if (!state) return undefined;
+  if (!state.dataState && !state.disabled && !state.loading) return undefined;
   const attrs: Record<string, unknown> = {};
   if (state.dataState !== undefined) attrs["data-state"] = state.dataState;
   if (state.disabled) attrs["data-disabled"] = "";
@@ -51,11 +52,12 @@ export function createComponent<
     const result: ComponentRenderResult<Slots> = useComponent(ctx);
 
     // Build internal props: rootProps + metadata + state attrs + accessibility
+    const stateAttrs = stateToDataAttrs(result.state);
     const internalProps: Record<string, unknown> = {
       "data-kui-component": displayName,
       ...result.rootProps,
-      ...stateToDataAttrs(result.state),
-      ...(result.accessibilityProps ?? {}),
+      ...stateAttrs,
+      ...(result.accessibilityProps ?? undefined),
     };
 
     // Extract own/known keys from props to get consumer rest props
