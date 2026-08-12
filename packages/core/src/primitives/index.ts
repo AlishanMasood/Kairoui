@@ -49,3 +49,7 @@ export { aspectRatioStyles } from "./aspect-ratio.styles";
 export { VisuallyHidden } from "./visually-hidden";
 export type { VisuallyHiddenProps } from "./visually-hidden";
 export { visuallyHiddenStyles } from "./visually-hidden.styles";
+
+export { Icon } from "./icon";
+export type { IconProps, IconSize } from "./icon";
+export { iconStyles } from "./icon.styles";
