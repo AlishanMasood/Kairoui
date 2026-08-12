@@ -53,34 +53,46 @@ export function generateComponentCss(input: GenerateCssInput): string {
   const name = input.componentName ?? input.contract.name;
   const contract = input.contract;
   const sections: string[] = [];
+  const rootSelector = `.${componentClass(name)}`;
 
-  // 1. Custom properties on root
-  if (contract.customProperties) {
-    const propEntries = Object.entries(contract.customProperties);
-    if (propEntries.length > 0) {
-      const lines = propEntries.map(([key, value]) => {
-        return `  ${key}: ${resolveCssValue(value)};`;
-      });
-      sections.push(`.${componentClass(name)} {\n${lines.join("\n")}\n}`);
+  // 1. Root rule: custom properties + base styles merged into single selector block
+  {
+    const rootLines: string[] = [];
+
+    if (contract.customProperties) {
+      for (const [key, value] of Object.entries(contract.customProperties)) {
+        rootLines.push(`  ${key}: ${resolveCssValue(value)};`);
+      }
+    }
+
+    const rootSlot = (contract.slots as Record<string, { base?: StyleProperties }>)["root"];
+    if (rootSlot?.base) {
+      for (const [key, value] of Object.entries(rootSlot.base)) {
+        rootLines.push(`  ${toKebabCase(key)}: ${resolveCssValue(value)};`);
+      }
+    }
+
+    if (rootLines.length > 0) {
+      sections.push(`${rootSelector} {\n${rootLines.join("\n")}\n}`);
     }
   }
 
-  // 2. Base slot styles
+  // 2. Non-root slot base styles
   for (const [slotName, slotDef] of Object.entries(contract.slots) as [
     string,
     { base?: StyleProperties; states?: Record<string, StyleProperties> },
   ][]) {
+    if (slotName === "root") continue;
     if (slotDef.base) {
-      const selector =
-        slotName === "root" ? `.${componentClass(name)}` : `.${slotClass(name, slotName)}`;
-      const rule = generateRule(selector, slotDef.base);
+      const rule = generateRule(`.${slotClass(name, slotName)}`, slotDef.base);
       if (rule) sections.push(rule);
     }
   }
 
-  // 3. Variant modifiers
+  // 3. Variant modifiers (skip default values — they never get applied as classes)
   if (contract.variants) {
     const axes = Object.keys(contract.variants).sort();
+    const defaults = contract.defaultVariants as Record<string, string> | undefined;
     for (const axis of axes) {
       const axisConfig = (contract.variants as Record<string, Record<string, StyleProperties>>)[
         axis
@@ -90,7 +102,8 @@ export function generateComponentCss(input: GenerateCssInput): string {
       const isBoolean = values.length <= 2 && values.includes("true");
 
       for (const value of values) {
-        if (isBoolean && value === "false") continue; // No class for boolean false
+        if (isBoolean && value === "false") continue;
+        if (defaults && defaults[axis] === value) continue; // Default value — no class generated at runtime
         const props = axisConfig[value];
         if (!props || Object.keys(props).length === 0) continue;
         const cls = isBoolean ? booleanVariantClass(name, axis) : variantClass(name, value);

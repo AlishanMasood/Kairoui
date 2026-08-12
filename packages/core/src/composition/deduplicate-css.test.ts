@@ -234,7 +234,7 @@ describe("CSS generation: semantic ordering", () => {
     const css = generateComponentCss({ contract: buttonContract });
     const customPropIdx = css.indexOf("--kui-button-bg");
     const baseIdx = css.indexOf("display: inline-flex");
-    const variantIdx = css.indexOf(".kui-button--solid");
+    const variantIdx = css.indexOf(".kui-button--outlined");
     const compoundIdx = css.indexOf("padding: 0 8px");
     const stateIdx = css.indexOf("[data-disabled]");
 

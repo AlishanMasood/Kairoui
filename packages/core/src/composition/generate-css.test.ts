@@ -82,10 +82,12 @@ describe("generateComponentCss", () => {
 
   it("generates variant modifier rules", () => {
     const css = generateComponentCss({ contract: buttonContract });
-    expect(css).toContain(".kui-button--solid");
+    // Default variants (solid, md) are NOT generated — they're applied via base styles
+    expect(css).not.toContain(".kui-button--solid");
+    expect(css).not.toContain(".kui-button--md");
+    // Non-default variants ARE generated
     expect(css).toContain(".kui-button--outlined");
     expect(css).toContain(".kui-button--sm");
-    expect(css).toContain(".kui-button--md");
   });
 
   it("generates compound variant rules", () => {
@@ -141,22 +143,22 @@ describe("generateComponentCss: ordering", () => {
   it("base styles come before variant styles", () => {
     const css = generateComponentCss({ contract: buttonContract });
     const baseIdx = css.indexOf("display: inline-flex");
-    const variantIdx = css.indexOf(".kui-button--solid");
+    const variantIdx = css.indexOf(".kui-button--outlined");
     expect(baseIdx).toBeLessThan(variantIdx);
   });
 
   it("variant styles come before state styles", () => {
     const css = generateComponentCss({ contract: buttonContract });
-    const variantIdx = css.indexOf(".kui-button--solid");
+    const variantIdx = css.indexOf(".kui-button--outlined");
     const stateIdx = css.indexOf("[data-disabled]");
     expect(variantIdx).toBeLessThan(stateIdx);
   });
 
   it("variants are sorted alphabetically by axis", () => {
     const css = generateComponentCss({ contract: buttonContract });
-    const solidIdx = css.indexOf(".kui-button--solid"); // appearance
+    const outlinedIdx = css.indexOf(".kui-button--outlined"); // appearance
     const smIdx = css.indexOf(".kui-button--sm"); // size
-    expect(solidIdx).toBeLessThan(smIdx);
+    expect(outlinedIdx).toBeLessThan(smIdx);
   });
 });
 

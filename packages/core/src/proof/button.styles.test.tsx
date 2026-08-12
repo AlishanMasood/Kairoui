@@ -286,11 +286,13 @@ describe("Button: CSS generation", () => {
 
   it("generates variant modifier rules", () => {
     const css = generateComponentCss({ contract: buttonStyleContract });
-    expect(css).toContain(".kui-button--solid");
+    // Default variants (solid, md) are not generated
+    expect(css).not.toContain(".kui-button--solid");
+    expect(css).not.toContain(".kui-button--md");
+    // Non-default variants are generated
     expect(css).toContain(".kui-button--outline");
     expect(css).toContain(".kui-button--subtle");
     expect(css).toContain(".kui-button--sm");
-    expect(css).toContain(".kui-button--md");
     expect(css).toContain(".kui-button--lg");
   });
 
@@ -325,7 +327,7 @@ describe("Button: CSS generation", () => {
     const css = generateComponentCss({ contract: buttonStyleContract });
     const propIdx = css.indexOf("--kui-button-bg:");
     const baseIdx = css.indexOf("display: inline-flex;");
-    const variantIdx = css.indexOf(".kui-button--solid");
+    const variantIdx = css.indexOf(".kui-button--outline");
     const stateIdx = css.indexOf("[data-disabled]");
     expect(propIdx).toBeLessThan(baseIdx);
     expect(baseIdx).toBeLessThan(variantIdx);

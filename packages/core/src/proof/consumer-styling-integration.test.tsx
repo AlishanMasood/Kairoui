@@ -186,17 +186,17 @@ describe("Consumer: theme token references", () => {
 // ─── Variant CSS generation ─────────────────────────────────────────
 
 describe("Consumer: variant CSS output", () => {
-  it("generates all appearance variant rules", () => {
+  it("generates non-default appearance variant rules", () => {
     const css = generateComponentCss({ contract: buttonStyleContract });
-    expect(css).toContain(".kui-button--solid");
+    expect(css).not.toContain(".kui-button--solid"); // default — not generated
     expect(css).toContain(".kui-button--outline");
     expect(css).toContain(".kui-button--subtle");
   });
 
-  it("generates all size variant rules", () => {
+  it("generates non-default size variant rules", () => {
     const css = generateComponentCss({ contract: buttonStyleContract });
     expect(css).toContain(".kui-button--sm");
-    expect(css).toContain(".kui-button--md");
+    expect(css).not.toContain(".kui-button--md"); // default — not generated
     expect(css).toContain(".kui-button--lg");
   });
 
