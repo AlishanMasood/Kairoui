@@ -45,3 +45,7 @@ export { centerStyles } from "./center.styles";
 export { AspectRatio } from "./aspect-ratio";
 export type { AspectRatioProps } from "./aspect-ratio";
 export { aspectRatioStyles } from "./aspect-ratio.styles";
+
+export { VisuallyHidden } from "./visually-hidden";
+export type { VisuallyHiddenProps } from "./visually-hidden";
+export { visuallyHiddenStyles } from "./visually-hidden.styles";
