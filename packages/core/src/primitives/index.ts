@@ -25,3 +25,7 @@ export { gridStyles } from "./grid.styles";
 export { Container } from "./container";
 export type { ContainerProps, ContainerSize } from "./container";
 export { containerStyles } from "./container.styles";
+
+export { Surface } from "./surface";
+export type { SurfaceProps, SurfaceElevation, SurfaceRadius } from "./surface";
+export { surfaceStyles } from "./surface.styles";
