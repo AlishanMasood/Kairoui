@@ -37,3 +37,7 @@ export { dividerStyles } from "./divider.styles";
 export { Spacer } from "./spacer";
 export type { SpacerProps } from "./spacer";
 export { spacerStyles } from "./spacer.styles";
+
+export { Center } from "./center";
+export type { CenterProps } from "./center";
+export { centerStyles } from "./center.styles";
