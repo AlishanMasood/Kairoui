@@ -1,17 +1,17 @@
 import { createComponent } from "../composition/create-component";
 import { componentClass } from "../composition/class-generation";
-import { boxStyleContract } from "./box.styles";
+import { boxStyles } from "../primitives/box.styles";
 
 /**
  * Internal proof component — validates the composition architecture end-to-end.
- * Migrated to Phase 6 styling engine (KUI-STYLE-028).
+ * Production Box lives in ../primitives/box.tsx.
  */
 export const Box = createComponent<Record<string, unknown>, "div">({
   displayName: "Box",
   defaultElement: "div",
   useComponent: ({ ref }) => ({
-    rootProps: { ref, className: componentClass(boxStyleContract.name) },
+    rootProps: { ref, className: componentClass(boxStyles.name) },
   }),
 });
 
-export { boxStyleContract };
+export { boxStyles as boxStyleContract };

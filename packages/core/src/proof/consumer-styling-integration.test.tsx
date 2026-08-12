@@ -143,9 +143,10 @@ describe("Consumer: CSS layer behavior", () => {
 // ─── Theme token consumption ────────────────────────────────────────
 
 describe("Consumer: theme token references", () => {
-  it("Box uses surface token", () => {
+  it("Box generates minimal reset styles", () => {
     const css = generateComponentCss({ contract: boxStyleContract });
-    expect(css).toContain("var(--kui-color-surface-default, transparent)");
+    expect(css).toContain("box-sizing: border-box;");
+    expect(css).toContain("min-width: 0;");
   });
 
   it("Text uses typography body tokens", () => {

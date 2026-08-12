@@ -13,6 +13,10 @@
       "types": "./dist/composition.d.ts",
       "import": "./dist/composition.js"
     },
+    "./primitives": {
+      "types": "./dist/primitives/index.d.ts",
+      "import": "./dist/primitives/index.js"
+    },
     "./styles.css": {
       "import": "./dist/styles.css"
     },

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 /**
  * Generates the static CSS file for @kairoui/core.
  * Run after tsup build to produce dist/styles.css.
@@ -7,12 +7,12 @@ import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { generateStylesheet } from "../src/composition/generate-css";
 import { generateLayerOrder } from "../src/composition/css-layers";
-import { boxStyleContract } from "../src/proof/box.styles";
+import { boxStyles } from "../src/primitives/box.styles";
 import { textStyleContract } from "../src/proof/text.styles";
 import { buttonStyleContract } from "../src/proof/button.styles";
 
 const contracts = [
-  { contract: boxStyleContract },
+  { contract: boxStyles },
   { contract: textStyleContract },
   { contract: buttonStyleContract },
 ];

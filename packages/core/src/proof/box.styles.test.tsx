@@ -17,16 +17,14 @@ describe("Box: style contract", () => {
     expect(boxStyleContract.slots["root"].base).toBeDefined();
   });
 
-  it("has custom properties with token references", () => {
-    expect(boxStyleContract.customProperties).toBeDefined();
-    expect(boxStyleContract.customProperties!["--kui-box-bg"]).toEqual({
-      token: "color.surface.default",
-      fallback: "transparent",
-    });
+  it("base styles include box-sizing reset", () => {
+    const base = boxStyleContract.slots["root"].base!;
+    expect(base["boxSizing"]).toBe("border-box");
   });
 
-  it("has display custom property", () => {
-    expect(boxStyleContract.customProperties!["--kui-box-display"]).toBe("block");
+  it("base styles include min-width reset", () => {
+    const base = boxStyleContract.slots["root"].base!;
+    expect(base["minWidth"]).toBe("0");
   });
 });
 
@@ -97,15 +95,8 @@ describe("Box: CSS generation", () => {
     expect(css).toContain(".kui-box");
   });
 
-  it("generates custom properties block", () => {
-    const css = generateComponentCss({ contract: boxStyleContract });
-    expect(css).toContain("--kui-box-display: block;");
-    expect(css).toContain("--kui-box-bg: var(--kui-color-surface-default, transparent);");
-  });
-
   it("generates base style declarations", () => {
     const css = generateComponentCss({ contract: boxStyleContract });
-    expect(css).toContain("display: var(--kui-box-display);");
     expect(css).toContain("box-sizing: border-box;");
     expect(css).toContain("min-width: 0;");
   });
@@ -114,11 +105,6 @@ describe("Box: CSS generation", () => {
     const a = generateComponentCss({ contract: boxStyleContract });
     const b = generateComponentCss({ contract: boxStyleContract });
     expect(a).toBe(b);
-  });
-
-  it("token reference resolves to CSS var()", () => {
-    const css = generateComponentCss({ contract: boxStyleContract });
-    expect(css).toContain("var(--kui-color-surface-default, transparent)");
   });
 });
 
