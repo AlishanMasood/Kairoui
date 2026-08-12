@@ -9,3 +9,7 @@ export { textStyles } from "./text.styles";
 export { Heading } from "./heading";
 export type { HeadingProps } from "./heading";
 export { headingStyles } from "./heading.styles";
+
+export { Flex } from "./flex";
+export type { FlexProps, FlexDirection, FlexWrap, FlexAlign, FlexJustify } from "./flex";
+export { flexStyles } from "./flex.styles";
