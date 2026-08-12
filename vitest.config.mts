@@ -67,7 +67,7 @@ export default defineConfig({
       // No thresholds yet — add once substantive code exists
     },
 
-    // Reporter configuration
+    // Reporter configuration // take this is scripts/check inn package.json pnpm format:check &&
     reporters: process.env.CI ? ["default", "junit"] : ["default"],
     outputFile: process.env.CI ? { junit: "./test-results/junit.xml" } : undefined,
 
