@@ -13,3 +13,7 @@ export { headingStyles } from "./heading.styles";
 export { Flex } from "./flex";
 export type { FlexProps, FlexDirection, FlexWrap, FlexAlign, FlexJustify } from "./flex";
 export { flexStyles } from "./flex.styles";
+
+export { Stack } from "./stack";
+export type { StackProps } from "./stack";
+export { stackStyles } from "./stack.styles";
