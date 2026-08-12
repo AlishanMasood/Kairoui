@@ -32,13 +32,13 @@
       "cache": false,
       "persistent": true
     },
-    "@kairoui/docs#build": {
+    "@kairoui/docs-site#build": {
       "inputs": ["docs/**", "src/**", "docusaurus.config.ts", "sidebars.ts", "package.json"],
       "outputs": ["build/**"],
       "outputLogs": "new-only",
       "env": ["NODE_ENV"]
     },
-    "@kairoui/docs#dev": {
+    "@kairoui/docs-site#dev": {
       "cache": false,
       "persistent": true
     }

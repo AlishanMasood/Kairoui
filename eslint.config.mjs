@@ -239,6 +239,31 @@ export default defineConfig(
     },
   },
 
+  // ─── Package boundary: production packages must not import @kairoui/docs ──
+  {
+    files: [
+      "packages/core/src/**/*.{ts,tsx}",
+      "packages/utils/src/**/*.{ts,tsx}",
+      "packages/tokens/src/**/*.{ts,tsx}",
+      "packages/theme/src/**/*.{ts,tsx}",
+      "packages/hooks/src/**/*.{ts,tsx}",
+      "packages/icons/src/**/*.{ts,tsx}",
+    ],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["@kairoui/docs", "@kairoui/docs/*"],
+              message: "Production packages must not depend on @kairoui/docs.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+
   // ─── Prettier compat (must be last) ──────────────────────────────
   prettierConfig,
 );

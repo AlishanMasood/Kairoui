@@ -1,0 +1,41 @@
+{
+  "name": "@kairoui/docs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Reusable documentation components for the KairoUI design system, built on KairoUI primitives.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch"
+  },
+  "keywords": [
+    "kairoui",
+    "docs",
+    "documentation",
+    "components"
+  ],
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "dependencies": {
+    "@kairoui/core": "workspace:*",
+    "@kairoui/theme": "workspace:*",
+    "@kairoui/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  }
+}
