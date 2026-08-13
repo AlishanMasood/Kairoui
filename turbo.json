@@ -33,6 +33,7 @@
       "persistent": true
     },
     "@kairoui/docs-site#build": {
+      "dependsOn": ["^build"],
       "inputs": ["docs/**", "src/**", "docusaurus.config.ts", "sidebars.ts", "package.json"],
       "outputs": ["build/**"],
       "outputLogs": "new-only",
