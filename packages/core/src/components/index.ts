@@ -38,3 +38,6 @@ export { inputStyleContract } from "./input/index";
 export { Textarea } from "./textarea/index";
 export type { TextareaProps, TextareaSize, TextareaResize } from "./textarea/index";
 export { textareaStyleContract } from "./textarea/index";
+
+export { RadioGroupContext, useRadioGroupContext } from "./selection/index";
+export type { SelectionControlBaseProps, RadioGroupContextValue } from "./selection/index";
