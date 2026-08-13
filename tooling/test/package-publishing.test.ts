@@ -186,7 +186,7 @@ describe("Publishing: pack size sanity", () => {
     theme: 350,
     hooks: 50,
     icons: 5,
-    core: 500,
+    core: 600,
   };
 
   for (const pkg of PACKAGES) {

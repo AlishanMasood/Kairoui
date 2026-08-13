@@ -41,3 +41,7 @@ export { textareaStyleContract } from "./textarea/index";
 
 export { RadioGroupContext, useRadioGroupContext } from "./selection/index";
 export type { SelectionControlBaseProps, RadioGroupContextValue } from "./selection/index";
+
+export { Checkbox } from "./checkbox/index";
+export type { CheckboxProps, CheckboxSize } from "./checkbox/index";
+export { checkboxStyleContract } from "./checkbox/index";
