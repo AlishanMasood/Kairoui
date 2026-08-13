@@ -118,6 +118,8 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
         onKeyDown: handleKeyDown,
         className: slotClass(COMPONENT_NAME, "track"),
         "data-state": isChecked ? "checked" : "unchecked",
+        ...(resolvedDisabled ? { "aria-disabled": "true" } : undefined),
+        ...(ctx?.required ? { "aria-required": "true" } : undefined),
         ...(ctx?.hasLabel ? { "aria-labelledby": ctx.labelId } : undefined),
         ...(ctx?.hasDescription || ctx?.hasError
           ? {
@@ -129,6 +131,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
                 .join(" "),
             }
           : undefined),
+        ...(ctx?.hasError ? { "aria-errormessage": ctx.errorId } : undefined),
         ...(ctx?.invalid ? { "aria-invalid": "true" } : undefined),
       },
       createElement("span", {

@@ -89,6 +89,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
           "data-orientation": orientation,
           ...(resolvedDisabled ? { "data-disabled": "" } : undefined),
           ...(ctx?.invalid ? { "data-invalid": "" } : undefined),
+          ...(ctx?.invalid ? { "aria-invalid": "true" } : undefined),
           ...(ctx?.hasLabel ? { "aria-labelledby": ctx.labelId } : undefined),
           ...(ctx?.hasDescription || ctx?.hasError
             ? {
@@ -100,6 +101,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
                   .join(" "),
               }
             : undefined),
+          ...(ctx?.hasError ? { "aria-errormessage": ctx.errorId } : undefined),
         },
         children,
       ),

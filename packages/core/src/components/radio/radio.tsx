@@ -109,6 +109,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(pro
       required: resolvedRequired,
       onChange: handleChange,
       className: slotClass(COMPONENT_NAME, "input"),
+      ...(resolvedRequired ? { "aria-required": "true" } : undefined),
       ...(ctx?.hasLabel ? { "aria-labelledby": ctx.labelId } : undefined),
       ...(ctx?.hasDescription || ctx?.hasError
         ? {
@@ -120,6 +121,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(pro
               .join(" "),
           }
         : undefined),
+      ...(ctx?.hasError ? { "aria-errormessage": ctx.errorId } : undefined),
       ...(ctx?.invalid ? { "aria-invalid": "true" } : undefined),
     }),
     // Visual control circle

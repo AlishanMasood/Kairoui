@@ -132,6 +132,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
       onChange: handleChange,
       className: slotClass(COMPONENT_NAME, "input"),
       "aria-checked": indeterminate ? "mixed" : isChecked,
+      ...(resolvedRequired ? { "aria-required": "true" } : undefined),
       ...(ctx?.hasLabel ? { "aria-labelledby": ctx.labelId } : undefined),
       ...(ctx?.hasDescription || ctx?.hasError
         ? {
@@ -143,6 +144,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
               .join(" "),
           }
         : undefined),
+      ...(ctx?.hasError ? { "aria-errormessage": ctx.errorId } : undefined),
       ...(ctx?.invalid ? { "aria-invalid": "true" } : undefined),
     }),
     // Visual control box
