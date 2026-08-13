@@ -49,3 +49,6 @@ export { checkboxStyleContract } from "./checkbox/index";
 export { Radio } from "./radio/index";
 export type { RadioProps, RadioSize } from "./radio/index";
 export { radioStyleContract } from "./radio/index";
+
+export { RadioGroup } from "./radio-group/index";
+export type { RadioGroupProps, RadioGroupOrientation } from "./radio-group/index";

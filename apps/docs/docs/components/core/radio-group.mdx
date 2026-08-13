@@ -1,0 +1,132 @@
+---
+title: RadioGroup
+sidebar_position: 9
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { RadioGroup, Radio, Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="RadioGroup"
+  description="Container for mutually exclusive Radio options with keyboard navigation, shared name, and Field integration."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["RadioGroup", "Radio"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<RadioGroup name="fruit" defaultValue="apple">
+  <Radio value="apple">Apple</Radio>
+  <Radio value="banana">Banana</Radio>
+  <Radio value="cherry">Cherry</Radio>
+</RadioGroup>`}
+>
+  <RadioGroup name="fruit-demo" defaultValue="apple">
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+      <Radio value="apple">Apple</Radio>
+      <Radio value="banana">Banana</Radio>
+      <Radio value="cherry">Cherry</Radio>
+    </div>
+  </RadioGroup>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Horizontal">
+
+<Demo
+  code={`<RadioGroup orientation="horizontal" defaultValue="center">
+  <Radio value="left">Left</Radio>
+  <Radio value="center">Center</Radio>
+  <Radio value="right">Right</Radio>
+</RadioGroup>`}
+>
+  <RadioGroup name="align-demo" orientation="horizontal" defaultValue="center">
+    <div style={{ display: "flex", gap: "16px" }}>
+      <Radio value="left">Left</Radio>
+      <Radio value="center">Center</Radio>
+      <Radio value="right">Right</Radio>
+    </div>
+  </RadioGroup>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled">
+
+<Demo
+  code={`<RadioGroup disabled defaultValue="free">
+  <Radio value="free">Free</Radio>
+  <Radio value="pro">Pro</Radio>
+</RadioGroup>`}
+>
+  <RadioGroup name="plan-disabled-demo" disabled defaultValue="free">
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+      <Radio value="free">Free</Radio>
+      <Radio value="pro">Pro</Radio>
+    </div>
+  </RadioGroup>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Field">
+
+<Demo
+  code={`<Field id="plan" required>
+  <Label>Choose a plan</Label>
+  <RadioGroup>
+    <Radio value="free">Free</Radio>
+    <Radio value="pro">Pro</Radio>
+  </RadioGroup>
+  <FieldDescription>You can change later</FieldDescription>
+</Field>`}
+>
+  <Field id="plan-demo" required>
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+      <Label>Choose a plan</Label>
+      <RadioGroup>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <Radio value="free">Free</Radio>
+          <Radio value="pro">Pro</Radio>
+        </div>
+      </RadioGroup>
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        You can change later
+      </FieldDescription>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | — | Controlled selected value |
+| `defaultValue` | `string` | — | Uncontrolled initial value |
+| `onValueChange` | `(value: string) => void` | — | Selection change callback |
+| `name` | `string` | auto-generated | Shared name for all radios |
+| `disabled` | `boolean` | `false` | Disables all radios |
+| `required` | `boolean` | `false` | At least one must be selected |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Layout direction |
+| `id` | `string` | auto from Field | Group element ID |
+| `ref` | `Ref<HTMLDivElement>` | — | Forwarded ref |
+| `className` | `string` | — | Custom class |
+| `style` | `CSSProperties` | — | Inline styles |
+
+</DocsSection>
+
+<Callout type="info" title="Keyboard navigation">
+  Native radio groups with a shared `name` attribute provide built-in arrow-key navigation.
+  RadioGroup generates a shared name automatically, so arrow keys work without custom handlers.
+</Callout>
+
+<Callout type="tip" title="Form submission">
+  Only the selected radio's `value` is submitted. If no radio is selected, nothing is submitted
+  for that name. Use `required` to enforce selection.
+</Callout>
