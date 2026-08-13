@@ -8,7 +8,7 @@ export interface FieldDescriptionProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const FieldDescription = forwardRef<HTMLSpanElement, FieldDescriptionProps>(
   function FieldDescription(props, ref) {
-    const { children, ...restProps } = props;
+    const { children, id, ...restProps } = props;
     const ctx = useFieldContext();
 
     useEffect(() => {
@@ -21,8 +21,9 @@ export const FieldDescription = forwardRef<HTMLSpanElement, FieldDescriptionProp
       {
         ...restProps,
         ref,
-        id: ctx?.descriptionId,
+        id: id ?? ctx?.descriptionId,
         "data-kui-component": "FieldDescription",
+        ...(ctx?.disabled ? { "data-disabled": "" } : undefined),
       },
       children,
     );

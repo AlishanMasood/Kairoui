@@ -1,0 +1,138 @@
+---
+title: FieldDescription & FieldError
+sidebar_position: 4
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="FieldDescription & FieldError"
+  description="Helper text and error message components that auto-associate with form controls via aria-describedby and aria-errormessage."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["FieldDescription", "FieldError"]} from="@kairoui/core/components" />
+
+<DocsSection title="FieldDescription">
+
+Provides supplementary text linked to the control via `aria-describedby`.
+
+<Demo
+  code={`<Field id="username">
+  <Label>Username</Label>
+  <FieldDescription>Must be 3-20 characters</FieldDescription>
+  <input id="username" />
+</Field>`}
+>
+  <Field id="username-demo">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Label>Username</Label>
+      <input id="username-demo" />
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        Must be 3-20 characters
+      </FieldDescription>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="FieldError">
+
+Displays validation errors as a live region (`role="alert"`), automatically announced by screen readers.
+
+<Demo
+  code={`<Field id="email" validationState="invalid">
+  <Label>Email</Label>
+  <input id="email" />
+  <FieldError>Please enter a valid email address</FieldError>
+</Field>`}
+>
+  <Field id="email-demo" validationState="invalid">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Label>Email</Label>
+      <input id="email-demo" style={{ borderColor: "red" }} />
+      <FieldError style={{ fontSize: "0.85em", color: "red" }}>
+        Please enter a valid email address
+      </FieldError>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Combined Usage">
+
+Both description and error can exist simultaneously. The control's `aria-describedby` references both.
+
+<Demo
+  code={`<Field id="password" required validationState="invalid">
+  <Label>Password</Label>
+  <input id="password" type="password" />
+  <FieldDescription>Minimum 8 characters</FieldDescription>
+  <FieldError>Password is too short</FieldError>
+</Field>`}
+>
+  <Field id="password-demo" required validationState="invalid">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Label>Password</Label>
+      <input id="password-demo" type="password" style={{ borderColor: "red" }} />
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        Minimum 8 characters
+      </FieldDescription>
+      <FieldError style={{ fontSize: "0.85em", color: "red" }}>
+        Password is too short
+      </FieldError>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API: FieldDescription">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Description text |
+| `id` | `string` | auto from Field | Element ID |
+| `ref` | `Ref<HTMLSpanElement>` | — | Forwarded ref |
+| `className` | `string` | — | Custom class |
+| `style` | `CSSProperties` | — | Inline styles |
+
+**Data attributes:**
+
+| Attribute | Condition |
+| --- | --- |
+| `data-disabled` | Field has `disabled` |
+
+</DocsSection>
+
+<DocsSection title="API: FieldError">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Error message text |
+| `id` | `string` | auto from Field | Element ID |
+| `ref` | `Ref<HTMLSpanElement>` | — | Forwarded ref |
+| `className` | `string` | — | Custom class |
+| `style` | `CSSProperties` | — | Inline styles |
+
+**Accessibility:**
+
+- `role="alert"` — announces to screen readers immediately
+- `aria-live="assertive"` — interrupts current speech
+
+</DocsSection>
+
+<Callout type="warning" title="Error announcement">
+  FieldError uses `role="alert"` which causes immediate announcement by screen readers.
+  Only render FieldError when there is an actual validation error to communicate. Do not
+  use it for informational messages — use FieldDescription instead.
+</Callout>
+
+<Callout type="tip" title="Standalone usage">
+  Both components work outside of Field — just pass your own `id` prop and wire
+  `aria-describedby` / `aria-errormessage` manually on your control.
+</Callout>

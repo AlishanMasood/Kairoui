@@ -8,7 +8,7 @@ export interface FieldErrorProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const FieldError = forwardRef<HTMLSpanElement, FieldErrorProps>(
   function FieldError(props, ref) {
-    const { children, ...restProps } = props;
+    const { children, id, ...restProps } = props;
     const ctx = useFieldContext();
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export const FieldError = forwardRef<HTMLSpanElement, FieldErrorProps>(
       {
         ...restProps,
         ref,
-        id: ctx?.errorId,
+        id: id ?? ctx?.errorId,
         role: "alert",
         "aria-live": "assertive",
         "data-kui-component": "FieldError",
