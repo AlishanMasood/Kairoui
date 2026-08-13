@@ -45,3 +45,7 @@ export type { SelectionControlBaseProps, RadioGroupContextValue } from "./select
 export { Checkbox } from "./checkbox/index";
 export type { CheckboxProps, CheckboxSize } from "./checkbox/index";
 export { checkboxStyleContract } from "./checkbox/index";
+
+export { Radio } from "./radio/index";
+export type { RadioProps, RadioSize } from "./radio/index";
+export { radioStyleContract } from "./radio/index";

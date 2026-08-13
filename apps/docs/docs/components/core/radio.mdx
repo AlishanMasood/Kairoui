@@ -1,0 +1,88 @@
+---
+title: Radio
+sidebar_position: 8
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Radio } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Radio"
+  description="Single-option selection control with native form participation. Works standalone or within a RadioGroup."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Radio"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Radio value="yes">Yes, I agree</Radio>`}>
+  <Radio value="yes">Yes, I agree</Radio>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Default Checked">
+
+<Demo code={`<Radio value="opt" defaultChecked>Pre-selected</Radio>`}>
+  <Radio value="opt" defaultChecked>Pre-selected</Radio>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Sizes">
+
+<Demo
+  code={`<Radio value="a" size="sm">Small</Radio>
+<Radio value="b" size="md">Medium</Radio>
+<Radio value="c" size="lg">Large</Radio>`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <Radio value="a" size="sm">Small</Radio>
+    <Radio value="b" size="md">Medium (default)</Radio>
+    <Radio value="c" size="lg">Large</Radio>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled">
+
+<Demo code={`<Radio value="x" disabled>Cannot select</Radio>`}>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <Radio value="a" disabled>Disabled unchecked</Radio>
+    <Radio value="b" disabled defaultChecked>Disabled checked</Radio>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Label content |
+| `value` | `string` | `"on"` | Form submission value |
+| `checked` | `boolean` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled initial state |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Change callback (standalone) |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
+| `disabled` | `boolean` | `false` | Disables the radio |
+| `required` | `boolean` | `false` | Marks as required |
+| `name` | `string` | — | Form submission name |
+| `id` | `string` | auto from Field | Input element ID |
+| `ref` | `Ref<HTMLInputElement>` | — | Forwarded to native input |
+
+</DocsSection>
+
+<Callout type="info" title="RadioGroup integration">
+  When used inside a RadioGroup (KUI-CORE-013), Radio automatically receives its `name`,
+  `checked` state, `disabled`, and `required` from group context. The `onCheckedChange`
+  prop is ignored in favor of the group's `onValueChange`.
+</Callout>
+
+<Callout type="info" title="Native behavior">
+  Radio uses a native `<input type="radio">` for built-in form submission and accessibility.
+  Only the selected radio in a name group submits its value.
+</Callout>
