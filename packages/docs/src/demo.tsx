@@ -3,7 +3,7 @@ import type { CSSProperties, ReactElement, ReactNode } from "react";
 
 export interface DemoProps {
   /** Rendered component preview. */
-  children: ReactNode;
+  children?: ReactNode;
   /** Source code string for the example. */
   code?: string;
   /** Language for syntax highlighting. */

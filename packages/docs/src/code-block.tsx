@@ -3,7 +3,7 @@ import type { CSSProperties, ReactElement, ReactNode } from "react";
 
 export interface CodeBlockProps {
   /** The source code to display. */
-  children: string;
+  children?: string;
   /** Language identifier (e.g., "tsx", "bash"). */
   language?: string;
   /** Optional filename shown above the code. */
@@ -80,17 +80,19 @@ export function CodeBlock({
 }: CodeBlockProps): ReactElement {
   const [copied, setCopied] = useState(false);
 
+  const code = children ?? "";
+
   const handleCopy = useCallback(() => {
-    void navigator.clipboard.writeText(children).then(() => {
+    void navigator.clipboard.writeText(code).then(() => {
       setCopied(true);
       setTimeout(() => {
         setCopied(false);
       }, 2000);
     });
-  }, [children]);
+  }, [code]);
 
   const showHeader = filename || (copyable && !filename);
-  const highlighted = highlight ? highlight(children, language ?? "text") : null;
+  const highlighted = highlight ? highlight(code, language ?? "text") : null;
 
   return createElement(
     "div",
@@ -122,7 +124,7 @@ export function CodeBlock({
     createElement(
       "pre",
       { style: preStyle, tabIndex: 0, "aria-label": filename ? `Code: ${filename}` : "Code block" },
-      highlighted ?? createElement("code", null, children),
+      highlighted ?? createElement("code", null, code),
     ),
   );
 }
