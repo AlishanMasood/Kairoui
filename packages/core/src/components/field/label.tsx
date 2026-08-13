@@ -7,7 +7,7 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(props, ref) {
-  const { children, ...restProps } = props;
+  const { children, id, htmlFor, ...restProps } = props;
   const ctx = useFieldContext();
 
   useEffect(() => {
@@ -20,10 +20,11 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(pro
     {
       ...restProps,
       ref,
-      id: ctx?.labelId,
-      htmlFor: ctx?.fieldId,
+      id: id ?? ctx?.labelId,
+      htmlFor: htmlFor ?? ctx?.fieldId,
       "data-kui-component": "Label",
       ...(ctx?.required ? { "data-required": "" } : undefined),
+      ...(ctx?.disabled ? { "data-disabled": "" } : undefined),
     },
     children,
   );

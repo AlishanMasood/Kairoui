@@ -1,0 +1,118 @@
+---
+title: Label
+sidebar_position: 3
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Label, Field } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Label"
+  description="Accessible label for form controls. Uses native <label> semantics and auto-associates when used inside a Field."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Label"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+Use `htmlFor` to associate the label with a control by ID.
+
+<Demo
+  code={`<>
+  <Label htmlFor="name-input">Full name</Label>
+  <input id="name-input" />
+</>`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+    <Label htmlFor="name-input-demo">Full name</Label>
+    <input id="name-input-demo" />
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Field">
+
+Inside a Field, Label automatically receives the correct `id` and `htmlFor` — no manual wiring needed.
+
+<Demo
+  code={`<Field id="email" required>
+  <Label>Email address</Label>
+  <input id="email" />
+</Field>`}
+>
+  <Field id="email-demo" required>
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Label>Email address</Label>
+      <input id="email-demo" />
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Required Indicator">
+
+When the parent Field has `required`, Label receives `data-required` for CSS styling (e.g., showing an asterisk).
+
+<Demo
+  code={`<Field required>
+  <Label>Password</Label>
+</Field>`}
+>
+  <Field required>
+    <Label style={{ fontWeight: 500 }}>
+      Password <span style={{ color: "red" }}>*</span>
+    </Label>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled State">
+
+When the parent Field has `disabled`, Label receives `data-disabled` for reduced-emphasis styling.
+
+<Demo
+  code={`<Field disabled>
+  <Label>Username (disabled)</Label>
+</Field>`}
+>
+  <Field disabled>
+    <Label style={{ opacity: 0.5 }}>Username (disabled)</Label>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Label text |
+| `htmlFor` | `string` | auto from Field | Target control ID |
+| `id` | `string` | auto from Field | Label element ID |
+| `ref` | `Ref<HTMLLabelElement>` | — | Forwarded to label element |
+| `className` | `string` | — | Custom class |
+| `style` | `CSSProperties` | — | Inline styles |
+
+**Data attributes (auto-applied via Field context):**
+
+| Attribute | Condition |
+| --- | --- |
+| `data-required` | Field has `required` |
+| `data-disabled` | Field has `disabled` |
+
+</DocsSection>
+
+<Callout type="info" title="Native semantics">
+  Label renders a native `<label>` element. Clicking the label focuses the associated control
+  via the browser's built-in behavior — no JavaScript required.
+</Callout>
+
+<Callout type="tip" title="Standalone usage">
+  Label works outside of Field too — just pass `htmlFor` manually. The Field integration is
+  optional convenience, not a requirement.
+</Callout>
