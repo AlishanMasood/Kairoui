@@ -1,0 +1,48 @@
+---
+title: Divider
+sidebar_position: 9
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Divider, Stack, Text } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Divider"
+  description="Semantic separator line."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Divider"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Stack gap={8}>
+  <Text>Above the divider</Text>
+  <Divider />
+  <Text>Below the divider</Text>
+</Stack>`}
+>
+  <Stack gap={8}>
+    <Text>Above the divider</Text>
+    <Divider />
+    <Text>Below the divider</Text>
+  </Stack>
+</Demo>
+
+</DocsSection>
+
+<Callout type="info" title="Accessibility">
+  Divider renders a native `hr` element with implicit separator role. Use `decorative` for
+  visual-only dividers that should not be announced.
+</Callout>
+
+<DocsSection title="API">
+
+| Prop          | Type                         | Default        | Description                         |
+| ------------- | ---------------------------- | -------------- | ----------------------------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direction                           |
+| `decorative`  | `boolean`                    | —              | Sets role="none" for screen readers |
+
+</DocsSection>

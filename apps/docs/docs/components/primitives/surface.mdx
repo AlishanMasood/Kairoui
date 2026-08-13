@@ -1,0 +1,48 @@
+---
+title: Surface
+sidebar_position: 8
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { Surface, Stack, Text } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Surface"
+  description="Visual container with background, border, elevation, and radius."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Surface"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Elevation">
+
+<Demo
+  code={`<Surface elevation="sm" radius="md" style={{ padding: "16px" }}>
+  Elevated panel
+</Surface>`}
+>
+  <div style={{ display: "flex", gap: "16px" }}>
+    <Surface elevation="sm" radius="md" style={{ padding: "16px" }}>
+      Small
+    </Surface>
+    <Surface elevation="md" radius="md" style={{ padding: "16px" }}>
+      Medium
+    </Surface>
+    <Surface elevation="lg" radius="md" style={{ padding: "16px" }}>
+      Large
+    </Surface>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop        | Type                                       | Default             | Description   |
+| ----------- | ------------------------------------------ | ------------------- | ------------- |
+| `elevation` | `"none" \| "sm" \| "md" \| "lg"`           | CSS custom property | Box shadow    |
+| `radius`    | `"none" \| "sm" \| "md" \| "lg" \| "full"` | CSS custom property | Border radius |
+| `bordered`  | `boolean`                                  | `true`              | Show border   |
+
+</DocsSection>

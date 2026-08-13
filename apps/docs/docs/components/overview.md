@@ -1,33 +1,34 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 title: Components Overview
 ---
 
 # Components
 
-:::note[Placeholder]
-Component documentation will be added as components are implemented. Each component page will include usage examples, API reference, and accessibility notes.
-:::
+## Primitives
+
+KairoUI provides 14 production-ready [primitive components](/components/primitives) for layout, typography, and structure:
+
+**Layout:** Box, Flex, Stack, Grid, Container, Center
+**Typography:** Text, Heading
+**Visual:** Surface, Divider, AspectRatio, Icon
+**Utility:** Spacer, VisuallyHidden
+
+See the [Primitives section](/components/primitives) for full documentation.
 
 ## Planned Components
 
-The following components are planned for initial development:
-
-### Layout
-
-- Box, Stack, Flex, Grid, Container, Divider
-
-### Typography
-
-- Heading, Text, Code, Link
-
-### Input
+### Interactive (Phase 8)
 
 - Button, IconButton, Input, Textarea, Select, Checkbox, Radio, Switch
 
-### Feedback
+### Feedback (Phase 10)
 
 - Alert, Toast, Progress, Spinner, Skeleton
+
+### Navigation (Phase 11)
+
+- Tabs, Breadcrumbs, Pagination, NavigationMenu
 
 ### Overlay
 

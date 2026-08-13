@@ -1,0 +1,63 @@
+---
+title: Icon
+sidebar_position: 14
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Icon, Flex } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Icon"
+  description="Accessible SVG icon wrapper."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Icon"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Sizes">
+
+<Demo
+  code={`<Flex gap={12} align="center">
+  <Icon size="xs"><circle cx="6" cy="6" r="5" /></Icon>
+  <Icon size="sm"><circle cx="8" cy="8" r="7" /></Icon>
+  <Icon size="md"><circle cx="10" cy="10" r="9" /></Icon>
+  <Icon size="lg"><circle cx="12" cy="12" r="11" /></Icon>
+  <Icon size="xl"><circle cx="16" cy="16" r="15" /></Icon>
+</Flex>`}
+>
+  <Flex gap={12} align="center">
+    <Icon size="xs">
+      <circle cx="6" cy="6" r="5" />
+    </Icon>
+    <Icon size="sm">
+      <circle cx="8" cy="8" r="7" />
+    </Icon>
+    <Icon size="md">
+      <circle cx="10" cy="10" r="9" />
+    </Icon>
+    <Icon size="lg">
+      <circle cx="12" cy="12" r="11" />
+    </Icon>
+    <Icon size="xl">
+      <circle cx="16" cy="16" r="15" />
+    </Icon>
+  </Flex>
+</Demo>
+
+</DocsSection>
+
+<Callout type="info" title="Accessibility">
+  **Decorative icons** (no `label`) get `aria-hidden="true"`. **Meaningful icons** require a `label`
+  prop which sets `role="img"` and `aria-label`.
+</Callout>
+
+<DocsSection title="API">
+
+| Prop    | Type               | Default        | Description                                  |
+| ------- | ------------------ | -------------- | -------------------------------------------- |
+| `size`  | `string \| number` | `"md"`         | xs=12, sm=16, md=20, lg=24, xl=32, or custom |
+| `label` | `string`           | —              | Accessible label (makes icon meaningful)     |
+| `color` | `string`           | `currentColor` | CSS color                                    |
+
+</DocsSection>

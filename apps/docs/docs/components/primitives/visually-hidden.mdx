@@ -1,0 +1,46 @@
+---
+title: VisuallyHidden
+sidebar_position: 13
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { VisuallyHidden, Text } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="VisuallyHidden"
+  description="Hides content visually while keeping it accessible to screen readers."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["VisuallyHidden"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Usage">
+
+<Demo
+  code={`<div>
+  <VisuallyHidden>This text is only visible to screen readers</VisuallyHidden>
+  <Text>Visible text</Text>
+</div>`}
+>
+  <div>
+    <VisuallyHidden>This text is only visible to screen readers</VisuallyHidden>
+    <Text>Visible text (inspect DOM to see the hidden content)</Text>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<Callout type="warning" title="Not display:none">
+  VisuallyHidden does NOT use display:none, visibility:hidden, or aria-hidden. Content remains fully
+  accessible to assistive technology.
+</Callout>
+
+<DocsSection title="API">
+
+| Prop       | Type          | Default  | Description                            |
+| ---------- | ------------- | -------- | -------------------------------------- |
+| `as`       | `ElementType` | `"span"` | Rendered element                       |
+| `children` | `ReactNode`   | —        | Content (accessible to screen readers) |
+
+</DocsSection>

@@ -1,0 +1,61 @@
+---
+title: Box
+sidebar_position: 1
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Box } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Box"
+  description="The foundational layout primitive. A polymorphic container with minimal reset styles."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Box"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Box style={{ padding: "16px", border: "1px solid #ccc" }}>
+  Content inside a Box
+</Box>`}
+>
+  <Box style={{ padding: "16px", border: "1px solid #ccc" }}>Content inside a Box</Box>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Polymorphic Rendering">
+
+Use `as` to change the rendered element while keeping Box behavior.
+
+<Demo
+  code={`<Box as="section" style={{ padding: "16px", background: "#f5f5f5" }}>
+  Rendered as a section element
+</Box>`}
+>
+  <Box as="section" style={{ padding: "16px", background: "#f5f5f5" }}>
+    Rendered as a section element
+  </Box>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop        | Type            | Default | Description                |
+| ----------- | --------------- | ------- | -------------------------- |
+| `as`        | `ElementType`   | `"div"` | Rendered element           |
+| `ref`       | `Ref`           | —       | Forwarded to DOM element   |
+| `className` | `string`        | —       | Merged with internal class |
+| `style`     | `CSSProperties` | —       | Merged per-property        |
+| `children`  | `ReactNode`     | —       | Content                    |
+
+</DocsSection>
+
+<Callout type="tip" title="When to use Box">
+  Use Box as a generic container when no more specific primitive fits. For flex layouts, use Flex or
+  Stack instead.
+</Callout>

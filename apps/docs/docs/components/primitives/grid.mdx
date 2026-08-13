@@ -1,0 +1,55 @@
+---
+title: Grid
+sidebar_position: 6
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { Grid, Box } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Grid"
+  description="CSS Grid layout primitive."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Grid"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Basic Grid">
+
+<Demo
+  code={`<Grid columns={3} gap={12}>
+  <Box style={{ padding: "12px", background: "#e5e5e5" }}>1</Box>
+  <Box style={{ padding: "12px", background: "#e5e5e5" }}>2</Box>
+  <Box style={{ padding: "12px", background: "#e5e5e5" }}>3</Box>
+  <Box style={{ padding: "12px", background: "#e5e5e5" }}>4</Box>
+  <Box style={{ padding: "12px", background: "#e5e5e5" }}>5</Box>
+  <Box style={{ padding: "12px", background: "#e5e5e5" }}>6</Box>
+</Grid>`}
+>
+  <Grid columns={3} gap={12}>
+    <Box style={{ padding: "12px", background: "#e5e5e5" }}>1</Box>
+    <Box style={{ padding: "12px", background: "#e5e5e5" }}>2</Box>
+    <Box style={{ padding: "12px", background: "#e5e5e5" }}>3</Box>
+    <Box style={{ padding: "12px", background: "#e5e5e5" }}>4</Box>
+    <Box style={{ padding: "12px", background: "#e5e5e5" }}>5</Box>
+    <Box style={{ padding: "12px", background: "#e5e5e5" }}>6</Box>
+  </Grid>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop        | Type               | Default | Description                                  |
+| ----------- | ------------------ | ------- | -------------------------------------------- |
+| `columns`   | `number \| string` | —       | Number → `repeat(n, 1fr)`, string → template |
+| `rows`      | `string`           | —       | grid-template-rows                           |
+| `gap`       | `string \| number` | —       | Gap between items                            |
+| `columnGap` | `string \| number` | —       | Column gap                                   |
+| `rowGap`    | `string \| number` | —       | Row gap                                      |
+| `align`     | `FlexAlign`        | —       | Align items                                  |
+| `justify`   | `FlexJustify`      | —       | Justify content                              |
+| `inline`    | `boolean`          | —       | inline-grid                                  |
+
+</DocsSection>

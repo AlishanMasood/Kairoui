@@ -1,0 +1,48 @@
+---
+title: Spacer
+sidebar_position: 12
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Spacer, Box, Stack } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Spacer"
+  description="Explicit whitespace control."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Spacer"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Box style={{ border: "1px solid #ccc" }}>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>Above</Box>
+  <Spacer size={24} />
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>Below</Box>
+</Box>`}
+>
+  <Box style={{ border: "1px solid #ccc" }}>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>Above</Box>
+    <Spacer size={24} />
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>Below</Box>
+  </Box>
+</Demo>
+
+</DocsSection>
+
+<Callout type="tip" title="Prefer gap">
+  Use `gap` on Flex or Stack for uniform spacing between children. Use Spacer only for one-off
+  spacing needs.
+</Callout>
+
+<DocsSection title="API">
+
+| Prop   | Type                         | Default      | Description                |
+| ------ | ---------------------------- | ------------ | -------------------------- |
+| `size` | `string \| number`           | `16`         | Space amount (number → px) |
+| `axis` | `"vertical" \| "horizontal"` | `"vertical"` | Sets height or width       |
+
+</DocsSection>

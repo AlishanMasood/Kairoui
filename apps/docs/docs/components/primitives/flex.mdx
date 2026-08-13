@@ -1,0 +1,70 @@
+---
+title: Flex
+sidebar_position: 4
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { Flex, Box } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Flex"
+  description="Flexbox layout primitive with direction, alignment, and gap."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Flex"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Direction">
+
+<Demo
+  code={`<Flex direction="row" gap={8}>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>A</Box>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>B</Box>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>C</Box>
+</Flex>`}
+>
+  <Flex direction="row" gap={8}>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>A</Box>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>B</Box>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>C</Box>
+  </Flex>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Alignment">
+
+<Demo
+  code={`<Flex direction="row" align="center" justify="between" gap={16}
+  style={{ height: "80px", border: "1px dashed #ccc" }}>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>Start</Box>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>End</Box>
+</Flex>`}
+>
+  <Flex
+    direction="row"
+    align="center"
+    justify="between"
+    gap={16}
+    style={{ height: "80px", border: "1px dashed #ccc" }}
+  >
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>Start</Box>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>End</Box>
+  </Flex>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop        | Type                                                                | Default | Description             |
+| ----------- | ------------------------------------------------------------------- | ------- | ----------------------- |
+| `direction` | `"row" \| "column" \| "row-reverse" \| "column-reverse"`            | —       | Flex direction          |
+| `align`     | `"start" \| "center" \| "end" \| "stretch" \| "baseline"`           | —       | Cross-axis alignment    |
+| `justify`   | `"start" \| "center" \| "end" \| "between" \| "around" \| "evenly"` | —       | Main-axis justification |
+| `wrap`      | `"nowrap" \| "wrap" \| "wrap-reverse"`                              | —       | Flex wrapping           |
+| `gap`       | `string \| number`                                                  | —       | Gap between children    |
+| `inline`    | `boolean`                                                           | —       | Use inline-flex         |
+
+</DocsSection>

@@ -1,0 +1,54 @@
+---
+title: Primitives
+sidebar_position: 1
+---
+
+import { Callout, ComponentHeader, ImportStatement } from "@kairoui/docs";
+
+# Primitive Components
+
+<Callout type="info" title="What are primitives?">
+  Primitives are the foundational building blocks of KairoUI. They provide layout, typography, and
+  structural patterns that all higher-level components are built on.
+</Callout>
+
+## Installation
+
+<ImportStatement
+  imports={["Box", "Text", "Heading", "Flex", "Stack"]}
+  from="@kairoui/core/primitives"
+/>
+
+## Layout Primitives
+
+| Component                                     | Purpose                                         |
+| --------------------------------------------- | ----------------------------------------------- |
+| [Box](/components/primitives/box)             | Generic polymorphic container with reset styles |
+| [Flex](/components/primitives/flex)           | Flexbox layout with direction, alignment, gap   |
+| [Stack](/components/primitives/stack)         | Vertical/horizontal spacing between children    |
+| [Grid](/components/primitives/grid)           | CSS Grid layout with columns, rows, gap         |
+| [Container](/components/primitives/container) | Max-width centered content area                 |
+| [Center](/components/primitives/center)       | Center content horizontally and vertically      |
+
+## Typography Primitives
+
+| Component                                 | Purpose                                  |
+| ----------------------------------------- | ---------------------------------------- |
+| [Text](/components/primitives/text)       | Inline/block text with typography tokens |
+| [Heading](/components/primitives/heading) | Semantic heading (h1–h6)                 |
+
+## Visual Primitives
+
+| Component                                          | Purpose                                        |
+| -------------------------------------------------- | ---------------------------------------------- |
+| [Surface](/components/primitives/surface)          | Elevated panel with background, border, shadow |
+| [Divider](/components/primitives/divider)          | Semantic separator                             |
+| [AspectRatio](/components/primitives/aspect-ratio) | Fixed aspect ratio container                   |
+| [Icon](/components/primitives/icon)                | Accessible SVG icon wrapper                    |
+
+## Utility Primitives
+
+| Component                                                | Purpose                    |
+| -------------------------------------------------------- | -------------------------- |
+| [Spacer](/components/primitives/spacer)                  | Explicit whitespace        |
+| [VisuallyHidden](/components/primitives/visually-hidden) | Screen-reader-only content |

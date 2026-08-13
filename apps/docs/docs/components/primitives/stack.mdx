@@ -1,0 +1,67 @@
+---
+title: Stack
+sidebar_position: 5
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Stack, Box } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Stack"
+  description="One-dimensional spacing primitive for vertical or horizontal layouts."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Stack"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Vertical Stack">
+
+<Demo
+  code={`<Stack gap={12}>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>Item 1</Box>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>Item 2</Box>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>Item 3</Box>
+</Stack>`}
+>
+  <Stack gap={12}>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>Item 1</Box>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>Item 2</Box>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>Item 3</Box>
+  </Stack>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Horizontal Stack">
+
+<Demo
+  code={`<Stack direction="horizontal" gap={12}>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>A</Box>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>B</Box>
+  <Box style={{ padding: "8px", background: "#e5e5e5" }}>C</Box>
+</Stack>`}
+>
+  <Stack direction="horizontal" gap={12}>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>A</Box>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>B</Box>
+    <Box style={{ padding: "8px", background: "#e5e5e5" }}>C</Box>
+  </Stack>
+</Demo>
+
+</DocsSection>
+
+<Callout type="tip" title="Stack vs Flex">
+  Use Stack for simple vertical/horizontal spacing. Use Flex when you need justify, wrap, or reverse
+  direction.
+</Callout>
+
+<DocsSection title="API">
+
+| Prop        | Type                                                      | Default      | Description              |
+| ----------- | --------------------------------------------------------- | ------------ | ------------------------ |
+| `gap`       | `string \| number`                                        | —            | Spacing between children |
+| `align`     | `"start" \| "center" \| "end" \| "stretch" \| "baseline"` | —            | Cross-axis alignment     |
+| `direction` | `"vertical" \| "horizontal"`                              | `"vertical"` | Stack axis               |
+
+</DocsSection>

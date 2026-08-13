@@ -1,0 +1,46 @@
+---
+title: Heading
+sidebar_position: 3
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { Heading } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Heading"
+  description="Semantic heading primitive rendering h1–h6 elements."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Heading"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Heading Levels">
+
+<Demo
+  code={`<Heading level={1}>Page Title (h1)</Heading>
+<Heading level={2}>Section Title (h2)</Heading>
+<Heading level={3}>Subsection (h3)</Heading>
+<Heading level={4}>Group (h4)</Heading>`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <Heading level={1}>Page Title (h1)</Heading>
+    <Heading level={2}>Section Title (h2)</Heading>
+    <Heading level={3}>Subsection (h3)</Heading>
+    <Heading level={4}>Group (h4)</Heading>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop        | Type                         | Default | Description                              |
+| ----------- | ---------------------------- | ------- | ---------------------------------------- |
+| `level`     | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `2`     | Heading depth                            |
+| `as`        | `ElementType`                | —       | Overrides level for the rendered element |
+| `ref`       | `Ref`                        | —       | Forwarded to heading element             |
+| `className` | `string`                     | —       | Merged with internal class               |
+| `style`     | `CSSProperties`              | —       | Merged per-property                      |
+
+</DocsSection>

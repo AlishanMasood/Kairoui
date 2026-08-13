@@ -1,0 +1,60 @@
+---
+title: Text
+sidebar_position: 2
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Text } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Text"
+  description="Inline/block typography primitive with design-system tokens."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Text"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Text>Default inline text</Text>
+<Text as="p">Paragraph text rendered as a p element.</Text>`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <Text>Default inline text</Text>
+    <Text as="p">Paragraph text rendered as a p element.</Text>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Semantic Elements">
+
+<Demo
+  code={`<Text as="strong">Bold text</Text>
+<Text as="em">Emphasized text</Text>
+<Text as="small">Fine print</Text>
+<Text as="label" htmlFor="input-1">Form label</Text>`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <Text as="strong">Bold text</Text>
+    <Text as="em">Emphasized text</Text>
+    <Text as="small">Fine print</Text>
+    <Text as="label">Form label</Text>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop        | Type            | Default  | Description                |
+| ----------- | --------------- | -------- | -------------------------- |
+| `as`        | `ElementType`   | `"span"` | Rendered element           |
+| `ref`       | `Ref`           | —        | Forwarded to DOM element   |
+| `className` | `string`        | —        | Merged with internal class |
+| `style`     | `CSSProperties` | —        | Merged per-property        |
+| `children`  | `ReactNode`     | —        | Content                    |
+
+</DocsSection>

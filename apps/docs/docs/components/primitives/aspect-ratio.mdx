@@ -1,0 +1,46 @@
+---
+title: AspectRatio
+sidebar_position: 11
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { AspectRatio, Box } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="AspectRatio"
+  description="Fixed aspect ratio container using CSS aspect-ratio."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["AspectRatio"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Common Ratios">
+
+<Demo
+  code={`<AspectRatio ratio="16/9" style={{ background: "#e5e5e5", maxWidth: "300px" }}>
+  16:9 content
+</AspectRatio>`}
+>
+  <div style={{ display: "flex", gap: "16px" }}>
+    <AspectRatio ratio={1} style={{ background: "#e5e5e5", width: "100px" }}>
+      1:1
+    </AspectRatio>
+    <AspectRatio ratio="4/3" style={{ background: "#e5e5e5", width: "100px" }}>
+      4:3
+    </AspectRatio>
+    <AspectRatio ratio="16/9" style={{ background: "#e5e5e5", width: "100px" }}>
+      16:9
+    </AspectRatio>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop    | Type               | Default | Description            |
+| ------- | ------------------ | ------- | ---------------------- |
+| `ratio` | `number \| string` | `1`     | CSS aspect-ratio value |
+
+</DocsSection>

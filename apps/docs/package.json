@@ -12,6 +12,7 @@
   "dependencies": {
     "@docusaurus/core": "^3.8.0",
     "@docusaurus/preset-classic": "^3.8.0",
+    "@kairoui/core": "workspace:*",
     "@kairoui/docs": "workspace:*",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.1.0",

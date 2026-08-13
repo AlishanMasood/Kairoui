@@ -1,0 +1,41 @@
+---
+title: Container
+sidebar_position: 7
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { Container, Box } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Container"
+  description="Max-width centered content area with gutters."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Container"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Container maxWidth="md" style={{ border: "1px dashed #ccc" }}>
+  Centered content with max-width 768px
+</Container>`}
+>
+  <Container maxWidth="md" style={{ border: "1px dashed #ccc", padding: "16px" }}>
+    Centered content with max-width 768px
+  </Container>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop       | Type                                               | Default             | Description                      |
+| ---------- | -------------------------------------------------- | ------------------- | -------------------------------- |
+| `maxWidth` | `"sm" \| "md" \| "lg" \| "xl" \| "full" \| string` | CSS custom property | Max width preset or custom value |
+| `gutter`   | `string \| number`                                 | CSS custom property | Horizontal padding               |
+
+Size presets: sm=640px, md=768px, lg=1024px, xl=1200px, full=none.
+
+</DocsSection>

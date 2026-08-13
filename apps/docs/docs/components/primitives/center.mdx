@@ -1,0 +1,36 @@
+---
+title: Center
+sidebar_position: 10
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { Center, Box } from "@kairoui/core/primitives";
+
+<ComponentHeader
+  name="Center"
+  description="Centers content horizontally and vertically."
+  package="@kairoui/core/primitives"
+  status="stable"
+/>
+
+<ImportStatement imports={["Center"]} from="@kairoui/core/primitives" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Center style={{ height: "120px", border: "1px dashed #ccc" }}>
+  Centered content
+</Center>`}
+>
+  <Center style={{ height: "120px", border: "1px dashed #ccc" }}>Centered content</Center>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop     | Type      | Default | Description     |
+| -------- | --------- | ------- | --------------- |
+| `inline` | `boolean` | —       | Use inline-flex |
+
+</DocsSection>
