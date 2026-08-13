@@ -67,4 +67,15 @@ export type {
   NavigationDirection,
   TypeaheadConfig,
   FormParticipationProps,
+  RegisteredItem,
+  CollectionState,
+  UseCollectionItemOptions,
+} from "./collection/index";
+
+export {
+  useCollection,
+  CollectionContext,
+  useCollectionContext,
+  useCollectionItem,
+  resolveNextItem,
 } from "./collection/index";
