@@ -1,0 +1,132 @@
+---
+title: Input
+sidebar_position: 5
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Input, Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Input"
+  description="Single-line text input built on native <input> semantics. Integrates with Field for automatic ARIA relationships."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Input"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Input placeholder="Enter your name" />`}>
+  <Input placeholder="Enter your name" />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Sizes">
+
+<Demo
+  code={`<div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+  <Input size="sm" placeholder="Small" />
+  <Input size="md" placeholder="Medium (default)" />
+  <Input size="lg" placeholder="Large" />
+</div>`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxWidth: "300px" }}>
+    <Input size="sm" placeholder="Small" />
+    <Input size="md" placeholder="Medium (default)" />
+    <Input size="lg" placeholder="Large" />
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled">
+
+<Demo code={`<Input placeholder="Cannot interact" disabled />`}>
+  <Input placeholder="Cannot interact" disabled />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Read Only">
+
+<Demo code={`<Input value="Read-only value" readOnly />`}>
+  <Input value="Read-only value" readOnly onChange={() => {}} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Field">
+
+Inside a Field, Input automatically receives the correct `id`, `aria-labelledby`, `aria-describedby`, and validation attributes.
+
+<Demo
+  code={`<Field id="email" required>
+  <Label>Email address</Label>
+  <Input type="email" placeholder="you@example.com" />
+  <FieldDescription>We'll never share your email.</FieldDescription>
+</Field>`}
+>
+  <Field id="email-demo" required>
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px", maxWidth: "300px" }}>
+      <Label>Email address</Label>
+      <Input type="email" placeholder="you@example.com" />
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        We'll never share your email.
+      </FieldDescription>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Validation Error">
+
+<Demo
+  code={`<Field id="password" required validationState="invalid">
+  <Label>Password</Label>
+  <Input type="password" />
+  <FieldError>Password must be at least 8 characters</FieldError>
+</Field>`}
+>
+  <Field id="pw-demo" required validationState="invalid">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px", maxWidth: "300px" }}>
+      <Label>Password</Label>
+      <Input type="password" />
+      <FieldError style={{ fontSize: "0.85em", color: "red" }}>
+        Password must be at least 8 characters
+      </FieldError>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
+| `type` | `string` | `"text"` | Native input type |
+| `disabled` | `boolean` | `false` | Disables input |
+| `readOnly` | `boolean` | `false` | Prevents editing |
+| `required` | `boolean` | `false` | Marks as required |
+| `value` | `string` | — | Controlled value |
+| `defaultValue` | `string` | — | Uncontrolled initial value |
+| `onChange` | `ChangeEventHandler` | — | Change callback |
+| `name` | `string` | — | Form submission name |
+| `placeholder` | `string` | — | Placeholder text |
+| `id` | `string` | auto from Field | Element ID |
+| `ref` | `Ref<HTMLInputElement>` | — | Forwarded ref |
+| `className` | `string` | — | Merged with internal classes |
+| `style` | `CSSProperties` | — | Inline styles |
+
+All standard `<input>` HTML attributes are also accepted.
+
+</DocsSection>
+
+<Callout type="info" title="Native behavior">
+  Input does not intercept native form submission, value handling, or validation.
+  It works seamlessly with native forms, React controlled patterns, and form libraries.
+</Callout>

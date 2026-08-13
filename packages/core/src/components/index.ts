@@ -30,3 +30,7 @@ export type {
   FieldDescriptionProps,
   FieldErrorProps,
 } from "./field/index";
+
+export { Input } from "./input/index";
+export type { InputProps, InputSize } from "./input/index";
+export { inputStyleContract } from "./input/index";
