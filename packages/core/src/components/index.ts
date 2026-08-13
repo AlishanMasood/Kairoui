@@ -52,3 +52,7 @@ export { radioStyleContract } from "./radio/index";
 
 export { RadioGroup } from "./radio-group/index";
 export type { RadioGroupProps, RadioGroupOrientation } from "./radio-group/index";
+
+export { Switch } from "./switch/index";
+export type { SwitchProps, SwitchSize } from "./switch/index";
+export { switchStyleContract } from "./switch/index";

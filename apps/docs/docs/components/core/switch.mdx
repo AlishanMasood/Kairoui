@@ -1,0 +1,109 @@
+---
+title: Switch
+sidebar_position: 10
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Switch, Field, Label, FieldDescription } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Switch"
+  description="Immediate on/off toggle with role='switch' semantics, native form participation, and Field integration."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Switch"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Switch>Enable notifications</Switch>`}>
+  <Switch>Enable notifications</Switch>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Default Checked">
+
+<Demo code={`<Switch defaultChecked>Dark mode</Switch>`}>
+  <Switch defaultChecked>Dark mode</Switch>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Sizes">
+
+<Demo
+  code={`<Switch size="sm">Small</Switch>
+<Switch size="md">Medium</Switch>
+<Switch size="lg">Large</Switch>`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <Switch size="sm">Small</Switch>
+    <Switch size="md">Medium (default)</Switch>
+    <Switch size="lg">Large</Switch>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled">
+
+<Demo code={`<Switch disabled>Cannot toggle</Switch>`}>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <Switch disabled>Disabled off</Switch>
+    <Switch disabled defaultChecked>Disabled on</Switch>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Field">
+
+<Demo
+  code={`<Field id="auto-save">
+  <Label>Auto-save</Label>
+  <Switch>Enable automatic saving</Switch>
+  <FieldDescription>Saves every 30 seconds</FieldDescription>
+</Field>`}
+>
+  <Field id="autosave-demo">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Label>Auto-save</Label>
+      <Switch>Enable automatic saving</Switch>
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        Saves every 30 seconds
+      </FieldDescription>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Label content |
+| `checked` | `boolean` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled initial state |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Change callback |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
+| `disabled` | `boolean` | `false` | Disables the switch |
+| `name` | `string` | — | Form submission name |
+| `value` | `string` | `"on"` | Form submission value |
+| `id` | `string` | auto from Field | Button element ID |
+| `ref` | `Ref<HTMLButtonElement>` | — | Forwarded to button |
+
+</DocsSection>
+
+<Callout type="info" title="Switch vs Checkbox">
+  Switch uses `role="switch"` and a `<button>` element — semantically distinct from Checkbox.
+  Use Switch for settings that take effect immediately. Use Checkbox for options that require
+  form submission to apply.
+</Callout>
+
+<Callout type="info" title="Form participation">
+  When `name` is provided, Switch renders a hidden `<input type="checkbox">` for native
+  form submission. The hidden input is `aria-hidden` and not keyboard-focusable.
+</Callout>
