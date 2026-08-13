@@ -56,3 +56,15 @@ export type { RadioGroupProps, RadioGroupOrientation } from "./radio-group/index
 export { Switch } from "./switch/index";
 export type { SwitchProps, SwitchSize } from "./switch/index";
 export { switchStyleContract } from "./switch/index";
+
+export type {
+  CollectionItem,
+  SingleSelectionValue,
+  MultiSelectionValue,
+  SingleSelectionProps,
+  MultiSelectionProps,
+  HighlightState,
+  NavigationDirection,
+  TypeaheadConfig,
+  FormParticipationProps,
+} from "./collection/index";
