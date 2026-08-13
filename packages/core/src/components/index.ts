@@ -17,5 +17,16 @@ export {
   useRequiredFieldContext,
   resolveFieldControlProps,
   resolveValidationDataAttr,
+  Field,
+  Label,
+  FieldDescription,
+  FieldError,
 } from "./field/index";
-export type { FieldContextValue, ValidationState } from "./field/index";
+export type {
+  FieldContextValue,
+  ValidationState,
+  FieldProps,
+  LabelProps,
+  FieldDescriptionProps,
+  FieldErrorProps,
+} from "./field/index";
