@@ -22,3 +22,6 @@ export type { CodeBlockProps } from "./code-block";
 
 export { CodePreview } from "./code-preview";
 export type { CodePreviewProps } from "./code-preview";
+
+export { Demo } from "./demo";
+export type { DemoProps } from "./demo";
