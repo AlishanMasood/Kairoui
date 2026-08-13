@@ -19,3 +19,6 @@ export type { ImportStatementProps } from "./import-statement";
 
 export { CodeBlock } from "./code-block";
 export type { CodeBlockProps } from "./code-block";
+
+export { CodePreview } from "./code-preview";
+export type { CodePreviewProps } from "./code-preview";
