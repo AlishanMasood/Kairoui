@@ -17,6 +17,10 @@
       "types": "./dist/primitives/index.d.ts",
       "import": "./dist/primitives/index.js"
     },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
     "./styles.css": {
       "import": "./dist/styles.css"
     },

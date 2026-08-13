@@ -127,6 +127,7 @@ export default defineConfig(
             "@kairoui/utils/events",
             "@kairoui/core/composition",
             "@kairoui/core/primitives",
+            "@kairoui/core/components",
             "@testing-library/*/**",
             "react-dom/server",
             "eslint/config",

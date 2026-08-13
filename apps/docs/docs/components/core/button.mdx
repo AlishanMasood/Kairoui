@@ -1,0 +1,170 @@
+---
+title: Button
+sidebar_position: 1
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Button } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Button"
+  description="Primary action trigger with multiple appearances, sizes, loading state, and polymorphic rendering."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Button"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Button>Click me</Button>`}>
+  <Button>Click me</Button>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Appearances">
+
+Button supports four appearance variants for different levels of visual emphasis.
+
+<Demo
+  code={`<div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+  <Button appearance="solid">Solid</Button>
+  <Button appearance="outline">Outline</Button>
+  <Button appearance="subtle">Subtle</Button>
+  <Button appearance="ghost">Ghost</Button>
+</div>`}
+>
+  <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+    <Button appearance="solid">Solid</Button>
+    <Button appearance="outline">Outline</Button>
+    <Button appearance="subtle">Subtle</Button>
+    <Button appearance="ghost">Ghost</Button>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Sizes">
+
+<Demo
+  code={`<div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</div>`}
+>
+  <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Icons">
+
+Use `startIcon` and `endIcon` to render decorative icons alongside button text.
+
+<Demo
+  code={`<div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+  <Button startIcon={<span>★</span>}>Favorite</Button>
+  <Button endIcon={<span>→</span>}>Next</Button>
+  <Button startIcon={<span>📎</span>} endIcon={<span>↗</span>}>Attach</Button>
+</div>`}
+>
+  <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+    <Button startIcon={<span>★</span>}>Favorite</Button>
+    <Button endIcon={<span>→</span>}>Next</Button>
+    <Button startIcon={<span>📎</span>} endIcon={<span>↗</span>}>Attach</Button>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled">
+
+<Demo
+  code={`<Button disabled>Disabled</Button>`}
+>
+  <Button disabled>Disabled</Button>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Loading">
+
+When `loading` is true, the button is disabled and shows a loading indicator.
+
+<Demo
+  code={`<Button loading>Saving…</Button>`}
+>
+  <Button loading>Saving…</Button>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Polymorphic Rendering">
+
+Use `as` to render the button as an anchor or any custom component.
+
+<Demo
+  code={`<Button as="a" href="https://example.com" target="_blank">
+  Visit site
+</Button>`}
+>
+  <Button as="a" href="https://example.com" target="_blank">
+    Visit site
+  </Button>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Form Submit">
+
+Set `type="submit"` for form submission buttons. By default, type is `"button"`.
+
+<Demo
+  code={`<form onSubmit={(e) => { e.preventDefault(); alert("Submitted!"); }}>
+  <Button type="submit">Submit</Button>
+</form>`}
+>
+  <form onSubmit={(e) => { e.preventDefault(); }}>
+    <Button type="submit">Submit</Button>
+  </form>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `as` | `ElementType` | `"button"` | Rendered element |
+| `appearance` | `"solid" \| "outline" \| "subtle" \| "ghost"` | `"solid"` | Visual variant |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
+| `disabled` | `boolean` | `false` | Disables interaction |
+| `loading` | `boolean` | `false` | Shows loading indicator, disables interaction |
+| `type` | `"button" \| "submit" \| "reset"` | `"button"` | Native button type |
+| `startIcon` | `ReactNode` | — | Icon before content |
+| `endIcon` | `ReactNode` | — | Icon after content |
+| `ref` | `Ref` | — | Forwarded to root element |
+| `className` | `string` | — | Merged with internal classes |
+| `style` | `CSSProperties` | — | Inline style overrides |
+| `slots` | `object` | — | Slot element overrides |
+| `slotProps` | `object` | — | Slot prop overrides |
+
+</DocsSection>
+
+<Callout type="info" title="Accessibility">
+  Button renders a native `<button>` element by default, providing built-in keyboard activation
+  (Enter, Space) and screen reader semantics. When rendered as another element via `as`, appropriate
+  ARIA attributes are applied automatically (e.g., `aria-disabled` instead of native `disabled`).
+  Icon slots are marked `aria-hidden` — ensure the button text or `aria-label` provides a meaningful name.
+</Callout>
+
+<Callout type="tip" title="Icon-only buttons">
+  For buttons with only an icon and no visible text, use the upcoming IconButton component
+  (KUI-CORE-003) which enforces an accessible label.
+</Callout>
