@@ -41,6 +41,7 @@ const BUDGETS: BudgetEntry[] = [
   { pkg: "core", file: "dist/index.js", baseline: 14427, maxRaw: 22000, maxGzip: 5000 },
   { pkg: "core", file: "dist/composition.js", baseline: 30382, maxRaw: 46000, maxGzip: 11000 },
   { pkg: "core", file: "dist/primitives/index.js", baseline: 22676, maxRaw: 34000, maxGzip: 7000 },
+  { pkg: "core", file: "dist/components/index.js", baseline: 59443, maxRaw: 90000, maxGzip: 16000 },
   { pkg: "core", file: "dist/styles.css", baseline: 4252, maxRaw: 15000, maxGzip: 3000 },
 ];
 
@@ -137,17 +138,17 @@ describe("Bundle budgets: CSS output", () => {
 // ─── Total framework size budget ────────────────────────────────────
 
 describe("Bundle budgets: total framework", () => {
-  it("total JS runtime under 300KB raw", () => {
+  it("total JS runtime under 350KB raw", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
       const filePath = resolve(PACKAGES_DIR, budget.pkg, budget.file);
       total += statSync(filePath).size;
     }
-    expect(total).toBeLessThan(300 * 1024);
+    expect(total).toBeLessThan(350 * 1024);
   });
 
-  it("total JS runtime under 60KB gzip", () => {
+  it("total JS runtime under 75KB gzip", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
@@ -155,6 +156,47 @@ describe("Bundle budgets: total framework", () => {
       const content = readFileSync(filePath);
       total += gzipSync(content, { level: 9 }).length;
     }
-    expect(total).toBeLessThan(60 * 1024);
+    expect(total).toBeLessThan(75 * 1024);
+  });
+});
+
+// ─── Tree-shaking isolation ─────────────────────────────────────────
+
+describe("Bundle budgets: tree-shaking isolation", () => {
+  it("components/index.js does not import from primitives/index.js", () => {
+    const content = readFileSync(
+      resolve(PACKAGES_DIR, "core", "dist", "components", "index.js"),
+      "utf-8",
+    );
+    // Should not contain references to primitive components (Box, Flex, Stack, etc.)
+    expect(content).not.toContain("createPolymorphicComponent");
+    expect(content).not.toContain('"Box"');
+    expect(content).not.toContain('"Flex"');
+    expect(content).not.toContain('"Stack"');
+  });
+
+  it("primitives/index.js does not import from components/index.js", () => {
+    const content = readFileSync(
+      resolve(PACKAGES_DIR, "core", "dist", "primitives", "index.js"),
+      "utf-8",
+    );
+    // Should not contain interactive component code
+    expect(content).not.toContain("useControllableState");
+    expect(content).not.toContain("FieldContext");
+    expect(content).not.toContain('"Checkbox"');
+    expect(content).not.toContain('"Switch"');
+  });
+
+  it("index.js does not bundle composition or primitives inline", () => {
+    const content = readFileSync(resolve(PACKAGES_DIR, "core", "dist", "index.js"), "utf-8");
+    // Root index is providers/hooks only — should be small
+    expect(content.length).toBeLessThan(25000);
+  });
+
+  it("sideEffects is configured correctly in package.json", () => {
+    const pkg = JSON.parse(
+      readFileSync(resolve(PACKAGES_DIR, "core", "package.json"), "utf-8"),
+    ) as { sideEffects: string[] };
+    expect(pkg.sideEffects).toEqual(["**/*.css"]);
   });
 });
