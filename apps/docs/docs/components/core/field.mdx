@@ -1,0 +1,207 @@
+---
+title: Field
+sidebar_position: 3
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Field, Label, FieldDescription, FieldError, Input, Textarea, Checkbox, RadioGroup, Radio, Switch } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Field"
+  description="Form field wrapper that automatically wires ARIA relationships between Label, Description, Error, and form controls."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Field", "Label", "FieldDescription", "FieldError"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+Field generates stable IDs and connects Label, FieldDescription, and FieldError to any control via `aria-labelledby`, `aria-describedby`, and `aria-errormessage`.
+
+<Demo
+  code={`<Field id="email" required>
+  <Label>Email address</Label>
+  <Input type="email" placeholder="you@example.com" />
+  <FieldDescription>We'll never share your email.</FieldDescription>
+</Field>`}
+>
+  <Field id="email-demo1" required>
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px", maxWidth: "320px" }}>
+      <Label>Email address</Label>
+      <Input type="email" placeholder="you@example.com" />
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        We'll never share your email.
+      </FieldDescription>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Validation Error">
+
+Set `validationState="invalid"` to mark the field as invalid. FieldError renders as a live region.
+
+<Demo
+  code={`<Field id="password" required validationState="invalid">
+  <Label>Password</Label>
+  <Input type="password" />
+  <FieldDescription>Minimum 8 characters</FieldDescription>
+  <FieldError>Password is too short</FieldError>
+</Field>`}
+>
+  <Field id="pw-demo1" required validationState="invalid">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px", maxWidth: "320px" }}>
+      <Label>Password</Label>
+      <Input type="password" />
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        Minimum 8 characters
+      </FieldDescription>
+      <FieldError style={{ fontSize: "0.85em", color: "red" }}>
+        Password is too short
+      </FieldError>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled Field">
+
+`disabled` propagates to all controls inside the field.
+
+<Demo
+  code={`<Field id="name" disabled>
+  <Label>Name</Label>
+  <Input placeholder="Cannot edit" />
+</Field>`}
+>
+  <Field id="name-disabled-demo" disabled>
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px", maxWidth: "320px" }}>
+      <Label>Name</Label>
+      <Input placeholder="Cannot edit" />
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Textarea">
+
+<Demo
+  code={`<Field id="bio">
+  <Label>Bio</Label>
+  <Textarea rows={3} placeholder="Tell us about yourself" />
+</Field>`}
+>
+  <Field id="bio-demo1">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px", maxWidth: "320px" }}>
+      <Label>Bio</Label>
+      <Textarea rows={3} placeholder="Tell us about yourself" />
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Checkbox">
+
+<Demo
+  code={`<Field id="terms" required validationState="invalid">
+  <Checkbox>I agree to the terms</Checkbox>
+  <FieldError>You must accept the terms</FieldError>
+</Field>`}
+>
+  <Field id="terms-demo1" required validationState="invalid">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Checkbox>I agree to the terms</Checkbox>
+      <FieldError style={{ fontSize: "0.85em", color: "red" }}>
+        You must accept the terms
+      </FieldError>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With RadioGroup">
+
+<Demo
+  code={`<Field id="plan" required>
+  <Label>Choose a plan</Label>
+  <RadioGroup>
+    <Radio value="free">Free</Radio>
+    <Radio value="pro">Pro</Radio>
+    <Radio value="team">Team</Radio>
+  </RadioGroup>
+</Field>`}
+>
+  <Field id="plan-demo1" required>
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+      <Label>Choose a plan</Label>
+      <RadioGroup>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <Radio value="free">Free</Radio>
+          <Radio value="pro">Pro</Radio>
+          <Radio value="team">Team</Radio>
+        </div>
+      </RadioGroup>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Switch">
+
+<Demo
+  code={`<Field id="auto-save">
+  <Label>Auto-save</Label>
+  <Switch>Enable automatic saving</Switch>
+  <FieldDescription>Your work will be saved every 30 seconds</FieldDescription>
+</Field>`}
+>
+  <Field id="autosave-demo1">
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Label>Auto-save</Label>
+      <Switch>Enable automatic saving</Switch>
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        Your work will be saved every 30 seconds
+      </FieldDescription>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Field API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | auto-generated | Base ID for ARIA relationships |
+| `disabled` | `boolean` | `false` | Disables all controls |
+| `readOnly` | `boolean` | `false` | Makes controls read-only |
+| `required` | `boolean` | `false` | Marks as required |
+| `validationState` | `"valid" \| "invalid"` | — | Validation state |
+| `ref` | `Ref<HTMLDivElement>` | — | Forwarded ref |
+| `className` | `string` | — | Custom class |
+| `style` | `CSSProperties` | — | Inline styles |
+
+</DocsSection>
+
+<Callout type="info" title="Automatic ARIA wiring">
+  Field generates stable IDs and connects them automatically. Label gets `htmlFor` pointing to the
+  control's ID. Controls get `aria-labelledby`, `aria-describedby`, and `aria-errormessage` based
+  on which Field sub-components are rendered.
+</Callout>
+
+<Callout type="tip" title="Standalone controls">
+  All controls (Input, Textarea, Checkbox, Radio, Switch) work without Field. Field is optional
+  convenience — use it when you need label/description/error association.
+</Callout>
+
+<Callout type="warning" title="No automatic validation">
+  Field does not validate input values. Set `validationState` based on your own validation logic
+  or your form library's state.
+</Callout>
