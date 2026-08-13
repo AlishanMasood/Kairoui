@@ -1,0 +1,108 @@
+---
+title: Textarea
+sidebar_position: 6
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Textarea, Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Textarea"
+  description="Multi-line text input built on native <textarea> semantics. Integrates with Field for automatic ARIA relationships."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Textarea"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Textarea placeholder="Enter your message…" />`}>
+  <Textarea placeholder="Enter your message…" style={{ maxWidth: "400px" }} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Sizes">
+
+<Demo
+  code={`<Textarea size="sm" placeholder="Small" />
+<Textarea size="md" placeholder="Medium" />
+<Textarea size="lg" placeholder="Large" />`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxWidth: "400px" }}>
+    <Textarea size="sm" placeholder="Small" />
+    <Textarea size="md" placeholder="Medium (default)" />
+    <Textarea size="lg" placeholder="Large" />
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Resize Control">
+
+By default, Textarea allows vertical resize. Use `resize` prop to change behavior.
+
+<Demo
+  code={`<Textarea resize="none" placeholder="Cannot resize" />
+<Textarea resize="both" placeholder="Resize both directions" />`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxWidth: "400px" }}>
+    <Textarea resize="none" placeholder="Cannot resize" />
+    <Textarea resize="both" placeholder="Resize both directions" />
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Field">
+
+<Demo
+  code={`<Field id="bio" required>
+  <Label>Bio</Label>
+  <Textarea placeholder="Tell us about yourself" rows={4} />
+  <FieldDescription>Max 500 characters</FieldDescription>
+</Field>`}
+>
+  <Field id="bio-demo" required>
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px", maxWidth: "400px" }}>
+      <Label>Bio</Label>
+      <Textarea placeholder="Tell us about yourself" rows={4} />
+      <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
+        Max 500 characters
+      </FieldDescription>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
+| `resize` | `"none" \| "vertical" \| "horizontal" \| "both"` | `"vertical"` | Resize behavior |
+| `disabled` | `boolean` | `false` | Disables textarea |
+| `readOnly` | `boolean` | `false` | Prevents editing |
+| `required` | `boolean` | `false` | Marks as required |
+| `value` | `string` | — | Controlled value |
+| `defaultValue` | `string` | — | Uncontrolled initial value |
+| `onChange` | `ChangeEventHandler` | — | Change callback |
+| `rows` | `number` | — | Visible text rows |
+| `cols` | `number` | — | Visible text columns |
+| `name` | `string` | — | Form submission name |
+| `placeholder` | `string` | — | Placeholder text |
+| `id` | `string` | auto from Field | Element ID |
+| `ref` | `Ref<HTMLTextAreaElement>` | — | Forwarded ref |
+| `className` | `string` | — | Merged with internal classes |
+| `style` | `CSSProperties` | — | Inline styles |
+
+All standard `<textarea>` HTML attributes are also accepted.
+
+</DocsSection>
+
+<Callout type="info" title="Native behavior">
+  Textarea uses native form integration. It works with controlled patterns, uncontrolled
+  defaultValue, and native form submission without any interception.
+</Callout>

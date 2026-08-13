@@ -34,3 +34,7 @@ export type {
 export { Input } from "./input/index";
 export type { InputProps, InputSize } from "./input/index";
 export { inputStyleContract } from "./input/index";
+
+export { Textarea } from "./textarea/index";
+export type { TextareaProps, TextareaSize, TextareaResize } from "./textarea/index";
+export { textareaStyleContract } from "./textarea/index";
