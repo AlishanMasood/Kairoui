@@ -169,3 +169,6 @@ export type {
 
 export { PinInput } from "./pin-input/index";
 export type { PinInputProps, PinInputMode } from "./pin-input/index";
+
+export { Toggle } from "./toggle/index";
+export type { ToggleProps, ToggleSize, ToggleAppearance } from "./toggle/index";
