@@ -116,6 +116,17 @@ export type {
 } from "./select/index";
 
 export { ComboboxContext, useComboboxContext } from "./combobox/index";
+export {
+  Combobox,
+  ComboboxInput,
+  ComboboxTrigger,
+  ComboboxClear,
+  ComboboxContent,
+  ComboboxItem,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxLabel,
+} from "./combobox/index";
 export type {
   ComboboxProps,
   ComboboxInputProps,

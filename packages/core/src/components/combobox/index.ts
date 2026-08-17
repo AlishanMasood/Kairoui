@@ -11,3 +11,14 @@ export type {
   ComboboxLabelProps,
   ComboboxContextValue,
 } from "./combobox-types";
+export {
+  Combobox,
+  ComboboxInput,
+  ComboboxTrigger,
+  ComboboxClear,
+  ComboboxContent,
+  ComboboxItem,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxLabel,
+} from "./combobox";
