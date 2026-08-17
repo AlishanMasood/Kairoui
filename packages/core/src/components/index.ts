@@ -92,3 +92,16 @@ export {
   useCompositeNavigation,
   useTypeahead,
 } from "./collection/index";
+
+export { SelectContext, useSelectContext } from "./select/index";
+export type {
+  SelectProps,
+  SelectTriggerProps,
+  SelectContentProps,
+  SelectContentPosition,
+  SelectItemProps,
+  SelectGroupProps,
+  SelectLabelProps,
+  SelectSeparatorProps,
+  SelectContextValue,
+} from "./select/index";
