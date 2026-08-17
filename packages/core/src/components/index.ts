@@ -70,6 +70,10 @@ export type {
   RegisteredItem,
   CollectionState,
   UseCollectionItemOptions,
+  UseSingleSelectionOptions,
+  SingleSelectionState,
+  UseMultiSelectionOptions,
+  MultiSelectionState,
 } from "./collection/index";
 
 export {
@@ -78,4 +82,6 @@ export {
   useCollectionContext,
   useCollectionItem,
   resolveNextItem,
+  useSingleSelection,
+  useMultiSelection,
 } from "./collection/index";

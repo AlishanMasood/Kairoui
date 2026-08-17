@@ -17,3 +17,11 @@ export { useCollectionItem } from "./use-collection-item";
 export type { UseCollectionItemOptions } from "./use-collection-item";
 
 export { resolveNextItem } from "./collection-navigation";
+
+export { useSingleSelection, useMultiSelection } from "./use-selection";
+export type {
+  UseSingleSelectionOptions,
+  SingleSelectionState,
+  UseMultiSelectionOptions,
+  MultiSelectionState,
+} from "./use-selection";
