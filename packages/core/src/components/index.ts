@@ -172,3 +172,13 @@ export type { PinInputProps, PinInputMode } from "./pin-input/index";
 
 export { Toggle } from "./toggle/index";
 export type { ToggleProps, ToggleSize, ToggleAppearance } from "./toggle/index";
+
+export { ToggleGroup, ToggleGroupItem } from "./toggle-group/index";
+export type {
+  ToggleGroupProps,
+  ToggleGroupSingleProps,
+  ToggleGroupMultipleProps,
+  ToggleGroupItemProps,
+  ToggleGroupType,
+  ToggleGroupOrientation,
+} from "./toggle-group/index";
