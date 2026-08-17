@@ -1,0 +1,49 @@
+---
+title: ToggleGroup
+sidebar_position: 18
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="ToggleGroup"
+  description="Group of toggle buttons supporting single or multiple selection with shared styling and keyboard navigation."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["ToggleGroup", "ToggleGroupItem"]} from="@kairoui/core/components" />
+
+<DocsSection title="API: ToggleGroup">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `type` | `"single" \| "multiple"` | — | Selection mode (required) |
+| `value` | `string \| string[]` | — | Controlled value(s) |
+| `defaultValue` | `string \| string[]` | — | Initial value(s) |
+| `onValueChange` | `(value) => void` | — | Change callback |
+| `disabled` | `boolean` | `false` | Disables all items |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Propagated to items |
+| `appearance` | `"outline" \| "subtle" \| "ghost"` | `"outline"` | Propagated to items |
+
+</DocsSection>
+
+<DocsSection title="API: ToggleGroupItem">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | — | Item value (required) |
+| `disabled` | `boolean` | `false` | Disables this item |
+
+</DocsSection>
+
+<Callout type="info" title="Single vs Multiple">
+  In `type="single"`, clicking a new item deselects the previous. Clicking the same item deselects it.
+  In `type="multiple"`, each item toggles independently — multiple can be pressed simultaneously.
+</Callout>
+
+<Callout type="info" title="Accessibility">
+  Uses `role="group"` with `aria-orientation`. Each item has `aria-pressed`.
+  Enter/Space toggle items via native button behavior.
+</Callout>

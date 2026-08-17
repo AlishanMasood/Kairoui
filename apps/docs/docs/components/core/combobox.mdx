@@ -1,0 +1,53 @@
+---
+title: Combobox
+sidebar_position: 12
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="Combobox"
+  description="Editable dropdown with filtering, keyboard navigation, and native form participation."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Combobox", "ComboboxInput", "ComboboxContent", "ComboboxItem"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+Consumer controls filtering via `onInputValueChange`. Items are rendered declaratively.
+
+</DocsSection>
+
+<DocsSection title="Keyboard">
+
+- **ArrowDown/Up** — navigate items
+- **Home/End** — first/last item
+- **Enter** — select highlighted item
+- **Escape** — close listbox
+- **Tab** — close and move focus
+
+</DocsSection>
+
+<DocsSection title="API: Combobox">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | — | Controlled selected value |
+| `defaultValue` | `string` | — | Initial value |
+| `onValueChange` | `(value: string) => void` | — | Selection callback |
+| `inputValue` | `string` | — | Controlled input text |
+| `onInputValueChange` | `(text: string) => void` | — | Input text callback |
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open/close callback |
+| `name` | `string` | — | Form submission name |
+| `disabled` | `boolean` | `false` | Disables the combobox |
+| `allowCustomValue` | `boolean` | `false` | Accept freeform input |
+
+</DocsSection>
+
+<Callout type="info" title="Filtering is consumer responsibility">
+  Combobox fires `onInputValueChange` on every keystroke. You filter and render items declaratively.
+  This keeps async, fuzzy, and server-side filtering possible.
+</Callout>

@@ -1,0 +1,51 @@
+---
+title: NumberInput
+sidebar_position: 13
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="NumberInput"
+  description="Numeric input with increment/decrement buttons, keyboard controls, min/max clamping, and step precision."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["NumberInput"]} from="@kairoui/core/components" />
+
+<DocsSection title="Keyboard">
+
+- **ArrowUp** — increment by step
+- **ArrowDown** — decrement by step
+- Direct numeric typing supported
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `number` | — | Controlled value |
+| `defaultValue` | `number` | — | Initial value |
+| `onValueChange` | `(value: number \| undefined) => void` | — | Change callback |
+| `min` | `number` | — | Minimum value |
+| `max` | `number` | — | Maximum value |
+| `step` | `number` | `1` | Step increment |
+| `disabled` | `boolean` | `false` | Disables input |
+| `readOnly` | `boolean` | `false` | Prevents editing |
+| `name` | `string` | — | Form submission name |
+| `placeholder` | `string` | — | Placeholder text |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
+
+</DocsSection>
+
+<Callout type="info" title="Precision">
+  Step values like `0.1` or `0.01` automatically maintain the correct number of decimal places.
+  Values are clamped to min/max on increment, decrement, and blur.
+</Callout>
+
+<Callout type="info" title="Accessibility">
+  Uses `role="spinbutton"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`.
+  Increment and decrement buttons have `aria-label` for screen readers.
+</Callout>

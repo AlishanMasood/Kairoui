@@ -1,0 +1,48 @@
+---
+title: Slider
+sidebar_position: 14
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="Slider"
+  description="Single-thumb range input with keyboard navigation, step snapping, and accessible value text."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Slider", "SliderTrack", "SliderRange", "SliderThumb"]} from="@kairoui/core/components" />
+
+<DocsSection title="Keyboard">
+
+- **ArrowRight/Up** — increment by step
+- **ArrowLeft/Down** — decrement by step
+- **Home** — jump to min
+- **End** — jump to max
+- **PageUp/PageDown** — increment/decrement by 10× step
+
+</DocsSection>
+
+<DocsSection title="API: Slider">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `number` | — | Controlled value |
+| `defaultValue` | `number` | `min` | Initial value |
+| `onValueChange` | `(value: number) => void` | — | Live change callback |
+| `onValueCommit` | `(value: number) => void` | — | Final committed value |
+| `min` | `number` | `0` | Minimum |
+| `max` | `number` | `100` | Maximum |
+| `step` | `number` | `1` | Step increment |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout |
+| `disabled` | `boolean` | `false` | Disables slider |
+| `name` | `string` | — | Form submission name |
+| `getValueLabel` | `(value: number) => string` | — | Accessible value text |
+
+</DocsSection>
+
+<Callout type="info" title="Accessibility">
+  The thumb has `role="slider"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`.
+  Use `getValueLabel` to provide meaningful text like "50%" for screen readers.
+</Callout>

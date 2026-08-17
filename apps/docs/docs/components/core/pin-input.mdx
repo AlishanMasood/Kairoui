@@ -1,0 +1,53 @@
+---
+title: PinInput
+sidebar_position: 16
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="PinInput"
+  description="Segmented code entry for OTP, verification codes, and PIN input with auto-advance, paste support, and mobile-friendly keyboard."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["PinInput"]} from="@kairoui/core/components" />
+
+<DocsSection title="Keyboard">
+
+- **Typing a digit/letter** — fills current field and auto-advances
+- **Backspace** — clears current or moves to previous
+- **ArrowLeft/Right** — navigate between fields
+- **Delete** — clears current field
+- **Paste** — distributes text across fields from cursor
+
+</DocsSection>
+
+<DocsSection title="API">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `length` | `number` | `4` | Number of input fields |
+| `value` | `string` | — | Controlled value |
+| `defaultValue` | `string` | `""` | Initial value |
+| `onValueChange` | `(value: string) => void` | — | Change callback |
+| `onComplete` | `(value: string) => void` | — | All fields filled |
+| `mode` | `"numeric" \| "alphanumeric"` | `"numeric"` | Allowed characters |
+| `mask` | `boolean` | `false` | Password dots |
+| `placeholder` | `string` | `"○"` | Per-field placeholder |
+| `disabled` | `boolean` | `false` | Disables all fields |
+| `readOnly` | `boolean` | `false` | Prevents editing |
+| `name` | `string` | — | Form submission name |
+| `autoFocus` | `boolean` | `false` | Focus first field on mount |
+
+</DocsSection>
+
+<Callout type="info" title="OTP autofill">
+  The first field has `autoComplete="one-time-code"` for browser/mobile OTP autofill.
+</Callout>
+
+<Callout type="info" title="Accessibility">
+  Each field has `aria-label="Digit N of M"`. The container has `role="group"`.
+  Use with Field and Label for full accessible labeling.
+</Callout>
