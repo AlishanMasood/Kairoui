@@ -16,3 +16,5 @@ export type {
   SliderThumbProps,
   SliderContextValue,
 } from "./slider-types";
+
+export { Slider, SliderTrack, SliderRange, SliderThumb } from "./slider";

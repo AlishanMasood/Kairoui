@@ -149,6 +149,10 @@ export {
   snapToStep,
   valueToPercent,
   percentToValue,
+  Slider,
+  SliderTrack,
+  SliderRange,
+  SliderThumb,
 } from "./slider/index";
 export type {
   SliderValue,
