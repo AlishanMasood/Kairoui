@@ -142,3 +142,22 @@ export type {
 
 export { NumberInput } from "./number-input/index";
 export type { NumberInputProps, NumberInputSize } from "./number-input/index";
+
+export {
+  SliderContext,
+  useSliderContext,
+  snapToStep,
+  valueToPercent,
+  percentToValue,
+} from "./slider/index";
+export type {
+  SliderValue,
+  RangeSliderValue,
+  SliderProps,
+  RangeSliderProps,
+  SliderOrientation,
+  SliderTrackProps,
+  SliderRangeProps,
+  SliderThumbProps,
+  SliderContextValue,
+} from "./slider/index";
