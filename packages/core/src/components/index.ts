@@ -114,3 +114,17 @@ export type {
   SelectSeparatorProps,
   SelectContextValue,
 } from "./select/index";
+
+export { ComboboxContext, useComboboxContext } from "./combobox/index";
+export type {
+  ComboboxProps,
+  ComboboxInputProps,
+  ComboboxTriggerProps,
+  ComboboxClearProps,
+  ComboboxContentProps,
+  ComboboxItemProps,
+  ComboboxEmptyProps,
+  ComboboxGroupProps,
+  ComboboxLabelProps,
+  ComboboxContextValue,
+} from "./combobox/index";
