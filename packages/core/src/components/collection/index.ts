@@ -32,3 +32,6 @@ export type {
   UseCompositeNavigationOptions,
   CompositeNavigationState,
 } from "./use-composite-navigation";
+
+export { useTypeahead } from "./use-typeahead";
+export type { UseTypeaheadOptions, TypeaheadState } from "./use-typeahead";

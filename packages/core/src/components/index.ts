@@ -77,6 +77,8 @@ export type {
   CompositeOrientation,
   UseCompositeNavigationOptions,
   CompositeNavigationState,
+  UseTypeaheadOptions,
+  TypeaheadState,
 } from "./collection/index";
 
 export {
@@ -88,4 +90,5 @@ export {
   useSingleSelection,
   useMultiSelection,
   useCompositeNavigation,
+  useTypeahead,
 } from "./collection/index";
