@@ -3,6 +3,7 @@ export { Portal } from "./portal";
 export { Presence } from "./presence";
 export { DismissableLayer } from "./dismissable-layer";
 export { FocusScope } from "./focus-scope";
+export { ScrollLock, useScrollLock } from "./scroll-lock";
 export type {
   Placement,
   Side,
