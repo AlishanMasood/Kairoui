@@ -87,10 +87,14 @@ export interface DismissableLayerProps {
 export interface FocusScopeProps {
   /** Trap focus within this scope (for modal overlays). */
   trapped?: boolean;
+  /** Whether the scope is active. Defaults to true. */
+  enabled?: boolean;
   /** Restore focus to previously focused element on unmount. */
   restoreFocus?: boolean;
-  /** Element to focus on mount. */
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  /** Focus the first tabbable element on mount. Defaults to true when trapped. */
+  autoFocus?: boolean;
+  /** Element to focus on mount (takes priority over autoFocus). */
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   children?: ReactNode;
 }
 

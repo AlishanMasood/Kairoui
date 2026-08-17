@@ -2,6 +2,7 @@ export { OverlayStackContext, useOverlayStackContext } from "./overlay-types";
 export { Portal } from "./portal";
 export { Presence } from "./presence";
 export { DismissableLayer } from "./dismissable-layer";
+export { FocusScope } from "./focus-scope";
 export type {
   Placement,
   Side,
