@@ -139,3 +139,6 @@ export type {
   ComboboxLabelProps,
   ComboboxContextValue,
 } from "./combobox/index";
+
+export { NumberInput } from "./number-input/index";
+export type { NumberInputProps, NumberInputSize } from "./number-input/index";
