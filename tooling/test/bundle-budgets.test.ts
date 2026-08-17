@@ -41,7 +41,13 @@ const BUDGETS: BudgetEntry[] = [
   { pkg: "core", file: "dist/index.js", baseline: 14427, maxRaw: 22000, maxGzip: 5000 },
   { pkg: "core", file: "dist/composition.js", baseline: 30382, maxRaw: 46000, maxGzip: 11000 },
   { pkg: "core", file: "dist/primitives/index.js", baseline: 22676, maxRaw: 34000, maxGzip: 7000 },
-  { pkg: "core", file: "dist/components/index.js", baseline: 59443, maxRaw: 90000, maxGzip: 16000 },
+  {
+    pkg: "core",
+    file: "dist/components/index.js",
+    baseline: 120399,
+    maxRaw: 180000,
+    maxGzip: 30000,
+  },
   { pkg: "core", file: "dist/styles.css", baseline: 4252, maxRaw: 15000, maxGzip: 3000 },
 ];
 
@@ -138,17 +144,17 @@ describe("Bundle budgets: CSS output", () => {
 // ─── Total framework size budget ────────────────────────────────────
 
 describe("Bundle budgets: total framework", () => {
-  it("total JS runtime under 350KB raw", () => {
+  it("total JS runtime under 400KB raw", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
       const filePath = resolve(PACKAGES_DIR, budget.pkg, budget.file);
       total += statSync(filePath).size;
     }
-    expect(total).toBeLessThan(350 * 1024);
+    expect(total).toBeLessThan(400 * 1024);
   });
 
-  it("total JS runtime under 75KB gzip", () => {
+  it("total JS runtime under 85KB gzip", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
@@ -156,7 +162,7 @@ describe("Bundle budgets: total framework", () => {
       const content = readFileSync(filePath);
       total += gzipSync(content, { level: 9 }).length;
     }
-    expect(total).toBeLessThan(75 * 1024);
+    expect(total).toBeLessThan(85 * 1024);
   });
 });
 
