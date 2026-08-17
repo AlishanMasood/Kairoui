@@ -74,6 +74,9 @@ export type {
   SingleSelectionState,
   UseMultiSelectionOptions,
   MultiSelectionState,
+  CompositeOrientation,
+  UseCompositeNavigationOptions,
+  CompositeNavigationState,
 } from "./collection/index";
 
 export {
@@ -84,4 +87,5 @@ export {
   resolveNextItem,
   useSingleSelection,
   useMultiSelection,
+  useCompositeNavigation,
 } from "./collection/index";

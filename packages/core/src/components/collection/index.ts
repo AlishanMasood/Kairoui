@@ -25,3 +25,10 @@ export type {
   UseMultiSelectionOptions,
   MultiSelectionState,
 } from "./use-selection";
+
+export { useCompositeNavigation } from "./use-composite-navigation";
+export type {
+  CompositeOrientation,
+  UseCompositeNavigationOptions,
+  CompositeNavigationState,
+} from "./use-composite-navigation";
