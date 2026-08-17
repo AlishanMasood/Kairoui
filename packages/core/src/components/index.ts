@@ -153,6 +153,7 @@ export {
   SliderTrack,
   SliderRange,
   SliderThumb,
+  RangeSlider,
 } from "./slider/index";
 export type {
   SliderValue,

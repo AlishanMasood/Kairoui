@@ -18,3 +18,4 @@ export type {
 } from "./slider-types";
 
 export { Slider, SliderTrack, SliderRange, SliderThumb } from "./slider";
+export { RangeSlider } from "./range-slider";

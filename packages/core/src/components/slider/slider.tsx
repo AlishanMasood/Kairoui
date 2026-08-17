@@ -174,12 +174,17 @@ export const SliderRange = forwardRef<
 >(function SliderRange(props, ref) {
   const { className, ...restProps } = props;
   const ctx = useSliderContext();
-  const percent = ctx.thumbPercents[0] ?? 0;
+
+  // Single thumb: 0% to thumb position. Multiple thumbs: between first and last.
+  const isRange = ctx.values.length > 1;
+  const startPercent = isRange ? (ctx.thumbPercents[0] ?? 0) : 0;
+  const endPercent = isRange ? (ctx.thumbPercents[1] ?? 100) : (ctx.thumbPercents[0] ?? 0);
+  const size = endPercent - startPercent;
 
   const style =
     ctx.orientation === "horizontal"
-      ? { width: `${String(percent)}%` }
-      : { height: `${String(percent)}%` };
+      ? { left: `${String(startPercent)}%`, width: `${String(size)}%` }
+      : { bottom: `${String(startPercent)}%`, height: `${String(size)}%` };
 
   return createElement("div", {
     ...restProps,
