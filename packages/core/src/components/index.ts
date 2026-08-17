@@ -186,6 +186,7 @@ export type {
 export { OverlayStackContext, useOverlayStackContext } from "./overlay/index";
 export { Portal } from "./overlay/index";
 export { Presence } from "./overlay/index";
+export { DismissableLayer } from "./overlay/index";
 export type {
   Placement,
   Side,

@@ -65,16 +65,20 @@ export interface FloatingPositionResult {
 // ─── Dismissable Layer ──────────────────────────────────────────────
 
 export interface DismissableLayerProps {
-  /** Called when user clicks outside. */
+  /** Called when the layer should dismiss (after consumer handlers). */
   onDismiss?: () => void;
-  /** Called on Escape key. */
+  /** Called on Escape key. Call event.preventDefault() to cancel dismissal. */
   onEscapeKeyDown?: (event: KeyboardEvent) => void;
-  /** Called on pointer down outside. */
+  /** Called on pointer down outside. Call event.preventDefault() to cancel dismissal. */
   onPointerDownOutside?: (event: PointerEvent) => void;
-  /** Whether Escape dismisses. Defaults to true. */
+  /** Called when focus moves outside. Call event.preventDefault() to cancel dismissal. */
+  onFocusOutside?: (event: FocusEvent) => void;
+  /** Whether Escape dismissal is disabled. */
   disableEscapeKeyDown?: boolean;
-  /** Whether outside click dismisses. Defaults to false. */
+  /** When true, pointer events outside the layer are blocked (modal behavior). */
   disableOutsidePointerEvents?: boolean;
+  /** Elements excluded from "outside" detection (e.g., portaled triggers). */
+  branches?: ReadonlyArray<HTMLElement | null>;
   children?: ReactNode;
 }
 
