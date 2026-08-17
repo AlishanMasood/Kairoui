@@ -184,6 +184,7 @@ export type {
 } from "./toggle-group/index";
 
 export { OverlayStackContext, useOverlayStackContext } from "./overlay/index";
+export { Portal } from "./overlay/index";
 export type {
   Placement,
   Side,

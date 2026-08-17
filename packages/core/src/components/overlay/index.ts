@@ -1,4 +1,5 @@
 export { OverlayStackContext, useOverlayStackContext } from "./overlay-types";
+export { Portal } from "./portal";
 export type {
   Placement,
   Side,
