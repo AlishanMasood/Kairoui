@@ -4,6 +4,13 @@ export { Presence } from "./presence";
 export { DismissableLayer } from "./dismissable-layer";
 export { FocusScope } from "./focus-scope";
 export { ScrollLock, useScrollLock } from "./scroll-lock";
+export { computePosition, computeArrowPosition } from "./floating-position";
+export type { ComputePositionInput, ArrowPositionInput, ArrowPosition } from "./floating-position";
+export { useFloatingPosition } from "./use-floating-position";
+export type {
+  UseFloatingPositionOptions,
+  UseFloatingPositionReturn,
+} from "./use-floating-position";
 export type {
   Placement,
   Side,

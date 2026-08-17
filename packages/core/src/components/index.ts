@@ -189,6 +189,10 @@ export { Presence } from "./overlay/index";
 export { DismissableLayer } from "./overlay/index";
 export { FocusScope } from "./overlay/index";
 export { ScrollLock, useScrollLock } from "./overlay/index";
+export { computePosition, computeArrowPosition } from "./overlay/index";
+export type { ComputePositionInput, ArrowPositionInput, ArrowPosition } from "./overlay/index";
+export { useFloatingPosition } from "./overlay/index";
+export type { UseFloatingPositionOptions, UseFloatingPositionReturn } from "./overlay/index";
 export type {
   Placement,
   Side,
