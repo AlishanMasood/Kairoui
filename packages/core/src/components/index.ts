@@ -94,6 +94,15 @@ export {
 } from "./collection/index";
 
 export { SelectContext, useSelectContext } from "./select/index";
+export {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+} from "./select/index";
 export type {
   SelectProps,
   SelectTriggerProps,

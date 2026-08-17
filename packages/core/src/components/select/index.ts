@@ -10,3 +10,13 @@ export type {
   SelectSeparatorProps,
   SelectContextValue,
 } from "./select-types";
+
+export {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+} from "./select";

@@ -1,0 +1,183 @@
+---
+title: Select
+sidebar_position: 11
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator, Field, Label } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Select"
+  description="Single-value dropdown selection with keyboard navigation, typeahead, groups, and native form participation."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Select", "SelectTrigger", "SelectContent", "SelectItem"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Select defaultValue="apple">
+  <SelectTrigger placeholder="Pick a fruit" />
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana">Banana</SelectItem>
+    <SelectItem value="cherry">Cherry</SelectItem>
+  </SelectContent>
+</Select>`}
+>
+  <Select defaultValue="apple">
+    <SelectTrigger placeholder="Pick a fruit" />
+    <SelectContent>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="cherry">Cherry</SelectItem>
+    </SelectContent>
+  </Select>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Placeholder">
+
+When no value is selected, the trigger shows placeholder text.
+
+<Demo code={`<Select>
+  <SelectTrigger placeholder="Select an option…" />
+  <SelectContent>
+    <SelectItem value="a">Option A</SelectItem>
+    <SelectItem value="b">Option B</SelectItem>
+  </SelectContent>
+</Select>`}>
+  <Select>
+    <SelectTrigger placeholder="Select an option…" />
+    <SelectContent>
+      <SelectItem value="a">Option A</SelectItem>
+      <SelectItem value="b">Option B</SelectItem>
+    </SelectContent>
+  </Select>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled Items">
+
+<Demo code={`<Select>
+  <SelectTrigger placeholder="Choose…" />
+  <SelectContent>
+    <SelectItem value="a">Enabled</SelectItem>
+    <SelectItem value="b" disabled>Disabled</SelectItem>
+    <SelectItem value="c">Also enabled</SelectItem>
+  </SelectContent>
+</Select>`}>
+  <Select>
+    <SelectTrigger placeholder="Choose…" />
+    <SelectContent>
+      <SelectItem value="a">Enabled</SelectItem>
+      <SelectItem value="b" disabled>Disabled</SelectItem>
+      <SelectItem value="c">Also enabled</SelectItem>
+    </SelectContent>
+  </Select>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Groups">
+
+<Demo code={`<Select>
+  <SelectTrigger placeholder="Pick…" />
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectLabel>Vegetables</SelectLabel>
+      <SelectItem value="carrot">Carrot</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>`}>
+  <Select>
+    <SelectTrigger placeholder="Pick…" />
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+      </SelectGroup>
+      <SelectSeparator />
+      <SelectGroup>
+        <SelectLabel>Vegetables</SelectLabel>
+        <SelectItem value="carrot">Carrot</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Field">
+
+<Demo code={`<Field id="color" required>
+  <Label>Favorite color</Label>
+  <Select name="color">
+    <SelectTrigger placeholder="Pick…" />
+    <SelectContent>
+      <SelectItem value="red">Red</SelectItem>
+      <SelectItem value="blue">Blue</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>`}>
+  <Field id="color-demo" required>
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <Label>Favorite color</Label>
+      <Select name="color">
+        <SelectTrigger placeholder="Pick…" />
+        <SelectContent>
+          <SelectItem value="red">Red</SelectItem>
+          <SelectItem value="blue">Blue</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="API: Select">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | — | Controlled value |
+| `defaultValue` | `string` | — | Uncontrolled initial value |
+| `onValueChange` | `(value: string) => void` | — | Selection callback |
+| `open` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `false` | Initial open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open/close callback |
+| `name` | `string` | — | Form submission name |
+| `disabled` | `boolean` | `false` | Disables the select |
+| `required` | `boolean` | `false` | Marks as required |
+
+</DocsSection>
+
+<DocsSection title="API: SelectItem">
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | — | Item value (required) |
+| `label` | `string` | text content | Typeahead label |
+| `disabled` | `boolean` | `false` | Disables the item |
+
+</DocsSection>
+
+<Callout type="info" title="Keyboard navigation">
+  Arrow keys navigate items, Home/End jump to first/last, Enter selects, Escape closes.
+  Typing characters performs typeahead search.
+</Callout>
+
+<Callout type="info" title="Form participation">
+  When `name` is provided, Select renders a hidden `<input type="hidden">` for native form submission.
+</Callout>
