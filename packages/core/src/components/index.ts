@@ -166,3 +166,6 @@ export type {
   SliderThumbProps,
   SliderContextValue,
 } from "./slider/index";
+
+export { PinInput } from "./pin-input/index";
+export type { PinInputProps, PinInputMode } from "./pin-input/index";
