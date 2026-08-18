@@ -225,3 +225,17 @@ export type {
   SpinnerProps,
   SkeletonProps,
 } from "./overlay/index";
+
+export { DialogContext, useDialogContext } from "./dialog/index";
+export type { DialogContextValue } from "./dialog/index";
+export {
+  Dialog,
+  DialogTrigger,
+  DialogPortal,
+  DialogBackdrop,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "./dialog/index";
+export type { DialogPortalProps, DialogBackdropProps } from "./dialog/index";

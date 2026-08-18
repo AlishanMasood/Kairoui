@@ -36,6 +36,10 @@ function isActiveScope(element: HTMLElement): boolean {
   return leaves[leaves.length - 1] === element;
 }
 
+export function _resetScopeStack(): void {
+  scopeStack.length = 0;
+}
+
 // ─── Component ──────────────────────────────────────────────────────
 
 export function FocusScope(props: FocusScopeProps): ReactNode {
@@ -173,9 +177,7 @@ export function FocusScope(props: FocusScopeProps): ReactNode {
     return () => {
       const el = previouslyFocusedRef.current;
       if (el && typeof el.focus === "function") {
-        requestAnimationFrame(() => {
-          el.focus();
-        });
+        el.focus();
       }
     };
   }, [enabled, restoreFocus]);

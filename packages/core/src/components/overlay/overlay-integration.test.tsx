@@ -5,7 +5,7 @@ import { renderToString } from "react-dom/server";
 import { Portal } from "./portal";
 import { Presence } from "./presence";
 import { DismissableLayer, _resetLayerStack } from "./dismissable-layer";
-import { FocusScope } from "./focus-scope";
+import { FocusScope, _resetScopeStack } from "./focus-scope";
 import { ScrollLock, _resetScrollLock } from "./scroll-lock";
 import { computePosition } from "./floating-position";
 import type { DOMRectLike } from "@kairoui/utils/dom";
@@ -13,6 +13,7 @@ import type { DOMRectLike } from "@kairoui/utils/dom";
 beforeEach(() => {
   _resetLayerStack();
   _resetScrollLock();
+  _resetScopeStack();
   document.body.style.overflow = "";
   document.body.style.paddingRight = "";
   document.body.style.pointerEvents = "";
@@ -22,6 +23,7 @@ afterEach(() => {
   cleanup();
   _resetLayerStack();
   _resetScrollLock();
+  _resetScopeStack();
   document.body.style.overflow = "";
   document.body.style.paddingRight = "";
   document.body.style.pointerEvents = "";
