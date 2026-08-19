@@ -239,3 +239,28 @@ export {
   DialogClose,
 } from "./dialog/index";
 export type { DialogPortalProps, DialogBackdropProps } from "./dialog/index";
+
+export { AlertDialogContext, useAlertDialogContext } from "./alert-dialog/index";
+export type { AlertDialogContextValue } from "./alert-dialog/index";
+export {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogPortal,
+  AlertDialogBackdrop,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from "./alert-dialog/index";
+export type {
+  AlertDialogProps,
+  AlertDialogTriggerProps,
+  AlertDialogPortalProps,
+  AlertDialogBackdropProps,
+  AlertDialogContentProps,
+  AlertDialogTitleProps,
+  AlertDialogDescriptionProps,
+  AlertDialogActionProps,
+  AlertDialogCancelProps,
+} from "./alert-dialog/index";
