@@ -219,8 +219,6 @@ export type {
   MenuProps,
   ToastPlacement,
   ToastProps,
-  ProgressProps,
-  SpinnerProps,
   SkeletonProps,
 } from "./overlay/index";
 
@@ -419,3 +417,13 @@ export type {
   AlertDescriptionProps,
   AlertActionProps,
 } from "./alert/index";
+
+export { Progress, ProgressTrack, ProgressIndicator, Spinner } from "./progress/index";
+export type {
+  ProgressSize,
+  ProgressProps,
+  ProgressTrackProps,
+  ProgressIndicatorProps,
+  SpinnerSize,
+  SpinnerProps,
+} from "./progress/index";
