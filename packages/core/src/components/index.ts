@@ -362,3 +362,19 @@ export {
   DropdownMenuArrow,
 } from "./dropdown-menu/index";
 export type { DropdownMenuPortalProps } from "./dropdown-menu/index";
+
+export {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuPortal,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuItemIndicator,
+  ContextMenuGroup,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+} from "./context-menu/index";
+export type { ContextMenuTriggerProps, ContextMenuPortalProps } from "./context-menu/index";
