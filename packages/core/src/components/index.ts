@@ -217,8 +217,6 @@ export type {
   TooltipProps,
   TooltipContentProps,
   MenuProps,
-  MenuContentProps,
-  MenuItemProps,
   ToastPlacement,
   ToastProps,
   ProgressProps,
@@ -317,3 +315,33 @@ export {
   TooltipArrow,
 } from "./tooltip/index";
 export type { TooltipTriggerProps, TooltipPortalProps, TooltipArrowProps } from "./tooltip/index";
+
+export {
+  MenuContext,
+  useMenuContext,
+  MenuRadioGroupContext,
+  useMenuRadioGroupContext,
+  MenuSubContext,
+  useMenuSubContext,
+} from "./menu/index";
+export type {
+  MenuItemData,
+  MenuRootProps,
+  MenuTriggerProps,
+  MenuContentProps,
+  MenuItemProps,
+  MenuCheckboxItemProps,
+  MenuRadioGroupProps,
+  MenuRadioItemProps,
+  MenuItemIndicatorProps,
+  MenuGroupProps,
+  MenuLabelProps,
+  MenuSeparatorProps,
+  MenuSubProps,
+  MenuSubTriggerProps,
+  MenuSubContentProps,
+  MenuArrowProps,
+  MenuContextValue,
+  MenuRadioGroupContextValue,
+  MenuSubContextValue,
+} from "./menu/index";
