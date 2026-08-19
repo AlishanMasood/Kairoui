@@ -219,7 +219,6 @@ export type {
   MenuProps,
   ToastPlacement,
   ToastProps,
-  SkeletonProps,
 } from "./overlay/index";
 
 export { DialogContext, useDialogContext } from "./dialog/index";
@@ -427,3 +426,6 @@ export type {
   SpinnerSize,
   SpinnerProps,
 } from "./progress/index";
+
+export { Skeleton } from "./skeleton/index";
+export type { SkeletonVariant, SkeletonProps } from "./skeleton/index";
