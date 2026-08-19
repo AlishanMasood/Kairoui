@@ -287,3 +287,22 @@ export type {
   DrawerDescriptionProps,
   DrawerCloseProps,
 } from "./drawer/index";
+
+export { PopoverContext, usePopoverContext } from "./popover/index";
+export type { PopoverContextValue } from "./popover/index";
+export {
+  Popover,
+  PopoverTrigger,
+  PopoverAnchor,
+  PopoverPortal,
+  PopoverContent,
+  PopoverArrow,
+  PopoverClose,
+} from "./popover/index";
+export type {
+  PopoverTriggerProps,
+  PopoverAnchorProps,
+  PopoverPortalProps,
+  PopoverArrowProps,
+  PopoverCloseProps,
+} from "./popover/index";
