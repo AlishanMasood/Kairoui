@@ -1,0 +1,42 @@
+---
+title: Tooltip
+sidebar_position: 24
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Tooltip, TooltipTrigger, TooltipPortal, TooltipContent } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Tooltip"
+  description="Non-interactive floating label that appears on hover/focus with configurable delay."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Tooltip", "TooltipTrigger", "TooltipContent"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Tooltip>
+  <TooltipTrigger>Hover me</TooltipTrigger>
+  <TooltipPortal>
+    <TooltipContent>Helpful tooltip text</TooltipContent>
+  </TooltipPortal>
+</Tooltip>`}>
+  <Tooltip>
+    <TooltipTrigger>Hover me</TooltipTrigger>
+    <TooltipPortal>
+      <TooltipContent>Helpful tooltip text</TooltipContent>
+    </TooltipPortal>
+  </Tooltip>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+<Callout type="info">
+Tooltip uses `role="tooltip"` and links to the trigger via `aria-describedby`. It is non-interactive — content cannot be hovered or focused. Use Popover for interactive floating content.
+</Callout>
+
+</DocsSection>

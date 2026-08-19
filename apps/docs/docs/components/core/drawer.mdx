@@ -1,0 +1,50 @@
+---
+title: Drawer
+sidebar_position: 22
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Drawer, DrawerTrigger, DrawerPortal, DrawerBackdrop, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Drawer"
+  description="Slide-out panel from any edge. Modal overlay with focus trap, scroll lock, and Escape dismissal."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Drawer", "DrawerTrigger", "DrawerContent", "DrawerTitle", "DrawerClose"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Drawer side="right">
+  <DrawerTrigger>Open Drawer</DrawerTrigger>
+  <DrawerPortal>
+    <DrawerBackdrop />
+    <DrawerContent>
+      <DrawerTitle>Settings</DrawerTitle>
+      <DrawerDescription>Configure your preferences.</DrawerDescription>
+      <DrawerClose>Close</DrawerClose>
+    </DrawerContent>
+  </DrawerPortal>
+</Drawer>`}>
+  <Drawer side="right">
+    <DrawerTrigger>Open Drawer</DrawerTrigger>
+    <DrawerPortal>
+      <DrawerBackdrop />
+      <DrawerContent>
+        <DrawerTitle>Settings</DrawerTitle>
+        <DrawerDescription>Configure your preferences.</DrawerDescription>
+        <DrawerClose>Close</DrawerClose>
+      </DrawerContent>
+    </DrawerPortal>
+  </Drawer>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Side Placement">
+
+Use the `side` prop on `Drawer` to control which edge it appears from: `"left"`, `"right"` (default), `"top"`, or `"bottom"`. The content receives `data-side` for CSS targeting.
+
+</DocsSection>

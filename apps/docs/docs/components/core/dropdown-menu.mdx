@@ -1,0 +1,59 @@
+---
+title: DropdownMenu
+sidebar_position: 25
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="DropdownMenu"
+  description="Action menu with keyboard navigation, checkbox/radio items, groups, and submenus."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["DropdownMenu", "DropdownMenuTrigger", "DropdownMenuContent", "DropdownMenuItem"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<DropdownMenu>
+  <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
+  <DropdownMenuPortal>
+    <DropdownMenuContent>
+      <DropdownMenuItem onSelect={() => console.log('cut')}>Cut</DropdownMenuItem>
+      <DropdownMenuItem onSelect={() => console.log('copy')}>Copy</DropdownMenuItem>
+      <DropdownMenuItem disabled>Paste</DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>Delete</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenuPortal>
+</DropdownMenu>`}>
+  <DropdownMenu>
+    <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
+    <DropdownMenuPortal>
+      <DropdownMenuContent>
+        <DropdownMenuItem>Cut</DropdownMenuItem>
+        <DropdownMenuItem>Copy</DropdownMenuItem>
+        <DropdownMenuItem disabled>Paste</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Delete</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenuPortal>
+  </DropdownMenu>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard">
+
+| Key | Action |
+|-----|--------|
+| ArrowDown | Move to next item |
+| ArrowUp | Move to previous item |
+| Home | Move to first item |
+| End | Move to last item |
+| Enter / Space | Activate item |
+| Escape | Close menu |
+
+</DocsSection>

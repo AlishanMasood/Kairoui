@@ -1,0 +1,55 @@
+---
+title: AlertDialog
+sidebar_position: 21
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="AlertDialog"
+  description="Confirmation dialog for destructive or important actions. Outside clicks do not dismiss. Cancel button receives initial focus."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["AlertDialog", "AlertDialogTrigger", "AlertDialogContent", "AlertDialogTitle", "AlertDialogDescription", "AlertDialogCancel", "AlertDialogAction"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<AlertDialog>
+  <AlertDialogTrigger>Delete Account</AlertDialogTrigger>
+  <AlertDialogPortal>
+    <AlertDialogContent>
+      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Delete</AlertDialogAction>
+    </AlertDialogContent>
+  </AlertDialogPortal>
+</AlertDialog>`}>
+  <AlertDialog>
+    <AlertDialogTrigger>Delete Account</AlertDialogTrigger>
+    <AlertDialogPortal>
+      <AlertDialogContent>
+        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+        <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Delete</AlertDialogAction>
+      </AlertDialogContent>
+    </AlertDialogPortal>
+  </AlertDialog>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Key Differences from Dialog">
+
+| Behavior | Dialog | AlertDialog |
+|----------|--------|-------------|
+| Role | `dialog` | `alertdialog` |
+| Outside click dismisses | Yes | No |
+| Initial focus | First tabbable | Cancel button |
+| Modal | Configurable | Always |
+
+</DocsSection>

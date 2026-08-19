@@ -1,0 +1,71 @@
+---
+title: Dialog
+sidebar_position: 20
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Dialog, DialogTrigger, DialogPortal, DialogBackdrop, DialogContent, DialogTitle, DialogDescription, DialogClose } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Dialog"
+  description="Modal dialog overlay with focus trapping, scroll lock, accessible title/description relationships, and Escape dismissal."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Dialog", "DialogTrigger", "DialogPortal", "DialogContent", "DialogTitle", "DialogDescription", "DialogClose"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Dialog>
+  <DialogTrigger>Open Dialog</DialogTrigger>
+  <DialogPortal>
+    <DialogBackdrop />
+    <DialogContent>
+      <DialogTitle>Confirm Action</DialogTitle>
+      <DialogDescription>Are you sure you want to proceed?</DialogDescription>
+      <DialogClose>Close</DialogClose>
+    </DialogContent>
+  </DialogPortal>
+</Dialog>`}>
+  <Dialog>
+    <DialogTrigger>Open Dialog</DialogTrigger>
+    <DialogPortal>
+      <DialogBackdrop />
+      <DialogContent>
+        <DialogTitle>Confirm Action</DialogTitle>
+        <DialogDescription>Are you sure you want to proceed?</DialogDescription>
+        <DialogClose>Close</DialogClose>
+      </DialogContent>
+    </DialogPortal>
+  </Dialog>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Anatomy">
+
+| Part | Description |
+|------|-------------|
+| `Dialog` | Root, manages open state and context |
+| `DialogTrigger` | Button that toggles the dialog |
+| `DialogPortal` | Portals content to document.body |
+| `DialogBackdrop` | Decorative backdrop overlay |
+| `DialogContent` | The dialog panel (role="dialog") |
+| `DialogTitle` | Accessible title (aria-labelledby) |
+| `DialogDescription` | Accessible description (aria-describedby) |
+| `DialogClose` | Button that closes the dialog |
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+<Callout type="info">
+Every Dialog must include a `DialogTitle` for screen readers. The content automatically receives `role="dialog"`, `aria-modal="true"`, and links to the title via `aria-labelledby`.
+</Callout>
+
+- Focus is trapped within the dialog while open
+- Escape key closes the dialog
+- Focus returns to the trigger on close
+
+</DocsSection>

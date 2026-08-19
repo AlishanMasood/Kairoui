@@ -1,0 +1,73 @@
+---
+title: Toast
+sidebar_position: 27
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { ToastProvider, ToastViewport, useToastState, ToastAction } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Toast"
+  description="Ephemeral notification system with queuing, auto-dismiss, pause on hover, and imperative API."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["ToastProvider", "ToastViewport", "useToastState"]} from="@kairoui/core/components" />
+
+<DocsSection title="Setup">
+
+Wrap your app with `ToastProvider` and render `ToastViewport` once:
+
+```tsx
+<ToastProvider>
+  <App />
+  <ToastViewport />
+</ToastProvider>
+```
+
+</DocsSection>
+
+<DocsSection title="Imperative API">
+
+Use `useToastState()` to add, dismiss, and update toasts:
+
+```tsx
+function MyComponent() {
+  const toast = useToastState();
+
+  return (
+    <button onClick={() => toast.add({ title: "Saved!", severity: "success" })}>
+      Save
+    </button>
+  );
+}
+```
+
+</DocsSection>
+
+<DocsSection title="API Reference">
+
+| Method | Description |
+|--------|-------------|
+| `add(input)` | Creates a toast, returns its ID |
+| `dismiss(id)` | Removes a specific toast |
+| `dismissAll()` | Removes all toasts |
+| `update(id, data)` | Modifies an existing toast |
+| `pauseAll()` | Pauses auto-dismiss timers |
+| `resumeAll()` | Resumes auto-dismiss timers |
+
+</DocsSection>
+
+<DocsSection title="Toast Data">
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `title` | ReactNode | Toast heading |
+| `description` | ReactNode | Body text |
+| `severity` | `"info" \| "success" \| "warning" \| "error"` | Visual tone |
+| `duration` | number | Auto-dismiss ms (0 = persistent) |
+| `action` | ReactNode | Action slot (use `ToastAction`) |
+| `onDismiss` | function | Called when dismissed |
+
+</DocsSection>

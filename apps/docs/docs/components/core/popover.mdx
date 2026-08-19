@@ -1,0 +1,48 @@
+---
+title: Popover
+sidebar_position: 23
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Popover, PopoverTrigger, PopoverPortal, PopoverContent, PopoverArrow, PopoverClose } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Popover"
+  description="Floating panel anchored to a trigger. Non-modal by default with auto-positioning, flip, and shift."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Popover", "PopoverTrigger", "PopoverContent", "PopoverClose"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Popover>
+  <PopoverTrigger>More Info</PopoverTrigger>
+  <PopoverPortal>
+    <PopoverContent>
+      <p>Additional details about this feature.</p>
+      <PopoverClose>Dismiss</PopoverClose>
+    </PopoverContent>
+  </PopoverPortal>
+</Popover>`}>
+  <Popover>
+    <PopoverTrigger>More Info</PopoverTrigger>
+    <PopoverPortal>
+      <PopoverContent>
+        <p>Additional details about this feature.</p>
+        <PopoverClose>Dismiss</PopoverClose>
+      </PopoverContent>
+    </PopoverPortal>
+  </Popover>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Non-modal Behavior">
+
+<Callout type="info">
+Popover is non-modal by default — it does not trap focus or lock scroll. Pass `modal` to the root for modal behavior when needed.
+</Callout>
+
+</DocsSection>

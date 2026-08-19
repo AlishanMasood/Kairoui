@@ -1,0 +1,52 @@
+---
+title: ContextMenu
+sidebar_position: 26
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuItem, ContextMenuSeparator } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="ContextMenu"
+  description="Right-click menu sharing the same item model as DropdownMenu. Triggered by contextmenu event."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["ContextMenu", "ContextMenuTrigger", "ContextMenuContent", "ContextMenuItem"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<ContextMenu>
+  <ContextMenuTrigger>
+    <div style={{ padding: 40, border: '1px dashed gray' }}>
+      Right-click this area
+    </div>
+  </ContextMenuTrigger>
+  <ContextMenuPortal>
+    <ContextMenuContent>
+      <ContextMenuItem>Copy</ContextMenuItem>
+      <ContextMenuItem>Paste</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>Inspect</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenuPortal>
+</ContextMenu>`}>
+  <ContextMenu>
+    <ContextMenuTrigger>
+      <div style={{ padding: 40, border: '1px dashed gray' }}>
+        Right-click this area
+      </div>
+    </ContextMenuTrigger>
+    <ContextMenuPortal>
+      <ContextMenuContent>
+        <ContextMenuItem>Copy</ContextMenuItem>
+        <ContextMenuItem>Paste</ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem>Inspect</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenuPortal>
+  </ContextMenu>
+</Demo>
+
+</DocsSection>

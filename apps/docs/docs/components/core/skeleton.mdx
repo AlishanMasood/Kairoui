@@ -1,0 +1,56 @@
+---
+title: Skeleton
+sidebar_position: 30
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Skeleton } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Skeleton"
+  description="Placeholder loading primitive with text, rectangular, and circular variants."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Skeleton"]} from="@kairoui/core/components" />
+
+<DocsSection title="Text Skeleton">
+
+<Demo code={`<div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 200 }}>
+  <Skeleton />
+  <Skeleton width="80%" />
+  <Skeleton width="60%" />
+</div>`}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 200 }}>
+    <Skeleton />
+    <Skeleton width="80%" />
+    <Skeleton width="60%" />
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Rectangular">
+
+<Demo code={`<Skeleton variant="rectangular" width={200} height={120} />`}>
+  <Skeleton variant="rectangular" width={200} height={120} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Circular">
+
+<Demo code={`<Skeleton variant="circular" width={48} height={48} />`}>
+  <Skeleton variant="circular" width={48} height={48} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+<Callout type="info">
+Skeleton is `aria-hidden="true"` — it's decorative. Wrap loading regions in `aria-busy="true"` with an appropriate `aria-label` to announce loading state to screen readers.
+</Callout>
+
+</DocsSection>

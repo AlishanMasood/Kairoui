@@ -1,0 +1,60 @@
+---
+title: Progress & Spinner
+sidebar_position: 29
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Progress, ProgressTrack, ProgressIndicator, Spinner } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Progress"
+  description="Determinate and indeterminate progress bar with accessible value announcements."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Progress", "ProgressTrack", "ProgressIndicator", "Spinner"]} from="@kairoui/core/components" />
+
+<DocsSection title="Determinate Progress">
+
+<Demo code={`<Progress value={65} label="Upload progress">
+  <ProgressTrack>
+    <ProgressIndicator />
+  </ProgressTrack>
+</Progress>`}>
+  <Progress value={65} label="Upload progress">
+    <ProgressTrack>
+      <ProgressIndicator />
+    </ProgressTrack>
+  </Progress>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Indeterminate Progress">
+
+Omit `value` for indeterminate state:
+
+<Demo code={`<Progress label="Loading">
+  <ProgressTrack>
+    <ProgressIndicator />
+  </ProgressTrack>
+</Progress>`}>
+  <Progress label="Loading">
+    <ProgressTrack>
+      <ProgressIndicator />
+    </ProgressTrack>
+  </Progress>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Spinner">
+
+<Demo code={`<Spinner label="Loading data" size="md" />`}>
+  <Spinner label="Loading data" size="md" />
+</Demo>
+
+Sizes: `sm` (16px), `md` (24px), `lg` (32px).
+
+</DocsSection>

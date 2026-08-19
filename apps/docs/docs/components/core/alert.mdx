@@ -1,0 +1,49 @@
+---
+title: Alert
+sidebar_position: 28
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Alert, AlertIcon, AlertTitle, AlertDescription, AlertAction } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Alert"
+  description="Static informational banner with semantic tones. Use live prop for dynamic screen-reader announcements."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Alert", "AlertTitle", "AlertDescription"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<Alert tone="info">
+  <AlertTitle>Information</AlertTitle>
+  <AlertDescription>Your changes have been saved.</AlertDescription>
+</Alert>`}>
+  <Alert tone="info">
+    <AlertTitle>Information</AlertTitle>
+    <AlertDescription>Your changes have been saved.</AlertDescription>
+  </Alert>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Tones">
+
+| Tone | Usage |
+|------|-------|
+| `info` | General information (default) |
+| `success` | Positive confirmation |
+| `warning` | Caution, potential issue |
+| `danger` | Error or destructive outcome |
+
+</DocsSection>
+
+<DocsSection title="Live Announcements">
+
+<Callout type="info">
+By default Alert has `role="status"` (not announced assertively). Pass `live` to use `role="alert"` for dynamic content that must be announced immediately.
+</Callout>
+
+</DocsSection>
