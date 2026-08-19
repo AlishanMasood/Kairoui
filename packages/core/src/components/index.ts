@@ -409,3 +409,13 @@ export type {
   ToastState,
   ToastItemContextValue,
 } from "./toast/index";
+
+export { Alert, AlertIcon, AlertTitle, AlertDescription, AlertAction } from "./alert/index";
+export type {
+  AlertTone,
+  AlertProps,
+  AlertIconProps,
+  AlertTitleProps,
+  AlertDescriptionProps,
+  AlertActionProps,
+} from "./alert/index";
