@@ -306,3 +306,14 @@ export type {
   PopoverArrowProps,
   PopoverCloseProps,
 } from "./popover/index";
+
+export { TooltipContext, useTooltipContext } from "./tooltip/index";
+export type { TooltipContextValue } from "./tooltip/index";
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipPortal,
+  TooltipContent,
+  TooltipArrow,
+} from "./tooltip/index";
+export type { TooltipTriggerProps, TooltipPortalProps, TooltipArrowProps } from "./tooltip/index";
