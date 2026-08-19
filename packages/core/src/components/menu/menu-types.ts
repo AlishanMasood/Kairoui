@@ -159,23 +159,18 @@ export interface MenuArrowProps {
 // ─── Context (shared between DropdownMenu and ContextMenu) ──────────
 
 export interface MenuContextValue {
-  // State
   open: boolean;
   dir: "ltr" | "rtl";
   highlightedValue: string | undefined;
-
-  // Actions
   onOpenChange: (open: boolean) => void;
   setHighlightedValue: (value: string | undefined) => void;
   onItemSelect: (value: string) => void;
-
-  // IDs
   triggerId: string;
   contentId: string;
-
-  // Refs
   triggerRef: RefObject<HTMLElement | null>;
   contentRef: RefObject<HTMLElement | null>;
+  setTriggerNode: (node: HTMLElement | null) => void;
+  setContentNode: (node: HTMLElement | null) => void;
 }
 
 export const MenuContext = createContext<MenuContextValue | null>(null);

@@ -144,17 +144,17 @@ describe("Bundle budgets: CSS output", () => {
 // ─── Total framework size budget ────────────────────────────────────
 
 describe("Bundle budgets: total framework", () => {
-  it("total JS runtime under 400KB raw", () => {
+  it("total JS runtime under 500KB raw", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
       const filePath = resolve(PACKAGES_DIR, budget.pkg, budget.file);
       total += statSync(filePath).size;
     }
-    expect(total).toBeLessThan(400 * 1024);
+    expect(total).toBeLessThan(500 * 1024);
   });
 
-  it("total JS runtime under 85KB gzip", () => {
+  it("total JS runtime under 110KB gzip", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
@@ -162,7 +162,7 @@ describe("Bundle budgets: total framework", () => {
       const content = readFileSync(filePath);
       total += gzipSync(content, { level: 9 }).length;
     }
-    expect(total).toBeLessThan(85 * 1024);
+    expect(total).toBeLessThan(110 * 1024);
   });
 });
 

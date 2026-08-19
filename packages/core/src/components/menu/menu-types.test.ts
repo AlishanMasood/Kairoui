@@ -42,6 +42,8 @@ describe("Menu architecture: contexts", () => {
       contentId: "c",
       triggerRef: { current: null },
       contentRef: { current: null },
+      setTriggerNode: () => {},
+      setContentNode: () => {},
     };
     const { result } = renderHook(() => useMenuContext(), {
       wrapper: ({ children }) => createElement(MenuContext.Provider, { value }, children),
