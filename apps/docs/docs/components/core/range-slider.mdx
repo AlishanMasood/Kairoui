@@ -12,24 +12,27 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
   status="beta"
 />
 
-<ImportStatement imports={["RangeSlider", "SliderTrack", "SliderRange", "SliderThumb"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["RangeSlider", "SliderTrack", "SliderRange", "SliderThumb"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `[number, number]` | — | Controlled value pair |
-| `defaultValue` | `[number, number]` | `[min, max]` | Initial range |
-| `onValueChange` | `(value: [number, number]) => void` | — | Change callback |
-| `onValueCommit` | `(value: [number, number]) => void` | — | Final value |
-| `min` | `number` | `0` | Minimum |
-| `max` | `number` | `100` | Maximum |
-| `step` | `number` | `1` | Step |
-| `minStepsBetweenThumbs` | `number` | `0` | Minimum gap in steps |
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout |
-| `disabled` | `boolean` | `false` | Disables both thumbs |
-| `name` | `string` | — | Form name (submits name[0] and name[1]) |
-| `getValueLabel` | `(value, index) => string` | — | Per-thumb value text |
+| Prop                    | Type                                | Default        | Description                             |
+| ----------------------- | ----------------------------------- | -------------- | --------------------------------------- |
+| `value`                 | `[number, number]`                  | —              | Controlled value pair                   |
+| `defaultValue`          | `[number, number]`                  | `[min, max]`   | Initial range                           |
+| `onValueChange`         | `(value: [number, number]) => void` | —              | Change callback                         |
+| `onValueCommit`         | `(value: [number, number]) => void` | —              | Final value                             |
+| `min`                   | `number`                            | `0`            | Minimum                                 |
+| `max`                   | `number`                            | `100`          | Maximum                                 |
+| `step`                  | `number`                            | `1`            | Step                                    |
+| `minStepsBetweenThumbs` | `number`                            | `0`            | Minimum gap in steps                    |
+| `orientation`           | `"horizontal" \| "vertical"`        | `"horizontal"` | Layout                                  |
+| `disabled`              | `boolean`                           | `false`        | Disables both thumbs                    |
+| `name`                  | `string`                            | —              | Form name (submits name[0] and name[1]) |
+| `getValueLabel`         | `(value, index) => string`          | —              | Per-thumb value text                    |
 
 </DocsSection>
 
@@ -38,6 +41,6 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 </Callout>
 
 <Callout type="info" title="Reuses Slider parts">
-  RangeSlider uses the same `SliderTrack`, `SliderRange`, and `SliderThumb` components.
-  Render two `SliderThumb` elements with `index={0}` and `index={1}`.
+  RangeSlider uses the same `SliderTrack`, `SliderRange`, and `SliderThumb` components. Render two
+  `SliderThumb` elements with `index={0}` and `index={1}`.
 </Callout>

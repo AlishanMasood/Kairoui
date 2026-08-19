@@ -52,7 +52,9 @@ import { Switch, Field, Label, FieldDescription } from "@kairoui/core/components
 <Demo code={`<Switch disabled>Cannot toggle</Switch>`}>
   <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
     <Switch disabled>Disabled off</Switch>
-    <Switch disabled defaultChecked>Disabled on</Switch>
+    <Switch disabled defaultChecked>
+      Disabled on
+    </Switch>
   </div>
 </Demo>
 
@@ -82,18 +84,18 @@ import { Switch, Field, Label, FieldDescription } from "@kairoui/core/components
 
 <DocsSection title="API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `ReactNode` | — | Label content |
-| `checked` | `boolean` | — | Controlled checked state |
-| `defaultChecked` | `boolean` | `false` | Uncontrolled initial state |
-| `onCheckedChange` | `(checked: boolean) => void` | — | Change callback |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
-| `disabled` | `boolean` | `false` | Disables the switch |
-| `name` | `string` | — | Form submission name |
-| `value` | `string` | `"on"` | Form submission value |
-| `id` | `string` | auto from Field | Button element ID |
-| `ref` | `Ref<HTMLButtonElement>` | — | Forwarded to button |
+| Prop              | Type                         | Default         | Description                |
+| ----------------- | ---------------------------- | --------------- | -------------------------- |
+| `children`        | `ReactNode`                  | —               | Label content              |
+| `checked`         | `boolean`                    | —               | Controlled checked state   |
+| `defaultChecked`  | `boolean`                    | `false`         | Uncontrolled initial state |
+| `onCheckedChange` | `(checked: boolean) => void` | —               | Change callback            |
+| `size`            | `"sm" \| "md" \| "lg"`       | `"md"`          | Size variant               |
+| `disabled`        | `boolean`                    | `false`         | Disables the switch        |
+| `name`            | `string`                     | —               | Form submission name       |
+| `value`           | `string`                     | `"on"`          | Form submission value      |
+| `id`              | `string`                     | auto from Field | Button element ID          |
+| `ref`             | `Ref<HTMLButtonElement>`     | —               | Forwarded to button        |
 
 </DocsSection>
 

@@ -4,7 +4,17 @@ sidebar_position: 11
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator, Field, Label } from "@kairoui/core/components";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+  Field,
+  Label,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="Select"
@@ -13,7 +23,10 @@ import { Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectLa
   status="beta"
 />
 
-<ImportStatement imports={["Select", "SelectTrigger", "SelectContent", "SelectItem"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Select", "SelectTrigger", "SelectContent", "SelectItem"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
@@ -43,13 +56,15 @@ import { Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectLa
 
 When no value is selected, the trigger shows placeholder text.
 
-<Demo code={`<Select>
+<Demo
+  code={`<Select>
   <SelectTrigger placeholder="Select an option…" />
   <SelectContent>
     <SelectItem value="a">Option A</SelectItem>
     <SelectItem value="b">Option B</SelectItem>
   </SelectContent>
-</Select>`}>
+</Select>`}
+>
   <Select>
     <SelectTrigger placeholder="Select an option…" />
     <SelectContent>
@@ -63,19 +78,23 @@ When no value is selected, the trigger shows placeholder text.
 
 <DocsSection title="Disabled Items">
 
-<Demo code={`<Select>
+<Demo
+  code={`<Select>
   <SelectTrigger placeholder="Choose…" />
   <SelectContent>
     <SelectItem value="a">Enabled</SelectItem>
     <SelectItem value="b" disabled>Disabled</SelectItem>
     <SelectItem value="c">Also enabled</SelectItem>
   </SelectContent>
-</Select>`}>
+</Select>`}
+>
   <Select>
     <SelectTrigger placeholder="Choose…" />
     <SelectContent>
       <SelectItem value="a">Enabled</SelectItem>
-      <SelectItem value="b" disabled>Disabled</SelectItem>
+      <SelectItem value="b" disabled>
+        Disabled
+      </SelectItem>
       <SelectItem value="c">Also enabled</SelectItem>
     </SelectContent>
   </Select>
@@ -85,7 +104,8 @@ When no value is selected, the trigger shows placeholder text.
 
 <DocsSection title="Groups">
 
-<Demo code={`<Select>
+<Demo
+  code={`<Select>
   <SelectTrigger placeholder="Pick…" />
   <SelectContent>
     <SelectGroup>
@@ -99,7 +119,8 @@ When no value is selected, the trigger shows placeholder text.
       <SelectItem value="carrot">Carrot</SelectItem>
     </SelectGroup>
   </SelectContent>
-</Select>`}>
+</Select>`}
+>
   <Select>
     <SelectTrigger placeholder="Pick…" />
     <SelectContent>
@@ -121,7 +142,8 @@ When no value is selected, the trigger shows placeholder text.
 
 <DocsSection title="With Field">
 
-<Demo code={`<Field id="color" required>
+<Demo
+  code={`<Field id="color" required>
   <Label>Favorite color</Label>
   <Select name="color">
     <SelectTrigger placeholder="Pick…" />
@@ -130,7 +152,8 @@ When no value is selected, the trigger shows placeholder text.
       <SelectItem value="blue">Blue</SelectItem>
     </SelectContent>
   </Select>
-</Field>`}>
+</Field>`}
+>
   <Field id="color-demo" required>
     <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
       <Label>Favorite color</Label>
@@ -149,33 +172,33 @@ When no value is selected, the trigger shows placeholder text.
 
 <DocsSection title="API: Select">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | — | Controlled value |
-| `defaultValue` | `string` | — | Uncontrolled initial value |
-| `onValueChange` | `(value: string) => void` | — | Selection callback |
-| `open` | `boolean` | — | Controlled open state |
-| `defaultOpen` | `boolean` | `false` | Initial open state |
-| `onOpenChange` | `(open: boolean) => void` | — | Open/close callback |
-| `name` | `string` | — | Form submission name |
-| `disabled` | `boolean` | `false` | Disables the select |
-| `required` | `boolean` | `false` | Marks as required |
+| Prop            | Type                      | Default | Description                |
+| --------------- | ------------------------- | ------- | -------------------------- |
+| `value`         | `string`                  | —       | Controlled value           |
+| `defaultValue`  | `string`                  | —       | Uncontrolled initial value |
+| `onValueChange` | `(value: string) => void` | —       | Selection callback         |
+| `open`          | `boolean`                 | —       | Controlled open state      |
+| `defaultOpen`   | `boolean`                 | `false` | Initial open state         |
+| `onOpenChange`  | `(open: boolean) => void` | —       | Open/close callback        |
+| `name`          | `string`                  | —       | Form submission name       |
+| `disabled`      | `boolean`                 | `false` | Disables the select        |
+| `required`      | `boolean`                 | `false` | Marks as required          |
 
 </DocsSection>
 
 <DocsSection title="API: SelectItem">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | — | Item value (required) |
-| `label` | `string` | text content | Typeahead label |
-| `disabled` | `boolean` | `false` | Disables the item |
+| Prop       | Type      | Default      | Description           |
+| ---------- | --------- | ------------ | --------------------- |
+| `value`    | `string`  | —            | Item value (required) |
+| `label`    | `string`  | text content | Typeahead label       |
+| `disabled` | `boolean` | `false`      | Disables the item     |
 
 </DocsSection>
 
 <Callout type="info" title="Keyboard navigation">
-  Arrow keys navigate items, Home/End jump to first/last, Enter selects, Escape closes.
-  Typing characters performs typeahead search.
+  Arrow keys navigate items, Home/End jump to first/last, Enter selects, Escape closes. Typing
+  characters performs typeahead search.
 </Callout>
 
 <Callout type="info" title="Form participation">

@@ -4,7 +4,14 @@ sidebar_position: 9
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { RadioGroup, Radio, Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
+import {
+  RadioGroup,
+  Radio,
+  Field,
+  Label,
+  FieldDescription,
+  FieldError,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="RadioGroup"
@@ -105,19 +112,19 @@ import { RadioGroup, Radio, Field, Label, FieldDescription, FieldError } from "@
 
 <DocsSection title="API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | — | Controlled selected value |
-| `defaultValue` | `string` | — | Uncontrolled initial value |
-| `onValueChange` | `(value: string) => void` | — | Selection change callback |
-| `name` | `string` | auto-generated | Shared name for all radios |
-| `disabled` | `boolean` | `false` | Disables all radios |
-| `required` | `boolean` | `false` | At least one must be selected |
-| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Layout direction |
-| `id` | `string` | auto from Field | Group element ID |
-| `ref` | `Ref<HTMLDivElement>` | — | Forwarded ref |
-| `className` | `string` | — | Custom class |
-| `style` | `CSSProperties` | — | Inline styles |
+| Prop            | Type                         | Default         | Description                   |
+| --------------- | ---------------------------- | --------------- | ----------------------------- |
+| `value`         | `string`                     | —               | Controlled selected value     |
+| `defaultValue`  | `string`                     | —               | Uncontrolled initial value    |
+| `onValueChange` | `(value: string) => void`    | —               | Selection change callback     |
+| `name`          | `string`                     | auto-generated  | Shared name for all radios    |
+| `disabled`      | `boolean`                    | `false`         | Disables all radios           |
+| `required`      | `boolean`                    | `false`         | At least one must be selected |
+| `orientation`   | `"vertical" \| "horizontal"` | `"vertical"`    | Layout direction              |
+| `id`            | `string`                     | auto from Field | Group element ID              |
+| `ref`           | `Ref<HTMLDivElement>`        | —               | Forwarded ref                 |
+| `className`     | `string`                     | —               | Custom class                  |
+| `style`         | `CSSProperties`              | —               | Inline styles                 |
 
 </DocsSection>
 
@@ -127,6 +134,6 @@ import { RadioGroup, Radio, Field, Label, FieldDescription, FieldError } from "@
 </Callout>
 
 <Callout type="tip" title="Form submission">
-  Only the selected radio's `value` is submitted. If no radio is selected, nothing is submitted
-  for that name. Use `required` to enforce selection.
+  Only the selected radio's `value` is submitted. If no radio is selected, nothing is submitted for
+  that name. Use `required` to enforce selection.
 </Callout>

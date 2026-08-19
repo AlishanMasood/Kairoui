@@ -12,7 +12,10 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
   status="beta"
 />
 
-<ImportStatement imports={["Slider", "SliderTrack", "SliderRange", "SliderThumb"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Slider", "SliderTrack", "SliderRange", "SliderThumb"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Keyboard">
 
@@ -26,23 +29,23 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 
 <DocsSection title="API: Slider">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `number` | — | Controlled value |
-| `defaultValue` | `number` | `min` | Initial value |
-| `onValueChange` | `(value: number) => void` | — | Live change callback |
-| `onValueCommit` | `(value: number) => void` | — | Final committed value |
-| `min` | `number` | `0` | Minimum |
-| `max` | `number` | `100` | Maximum |
-| `step` | `number` | `1` | Step increment |
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout |
-| `disabled` | `boolean` | `false` | Disables slider |
-| `name` | `string` | — | Form submission name |
-| `getValueLabel` | `(value: number) => string` | — | Accessible value text |
+| Prop            | Type                         | Default        | Description           |
+| --------------- | ---------------------------- | -------------- | --------------------- |
+| `value`         | `number`                     | —              | Controlled value      |
+| `defaultValue`  | `number`                     | `min`          | Initial value         |
+| `onValueChange` | `(value: number) => void`    | —              | Live change callback  |
+| `onValueCommit` | `(value: number) => void`    | —              | Final committed value |
+| `min`           | `number`                     | `0`            | Minimum               |
+| `max`           | `number`                     | `100`          | Maximum               |
+| `step`          | `number`                     | `1`            | Step increment        |
+| `orientation`   | `"horizontal" \| "vertical"` | `"horizontal"` | Layout                |
+| `disabled`      | `boolean`                    | `false`        | Disables slider       |
+| `name`          | `string`                     | —              | Form submission name  |
+| `getValueLabel` | `(value: number) => string`  | —              | Accessible value text |
 
 </DocsSection>
 
 <Callout type="info" title="Accessibility">
-  The thumb has `role="slider"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`.
-  Use `getValueLabel` to provide meaningful text like "50%" for screen readers.
+  The thumb has `role="slider"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow`. Use
+  `getValueLabel` to provide meaningful text like "50%" for screen readers.
 </Callout>

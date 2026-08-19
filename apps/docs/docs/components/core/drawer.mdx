@@ -4,7 +4,16 @@ sidebar_position: 22
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { Drawer, DrawerTrigger, DrawerPortal, DrawerBackdrop, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose } from "@kairoui/core/components";
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerPortal,
+  DrawerBackdrop,
+  DrawerContent,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="Drawer"
@@ -13,11 +22,15 @@ import { Drawer, DrawerTrigger, DrawerPortal, DrawerBackdrop, DrawerContent, Dra
   status="beta"
 />
 
-<ImportStatement imports={["Drawer", "DrawerTrigger", "DrawerContent", "DrawerTitle", "DrawerClose"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Drawer", "DrawerTrigger", "DrawerContent", "DrawerTitle", "DrawerClose"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
-<Demo code={`<Drawer side="right">
+<Demo
+  code={`<Drawer side="right">
   <DrawerTrigger>Open Drawer</DrawerTrigger>
   <DrawerPortal>
     <DrawerBackdrop />
@@ -27,7 +40,8 @@ import { Drawer, DrawerTrigger, DrawerPortal, DrawerBackdrop, DrawerContent, Dra
       <DrawerClose>Close</DrawerClose>
     </DrawerContent>
   </DrawerPortal>
-</Drawer>`}>
+</Drawer>`}
+>
   <Drawer side="right">
     <DrawerTrigger>Open Drawer</DrawerTrigger>
     <DrawerPortal>

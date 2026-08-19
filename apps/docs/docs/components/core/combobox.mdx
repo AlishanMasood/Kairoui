@@ -12,7 +12,10 @@ import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@k
   status="beta"
 />
 
-<ImportStatement imports={["Combobox", "ComboboxInput", "ComboboxContent", "ComboboxItem"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Combobox", "ComboboxInput", "ComboboxContent", "ComboboxItem"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
@@ -32,18 +35,18 @@ Consumer controls filtering via `onInputValueChange`. Items are rendered declara
 
 <DocsSection title="API: Combobox">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | — | Controlled selected value |
-| `defaultValue` | `string` | — | Initial value |
-| `onValueChange` | `(value: string) => void` | — | Selection callback |
-| `inputValue` | `string` | — | Controlled input text |
-| `onInputValueChange` | `(text: string) => void` | — | Input text callback |
-| `open` | `boolean` | — | Controlled open state |
-| `onOpenChange` | `(open: boolean) => void` | — | Open/close callback |
-| `name` | `string` | — | Form submission name |
-| `disabled` | `boolean` | `false` | Disables the combobox |
-| `allowCustomValue` | `boolean` | `false` | Accept freeform input |
+| Prop                 | Type                      | Default | Description               |
+| -------------------- | ------------------------- | ------- | ------------------------- |
+| `value`              | `string`                  | —       | Controlled selected value |
+| `defaultValue`       | `string`                  | —       | Initial value             |
+| `onValueChange`      | `(value: string) => void` | —       | Selection callback        |
+| `inputValue`         | `string`                  | —       | Controlled input text     |
+| `onInputValueChange` | `(text: string) => void`  | —       | Input text callback       |
+| `open`               | `boolean`                 | —       | Controlled open state     |
+| `onOpenChange`       | `(open: boolean) => void` | —       | Open/close callback       |
+| `name`               | `string`                  | —       | Form submission name      |
+| `disabled`           | `boolean`                 | `false` | Disables the combobox     |
+| `allowCustomValue`   | `boolean`                 | `false` | Accept freeform input     |
 
 </DocsSection>
 

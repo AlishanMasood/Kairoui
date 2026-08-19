@@ -89,19 +89,19 @@ When the parent Field has `disabled`, Label receives `data-disabled` for reduced
 
 <DocsSection title="API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `ReactNode` | — | Label text |
-| `htmlFor` | `string` | auto from Field | Target control ID |
-| `id` | `string` | auto from Field | Label element ID |
-| `ref` | `Ref<HTMLLabelElement>` | — | Forwarded to label element |
-| `className` | `string` | — | Custom class |
-| `style` | `CSSProperties` | — | Inline styles |
+| Prop        | Type                    | Default         | Description                |
+| ----------- | ----------------------- | --------------- | -------------------------- |
+| `children`  | `ReactNode`             | —               | Label text                 |
+| `htmlFor`   | `string`                | auto from Field | Target control ID          |
+| `id`        | `string`                | auto from Field | Label element ID           |
+| `ref`       | `Ref<HTMLLabelElement>` | —               | Forwarded to label element |
+| `className` | `string`                | —               | Custom class               |
+| `style`     | `CSSProperties`         | —               | Inline styles              |
 
 **Data attributes (auto-applied via Field context):**
 
-| Attribute | Condition |
-| --- | --- |
+| Attribute       | Condition            |
+| --------------- | -------------------- |
 | `data-required` | Field has `required` |
 | `data-disabled` | Field has `disabled` |
 
@@ -113,6 +113,6 @@ When the parent Field has `disabled`, Label receives `data-disabled` for reduced
 </Callout>
 
 <Callout type="tip" title="Standalone usage">
-  Label works outside of Field too — just pass `htmlFor` manually. The Field integration is
-  optional convenience, not a requirement.
+  Label works outside of Field too — just pass `htmlFor` manually. The Field integration is optional
+  convenience, not a requirement.
 </Callout>

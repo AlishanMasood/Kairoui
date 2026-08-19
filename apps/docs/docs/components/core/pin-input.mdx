@@ -26,20 +26,20 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 
 <DocsSection title="API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `length` | `number` | `4` | Number of input fields |
-| `value` | `string` | — | Controlled value |
-| `defaultValue` | `string` | `""` | Initial value |
-| `onValueChange` | `(value: string) => void` | — | Change callback |
-| `onComplete` | `(value: string) => void` | — | All fields filled |
-| `mode` | `"numeric" \| "alphanumeric"` | `"numeric"` | Allowed characters |
-| `mask` | `boolean` | `false` | Password dots |
-| `placeholder` | `string` | `"○"` | Per-field placeholder |
-| `disabled` | `boolean` | `false` | Disables all fields |
-| `readOnly` | `boolean` | `false` | Prevents editing |
-| `name` | `string` | — | Form submission name |
-| `autoFocus` | `boolean` | `false` | Focus first field on mount |
+| Prop            | Type                          | Default     | Description                |
+| --------------- | ----------------------------- | ----------- | -------------------------- |
+| `length`        | `number`                      | `4`         | Number of input fields     |
+| `value`         | `string`                      | —           | Controlled value           |
+| `defaultValue`  | `string`                      | `""`        | Initial value              |
+| `onValueChange` | `(value: string) => void`     | —           | Change callback            |
+| `onComplete`    | `(value: string) => void`     | —           | All fields filled          |
+| `mode`          | `"numeric" \| "alphanumeric"` | `"numeric"` | Allowed characters         |
+| `mask`          | `boolean`                     | `false`     | Password dots              |
+| `placeholder`   | `string`                      | `"○"`       | Per-field placeholder      |
+| `disabled`      | `boolean`                     | `false`     | Disables all fields        |
+| `readOnly`      | `boolean`                     | `false`     | Prevents editing           |
+| `name`          | `string`                      | —           | Form submission name       |
+| `autoFocus`     | `boolean`                     | `false`     | Focus first field on mount |
 
 </DocsSection>
 
@@ -48,6 +48,6 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 </Callout>
 
 <Callout type="info" title="Accessibility">
-  Each field has `aria-label="Digit N of M"`. The container has `role="group"`.
-  Use with Field and Label for full accessible labeling.
+  Each field has `aria-label="Digit N of M"`. The container has `role="group"`. Use with Field and
+  Label for full accessible labeling.
 </Callout>

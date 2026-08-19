@@ -4,7 +4,18 @@ sidebar_position: 3
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { Field, Label, FieldDescription, FieldError, Input, Textarea, Checkbox, RadioGroup, Radio, Switch } from "@kairoui/core/components";
+import {
+  Field,
+  Label,
+  FieldDescription,
+  FieldError,
+  Input,
+  Textarea,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  Switch,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="Field"
@@ -13,7 +24,10 @@ import { Field, Label, FieldDescription, FieldError, Input, Textarea, Checkbox, 
   status="beta"
 />
 
-<ImportStatement imports={["Field", "Label", "FieldDescription", "FieldError"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Field", "Label", "FieldDescription", "FieldError"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
@@ -58,9 +72,7 @@ Set `validationState="invalid"` to mark the field as invalid. FieldError renders
       <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
         Minimum 8 characters
       </FieldDescription>
-      <FieldError style={{ fontSize: "0.85em", color: "red" }}>
-        Password is too short
-      </FieldError>
+      <FieldError style={{ fontSize: "0.85em", color: "red" }}>Password is too short</FieldError>
     </div>
   </Field>
 </Demo>
@@ -177,23 +189,23 @@ Set `validationState="invalid"` to mark the field as invalid. FieldError renders
 
 <DocsSection title="Field API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | auto-generated | Base ID for ARIA relationships |
-| `disabled` | `boolean` | `false` | Disables all controls |
-| `readOnly` | `boolean` | `false` | Makes controls read-only |
-| `required` | `boolean` | `false` | Marks as required |
-| `validationState` | `"valid" \| "invalid"` | — | Validation state |
-| `ref` | `Ref<HTMLDivElement>` | — | Forwarded ref |
-| `className` | `string` | — | Custom class |
-| `style` | `CSSProperties` | — | Inline styles |
+| Prop              | Type                   | Default        | Description                    |
+| ----------------- | ---------------------- | -------------- | ------------------------------ |
+| `id`              | `string`               | auto-generated | Base ID for ARIA relationships |
+| `disabled`        | `boolean`              | `false`        | Disables all controls          |
+| `readOnly`        | `boolean`              | `false`        | Makes controls read-only       |
+| `required`        | `boolean`              | `false`        | Marks as required              |
+| `validationState` | `"valid" \| "invalid"` | —              | Validation state               |
+| `ref`             | `Ref<HTMLDivElement>`  | —              | Forwarded ref                  |
+| `className`       | `string`               | —              | Custom class                   |
+| `style`           | `CSSProperties`        | —              | Inline styles                  |
 
 </DocsSection>
 
 <Callout type="info" title="Automatic ARIA wiring">
   Field generates stable IDs and connects them automatically. Label gets `htmlFor` pointing to the
-  control's ID. Controls get `aria-labelledby`, `aria-describedby`, and `aria-errormessage` based
-  on which Field sub-components are rendered.
+  control's ID. Controls get `aria-labelledby`, `aria-describedby`, and `aria-errormessage` based on
+  which Field sub-components are rendered.
 </Callout>
 
 <Callout type="tip" title="Standalone controls">
@@ -202,6 +214,6 @@ Set `validationState="invalid"` to mark the field as invalid. FieldError renders
 </Callout>
 
 <Callout type="warning" title="No automatic validation">
-  Field does not validate input values. Set `validationState` based on your own validation logic
-  or your form library's state.
+  Field does not validate input values. Set `validationState` based on your own validation logic or
+  your form library's state.
 </Callout>

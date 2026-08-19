@@ -13,16 +13,21 @@ import { Tooltip, TooltipTrigger, TooltipPortal, TooltipContent } from "@kairoui
   status="beta"
 />
 
-<ImportStatement imports={["Tooltip", "TooltipTrigger", "TooltipContent"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Tooltip", "TooltipTrigger", "TooltipContent"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
-<Demo code={`<Tooltip>
+<Demo
+  code={`<Tooltip>
   <TooltipTrigger>Hover me</TooltipTrigger>
   <TooltipPortal>
     <TooltipContent>Helpful tooltip text</TooltipContent>
   </TooltipPortal>
-</Tooltip>`}>
+</Tooltip>`}
+>
   <Tooltip>
     <TooltipTrigger>Hover me</TooltipTrigger>
     <TooltipPortal>
@@ -36,7 +41,9 @@ import { Tooltip, TooltipTrigger, TooltipPortal, TooltipContent } from "@kairoui
 <DocsSection title="Accessibility">
 
 <Callout type="info">
-Tooltip uses `role="tooltip"` and links to the trigger via `aria-describedby`. It is non-interactive — content cannot be hovered or focused. Use Popover for interactive floating content.
+  Tooltip uses `role="tooltip"` and links to the trigger via `aria-describedby`. It is
+  non-interactive — content cannot be hovered or focused. Use Popover for interactive floating
+  content.
 </Callout>
 
 </DocsSection>

@@ -13,7 +13,10 @@ import { ToastProvider, ToastViewport, useToastState, ToastAction } from "@kairo
   status="beta"
 />
 
-<ImportStatement imports={["ToastProvider", "ToastViewport", "useToastState"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["ToastProvider", "ToastViewport", "useToastState"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Setup">
 
@@ -36,11 +39,7 @@ Use `useToastState()` to add, dismiss, and update toasts:
 function MyComponent() {
   const toast = useToastState();
 
-  return (
-    <button onClick={() => toast.add({ title: "Saved!", severity: "success" })}>
-      Save
-    </button>
-  );
+  return <button onClick={() => toast.add({ title: "Saved!", severity: "success" })}>Save</button>;
 }
 ```
 
@@ -48,26 +47,26 @@ function MyComponent() {
 
 <DocsSection title="API Reference">
 
-| Method | Description |
-|--------|-------------|
-| `add(input)` | Creates a toast, returns its ID |
-| `dismiss(id)` | Removes a specific toast |
-| `dismissAll()` | Removes all toasts |
-| `update(id, data)` | Modifies an existing toast |
-| `pauseAll()` | Pauses auto-dismiss timers |
-| `resumeAll()` | Resumes auto-dismiss timers |
+| Method             | Description                     |
+| ------------------ | ------------------------------- |
+| `add(input)`       | Creates a toast, returns its ID |
+| `dismiss(id)`      | Removes a specific toast        |
+| `dismissAll()`     | Removes all toasts              |
+| `update(id, data)` | Modifies an existing toast      |
+| `pauseAll()`       | Pauses auto-dismiss timers      |
+| `resumeAll()`      | Resumes auto-dismiss timers     |
 
 </DocsSection>
 
 <DocsSection title="Toast Data">
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `title` | ReactNode | Toast heading |
-| `description` | ReactNode | Body text |
-| `severity` | `"info" \| "success" \| "warning" \| "error"` | Visual tone |
-| `duration` | number | Auto-dismiss ms (0 = persistent) |
-| `action` | ReactNode | Action slot (use `ToastAction`) |
-| `onDismiss` | function | Called when dismissed |
+| Prop          | Type                                          | Description                      |
+| ------------- | --------------------------------------------- | -------------------------------- |
+| `title`       | ReactNode                                     | Toast heading                    |
+| `description` | ReactNode                                     | Body text                        |
+| `severity`    | `"info" \| "success" \| "warning" \| "error"` | Visual tone                      |
+| `duration`    | number                                        | Auto-dismiss ms (0 = persistent) |
+| `action`      | ReactNode                                     | Action slot (use `ToastAction`)  |
+| `onDismiss`   | function                                      | Called when dismissed            |
 
 </DocsSection>

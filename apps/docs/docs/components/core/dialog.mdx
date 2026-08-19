@@ -4,7 +4,16 @@ sidebar_position: 20
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { Dialog, DialogTrigger, DialogPortal, DialogBackdrop, DialogContent, DialogTitle, DialogDescription, DialogClose } from "@kairoui/core/components";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogPortal,
+  DialogBackdrop,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="Dialog"
@@ -13,11 +22,23 @@ import { Dialog, DialogTrigger, DialogPortal, DialogBackdrop, DialogContent, Dia
   status="beta"
 />
 
-<ImportStatement imports={["Dialog", "DialogTrigger", "DialogPortal", "DialogContent", "DialogTitle", "DialogDescription", "DialogClose"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={[
+    "Dialog",
+    "DialogTrigger",
+    "DialogPortal",
+    "DialogContent",
+    "DialogTitle",
+    "DialogDescription",
+    "DialogClose",
+  ]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
-<Demo code={`<Dialog>
+<Demo
+  code={`<Dialog>
   <DialogTrigger>Open Dialog</DialogTrigger>
   <DialogPortal>
     <DialogBackdrop />
@@ -27,7 +48,8 @@ import { Dialog, DialogTrigger, DialogPortal, DialogBackdrop, DialogContent, Dia
       <DialogClose>Close</DialogClose>
     </DialogContent>
   </DialogPortal>
-</Dialog>`}>
+</Dialog>`}
+>
   <Dialog>
     <DialogTrigger>Open Dialog</DialogTrigger>
     <DialogPortal>
@@ -45,23 +67,24 @@ import { Dialog, DialogTrigger, DialogPortal, DialogBackdrop, DialogContent, Dia
 
 <DocsSection title="Anatomy">
 
-| Part | Description |
-|------|-------------|
-| `Dialog` | Root, manages open state and context |
-| `DialogTrigger` | Button that toggles the dialog |
-| `DialogPortal` | Portals content to document.body |
-| `DialogBackdrop` | Decorative backdrop overlay |
-| `DialogContent` | The dialog panel (role="dialog") |
-| `DialogTitle` | Accessible title (aria-labelledby) |
+| Part                | Description                               |
+| ------------------- | ----------------------------------------- |
+| `Dialog`            | Root, manages open state and context      |
+| `DialogTrigger`     | Button that toggles the dialog            |
+| `DialogPortal`      | Portals content to document.body          |
+| `DialogBackdrop`    | Decorative backdrop overlay               |
+| `DialogContent`     | The dialog panel (role="dialog")          |
+| `DialogTitle`       | Accessible title (aria-labelledby)        |
 | `DialogDescription` | Accessible description (aria-describedby) |
-| `DialogClose` | Button that closes the dialog |
+| `DialogClose`       | Button that closes the dialog             |
 
 </DocsSection>
 
 <DocsSection title="Accessibility">
 
 <Callout type="info">
-Every Dialog must include a `DialogTitle` for screen readers. The content automatically receives `role="dialog"`, `aria-modal="true"`, and links to the title via `aria-labelledby`.
+  Every Dialog must include a `DialogTitle` for screen readers. The content automatically receives
+  `role="dialog"`, `aria-modal="true"`, and links to the title via `aria-labelledby`.
 </Callout>
 
 - Focus is trapped within the dialog while open

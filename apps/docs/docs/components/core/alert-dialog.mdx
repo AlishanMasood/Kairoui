@@ -4,7 +4,16 @@ sidebar_position: 21
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction } from "@kairoui/core/components";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogPortal,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="AlertDialog"
@@ -13,11 +22,23 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogContent,
   status="beta"
 />
 
-<ImportStatement imports={["AlertDialog", "AlertDialogTrigger", "AlertDialogContent", "AlertDialogTitle", "AlertDialogDescription", "AlertDialogCancel", "AlertDialogAction"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={[
+    "AlertDialog",
+    "AlertDialogTrigger",
+    "AlertDialogContent",
+    "AlertDialogTitle",
+    "AlertDialogDescription",
+    "AlertDialogCancel",
+    "AlertDialogAction",
+  ]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
-<Demo code={`<AlertDialog>
+<Demo
+  code={`<AlertDialog>
   <AlertDialogTrigger>Delete Account</AlertDialogTrigger>
   <AlertDialogPortal>
     <AlertDialogContent>
@@ -27,7 +48,8 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogContent,
       <AlertDialogAction>Delete</AlertDialogAction>
     </AlertDialogContent>
   </AlertDialogPortal>
-</AlertDialog>`}>
+</AlertDialog>`}
+>
   <AlertDialog>
     <AlertDialogTrigger>Delete Account</AlertDialogTrigger>
     <AlertDialogPortal>
@@ -45,11 +67,11 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogPortal, AlertDialogContent,
 
 <DocsSection title="Key Differences from Dialog">
 
-| Behavior | Dialog | AlertDialog |
-|----------|--------|-------------|
-| Role | `dialog` | `alertdialog` |
-| Outside click dismisses | Yes | No |
-| Initial focus | First tabbable | Cancel button |
-| Modal | Configurable | Always |
+| Behavior                | Dialog         | AlertDialog   |
+| ----------------------- | -------------- | ------------- |
+| Role                    | `dialog`       | `alertdialog` |
+| Outside click dismisses | Yes            | No            |
+| Initial focus           | First tabbable | Cancel button |
+| Modal                   | Configurable   | Always        |
 
 </DocsSection>

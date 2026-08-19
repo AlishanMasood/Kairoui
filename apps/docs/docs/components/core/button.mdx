@@ -77,7 +77,9 @@ Use `startIcon` and `endIcon` to render decorative icons alongside button text.
   <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
     <Button startIcon={<span>★</span>}>Favorite</Button>
     <Button endIcon={<span>→</span>}>Next</Button>
-    <Button startIcon={<span>📎</span>} endIcon={<span>↗</span>}>Attach</Button>
+    <Button startIcon={<span>📎</span>} endIcon={<span>↗</span>}>
+      Attach
+    </Button>
   </div>
 </Demo>
 
@@ -85,9 +87,7 @@ Use `startIcon` and `endIcon` to render decorative icons alongside button text.
 
 <DocsSection title="Disabled">
 
-<Demo
-  code={`<Button disabled>Disabled</Button>`}
->
+<Demo code={`<Button disabled>Disabled</Button>`}>
   <Button disabled>Disabled</Button>
 </Demo>
 
@@ -97,9 +97,7 @@ Use `startIcon` and `endIcon` to render decorative icons alongside button text.
 
 When `loading` is true, the button is disabled and shows a loading indicator.
 
-<Demo
-  code={`<Button loading>Saving…</Button>`}
->
+<Demo code={`<Button loading>Saving…</Button>`}>
   <Button loading>Saving…</Button>
 </Demo>
 
@@ -130,7 +128,11 @@ Set `type="submit"` for form submission buttons. By default, type is `"button"`.
   <Button type="submit">Submit</Button>
 </form>`}
 >
-  <form onSubmit={(e) => { e.preventDefault(); }}>
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+    }}
+  >
     <Button type="submit">Submit</Button>
   </form>
 </Demo>
@@ -139,21 +141,21 @@ Set `type="submit"` for form submission buttons. By default, type is `"button"`.
 
 <DocsSection title="API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `as` | `ElementType` | `"button"` | Rendered element |
-| `appearance` | `"solid" \| "outline" \| "subtle" \| "ghost"` | `"solid"` | Visual variant |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
-| `disabled` | `boolean` | `false` | Disables interaction |
-| `loading` | `boolean` | `false` | Shows loading indicator, disables interaction |
-| `type` | `"button" \| "submit" \| "reset"` | `"button"` | Native button type |
-| `startIcon` | `ReactNode` | — | Icon before content |
-| `endIcon` | `ReactNode` | — | Icon after content |
-| `ref` | `Ref` | — | Forwarded to root element |
-| `className` | `string` | — | Merged with internal classes |
-| `style` | `CSSProperties` | — | Inline style overrides |
-| `slots` | `object` | — | Slot element overrides |
-| `slotProps` | `object` | — | Slot prop overrides |
+| Prop         | Type                                          | Default    | Description                                   |
+| ------------ | --------------------------------------------- | ---------- | --------------------------------------------- |
+| `as`         | `ElementType`                                 | `"button"` | Rendered element                              |
+| `appearance` | `"solid" \| "outline" \| "subtle" \| "ghost"` | `"solid"`  | Visual variant                                |
+| `size`       | `"sm" \| "md" \| "lg"`                        | `"md"`     | Size variant                                  |
+| `disabled`   | `boolean`                                     | `false`    | Disables interaction                          |
+| `loading`    | `boolean`                                     | `false`    | Shows loading indicator, disables interaction |
+| `type`       | `"button" \| "submit" \| "reset"`             | `"button"` | Native button type                            |
+| `startIcon`  | `ReactNode`                                   | —          | Icon before content                           |
+| `endIcon`    | `ReactNode`                                   | —          | Icon after content                            |
+| `ref`        | `Ref`                                         | —          | Forwarded to root element                     |
+| `className`  | `string`                                      | —          | Merged with internal classes                  |
+| `style`      | `CSSProperties`                               | —          | Inline style overrides                        |
+| `slots`      | `object`                                      | —          | Slot element overrides                        |
+| `slotProps`  | `object`                                      | —          | Slot prop overrides                           |
 
 </DocsSection>
 

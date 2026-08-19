@@ -4,7 +4,19 @@ sidebar_position: 25
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuSeparator } from "@kairoui/core/components";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuPortal,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuGroup,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="DropdownMenu"
@@ -13,11 +25,15 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuCont
   status="beta"
 />
 
-<ImportStatement imports={["DropdownMenu", "DropdownMenuTrigger", "DropdownMenuContent", "DropdownMenuItem"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["DropdownMenu", "DropdownMenuTrigger", "DropdownMenuContent", "DropdownMenuItem"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
-<Demo code={`<DropdownMenu>
+<Demo
+  code={`<DropdownMenu>
   <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
   <DropdownMenuPortal>
     <DropdownMenuContent>
@@ -28,7 +44,8 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuCont
       <DropdownMenuItem>Delete</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenuPortal>
-</DropdownMenu>`}>
+</DropdownMenu>`}
+>
   <DropdownMenu>
     <DropdownMenuTrigger>Actions</DropdownMenuTrigger>
     <DropdownMenuPortal>
@@ -47,13 +64,13 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuCont
 
 <DocsSection title="Keyboard">
 
-| Key | Action |
-|-----|--------|
-| ArrowDown | Move to next item |
-| ArrowUp | Move to previous item |
-| Home | Move to first item |
-| End | Move to last item |
-| Enter / Space | Activate item |
-| Escape | Close menu |
+| Key           | Action                |
+| ------------- | --------------------- |
+| ArrowDown     | Move to next item     |
+| ArrowUp       | Move to previous item |
+| Home          | Move to first item    |
+| End           | Move to last item     |
+| Enter / Space | Activate item         |
+| Escape        | Close menu            |
 
 </DocsSection>

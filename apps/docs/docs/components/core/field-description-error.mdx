@@ -82,9 +82,7 @@ Both description and error can exist simultaneously. The control's `aria-describ
       <FieldDescription style={{ fontSize: "0.85em", color: "#666" }}>
         Minimum 8 characters
       </FieldDescription>
-      <FieldError style={{ fontSize: "0.85em", color: "red" }}>
-        Password is too short
-      </FieldError>
+      <FieldError style={{ fontSize: "0.85em", color: "red" }}>Password is too short</FieldError>
     </div>
   </Field>
 </Demo>
@@ -93,31 +91,31 @@ Both description and error can exist simultaneously. The control's `aria-describ
 
 <DocsSection title="API: FieldDescription">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `ReactNode` | — | Description text |
-| `id` | `string` | auto from Field | Element ID |
-| `ref` | `Ref<HTMLSpanElement>` | — | Forwarded ref |
-| `className` | `string` | — | Custom class |
-| `style` | `CSSProperties` | — | Inline styles |
+| Prop        | Type                   | Default         | Description      |
+| ----------- | ---------------------- | --------------- | ---------------- |
+| `children`  | `ReactNode`            | —               | Description text |
+| `id`        | `string`               | auto from Field | Element ID       |
+| `ref`       | `Ref<HTMLSpanElement>` | —               | Forwarded ref    |
+| `className` | `string`               | —               | Custom class     |
+| `style`     | `CSSProperties`        | —               | Inline styles    |
 
 **Data attributes:**
 
-| Attribute | Condition |
-| --- | --- |
+| Attribute       | Condition            |
+| --------------- | -------------------- |
 | `data-disabled` | Field has `disabled` |
 
 </DocsSection>
 
 <DocsSection title="API: FieldError">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `ReactNode` | — | Error message text |
-| `id` | `string` | auto from Field | Element ID |
-| `ref` | `Ref<HTMLSpanElement>` | — | Forwarded ref |
-| `className` | `string` | — | Custom class |
-| `style` | `CSSProperties` | — | Inline styles |
+| Prop        | Type                   | Default         | Description        |
+| ----------- | ---------------------- | --------------- | ------------------ |
+| `children`  | `ReactNode`            | —               | Error message text |
+| `id`        | `string`               | auto from Field | Element ID         |
+| `ref`       | `Ref<HTMLSpanElement>` | —               | Forwarded ref      |
+| `className` | `string`               | —               | Custom class       |
+| `style`     | `CSSProperties`        | —               | Inline styles      |
 
 **Accessibility:**
 
@@ -127,12 +125,12 @@ Both description and error can exist simultaneously. The control's `aria-describ
 </DocsSection>
 
 <Callout type="warning" title="Error announcement">
-  FieldError uses `role="alert"` which causes immediate announcement by screen readers.
-  Only render FieldError when there is an actual validation error to communicate. Do not
-  use it for informational messages — use FieldDescription instead.
+  FieldError uses `role="alert"` which causes immediate announcement by screen readers. Only render
+  FieldError when there is an actual validation error to communicate. Do not use it for
+  informational messages — use FieldDescription instead.
 </Callout>
 
 <Callout type="tip" title="Standalone usage">
-  Both components work outside of Field — just pass your own `id` prop and wire
-  `aria-describedby` / `aria-errormessage` manually on your control.
+  Both components work outside of Field — just pass your own `id` prop and wire `aria-describedby` /
+  `aria-errormessage` manually on your control.
 </Callout>

@@ -4,7 +4,14 @@ sidebar_position: 23
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { Popover, PopoverTrigger, PopoverPortal, PopoverContent, PopoverArrow, PopoverClose } from "@kairoui/core/components";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverPortal,
+  PopoverContent,
+  PopoverArrow,
+  PopoverClose,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="Popover"
@@ -13,11 +20,15 @@ import { Popover, PopoverTrigger, PopoverPortal, PopoverContent, PopoverArrow, P
   status="beta"
 />
 
-<ImportStatement imports={["Popover", "PopoverTrigger", "PopoverContent", "PopoverClose"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Popover", "PopoverTrigger", "PopoverContent", "PopoverClose"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
-<Demo code={`<Popover>
+<Demo
+  code={`<Popover>
   <PopoverTrigger>More Info</PopoverTrigger>
   <PopoverPortal>
     <PopoverContent>
@@ -25,7 +36,8 @@ import { Popover, PopoverTrigger, PopoverPortal, PopoverContent, PopoverArrow, P
       <PopoverClose>Dismiss</PopoverClose>
     </PopoverContent>
   </PopoverPortal>
-</Popover>`}>
+</Popover>`}
+>
   <Popover>
     <PopoverTrigger>More Info</PopoverTrigger>
     <PopoverPortal>
@@ -42,7 +54,8 @@ import { Popover, PopoverTrigger, PopoverPortal, PopoverContent, PopoverArrow, P
 <DocsSection title="Non-modal Behavior">
 
 <Callout type="info">
-Popover is non-modal by default — it does not trap focus or lock scroll. Pass `modal` to the root for modal behavior when needed.
+  Popover is non-modal by default — it does not trap focus or lock scroll. Pass `modal` to the root
+  for modal behavior when needed.
 </Callout>
 
 </DocsSection>

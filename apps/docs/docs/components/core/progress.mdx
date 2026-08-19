@@ -13,15 +13,20 @@ import { Progress, ProgressTrack, ProgressIndicator, Spinner } from "@kairoui/co
   status="beta"
 />
 
-<ImportStatement imports={["Progress", "ProgressTrack", "ProgressIndicator", "Spinner"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["Progress", "ProgressTrack", "ProgressIndicator", "Spinner"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Determinate Progress">
 
-<Demo code={`<Progress value={65} label="Upload progress">
+<Demo
+  code={`<Progress value={65} label="Upload progress">
   <ProgressTrack>
     <ProgressIndicator />
   </ProgressTrack>
-</Progress>`}>
+</Progress>`}
+>
   <Progress value={65} label="Upload progress">
     <ProgressTrack>
       <ProgressIndicator />
@@ -35,11 +40,13 @@ import { Progress, ProgressTrack, ProgressIndicator, Spinner } from "@kairoui/co
 
 Omit `value` for indeterminate state:
 
-<Demo code={`<Progress label="Loading">
+<Demo
+  code={`<Progress label="Loading">
   <ProgressTrack>
     <ProgressIndicator />
   </ProgressTrack>
-</Progress>`}>
+</Progress>`}
+>
   <Progress label="Loading">
     <ProgressTrack>
       <ProgressIndicator />

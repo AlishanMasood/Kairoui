@@ -26,7 +26,9 @@ import { Radio } from "@kairoui/core/components";
 <DocsSection title="Default Checked">
 
 <Demo code={`<Radio value="opt" defaultChecked>Pre-selected</Radio>`}>
-  <Radio value="opt" defaultChecked>Pre-selected</Radio>
+  <Radio value="opt" defaultChecked>
+    Pre-selected
+  </Radio>
 </Demo>
 
 </DocsSection>
@@ -39,9 +41,15 @@ import { Radio } from "@kairoui/core/components";
 <Radio value="c" size="lg">Large</Radio>`}
 >
   <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-    <Radio value="a" size="sm">Small</Radio>
-    <Radio value="b" size="md">Medium (default)</Radio>
-    <Radio value="c" size="lg">Large</Radio>
+    <Radio value="a" size="sm">
+      Small
+    </Radio>
+    <Radio value="b" size="md">
+      Medium (default)
+    </Radio>
+    <Radio value="c" size="lg">
+      Large
+    </Radio>
   </div>
 </Demo>
 
@@ -51,8 +59,12 @@ import { Radio } from "@kairoui/core/components";
 
 <Demo code={`<Radio value="x" disabled>Cannot select</Radio>`}>
   <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-    <Radio value="a" disabled>Disabled unchecked</Radio>
-    <Radio value="b" disabled defaultChecked>Disabled checked</Radio>
+    <Radio value="a" disabled>
+      Disabled unchecked
+    </Radio>
+    <Radio value="b" disabled defaultChecked>
+      Disabled checked
+    </Radio>
   </div>
 </Demo>
 
@@ -60,26 +72,26 @@ import { Radio } from "@kairoui/core/components";
 
 <DocsSection title="API">
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `ReactNode` | — | Label content |
-| `value` | `string` | `"on"` | Form submission value |
-| `checked` | `boolean` | — | Controlled checked state |
-| `defaultChecked` | `boolean` | `false` | Uncontrolled initial state |
-| `onCheckedChange` | `(checked: boolean) => void` | — | Change callback (standalone) |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size variant |
-| `disabled` | `boolean` | `false` | Disables the radio |
-| `required` | `boolean` | `false` | Marks as required |
-| `name` | `string` | — | Form submission name |
-| `id` | `string` | auto from Field | Input element ID |
-| `ref` | `Ref<HTMLInputElement>` | — | Forwarded to native input |
+| Prop              | Type                         | Default         | Description                  |
+| ----------------- | ---------------------------- | --------------- | ---------------------------- |
+| `children`        | `ReactNode`                  | —               | Label content                |
+| `value`           | `string`                     | `"on"`          | Form submission value        |
+| `checked`         | `boolean`                    | —               | Controlled checked state     |
+| `defaultChecked`  | `boolean`                    | `false`         | Uncontrolled initial state   |
+| `onCheckedChange` | `(checked: boolean) => void` | —               | Change callback (standalone) |
+| `size`            | `"sm" \| "md" \| "lg"`       | `"md"`          | Size variant                 |
+| `disabled`        | `boolean`                    | `false`         | Disables the radio           |
+| `required`        | `boolean`                    | `false`         | Marks as required            |
+| `name`            | `string`                     | —               | Form submission name         |
+| `id`              | `string`                     | auto from Field | Input element ID             |
+| `ref`             | `Ref<HTMLInputElement>`      | —               | Forwarded to native input    |
 
 </DocsSection>
 
 <Callout type="info" title="RadioGroup integration">
-  When used inside a RadioGroup (KUI-CORE-013), Radio automatically receives its `name`,
-  `checked` state, `disabled`, and `required` from group context. The `onCheckedChange`
-  prop is ignored in favor of the group's `onValueChange`.
+  When used inside a RadioGroup (KUI-CORE-013), Radio automatically receives its `name`, `checked`
+  state, `disabled`, and `required` from group context. The `onCheckedChange` prop is ignored in
+  favor of the group's `onValueChange`.
 </Callout>
 
 <Callout type="info" title="Native behavior">

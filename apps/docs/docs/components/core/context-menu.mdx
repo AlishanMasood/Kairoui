@@ -4,7 +4,14 @@ sidebar_position: 26
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
-import { ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent, ContextMenuItem, ContextMenuSeparator } from "@kairoui/core/components";
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuPortal,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuSeparator,
+} from "@kairoui/core/components";
 
 <ComponentHeader
   name="ContextMenu"
@@ -13,11 +20,15 @@ import { ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent,
   status="beta"
 />
 
-<ImportStatement imports={["ContextMenu", "ContextMenuTrigger", "ContextMenuContent", "ContextMenuItem"]} from="@kairoui/core/components" />
+<ImportStatement
+  imports={["ContextMenu", "ContextMenuTrigger", "ContextMenuContent", "ContextMenuItem"]}
+  from="@kairoui/core/components"
+/>
 
 <DocsSection title="Basic Usage">
 
-<Demo code={`<ContextMenu>
+<Demo
+  code={`<ContextMenu>
   <ContextMenuTrigger>
     <div style={{ padding: 40, border: '1px dashed gray' }}>
       Right-click this area
@@ -31,12 +42,11 @@ import { ContextMenu, ContextMenuTrigger, ContextMenuPortal, ContextMenuContent,
       <ContextMenuItem>Inspect</ContextMenuItem>
     </ContextMenuContent>
   </ContextMenuPortal>
-</ContextMenu>`}>
+</ContextMenu>`}
+>
   <ContextMenu>
     <ContextMenuTrigger>
-      <div style={{ padding: 40, border: '1px dashed gray' }}>
-        Right-click this area
-      </div>
+      <div style={{ padding: 40, border: "1px dashed gray" }}>Right-click this area</div>
     </ContextMenuTrigger>
     <ContextMenuPortal>
       <ContextMenuContent>
