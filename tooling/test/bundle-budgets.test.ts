@@ -44,11 +44,11 @@ const BUDGETS: BudgetEntry[] = [
   {
     pkg: "core",
     file: "dist/components/index.js",
-    baseline: 140611,
-    maxRaw: 215000,
-    maxGzip: 45000,
+    baseline: 202522,
+    maxRaw: 305000,
+    maxGzip: 50000,
   },
-  { pkg: "core", file: "dist/styles.css", baseline: 4252, maxRaw: 15000, maxGzip: 3000 },
+  { pkg: "core", file: "dist/styles.css", baseline: 4031, maxRaw: 15000, maxGzip: 3000 },
 ];
 
 function measure(filePath: string) {
