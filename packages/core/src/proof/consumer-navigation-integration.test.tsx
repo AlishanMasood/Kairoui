@@ -424,7 +424,7 @@ describe("Consumer: aria-current propagation", () => {
           createElement(
             BreadcrumbsItem,
             null,
-            createElement(BreadcrumbsCurrent, { "data-testid": "cur" }, "Page"),
+            createElement(BreadcrumbsCurrent, { "data-testid": "cur" } as never, "Page"),
           ),
         ),
       ),
@@ -440,7 +440,7 @@ describe("Consumer: aria-current propagation", () => {
           href: "/dash",
           active: true,
           "data-testid": "active-link",
-        },
+        } as never,
         "Dashboard",
       ),
     );
@@ -454,7 +454,7 @@ describe("Consumer: aria-current propagation", () => {
         {
           href: "/other",
           "data-testid": "inactive-link",
-        },
+        } as never,
         "Other",
       ),
     );
@@ -478,7 +478,7 @@ describe("Consumer: aria-current propagation", () => {
                 href: "/home",
                 active: true,
                 "data-testid": "sl-active",
-              },
+              } as never,
               "Home",
             ),
           ),
@@ -493,7 +493,7 @@ describe("Consumer: aria-current propagation", () => {
       createElement(
         Pagination,
         { totalPages: 5, defaultPage: 3 },
-        createElement(PaginationItem, { page: 3, "data-testid": "page3" }),
+        createElement(PaginationItem, { page: 3, "data-testid": "page3" } as never),
       ),
     );
     expect(screen.getByTestId("page3").getAttribute("aria-current")).toBe("page");
@@ -504,7 +504,7 @@ describe("Consumer: aria-current propagation", () => {
       createElement(
         Pagination,
         { totalPages: 5, defaultPage: 1 },
-        createElement(PaginationItem, { page: 3, "data-testid": "page3" }),
+        createElement(PaginationItem, { page: 3, "data-testid": "page3" } as never),
       ),
     );
     expect(screen.getByTestId("page3").getAttribute("aria-current")).toBeNull();
@@ -748,7 +748,7 @@ describe("Consumer: RTL support", () => {
     render(
       createElement(
         Tabs,
-        { defaultValue: "a", dir: "rtl", "data-testid": "tabs-rtl" },
+        { defaultValue: "a", dir: "rtl", "data-testid": "tabs-rtl" } as never,
         createElement(
           TabsList,
           null,
@@ -839,7 +839,7 @@ describe("Consumer: full application fixture", () => {
     render(
       createElement(
         AppShell,
-        { "data-testid": "shell" },
+        { "data-testid": "shell" } as never,
         createElement(AppShellHeader, null, "App Header"),
         createElement(
           AppShellSidebar,
