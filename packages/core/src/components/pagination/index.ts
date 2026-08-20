@@ -14,3 +14,10 @@ export type {
   PaginationInternalContextValue,
   PageRange,
 } from "./pagination-types";
+export {
+  Pagination,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from "./pagination";

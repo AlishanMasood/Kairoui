@@ -545,6 +545,11 @@ export {
   PaginationInternalContext,
   usePaginationInternalContext,
   computePageRange,
+  Pagination,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
 } from "./pagination/index";
 export type {
   PaginationRootProps,
