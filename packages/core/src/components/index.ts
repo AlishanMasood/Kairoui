@@ -527,3 +527,20 @@ export type {
   AccordionInternalContextValue,
   AccordionItemInternalContextValue,
 } from "./accordion/index";
+
+export {
+  Breadcrumbs,
+  BreadcrumbsList,
+  BreadcrumbsItem,
+  BreadcrumbsLink,
+  BreadcrumbsSeparator,
+  BreadcrumbsCurrent,
+} from "./breadcrumbs/index";
+export type {
+  BreadcrumbsRootProps,
+  BreadcrumbsListProps,
+  BreadcrumbsItemProps,
+  BreadcrumbsLinkProps,
+  BreadcrumbsSeparatorProps,
+  BreadcrumbsCurrentProps,
+} from "./breadcrumbs/index";
