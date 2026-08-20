@@ -459,10 +459,6 @@ export type {
   BreadcrumbLinkProps,
   BreadcrumbSeparatorProps,
   PaginationProps,
-  PaginationItemProps,
-  PaginationPreviousProps,
-  PaginationNextProps,
-  PaginationEllipsisProps,
   NavigationMenuProps,
   NavigationMenuListProps,
   NavigationMenuItemProps,
@@ -544,3 +540,20 @@ export type {
   BreadcrumbsSeparatorProps,
   BreadcrumbsCurrentProps,
 } from "./breadcrumbs/index";
+
+export {
+  PaginationInternalContext,
+  usePaginationInternalContext,
+  computePageRange,
+} from "./pagination/index";
+export type {
+  PaginationRootProps,
+  PaginationItemProps,
+  PaginationPreviousProps,
+  PaginationNextProps,
+  PaginationFirstProps,
+  PaginationLastProps,
+  PaginationEllipsisRootProps,
+  PaginationInternalContextValue,
+  PageRange,
+} from "./pagination/index";
