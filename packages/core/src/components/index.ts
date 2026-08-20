@@ -459,13 +459,6 @@ export type {
   BreadcrumbLinkProps,
   BreadcrumbSeparatorProps,
   PaginationProps,
-  NavigationMenuProps,
-  NavigationMenuListProps,
-  NavigationMenuItemProps,
-  NavigationMenuTriggerProps,
-  NavigationMenuContentProps,
-  NavigationMenuLinkProps,
-  NavigationMenuViewportProps,
   SidebarNavProps,
   SidebarNavGroupProps,
   SidebarNavItemProps,
@@ -581,3 +574,22 @@ export type {
   MenubarContextValue,
   MenubarMenuContextValue,
 } from "./menubar/index";
+
+export {
+  NavigationMenuContext,
+  useNavigationMenuContext,
+  NavigationMenuItemContext,
+  useNavigationMenuItemContext,
+} from "./navigation-menu/index";
+export type {
+  NavigationMenuRootProps,
+  NavigationMenuListProps,
+  NavigationMenuItemProps,
+  NavigationMenuTriggerRootProps,
+  NavigationMenuContentRootProps,
+  NavigationMenuLinkRootProps,
+  NavigationMenuIndicatorProps,
+  NavigationMenuViewportRootProps,
+  NavigationMenuContextValue,
+  NavigationMenuItemContextValue,
+} from "./navigation-menu/index";
