@@ -1,3 +1,10 @@
+export { useRovingFocus } from "./use-roving-focus";
+export type {
+  RovingFocusItem,
+  UseRovingFocusOptions,
+  UseRovingFocusReturn,
+  RovingFocusItemProps,
+} from "./use-roving-focus";
 export {
   TabsContext,
   useTabsContext,
