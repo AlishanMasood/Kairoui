@@ -16,7 +16,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc --build",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",

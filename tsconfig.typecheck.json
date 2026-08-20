@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@kairoui/tsconfig/react-library.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": {
+      "@kairoui/utils": ["./packages/utils/src/index.ts"],
+      "@kairoui/utils/dom": ["./packages/utils/src/dom.ts"],
+      "@kairoui/utils/events": ["./packages/utils/src/events.ts"],
+      "@kairoui/tokens": ["./packages/tokens/src/index.ts"],
+      "@kairoui/hooks": ["./packages/hooks/src/index.ts"],
+      "@kairoui/theme": ["./packages/theme/src/index.ts"],
+      "@kairoui/core": ["./packages/core/src/index.ts"],
+      "@kairoui/core/components": ["./packages/core/src/components/index.ts"],
+      "@kairoui/core/composition": ["./packages/core/src/composition.ts"],
+      "@kairoui/core/primitives": ["./packages/core/src/primitives/index.ts"],
+      "@kairoui/icons": ["./packages/icons/src/index.ts"]
+    }
+  },
+  "include": ["packages/*/src/**/*.ts", "packages/*/src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "**/*.test.*"]
+}
