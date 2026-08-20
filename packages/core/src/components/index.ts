@@ -484,3 +484,17 @@ export type {
   AccordionItemContextValue,
   PaginationContextValue,
 } from "./navigation/index";
+
+export {
+  TabsInternalContext,
+  useTabsInternalContext,
+  getTabTriggerId,
+  getTabContentId,
+} from "./tabs/index";
+export type {
+  TabsRootProps,
+  TabsListProps,
+  TabsTriggerProps,
+  TabsContentProps,
+  TabsInternalContextValue,
+} from "./tabs/index";
