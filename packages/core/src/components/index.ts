@@ -490,6 +490,10 @@ export {
   useTabsInternalContext,
   getTabTriggerId,
   getTabContentId,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
 } from "./tabs/index";
 export type {
   TabsRootProps,

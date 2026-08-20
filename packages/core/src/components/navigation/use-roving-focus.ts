@@ -40,26 +40,25 @@ export function useRovingFocus(options: UseRovingFocusOptions = {}): UseRovingFo
   } = options;
 
   const itemsRef = useRef<RovingFocusItem[]>([]);
-  const [registeredValues, setRegisteredValues] = useState<string[]>([]);
-  const [focusedValue, setFocusedValueState] = useState<string | undefined>(currentValue);
+  const [internalFocusedValue, setInternalFocusedValue] = useState<string | undefined>(
+    currentValue,
+  );
   const focusedValueRef = useRef<string | undefined>(currentValue);
+
+  // Derive effective focused value: controlled prop takes priority
+  const focusedValue = currentValue ?? internalFocusedValue;
+  const currentValueRef = useRef(currentValue);
+  currentValueRef.current = currentValue;
 
   const setFocusedValue = useCallback((value: string | undefined) => {
     focusedValueRef.current = value;
-    setFocusedValueState(value);
+    setInternalFocusedValue(value);
   }, []);
-
-  // Sync controlled value
-  if (currentValue !== undefined && currentValue !== focusedValueRef.current) {
-    setFocusedValue(currentValue);
-  }
 
   const register = useCallback((item: RovingFocusItem) => {
     itemsRef.current = [...itemsRef.current, item];
-    setRegisteredValues((prev) => [...prev, item.value]);
     return () => {
       itemsRef.current = itemsRef.current.filter((i) => i.value !== item.value);
-      setRegisteredValues((prev) => prev.filter((v) => v !== item.value));
     };
   }, []);
 
@@ -81,7 +80,9 @@ export function useRovingFocus(options: UseRovingFocusOptions = {}): UseRovingFo
       const enabled = getEnabledItems();
       if (enabled.length === 0) return;
 
-      const currentIdx = enabled.findIndex((i) => i.value === focusedValueRef.current);
+      const currentIdx = enabled.findIndex(
+        (i) => i.value === (currentValueRef.current ?? focusedValueRef.current),
+      );
       let nextIdx: number | undefined;
 
       const isHorizontal = orientation === "horizontal";
@@ -131,17 +132,15 @@ export function useRovingFocus(options: UseRovingFocusOptions = {}): UseRovingFo
   const getItemProps = useCallback(
     (value: string, disabled?: boolean): RovingFocusItemProps => {
       const isFocused = focusedValue === value;
-      const firstValue = registeredValues[0];
-      const isFirst = !focusedValue && firstValue === value;
       return {
-        tabIndex: isFocused || isFirst ? 0 : -1,
+        tabIndex: isFocused ? 0 : -1,
         "data-roving-focus-item": "" as const,
         onFocus: () => {
           if (!disabled) setFocusedValue(value);
         },
       };
     },
-    [focusedValue, registeredValues, setFocusedValue],
+    [focusedValue, setFocusedValue],
   );
 
   return {

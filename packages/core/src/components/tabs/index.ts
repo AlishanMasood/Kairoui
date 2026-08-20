@@ -11,3 +11,4 @@ export type {
   TabsContentProps,
   TabsInternalContextValue,
 } from "./tabs-types";
+export { Tabs, TabsList, TabsTrigger, TabsContent } from "./tabs";

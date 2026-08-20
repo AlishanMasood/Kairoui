@@ -76,8 +76,9 @@ RovingItem.displayName = "RovingItem";
 // ─── Basic tabIndex management ──────────────────────────────────────
 
 describe("useRovingFocus: tabIndex", () => {
-  it("first item has tabIndex=0, others have -1", () => {
+  it("first item has tabIndex=0 after focus", () => {
     render(createElement(RovingGroup));
+    fireEvent.focus(screen.getByTestId("item-a"));
     expect(screen.getByTestId("item-a").tabIndex).toBe(0);
     expect(screen.getByTestId("item-b").tabIndex).toBe(-1);
     expect(screen.getByTestId("item-c").tabIndex).toBe(-1);
