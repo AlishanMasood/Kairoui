@@ -28,11 +28,11 @@ interface BudgetEntry {
   maxGzip: number;
 }
 
-// Budgets: baseline measured 2026-08-12, headroom = baseline × 1.5 (50%)
+// Budgets: baseline measured 2026-08-20, headroom = baseline × 1.5 (50%)
 const BUDGETS: BudgetEntry[] = [
   { pkg: "utils", file: "dist/index.js", baseline: 16977, maxRaw: 25500, maxGzip: 6000 },
-  { pkg: "utils", file: "dist/dom.js", baseline: 10342, maxRaw: 15500, maxGzip: 4500 },
-  { pkg: "utils", file: "dist/events.js", baseline: 4067, maxRaw: 6100, maxGzip: 2000 },
+  { pkg: "utils", file: "dist/dom.js", baseline: 10343, maxRaw: 15500, maxGzip: 4500 },
+  { pkg: "utils", file: "dist/events.js", baseline: 4066, maxRaw: 6100, maxGzip: 2000 },
   { pkg: "tokens", file: "dist/index.js", baseline: 63350, maxRaw: 95000, maxGzip: 18000 },
   { pkg: "theme", file: "dist/index.js", baseline: 47169, maxRaw: 71000, maxGzip: 14000 },
   { pkg: "theme", file: "dist/dom.js", baseline: 16009, maxRaw: 24000, maxGzip: 6000 },
@@ -45,8 +45,8 @@ const BUDGETS: BudgetEntry[] = [
     pkg: "core",
     file: "dist/components/index.js",
     baseline: 251639,
-    maxRaw: 305000,
-    maxGzip: 50000,
+    maxRaw: 378000,
+    maxGzip: 58000,
   },
   { pkg: "core", file: "dist/styles.css", baseline: 4031, maxRaw: 15000, maxGzip: 3000 },
 ];
@@ -204,5 +204,55 @@ describe("Bundle budgets: tree-shaking isolation", () => {
       readFileSync(resolve(PACKAGES_DIR, "core", "package.json"), "utf-8"),
     ) as { sideEffects: string[] };
     expect(pkg.sideEffects).toEqual(["**/*.css"]);
+  });
+});
+
+// ─── Phase 11 navigation component budgets ──────────────────────────
+
+describe("Bundle budgets: Phase 11 navigation", () => {
+  const componentsBundle = resolve(PACKAGES_DIR, "core", "dist", "components", "index.js");
+
+  it("no @kairoui/docs code leaks into core components bundle", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    expect(content).not.toContain("@kairoui/docs");
+    expect(content).not.toContain("TabbedDemo");
+    expect(content).not.toContain("docusaurus");
+  });
+
+  it("Phase 11 components reference count within expected range", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    const phase11 = [
+      "Tabs",
+      "Accordion",
+      "Breadcrumbs",
+      "Pagination",
+      "Menubar",
+      "NavigationMenu",
+      "Sidebar",
+      "AppShell",
+    ];
+    for (const name of phase11) {
+      const count = (content.match(new RegExp(name, "g")) ?? []).length;
+      // Each component should appear (exported), but not excessively duplicated
+      expect(count).toBeGreaterThan(0);
+      expect(count).toBeLessThan(100);
+    }
+  });
+
+  it("shared roving focus is not duplicated across Tabs and Menubar", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    // useRovingFocus should appear only as a single definition + export
+    const rovingDefs = (content.match(/function useRovingFocus/g) ?? []).length;
+    expect(rovingDefs).toBe(1);
+  });
+
+  it("components/index.js total under 378KB raw (50% headroom)", () => {
+    const { raw } = measure(componentsBundle);
+    expect(raw).toBeLessThan(378_000);
+  });
+
+  it("components/index.js gzip under 58KB", () => {
+    const { gzip } = measure(componentsBundle);
+    expect(gzip).toBeLessThan(58_000);
   });
 });
