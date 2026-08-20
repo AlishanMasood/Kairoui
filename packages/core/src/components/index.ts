@@ -568,6 +568,10 @@ export {
   useMenubarContext,
   MenubarMenuContext,
   useMenubarMenuContext,
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
 } from "./menubar/index";
 export type {
   MenubarRootProps,

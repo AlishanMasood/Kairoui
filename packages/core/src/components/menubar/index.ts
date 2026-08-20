@@ -12,3 +12,4 @@ export type {
   MenubarContextValue,
   MenubarMenuContextValue,
 } from "./menubar-types";
+export { Menubar, MenubarMenu, MenubarTrigger, MenubarContent } from "./menubar";
