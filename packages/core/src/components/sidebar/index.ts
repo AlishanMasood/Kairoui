@@ -11,3 +11,14 @@ export type {
   SidebarTriggerProps,
   SidebarContextValue,
 } from "./sidebar-types";
+export {
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarItem,
+  SidebarLink,
+  SidebarTrigger,
+} from "./sidebar";
