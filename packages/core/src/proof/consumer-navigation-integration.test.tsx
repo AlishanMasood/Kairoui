@@ -8,6 +8,8 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { createElement, createRef, forwardRef, StrictMode } from "react";
 import type { ReactNode } from "react";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 
@@ -822,8 +824,8 @@ describe("Consumer: RTL support", () => {
 
 describe("Consumer: tree-shaking readiness", () => {
   it("sideEffects is correctly configured", () => {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const pkg = require("@kairoui/core/package.json") as { sideEffects: string[] };
+    const pkgPath = resolve(import.meta.dirname, "../../package.json");
+    const pkg = JSON.parse(readFileSync(pkgPath, "utf-8")) as { sideEffects: string[] };
     expect(pkg.sideEffects).toEqual(["**/*.css"]);
   });
 });
