@@ -502,3 +502,23 @@ export type {
   TabsContentProps,
   TabsInternalContextValue,
 } from "./tabs/index";
+
+export {
+  AccordionInternalContext,
+  useAccordionInternalContext,
+  AccordionItemInternalContext,
+  useAccordionItemInternalContext,
+  getAccordionTriggerId,
+  getAccordionContentId,
+} from "./accordion/index";
+export type {
+  AccordionRootSingleProps,
+  AccordionRootMultipleProps,
+  AccordionRootProps,
+  AccordionItemRootProps,
+  AccordionHeaderProps,
+  AccordionTriggerRootProps,
+  AccordionContentRootProps,
+  AccordionInternalContextValue,
+  AccordionItemInternalContextValue,
+} from "./accordion/index";
