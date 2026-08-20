@@ -8,3 +8,11 @@ export type {
   AppShellFooterRootProps,
   AppShellContextValue,
 } from "./app-shell-types";
+export {
+  AppShell,
+  AppShellHeader,
+  AppShellSidebar,
+  AppShellMain,
+  AppShellAside,
+  AppShellFooter,
+} from "./app-shell";

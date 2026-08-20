@@ -628,7 +628,17 @@ export type {
   SidebarContextValue,
 } from "./sidebar/index";
 
-export { AppShellContext, useAppShellContext, normalizeDimension } from "./app-shell/index";
+export {
+  AppShellContext,
+  useAppShellContext,
+  normalizeDimension,
+  AppShell,
+  AppShellHeader,
+  AppShellSidebar,
+  AppShellMain,
+  AppShellAside,
+  AppShellFooter,
+} from "./app-shell/index";
 export type {
   AppShellRootProps,
   AppShellHeaderRootProps,
