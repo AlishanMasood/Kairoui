@@ -1,0 +1,18 @@
+export type {
+  TableRootProps,
+  TableCaptionRootProps,
+  TableHeaderRootProps,
+  TableBodyRootProps,
+  TableFooterRootProps,
+  TableRowRootProps,
+  TableHeadRootProps,
+  TableCellRootProps,
+  TableProps,
+  TableCaptionProps,
+  TableHeaderProps,
+  TableBodyProps,
+  TableFooterProps,
+  TableRowProps,
+  TableHeadProps,
+  TableCellProps,
+} from "./table-types";

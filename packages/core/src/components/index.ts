@@ -722,3 +722,22 @@ export type {
   EmptyStateDescriptionRootProps,
   EmptyStateActionsRootProps,
 } from "./empty-state/index";
+
+export type {
+  TableRootProps as TableComponentRootProps,
+  TableCaptionRootProps,
+  TableHeaderRootProps,
+  TableBodyRootProps,
+  TableFooterRootProps,
+  TableRowRootProps,
+  TableHeadRootProps,
+  TableCellRootProps,
+  TableProps as TableComponentProps,
+  TableCaptionProps as TableCaptionComponentProps,
+  TableHeaderProps as TableHeaderComponentProps,
+  TableBodyProps as TableBodyComponentProps,
+  TableFooterProps as TableFooterComponentProps,
+  TableRowProps as TableRowComponentProps,
+  TableHeadProps as TableHeadComponentProps,
+  TableCellProps as TableCellComponentProps,
+} from "./table/index";
