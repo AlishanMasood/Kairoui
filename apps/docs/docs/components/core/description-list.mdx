@@ -1,0 +1,101 @@
+---
+title: DescriptionList
+sidebar_position: 40
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { DescriptionList, DescriptionTerm, DescriptionDetails } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="DescriptionList"
+  description="Semantic description list for key/value pairs using native dl/dt/dd elements."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={["DescriptionList", "DescriptionTerm", "DescriptionDetails"]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Vertical Layout">
+
+Default layout stacks terms above their details.
+
+<Demo
+  code={`<DescriptionList>
+  <DescriptionTerm>Name</DescriptionTerm>
+  <DescriptionDetails>Alice Johnson</DescriptionDetails>
+  <DescriptionTerm>Role</DescriptionTerm>
+  <DescriptionDetails>Staff Engineer</DescriptionDetails>
+  <DescriptionTerm>Team</DescriptionTerm>
+  <DescriptionDetails>Platform Infrastructure</DescriptionDetails>
+</DescriptionList>`}
+>
+  <DescriptionList>
+    <DescriptionTerm>Name</DescriptionTerm>
+    <DescriptionDetails>Alice Johnson</DescriptionDetails>
+    <DescriptionTerm>Role</DescriptionTerm>
+    <DescriptionDetails>Staff Engineer</DescriptionDetails>
+    <DescriptionTerm>Team</DescriptionTerm>
+    <DescriptionDetails>Platform Infrastructure</DescriptionDetails>
+  </DescriptionList>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Horizontal Layout">
+
+Side-by-side key/value layout via `data-layout="horizontal"` for CSS targeting.
+
+<Demo
+  code={`<DescriptionList layout="horizontal">
+  <DescriptionTerm>Status</DescriptionTerm>
+  <DescriptionDetails>Active</DescriptionDetails>
+  <DescriptionTerm>Created</DescriptionTerm>
+  <DescriptionDetails>2026-01-15</DescriptionDetails>
+  <DescriptionTerm>Updated</DescriptionTerm>
+  <DescriptionDetails>2026-08-20</DescriptionDetails>
+</DescriptionList>`}
+>
+  <DescriptionList layout="horizontal">
+    <DescriptionTerm>Status</DescriptionTerm>
+    <DescriptionDetails>Active</DescriptionDetails>
+    <DescriptionTerm>Created</DescriptionTerm>
+    <DescriptionDetails>2026-01-15</DescriptionDetails>
+    <DescriptionTerm>Updated</DescriptionTerm>
+    <DescriptionDetails>2026-08-20</DescriptionDetails>
+  </DescriptionList>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Multiple Details per Term">
+
+A single term can have multiple associated details.
+
+<Demo
+  code={`<DescriptionList>
+  <DescriptionTerm>Languages</DescriptionTerm>
+  <DescriptionDetails>TypeScript</DescriptionDetails>
+  <DescriptionDetails>Rust</DescriptionDetails>
+  <DescriptionDetails>Go</DescriptionDetails>
+</DescriptionList>`}
+>
+  <DescriptionList>
+    <DescriptionTerm>Languages</DescriptionTerm>
+    <DescriptionDetails>TypeScript</DescriptionDetails>
+    <DescriptionDetails>Rust</DescriptionDetails>
+    <DescriptionDetails>Go</DescriptionDetails>
+  </DescriptionList>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Uses native `<dl>`, `<dt>`, `<dd>` elements — implicit `term` and `definition` roles
+- Screen readers announce the association between terms and descriptions
+- No ARIA attributes needed
+
+</DocsSection>

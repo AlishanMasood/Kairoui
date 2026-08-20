@@ -700,3 +700,10 @@ export type {
 
 export { List, ListItem } from "./list/index";
 export type { ListRootProps, ListItemProps as ListItemRootProps } from "./list/index";
+
+export { DescriptionList, DescriptionTerm, DescriptionDetails } from "./description-list/index";
+export type {
+  DescriptionListRootProps,
+  DescriptionTermRootProps,
+  DescriptionDetailsRootProps,
+} from "./description-list/index";
