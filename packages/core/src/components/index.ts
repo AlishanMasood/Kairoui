@@ -510,6 +510,11 @@ export {
   useAccordionItemInternalContext,
   getAccordionTriggerId,
   getAccordionContentId,
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionTrigger,
+  AccordionContent,
 } from "./accordion/index";
 export type {
   AccordionRootSingleProps,

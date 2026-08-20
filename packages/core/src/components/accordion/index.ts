@@ -17,3 +17,10 @@ export type {
   AccordionInternalContextValue,
   AccordionItemInternalContextValue,
 } from "./accordion-types";
+export {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionTrigger,
+  AccordionContent,
+} from "./accordion";
