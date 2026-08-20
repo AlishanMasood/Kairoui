@@ -697,3 +697,6 @@ export type {
   TimelineDescriptionProps,
   CalendarProps,
 } from "./data/index";
+
+export { List, ListItem } from "./list/index";
+export type { ListRootProps, ListItemProps as ListItemRootProps } from "./list/index";

@@ -1,0 +1,100 @@
+---
+title: List
+sidebar_position: 39
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { List, ListItem } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="List"
+  description="Semantic ordered and unordered list with native HTML list elements for accessible, structured content."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["List", "ListItem"]} from="@kairoui/core/components" />
+
+<DocsSection title="Unordered List">
+
+<Demo
+  code={`<List>
+  <ListItem>First item</ListItem>
+  <ListItem>Second item</ListItem>
+  <ListItem>Third item</ListItem>
+</List>`}
+>
+  <List>
+    <ListItem>First item</ListItem>
+    <ListItem>Second item</ListItem>
+    <ListItem>Third item</ListItem>
+  </List>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Ordered List">
+
+<Demo
+  code={`<List variant="ordered">
+  <ListItem>Step one</ListItem>
+  <ListItem>Step two</ListItem>
+  <ListItem>Step three</ListItem>
+</List>`}
+>
+  <List variant="ordered">
+    <ListItem>Step one</ListItem>
+    <ListItem>Step two</ListItem>
+    <ListItem>Step three</ListItem>
+  </List>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Nested Lists">
+
+<Demo
+  code={`<List>
+  <ListItem>
+    Fruits
+    <List>
+      <ListItem>Apple</ListItem>
+      <ListItem>Banana</ListItem>
+    </List>
+  </ListItem>
+  <ListItem>
+    Vegetables
+    <List>
+      <ListItem>Carrot</ListItem>
+      <ListItem>Broccoli</ListItem>
+    </List>
+  </ListItem>
+</List>`}
+>
+  <List>
+    <ListItem>
+      Fruits
+      <List>
+        <ListItem>Apple</ListItem>
+        <ListItem>Banana</ListItem>
+      </List>
+    </ListItem>
+    <ListItem>
+      Vegetables
+      <List>
+        <ListItem>Carrot</ListItem>
+        <ListItem>Broccoli</ListItem>
+      </List>
+    </ListItem>
+  </List>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Renders native `<ul>` or `<ol>` elements — no ARIA roles needed
+- Screen readers automatically announce list semantics and item count
+- Supports all native list attributes (`start`, `reversed`, `type` for ordered lists)
+
+</DocsSection>
