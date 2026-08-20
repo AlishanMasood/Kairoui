@@ -580,6 +580,14 @@ export {
   useNavigationMenuContext,
   NavigationMenuItemContext,
   useNavigationMenuItemContext,
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuViewport,
 } from "./navigation-menu/index";
 export type {
   NavigationMenuRootProps,

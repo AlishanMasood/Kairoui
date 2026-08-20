@@ -16,3 +16,13 @@ export type {
   NavigationMenuContextValue,
   NavigationMenuItemContextValue,
 } from "./navigation-menu-types";
+export {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuViewport,
+} from "./navigation-menu";
