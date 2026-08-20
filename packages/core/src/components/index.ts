@@ -627,3 +627,14 @@ export type {
   SidebarTriggerProps,
   SidebarContextValue,
 } from "./sidebar/index";
+
+export { AppShellContext, useAppShellContext, normalizeDimension } from "./app-shell/index";
+export type {
+  AppShellRootProps,
+  AppShellHeaderRootProps,
+  AppShellSidebarRootProps,
+  AppShellMainRootProps,
+  AppShellAsideRootProps,
+  AppShellFooterRootProps,
+  AppShellContextValue,
+} from "./app-shell/index";
