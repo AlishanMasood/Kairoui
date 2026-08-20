@@ -1,0 +1,113 @@
+---
+title: EmptyState
+sidebar_position: 41
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateActions,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="EmptyState"
+  description="Placeholder content shown when a view has no data, no search results, or requires user action."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "EmptyState",
+    "EmptyStateIcon",
+    "EmptyStateTitle",
+    "EmptyStateDescription",
+    "EmptyStateActions",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Empty State">
+
+<Demo
+  code={`<EmptyState>
+  <EmptyStateTitle>No items yet</EmptyStateTitle>
+  <EmptyStateDescription>
+    Create your first item to get started.
+  </EmptyStateDescription>
+</EmptyState>`}
+>
+  <EmptyState>
+    <EmptyStateTitle>No items yet</EmptyStateTitle>
+    <EmptyStateDescription>Create your first item to get started.</EmptyStateDescription>
+  </EmptyState>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Icon and Actions">
+
+<Demo
+  code={`<EmptyState>
+  <EmptyStateIcon>📭</EmptyStateIcon>
+  <EmptyStateTitle>Your inbox is empty</EmptyStateTitle>
+  <EmptyStateDescription>
+    New messages will appear here when you receive them.
+  </EmptyStateDescription>
+  <EmptyStateActions>
+    <button type="button">Compose message</button>
+  </EmptyStateActions>
+</EmptyState>`}
+>
+  <EmptyState>
+    <EmptyStateIcon>📭</EmptyStateIcon>
+    <EmptyStateTitle>Your inbox is empty</EmptyStateTitle>
+    <EmptyStateDescription>
+      New messages will appear here when you receive them.
+    </EmptyStateDescription>
+    <EmptyStateActions>
+      <button type="button">Compose message</button>
+    </EmptyStateActions>
+  </EmptyState>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="No Search Results">
+
+<Demo
+  code={`<EmptyState>
+  <EmptyStateIcon>🔍</EmptyStateIcon>
+  <EmptyStateTitle>No results found</EmptyStateTitle>
+  <EmptyStateDescription>
+    Try adjusting your search or filter criteria.
+  </EmptyStateDescription>
+  <EmptyStateActions>
+    <button type="button">Clear filters</button>
+  </EmptyStateActions>
+</EmptyState>`}
+>
+  <EmptyState>
+    <EmptyStateIcon>🔍</EmptyStateIcon>
+    <EmptyStateTitle>No results found</EmptyStateTitle>
+    <EmptyStateDescription>Try adjusting your search or filter criteria.</EmptyStateDescription>
+    <EmptyStateActions>
+      <button type="button">Clear filters</button>
+    </EmptyStateActions>
+  </EmptyState>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Root has `role="status"` — screen readers announce it as a live region
+- Icon slot uses `aria-hidden="true"` — decorative content hidden from AT
+- Title renders as `<h3>` for document outline
+- Description renders as `<p>` for proper text semantics
+- Actions slot contains interactive elements (buttons/links) that remain in tab order
+
+</DocsSection>

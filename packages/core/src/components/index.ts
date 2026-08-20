@@ -707,3 +707,18 @@ export type {
   DescriptionTermRootProps,
   DescriptionDetailsRootProps,
 } from "./description-list/index";
+
+export {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateActions,
+} from "./empty-state/index";
+export type {
+  EmptyStateRootProps,
+  EmptyStateIconRootProps,
+  EmptyStateTitleRootProps,
+  EmptyStateDescriptionRootProps,
+  EmptyStateActionsRootProps,
+} from "./empty-state/index";
