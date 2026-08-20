@@ -43,3 +43,12 @@ export {
   type TimelineDescriptionProps,
 } from "./data-types";
 export { type CalendarProps } from "./data-types";
+
+export {
+  createRowModel,
+  createTreeRowModel,
+  getVisibleRows,
+  getAncestorIds,
+  getDescendantIds,
+} from "./row-model";
+export type { RowModel, CreateRowModelOptions, CreateTreeRowModelOptions } from "./row-model";
