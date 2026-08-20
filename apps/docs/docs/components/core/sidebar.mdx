@@ -1,0 +1,211 @@
+---
+title: Sidebar
+sidebar_position: 37
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarItem,
+  SidebarLink,
+  SidebarTrigger,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Sidebar"
+  description="Collapsible side navigation with grouped sections, active-page indication, and a trigger for toggling collapsed state."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "Sidebar",
+    "SidebarHeader",
+    "SidebarContent",
+    "SidebarFooter",
+    "SidebarGroup",
+    "SidebarGroupLabel",
+    "SidebarItem",
+    "SidebarLink",
+    "SidebarTrigger",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<div style={{ display: "flex", height: "300px", border: "1px solid #e5e5e5", borderRadius: "8px", overflow: "hidden" }}>
+  <Sidebar width="200px">
+    <SidebarHeader>
+      <div style={{ padding: "12px", fontWeight: 600 }}>My App</div>
+    </SidebarHeader>
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+        <SidebarLink href="/dashboard" active>Dashboard</SidebarLink>
+        <SidebarLink href="/projects">Projects</SidebarLink>
+        <SidebarLink href="/settings">Settings</SidebarLink>
+      </SidebarGroup>
+    </SidebarContent>
+    <SidebarFooter>
+      <div style={{ padding: "12px", fontSize: "0.75rem", color: "#999" }}>v1.0.0</div>
+    </SidebarFooter>
+  </Sidebar>
+  <div style={{ flex: 1, padding: "16px" }}>Main content area</div>
+</div>`}
+>
+  <div
+    style={{
+      display: "flex",
+      height: "300px",
+      border: "1px solid #e5e5e5",
+      borderRadius: "8px",
+      overflow: "hidden",
+    }}
+  >
+    <Sidebar width="200px">
+      <SidebarHeader>
+        <div style={{ padding: "12px", fontWeight: 600 }}>My App</div>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarLink href="/dashboard" active>
+            Dashboard
+          </SidebarLink>
+          <SidebarLink href="/projects">Projects</SidebarLink>
+          <SidebarLink href="/settings">Settings</SidebarLink>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter>
+        <div style={{ padding: "12px", fontSize: "0.75rem", color: "#999" }}>v1.0.0</div>
+      </SidebarFooter>
+    </Sidebar>
+    <div style={{ flex: 1, padding: "16px" }}>Main content area</div>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Collapsible Groups">
+
+Groups with `collapsible` render their label as a disclosure button.
+
+<Demo
+  code={`<Sidebar width="220px">
+  <SidebarContent>
+    <SidebarGroup collapsible defaultOpen={true}>
+      <SidebarGroupLabel>Getting Started</SidebarGroupLabel>
+      <SidebarLink href="/install">Installation</SidebarLink>
+      <SidebarLink href="/quickstart">Quick Start</SidebarLink>
+    </SidebarGroup>
+    <SidebarGroup collapsible defaultOpen={false}>
+      <SidebarGroupLabel>Advanced</SidebarGroupLabel>
+      <SidebarLink href="/theming">Theming</SidebarLink>
+      <SidebarLink href="/ssr">SSR</SidebarLink>
+    </SidebarGroup>
+  </SidebarContent>
+</Sidebar>`}
+>
+  <div
+    style={{ width: "220px", border: "1px solid #e5e5e5", borderRadius: "8px", overflow: "hidden" }}
+  >
+    <Sidebar width="220px">
+      <SidebarContent>
+        <SidebarGroup collapsible defaultOpen={true}>
+          <SidebarGroupLabel>Getting Started</SidebarGroupLabel>
+          <SidebarLink href="/install">Installation</SidebarLink>
+          <SidebarLink href="/quickstart">Quick Start</SidebarLink>
+        </SidebarGroup>
+        <SidebarGroup collapsible defaultOpen={false}>
+          <SidebarGroupLabel>Advanced</SidebarGroupLabel>
+          <SidebarLink href="/theming">Theming</SidebarLink>
+          <SidebarLink href="/ssr">SSR</SidebarLink>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Sidebar Trigger">
+
+<Demo
+  code={`<Sidebar defaultCollapsed={false} width="200px" collapsedWidth="48px">
+  <SidebarTrigger />
+  <SidebarContent>
+    <SidebarGroup>
+      <SidebarLink href="/" active>Home</SidebarLink>
+      <SidebarLink href="/search">Search</SidebarLink>
+    </SidebarGroup>
+  </SidebarContent>
+</Sidebar>`}
+>
+  <div
+    style={{ width: "220px", border: "1px solid #e5e5e5", borderRadius: "8px", overflow: "hidden" }}
+  >
+    <Sidebar defaultCollapsed={false} width="200px" collapsedWidth="48px">
+      <SidebarTrigger />
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarLink href="/" active>
+            Home
+          </SidebarLink>
+          <SidebarLink href="/search">Search</SidebarLink>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled Links">
+
+<Demo
+  code={`<Sidebar width="200px">
+  <SidebarContent>
+    <SidebarGroup>
+      <SidebarLink href="/active">Active Link</SidebarLink>
+      <SidebarLink href="/disabled" disabled>Disabled Link</SidebarLink>
+    </SidebarGroup>
+  </SidebarContent>
+</Sidebar>`}
+>
+  <div
+    style={{ width: "200px", border: "1px solid #e5e5e5", borderRadius: "8px", overflow: "hidden" }}
+  >
+    <Sidebar width="200px">
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarLink href="/active">Active Link</SidebarLink>
+          <SidebarLink href="/disabled" disabled>
+            Disabled Link
+          </SidebarLink>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- `<aside>` element provides implicit `complementary` landmark
+- `SidebarContent` has `role="navigation"` for the nav section
+- `SidebarGroup` uses `role="group"`
+- Collapsible group labels render as buttons with `aria-expanded`
+- Active links marked with `aria-current="page"`
+- Disabled links have `aria-disabled` and remove `href`
+- `SidebarTrigger` has `aria-expanded` and `aria-label`
+
+</DocsSection>

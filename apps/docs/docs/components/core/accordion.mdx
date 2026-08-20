@@ -1,0 +1,204 @@
+---
+title: Accordion
+sidebar_position: 32
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionTrigger,
+  AccordionContent,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Accordion"
+  description="Vertically stacked collapsible sections with single or multiple expansion, keyboard navigation, and accessible heading semantics."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "Accordion",
+    "AccordionItem",
+    "AccordionHeader",
+    "AccordionTrigger",
+    "AccordionContent",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Single Mode">
+
+Only one item can be open at a time.
+
+<Demo
+  code={`<Accordion type="single" defaultValue="item-1" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionHeader>
+      <AccordionTrigger>What is KairoUI?</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>
+      A composable React design system with semantic tokens, strict accessibility, and enterprise-grade architecture.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionHeader>
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>
+      Yes. All components follow WAI-ARIA patterns with full keyboard support and screen reader compatibility.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-3">
+    <AccordionHeader>
+      <AccordionTrigger>Can I customize the styling?</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>
+      Absolutely. KairoUI uses style contracts and semantic tokens for deep theming without overriding internals.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+>
+  <Accordion type="single" defaultValue="item-1" collapsible>
+    <AccordionItem value="item-1">
+      <AccordionHeader>
+        <AccordionTrigger>What is KairoUI?</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>
+        A composable React design system with semantic tokens, strict accessibility, and
+        enterprise-grade architecture.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionHeader>
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>
+        Yes. All components follow WAI-ARIA patterns with full keyboard support and screen reader
+        compatibility.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionHeader>
+        <AccordionTrigger>Can I customize the styling?</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>
+        Absolutely. KairoUI uses style contracts and semantic tokens for deep theming without
+        overriding internals.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Multiple Mode">
+
+Multiple items can be expanded simultaneously.
+
+<Demo
+  code={`<Accordion type="multiple" defaultValue={["a", "b"]}>
+  <AccordionItem value="a">
+    <AccordionHeader>
+      <AccordionTrigger>Section A</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>Content A — expanded by default.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="b">
+    <AccordionHeader>
+      <AccordionTrigger>Section B</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>Content B — also expanded by default.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="c">
+    <AccordionHeader>
+      <AccordionTrigger>Section C</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>Content C — collapsed initially.</AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+>
+  <Accordion type="multiple" defaultValue={["a", "b"]}>
+    <AccordionItem value="a">
+      <AccordionHeader>
+        <AccordionTrigger>Section A</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>Content A — expanded by default.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="b">
+      <AccordionHeader>
+        <AccordionTrigger>Section B</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>Content B — also expanded by default.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="c">
+      <AccordionHeader>
+        <AccordionTrigger>Section C</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>Content C — collapsed initially.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled Items">
+
+<Demo
+  code={`<Accordion type="single" defaultValue="enabled">
+  <AccordionItem value="enabled">
+    <AccordionHeader>
+      <AccordionTrigger>Enabled Item</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>This item is interactive.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="disabled" disabled>
+    <AccordionHeader>
+      <AccordionTrigger>Disabled Item</AccordionTrigger>
+    </AccordionHeader>
+    <AccordionContent>Cannot be toggled.</AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+>
+  <Accordion type="single" defaultValue="enabled">
+    <AccordionItem value="enabled">
+      <AccordionHeader>
+        <AccordionTrigger>Enabled Item</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>This item is interactive.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="disabled" disabled>
+      <AccordionHeader>
+        <AccordionTrigger>Disabled Item</AccordionTrigger>
+      </AccordionHeader>
+      <AccordionContent>Cannot be toggled.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard Navigation">
+
+| Key                        | Action                                   |
+| -------------------------- | ---------------------------------------- |
+| `ArrowDown` / `ArrowUp`    | Move focus between triggers (vertical)   |
+| `ArrowRight` / `ArrowLeft` | Move focus between triggers (horizontal) |
+| `Home` / `End`             | Move to first / last enabled trigger     |
+| `Enter` / `Space`          | Toggle the focused item                  |
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Implements WAI-ARIA [Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+- `aria-expanded` on triggers reflects open state
+- `aria-controls` links trigger to content region
+- Content uses `role="region"` with `aria-labelledby`
+- Header renders as proper heading element (`h1`–`h6`)
+- Disabled items skipped during keyboard navigation
+
+</DocsSection>

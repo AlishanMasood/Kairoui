@@ -1,0 +1,171 @@
+---
+title: Breadcrumbs
+sidebar_position: 33
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  Breadcrumbs,
+  BreadcrumbsList,
+  BreadcrumbsItem,
+  BreadcrumbsLink,
+  BreadcrumbsSeparator,
+  BreadcrumbsCurrent,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Breadcrumbs"
+  description="Navigation breadcrumb trail showing page hierarchy with semantic list markup, accessible separators, and current-page indication."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "Breadcrumbs",
+    "BreadcrumbsList",
+    "BreadcrumbsItem",
+    "BreadcrumbsLink",
+    "BreadcrumbsSeparator",
+    "BreadcrumbsCurrent",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Breadcrumbs>
+  <BreadcrumbsList>
+    <BreadcrumbsItem>
+      <BreadcrumbsLink href="/">Home</BreadcrumbsLink>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsSeparator />
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsLink href="/components">Components</BreadcrumbsLink>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsSeparator />
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsCurrent>Breadcrumbs</BreadcrumbsCurrent>
+    </BreadcrumbsItem>
+  </BreadcrumbsList>
+</Breadcrumbs>`}
+>
+  <Breadcrumbs>
+    <BreadcrumbsList>
+      <BreadcrumbsItem>
+        <BreadcrumbsLink href="/">Home</BreadcrumbsLink>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsLink href="/components">Components</BreadcrumbsLink>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsSeparator />
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsCurrent>Breadcrumbs</BreadcrumbsCurrent>
+      </BreadcrumbsItem>
+    </BreadcrumbsList>
+  </Breadcrumbs>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Custom Separator">
+
+<Demo
+  code={`<Breadcrumbs>
+  <BreadcrumbsList>
+    <BreadcrumbsItem>
+      <BreadcrumbsLink href="/">Home</BreadcrumbsLink>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsSeparator>›</BreadcrumbsSeparator>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsLink href="/docs">Docs</BreadcrumbsLink>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsSeparator>›</BreadcrumbsSeparator>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsCurrent>Page</BreadcrumbsCurrent>
+    </BreadcrumbsItem>
+  </BreadcrumbsList>
+</Breadcrumbs>`}
+>
+  <Breadcrumbs>
+    <BreadcrumbsList>
+      <BreadcrumbsItem>
+        <BreadcrumbsLink href="/">Home</BreadcrumbsLink>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsSeparator>›</BreadcrumbsSeparator>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsLink href="/docs">Docs</BreadcrumbsLink>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsSeparator>›</BreadcrumbsSeparator>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsCurrent>Page</BreadcrumbsCurrent>
+      </BreadcrumbsItem>
+    </BreadcrumbsList>
+  </Breadcrumbs>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Custom Label">
+
+Override the default `"Breadcrumb"` landmark label for pages with multiple nav landmarks.
+
+<Demo
+  code={`<Breadcrumbs label="File path">
+  <BreadcrumbsList>
+    <BreadcrumbsItem>
+      <BreadcrumbsLink href="/root">root</BreadcrumbsLink>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsSeparator>/</BreadcrumbsSeparator>
+    </BreadcrumbsItem>
+    <BreadcrumbsItem>
+      <BreadcrumbsCurrent>file.ts</BreadcrumbsCurrent>
+    </BreadcrumbsItem>
+  </BreadcrumbsList>
+</Breadcrumbs>`}
+>
+  <Breadcrumbs label="File path">
+    <BreadcrumbsList>
+      <BreadcrumbsItem>
+        <BreadcrumbsLink href="/root">root</BreadcrumbsLink>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsSeparator>/</BreadcrumbsSeparator>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem>
+        <BreadcrumbsCurrent>file.ts</BreadcrumbsCurrent>
+      </BreadcrumbsItem>
+    </BreadcrumbsList>
+  </Breadcrumbs>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Renders as `<nav>` with `aria-label` (navigation landmark)
+- Uses `<ol>` / `<li>` for ordered list semantics
+- Separators hidden from screen readers via `aria-hidden="true"` and `role="presentation"`
+- Current page marked with `aria-current="page"`
+- Links are native `<a>` elements — no custom roles needed
+
+</DocsSection>

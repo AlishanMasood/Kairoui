@@ -1,0 +1,197 @@
+---
+title: AppShell
+sidebar_position: 38
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  AppShell,
+  AppShellHeader,
+  AppShellSidebar,
+  AppShellMain,
+  AppShellAside,
+  AppShellFooter,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="AppShell"
+  description="Application layout shell with CSS Grid, supporting header, sidebar, main content, aside, and footer regions with semantic landmark elements."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "AppShell",
+    "AppShellHeader",
+    "AppShellSidebar",
+    "AppShellMain",
+    "AppShellAside",
+    "AppShellFooter",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Sidebar Layout">
+
+<Demo
+  code={`<AppShell
+  layout="sidebar"
+  headerHeight="48px"
+  sidebarWidth="180px"
+  footerHeight="36px"
+>
+  <AppShellHeader>
+    <div style={{ padding: "8px 16px", background: "#f0f0f0", height: "100%" }}>Header</div>
+  </AppShellHeader>
+  <AppShellSidebar>
+    <div style={{ padding: "16px", background: "#fafafa", height: "100%" }}>Sidebar</div>
+  </AppShellSidebar>
+  <AppShellMain>
+    <div style={{ padding: "16px" }}>Main content area</div>
+  </AppShellMain>
+  <AppShellFooter>
+    <div style={{ padding: "8px 16px", background: "#f0f0f0", height: "100%" }}>Footer</div>
+  </AppShellFooter>
+</AppShell>`}
+>
+  <div
+    style={{
+      border: "1px solid #e5e5e5",
+      borderRadius: "8px",
+      overflow: "hidden",
+      height: "300px",
+    }}
+  >
+    <AppShell layout="sidebar" headerHeight="48px" sidebarWidth="180px" footerHeight="36px">
+      <AppShellHeader>
+        <div style={{ padding: "8px 16px", background: "#f0f0f0", height: "100%" }}>Header</div>
+      </AppShellHeader>
+      <AppShellSidebar>
+        <div style={{ padding: "16px", background: "#fafafa", height: "100%" }}>Sidebar</div>
+      </AppShellSidebar>
+      <AppShellMain>
+        <div style={{ padding: "16px" }}>Main content area</div>
+      </AppShellMain>
+      <AppShellFooter>
+        <div style={{ padding: "8px 16px", background: "#f0f0f0", height: "100%" }}>Footer</div>
+      </AppShellFooter>
+    </AppShell>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Aside Panel">
+
+<Demo
+  code={`<AppShell layout="sidebar" headerHeight="48px" sidebarWidth="140px" asideWidth="160px">
+  <AppShellHeader>
+    <div style={{ padding: "8px 16px", background: "#f0f0f0", height: "100%" }}>Header</div>
+  </AppShellHeader>
+  <AppShellSidebar>
+    <div style={{ padding: "12px", background: "#fafafa", height: "100%" }}>Nav</div>
+  </AppShellSidebar>
+  <AppShellMain>
+    <div style={{ padding: "16px" }}>Content</div>
+  </AppShellMain>
+  <AppShellAside>
+    <div style={{ padding: "12px", background: "#f5f5ff", height: "100%" }}>Aside</div>
+  </AppShellAside>
+</AppShell>`}
+>
+  <div
+    style={{
+      border: "1px solid #e5e5e5",
+      borderRadius: "8px",
+      overflow: "hidden",
+      height: "250px",
+    }}
+  >
+    <AppShell layout="sidebar" headerHeight="48px" sidebarWidth="140px" asideWidth="160px">
+      <AppShellHeader>
+        <div style={{ padding: "8px 16px", background: "#f0f0f0", height: "100%" }}>Header</div>
+      </AppShellHeader>
+      <AppShellSidebar>
+        <div style={{ padding: "12px", background: "#fafafa", height: "100%" }}>Nav</div>
+      </AppShellSidebar>
+      <AppShellMain>
+        <div style={{ padding: "16px" }}>Content</div>
+      </AppShellMain>
+      <AppShellAside>
+        <div style={{ padding: "12px", background: "#f5f5ff", height: "100%" }}>Aside</div>
+      </AppShellAside>
+    </AppShell>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Fixed Header">
+
+The `fixed` prop makes the header sticky at the top during scroll.
+
+<Demo
+  code={`<AppShell headerHeight="50px" sidebarWidth="160px">
+  <AppShellHeader fixed>
+    <div style={{ padding: "8px 16px", background: "#333", color: "#fff", height: "100%" }}>
+      Fixed Header
+    </div>
+  </AppShellHeader>
+  <AppShellSidebar>
+    <div style={{ padding: "16px", background: "#fafafa" }}>Sidebar</div>
+  </AppShellSidebar>
+  <AppShellMain>
+    <div style={{ padding: "16px" }}>
+      Scroll the content to see the fixed header behavior.
+    </div>
+  </AppShellMain>
+</AppShell>`}
+>
+  <div
+    style={{
+      border: "1px solid #e5e5e5",
+      borderRadius: "8px",
+      overflow: "hidden",
+      height: "200px",
+    }}
+  >
+    <AppShell headerHeight="50px" sidebarWidth="160px">
+      <AppShellHeader fixed>
+        <div style={{ padding: "8px 16px", background: "#333", color: "#fff", height: "100%" }}>
+          Fixed Header
+        </div>
+      </AppShellHeader>
+      <AppShellSidebar>
+        <div style={{ padding: "16px", background: "#fafafa" }}>Sidebar</div>
+      </AppShellSidebar>
+      <AppShellMain>
+        <div style={{ padding: "16px" }}>Scroll the content to see the fixed header behavior.</div>
+      </AppShellMain>
+    </AppShell>
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="CSS Custom Properties">
+
+AppShell exposes layout dimensions as CSS custom properties for child styling:
+
+| Property                    | Description                              |
+| --------------------------- | ---------------------------------------- |
+| `--kui-shell-header-height` | Header row height                        |
+| `--kui-shell-sidebar-width` | Sidebar column width (respects collapse) |
+| `--kui-shell-aside-width`   | Aside column width                       |
+| `--kui-shell-footer-height` | Footer row height                        |
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Uses semantic HTML elements: `<header>`, `<aside>`, `<main>`, `<footer>`
+- Implicit landmark roles: `banner`, `complementary`, `main`, `contentinfo`
+- No ARIA attributes needed — native semantics provide full accessibility
+- Grid layout preserves DOM order for screen reader navigation
+
+</DocsSection>

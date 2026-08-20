@@ -25,3 +25,6 @@ export type { CodePreviewProps } from "./code-preview";
 
 export { Demo } from "./demo";
 export type { DemoProps } from "./demo";
+
+export { TabbedDemo } from "./tabbed-demo";
+export type { TabbedDemoProps, TabbedDemoTab } from "./tabbed-demo";

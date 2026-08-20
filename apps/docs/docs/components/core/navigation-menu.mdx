@@ -1,0 +1,147 @@
+---
+title: NavigationMenu
+sidebar_position: 36
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="NavigationMenu"
+  description="Site-level navigation with hover-activated flyout panels, keyboard support, and semantic nav landmark."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "NavigationMenu",
+    "NavigationMenuList",
+    "NavigationMenuItem",
+    "NavigationMenuTrigger",
+    "NavigationMenuContent",
+    "NavigationMenuLink",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<NavigationMenu label="Main navigation">
+  <NavigationMenuList>
+    <NavigationMenuItem value="products">
+      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink href="/analytics">Analytics</NavigationMenuLink>
+        <NavigationMenuLink href="/automation">Automation</NavigationMenuLink>
+        <NavigationMenuLink href="/security">Security</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem value="resources">
+      <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
+        <NavigationMenuLink href="/blog">Blog</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>`}
+>
+  <NavigationMenu label="Main navigation">
+    <NavigationMenuList>
+      <NavigationMenuItem value="products">
+        <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div style={{ padding: "12px", display: "flex", flexDirection: "column", gap: "8px" }}>
+            <NavigationMenuLink href="/analytics">Analytics</NavigationMenuLink>
+            <NavigationMenuLink href="/automation">Automation</NavigationMenuLink>
+            <NavigationMenuLink href="/security">Security</NavigationMenuLink>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem value="resources">
+        <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div style={{ padding: "12px", display: "flex", flexDirection: "column", gap: "8px" }}>
+            <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
+            <NavigationMenuLink href="/blog">Blog</NavigationMenuLink>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Active Link">
+
+Mark the current page link with `active` to apply `aria-current="page"`.
+
+<Demo
+  code={`<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/home">Home</NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/about" active>About</NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>`}
+>
+  <NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="/home">Home</NavigationMenuLink>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="/about" active>
+          About
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard Navigation">
+
+| Key                             | Action                              |
+| ------------------------------- | ----------------------------------- |
+| `ArrowDown` / `Enter` / `Space` | Open content panel                  |
+| `Tab`                           | Navigate between triggers and links |
+| Click outside / Pointer leave   | Close content panel                 |
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Renders as `<nav>` landmark with configurable `aria-label`
+- Triggers have `aria-haspopup="true"`, `aria-expanded`, and `aria-controls`
+- Active links use `aria-current="page"`
+- Content panel linked via `aria-labelledby` to its trigger
+- Hover-based opening uses configurable `delayDuration` (default 200ms)
+
+</DocsSection>

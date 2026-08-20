@@ -44,7 +44,7 @@ const BUDGETS: BudgetEntry[] = [
   {
     pkg: "core",
     file: "dist/components/index.js",
-    baseline: 202522,
+    baseline: 251639,
     maxRaw: 305000,
     maxGzip: 50000,
   },

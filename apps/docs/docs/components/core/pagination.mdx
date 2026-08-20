@@ -1,0 +1,165 @@
+---
+title: Pagination
+sidebar_position: 34
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  Pagination,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+  computePageRange,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Pagination"
+  description="Page navigation control with previous/next buttons, page items, ellipsis indicators, and link-mode rendering for SEO."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "Pagination",
+    "PaginationItem",
+    "PaginationPrevious",
+    "PaginationNext",
+    "PaginationEllipsis",
+    "computePageRange",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Pagination defaultPage={3} totalPages={10}>
+  <PaginationPrevious />
+  <PaginationItem page={1} />
+  <PaginationItem page={2} />
+  <PaginationItem page={3} />
+  <PaginationItem page={4} />
+  <PaginationItem page={5} />
+  <PaginationEllipsis />
+  <PaginationItem page={10} />
+  <PaginationNext />
+</Pagination>`}
+>
+  <Pagination defaultPage={3} totalPages={10}>
+    <PaginationPrevious />
+    <PaginationItem page={1} />
+    <PaginationItem page={2} />
+    <PaginationItem page={3} />
+    <PaginationItem page={4} />
+    <PaginationItem page={5} />
+    <PaginationEllipsis />
+    <PaginationItem page={10} />
+    <PaginationNext />
+  </Pagination>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With computePageRange">
+
+Use `computePageRange` to automatically determine visible pages around the current page.
+
+<Demo
+  code={`// computePageRange({ page: 5, totalPages: 20, siblingCount: 1 })
+// Returns: { start: 4, end: 6, showStartEllipsis: true, showEndEllipsis: true }
+
+<Pagination defaultPage={5} totalPages={20}>
+  <PaginationPrevious />
+  <PaginationItem page={1} />
+  <PaginationEllipsis />
+  <PaginationItem page={4} />
+  <PaginationItem page={5} />
+  <PaginationItem page={6} />
+  <PaginationEllipsis />
+  <PaginationItem page={20} />
+  <PaginationNext />
+</Pagination>`}
+>
+  <Pagination defaultPage={5} totalPages={20}>
+    <PaginationPrevious />
+    <PaginationItem page={1} />
+    <PaginationEllipsis />
+    <PaginationItem page={4} />
+    <PaginationItem page={5} />
+    <PaginationItem page={6} />
+    <PaginationEllipsis />
+    <PaginationItem page={20} />
+    <PaginationNext />
+  </Pagination>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Boundary States">
+
+Previous is disabled on the first page; Next is disabled on the last page.
+
+<Demo
+  code={`<Pagination defaultPage={1} totalPages={5}>
+  <PaginationPrevious />
+  <PaginationItem page={1} />
+  <PaginationItem page={2} />
+  <PaginationItem page={3} />
+  <PaginationItem page={4} />
+  <PaginationItem page={5} />
+  <PaginationNext />
+</Pagination>`}
+>
+  <Pagination defaultPage={1} totalPages={5}>
+    <PaginationPrevious />
+    <PaginationItem page={1} />
+    <PaginationItem page={2} />
+    <PaginationItem page={3} />
+    <PaginationItem page={4} />
+    <PaginationItem page={5} />
+    <PaginationNext />
+  </Pagination>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Link Mode">
+
+Pass `getPageHref` to render items as links for SEO-friendly pagination.
+
+<Demo
+  code={`<Pagination defaultPage={2} totalPages={5} getPageHref={(p) => \`/blog?page=\${p}\`}>
+  <PaginationPrevious />
+  <PaginationItem page={1} />
+  <PaginationItem page={2} />
+  <PaginationItem page={3} />
+  <PaginationItem page={4} />
+  <PaginationItem page={5} />
+  <PaginationNext />
+</Pagination>`}
+>
+  <Pagination defaultPage={2} totalPages={5} getPageHref={(p) => `/blog?page=${p}`}>
+    <PaginationPrevious />
+    <PaginationItem page={1} />
+    <PaginationItem page={2} />
+    <PaginationItem page={3} />
+    <PaginationItem page={4} />
+    <PaginationItem page={5} />
+    <PaginationNext />
+  </Pagination>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Renders as `<nav>` with `aria-label="Pagination"` (customizable)
+- Current page indicated with `aria-current="page"`
+- Previous/Next buttons have descriptive `aria-label`
+- Disabled buttons use `aria-disabled` (remain discoverable)
+- Ellipsis hidden from screen readers via `aria-hidden="true"`
+- Page buttons have `aria-label="Page N"` when rendering as buttons
+
+</DocsSection>

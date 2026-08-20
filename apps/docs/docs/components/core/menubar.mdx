@@ -1,0 +1,132 @@
+---
+title: Menubar
+sidebar_position: 35
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Menubar"
+  description="Horizontal application menu bar with keyboard-driven sub-menus, roving tabindex, focus trapping, and RTL support."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={["Menubar", "MenubarMenu", "MenubarTrigger", "MenubarContent"]}
+  from="@kairoui/core/components"
+/>
+
+<Callout type="info">
+  MenubarContent renders menu items via Portal with focus trapping. Use `role="menuitem"` on
+  children inside MenubarContent for proper keyboard navigation.
+</Callout>
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`<Menubar>
+  <MenubarMenu value="file">
+    <MenubarTrigger>File</MenubarTrigger>
+    <MenubarContent>
+      <div role="menuitem" tabIndex={-1}>New File</div>
+      <div role="menuitem" tabIndex={-1}>Open...</div>
+      <div role="menuitem" tabIndex={-1}>Save</div>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu value="edit">
+    <MenubarTrigger>Edit</MenubarTrigger>
+    <MenubarContent>
+      <div role="menuitem" tabIndex={-1}>Undo</div>
+      <div role="menuitem" tabIndex={-1}>Redo</div>
+      <div role="menuitem" tabIndex={-1}>Cut</div>
+      <div role="menuitem" tabIndex={-1}>Copy</div>
+    </MenubarContent>
+  </MenubarMenu>
+  <MenubarMenu value="view">
+    <MenubarTrigger>View</MenubarTrigger>
+    <MenubarContent>
+      <div role="menuitem" tabIndex={-1}>Zoom In</div>
+      <div role="menuitem" tabIndex={-1}>Zoom Out</div>
+      <div role="menuitem" tabIndex={-1}>Full Screen</div>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>`}
+>
+  <Menubar>
+    <MenubarMenu value="file">
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <div role="menuitem" tabIndex={-1}>
+          New File
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Open...
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Save
+        </div>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu value="edit">
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <div role="menuitem" tabIndex={-1}>
+          Undo
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Redo
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Cut
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Copy
+        </div>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu value="view">
+      <MenubarTrigger>View</MenubarTrigger>
+      <MenubarContent>
+        <div role="menuitem" tabIndex={-1}>
+          Zoom In
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Zoom Out
+        </div>
+        <div role="menuitem" tabIndex={-1}>
+          Full Screen
+        </div>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard Navigation">
+
+| Key                             | Context   | Action                         |
+| ------------------------------- | --------- | ------------------------------ |
+| `ArrowRight`                    | Menubar   | Move focus to next trigger     |
+| `ArrowLeft`                     | Menubar   | Move focus to previous trigger |
+| `ArrowDown` / `Enter` / `Space` | Trigger   | Open sub-menu                  |
+| `ArrowDown` / `ArrowUp`         | Open menu | Navigate menu items            |
+| `Home` / `End`                  | Open menu | Jump to first / last item      |
+| `Escape`                        | Open menu | Close menu and restore focus   |
+
+When a menu is open, moving between triggers via arrow keys automatically opens the adjacent menu.
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- `role="menubar"` on root with `aria-orientation="horizontal"`
+- Triggers have `role="menuitem"` + `aria-haspopup="menu"` + `aria-expanded`
+- Roving tabindex: only one trigger in the tab sequence
+- Open menu content has `role="menu"` with `aria-labelledby`
+- Focus trapped inside open menu; Escape restores focus to trigger
+- RTL-aware arrow key directions
+
+</DocsSection>
