@@ -601,3 +601,17 @@ export type {
   NavigationMenuContextValue,
   NavigationMenuItemContextValue,
 } from "./navigation-menu/index";
+
+export { SidebarContext, useSidebarContext } from "./sidebar/index";
+export type {
+  SidebarRootProps,
+  SidebarHeaderProps,
+  SidebarContentProps,
+  SidebarFooterProps,
+  SidebarGroupProps,
+  SidebarGroupLabelProps,
+  SidebarItemProps,
+  SidebarLinkProps,
+  SidebarTriggerProps,
+  SidebarContextValue,
+} from "./sidebar/index";
