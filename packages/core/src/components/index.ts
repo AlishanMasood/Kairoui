@@ -562,3 +562,18 @@ export type {
   PaginationInternalContextValue,
   PageRange,
 } from "./pagination/index";
+
+export {
+  MenubarContext,
+  useMenubarContext,
+  MenubarMenuContext,
+  useMenubarMenuContext,
+} from "./menubar/index";
+export type {
+  MenubarRootProps,
+  MenubarMenuProps,
+  MenubarTriggerProps,
+  MenubarContentProps,
+  MenubarContextValue,
+  MenubarMenuContextValue,
+} from "./menubar/index";
