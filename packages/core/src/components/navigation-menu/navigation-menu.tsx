@@ -31,6 +31,7 @@ export const NavigationMenu = forwardRef<
     orientation = "horizontal",
     dir = "ltr",
     delayDuration = 200,
+    label = "Navigation",
     className,
     children,
     ...rest
@@ -76,7 +77,7 @@ export const NavigationMenu = forwardRef<
       {
         ...rest,
         ref,
-        "aria-label": "Main",
+        "aria-label": label,
         "data-orientation": orientation,
         "data-kui-component": "NavigationMenu",
         className,
@@ -186,6 +187,7 @@ export const NavigationMenuTrigger = forwardRef<
       ref,
       type: "button",
       id: itemCtx?.triggerId,
+      "aria-haspopup": "true",
       "aria-expanded": open,
       "aria-controls": itemCtx?.contentId,
       "data-state": open ? "open" : "closed",

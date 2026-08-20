@@ -55,6 +55,9 @@ export interface MenubarContextValue {
   hasOpenMenu: boolean;
   triggerRefs: RefObject<Map<string, HTMLElement>>;
   registerTrigger: (value: string, element: HTMLElement) => () => void;
+  /** Value of the trigger that currently owns tabIndex=0. */
+  rovingValue: string;
+  setRovingValue: (value: string) => void;
 }
 
 export const MenubarContext = createContext<MenubarContextValue | null>(null);

@@ -258,6 +258,7 @@ export const SidebarTrigger = forwardRef<
       ...rest,
       ref,
       type: "button",
+      "aria-expanded": !ctx.collapsed,
       "aria-label": typeof children === "string" ? children : "Toggle sidebar",
       "data-kui-component": "SidebarTrigger",
       className,

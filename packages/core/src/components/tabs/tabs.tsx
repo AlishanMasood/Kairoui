@@ -154,6 +154,10 @@ export const TabsTrigger = forwardRef<
     }
   };
 
+  // Before roving focus establishes a target, the selected tab is tabbable
+  const tabIndex =
+    rovingCtx?.focusedValue !== undefined ? (itemProps?.tabIndex ?? -1) : isSelected ? 0 : -1;
+
   return createElement(
     "button",
     {
@@ -172,7 +176,7 @@ export const TabsTrigger = forwardRef<
       "data-state": isSelected ? "active" : "inactive",
       "data-disabled": disabled || undefined,
       "data-kui-component": "TabsTrigger",
-      tabIndex: itemProps?.tabIndex ?? (isSelected ? 0 : -1),
+      tabIndex,
       className,
       onClick: handleClick,
       onKeyDown: handleKeyDown,

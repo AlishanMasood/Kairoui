@@ -16,6 +16,8 @@ export interface NavigationMenuRootProps {
   dir?: "ltr" | "rtl";
   /** Delay before content opens on hover (ms). Defaults to 200. */
   delayDuration?: number;
+  /** Accessible label for the nav landmark. Defaults to "Navigation". */
+  label?: string;
   children?: ReactNode;
   className?: string;
 }

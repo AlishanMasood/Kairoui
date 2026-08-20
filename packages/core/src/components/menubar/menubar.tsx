@@ -53,6 +53,7 @@ export const Menubar = forwardRef<
   } = props;
 
   const [openValue, setOpenValue] = useState(controlledValue ?? "");
+  const [rovingValue, setRovingValue] = useState("");
 
   // Sync controlled value during render (avoids setState-in-effect)
   if (controlledValue !== undefined && controlledValue !== openValue) {
@@ -71,6 +72,8 @@ export const Menubar = forwardRef<
 
   const registerTrigger = useCallback((menuValue: string, element: HTMLElement) => {
     triggerRefs.current.set(menuValue, element);
+    // Initialize roving focus to the first registered trigger
+    setRovingValue((prev) => (prev === "" ? menuValue : prev));
     return () => {
       triggerRefs.current.delete(menuValue);
     };
@@ -85,8 +88,10 @@ export const Menubar = forwardRef<
       hasOpenMenu: openValue !== "",
       triggerRefs,
       registerTrigger,
+      rovingValue,
+      setRovingValue,
     }),
-    [openValue, onValueChange, dir, loop, registerTrigger],
+    [openValue, onValueChange, dir, loop, registerTrigger, rovingValue],
   );
 
   /* eslint-disable react-hooks/refs */
@@ -146,6 +151,10 @@ export const MenubarTrigger = forwardRef<
     barCtx.onValueChange(menuCtx.open ? "" : menuCtx.value);
   };
 
+  const handleFocus = () => {
+    barCtx.setRovingValue(menuCtx.value);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     const isRtl = barCtx.dir === "rtl";
     const nextKey = isRtl ? "ArrowLeft" : "ArrowRight";
@@ -199,9 +208,10 @@ export const MenubarTrigger = forwardRef<
       "aria-disabled": disabled || undefined,
       "data-state": menuCtx.open ? "open" : "closed",
       "data-kui-component": "MenubarTrigger",
-      tabIndex: 0,
+      tabIndex: barCtx.rovingValue === menuCtx.value ? 0 : -1,
       className,
       onClick: handleClick,
+      onFocus: handleFocus,
       onKeyDown: handleKeyDown,
       onPointerEnter: handlePointerEnter,
     },
