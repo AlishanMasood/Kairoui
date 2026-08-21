@@ -751,3 +751,11 @@ export type {
   TableHeadProps as TableHeadComponentProps,
   TableCellProps as TableCellComponentProps,
 } from "./table/index";
+
+export type {
+  DataTableColumnDef,
+  DataTableSortProps,
+  DataTableSelectionProps,
+  DataTableRootProps,
+  DataTableContextValue,
+} from "./data-table/index";
