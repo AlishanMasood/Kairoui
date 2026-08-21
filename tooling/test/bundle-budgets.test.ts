@@ -44,9 +44,9 @@ const BUDGETS: BudgetEntry[] = [
   {
     pkg: "core",
     file: "dist/components/index.js",
-    baseline: 251639,
-    maxRaw: 378000,
-    maxGzip: 58000,
+    baseline: 274781,
+    maxRaw: 412000,
+    maxGzip: 64000,
   },
   { pkg: "core", file: "dist/styles.css", baseline: 4031, maxRaw: 15000, maxGzip: 3000 },
 ];
@@ -144,17 +144,17 @@ describe("Bundle budgets: CSS output", () => {
 // ─── Total framework size budget ────────────────────────────────────
 
 describe("Bundle budgets: total framework", () => {
-  it("total JS runtime under 500KB raw", () => {
+  it("total JS runtime under 600KB raw", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
       const filePath = resolve(PACKAGES_DIR, budget.pkg, budget.file);
       total += statSync(filePath).size;
     }
-    expect(total).toBeLessThan(500 * 1024);
+    expect(total).toBeLessThan(600 * 1024);
   });
 
-  it("total JS runtime under 110KB gzip", () => {
+  it("total JS runtime under 130KB gzip", () => {
     const jsFiles = BUDGETS.filter((b) => b.file.endsWith(".js"));
     let total = 0;
     for (const budget of jsFiles) {
@@ -162,7 +162,7 @@ describe("Bundle budgets: total framework", () => {
       const content = readFileSync(filePath);
       total += gzipSync(content, { level: 9 }).length;
     }
-    expect(total).toBeLessThan(110 * 1024);
+    expect(total).toBeLessThan(130 * 1024);
   });
 });
 
@@ -246,13 +246,13 @@ describe("Bundle budgets: Phase 11 navigation", () => {
     expect(rovingDefs).toBe(1);
   });
 
-  it("components/index.js total under 378KB raw (50% headroom)", () => {
+  it("components/index.js total under 412KB raw (50% headroom)", () => {
     const { raw } = measure(componentsBundle);
-    expect(raw).toBeLessThan(378_000);
+    expect(raw).toBeLessThan(412_000);
   });
 
-  it("components/index.js gzip under 58KB", () => {
+  it("components/index.js gzip under 64KB", () => {
     const { gzip } = measure(componentsBundle);
-    expect(gzip).toBeLessThan(58_000);
+    expect(gzip).toBeLessThan(64_000);
   });
 });

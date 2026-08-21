@@ -1,0 +1,147 @@
+---
+title: TreeView
+sidebar_position: 44
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import {
+  TreeView,
+  TreeViewItem,
+  TreeViewItemTrigger,
+  TreeViewItemContent,
+  TreeViewIndicator,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="TreeView"
+  description="Hierarchical tree structure with expand/collapse, selection, keyboard navigation, and accessible tree semantics."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "TreeView",
+    "TreeViewItem",
+    "TreeViewItemTrigger",
+    "TreeViewItemContent",
+    "TreeViewIndicator",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Tree">
+
+<Demo
+  code={`<TreeView defaultExpandedIds={new Set(["docs"])}>
+  <TreeViewItem value="docs">
+    <TreeViewItemTrigger><TreeViewIndicator /> Documents</TreeViewItemTrigger>
+    <TreeViewItemContent>
+      <TreeViewItem value="readme">
+        <TreeViewItemTrigger>README.md</TreeViewItemTrigger>
+      </TreeViewItem>
+      <TreeViewItem value="license">
+        <TreeViewItemTrigger>LICENSE</TreeViewItemTrigger>
+      </TreeViewItem>
+    </TreeViewItemContent>
+  </TreeViewItem>
+  <TreeViewItem value="src">
+    <TreeViewItemTrigger><TreeViewIndicator /> Source</TreeViewItemTrigger>
+    <TreeViewItemContent>
+      <TreeViewItem value="index">
+        <TreeViewItemTrigger>index.ts</TreeViewItemTrigger>
+      </TreeViewItem>
+    </TreeViewItemContent>
+  </TreeViewItem>
+</TreeView>`}
+>
+  <TreeView defaultExpandedIds={new Set(["docs"])}>
+    <TreeViewItem value="docs">
+      <TreeViewItemTrigger>
+        <TreeViewIndicator /> Documents
+      </TreeViewItemTrigger>
+      <TreeViewItemContent>
+        <TreeViewItem value="readme">
+          <TreeViewItemTrigger>README.md</TreeViewItemTrigger>
+        </TreeViewItem>
+        <TreeViewItem value="license">
+          <TreeViewItemTrigger>LICENSE</TreeViewItemTrigger>
+        </TreeViewItem>
+      </TreeViewItemContent>
+    </TreeViewItem>
+    <TreeViewItem value="src">
+      <TreeViewItemTrigger>
+        <TreeViewIndicator /> Source
+      </TreeViewItemTrigger>
+      <TreeViewItemContent>
+        <TreeViewItem value="index">
+          <TreeViewItemTrigger>index.ts</TreeViewItemTrigger>
+        </TreeViewItem>
+      </TreeViewItemContent>
+    </TreeViewItem>
+  </TreeView>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Selection">
+
+<Demo
+  code={`<TreeView selectionMode="single" defaultExpandedIds={new Set(["nav"])}>
+  <TreeViewItem value="nav">
+    <TreeViewItemTrigger><TreeViewIndicator /> Navigation</TreeViewItemTrigger>
+    <TreeViewItemContent>
+      <TreeViewItem value="home">
+        <TreeViewItemTrigger>Home</TreeViewItemTrigger>
+      </TreeViewItem>
+      <TreeViewItem value="about">
+        <TreeViewItemTrigger>About</TreeViewItemTrigger>
+      </TreeViewItem>
+    </TreeViewItemContent>
+  </TreeViewItem>
+</TreeView>`}
+>
+  <TreeView selectionMode="single" defaultExpandedIds={new Set(["nav"])}>
+    <TreeViewItem value="nav">
+      <TreeViewItemTrigger>
+        <TreeViewIndicator /> Navigation
+      </TreeViewItemTrigger>
+      <TreeViewItemContent>
+        <TreeViewItem value="home">
+          <TreeViewItemTrigger>Home</TreeViewItemTrigger>
+        </TreeViewItem>
+        <TreeViewItem value="about">
+          <TreeViewItemTrigger>About</TreeViewItemTrigger>
+        </TreeViewItem>
+      </TreeViewItemContent>
+    </TreeViewItem>
+  </TreeView>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard Navigation">
+
+| Key               | Action                      |
+| ----------------- | --------------------------- |
+| `ArrowRight`      | Expand collapsed branch     |
+| `ArrowLeft`       | Collapse expanded branch    |
+| `Enter` / `Space` | Toggle expand and/or select |
+| `Tab`             | Move between triggers       |
+
+RTL reverses ArrowLeft/ArrowRight behavior.
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Root has `role="tree"` with `<ul>` element
+- Items have `role="treeitem"` with `<li>` element
+- Nested content uses `role="group"` with `<ul>` element
+- `aria-expanded` on branch items reflects expand state
+- `aria-selected` on items when selection mode is active
+- `aria-disabled` on disabled items
+- Indicator is `aria-hidden` (decorative)
+- `data-depth` attribute enables indentation styling
+
+</DocsSection>

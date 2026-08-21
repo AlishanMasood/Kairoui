@@ -772,6 +772,13 @@ export type {
 
 export { TreeViewContext, useTreeViewContext } from "./tree-view/index";
 export { TreeViewItemContext, useTreeViewItemContext } from "./tree-view/index";
+export {
+  TreeView,
+  TreeViewItem,
+  TreeViewItemTrigger,
+  TreeViewItemContent,
+  TreeViewIndicator,
+} from "./tree-view/index";
 export type {
   TreeViewRootProps,
   TreeViewItemRootProps,
