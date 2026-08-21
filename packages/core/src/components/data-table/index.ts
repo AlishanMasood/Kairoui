@@ -15,3 +15,9 @@ export {
   buildColumnMap,
   getColumnAlign,
 } from "./column-utils";
+
+export { getNextSortState, defaultComparator, sortRows } from "./sort-utils";
+export type { SortRowsOptions } from "./sort-utils";
+
+export { useSortState } from "./use-sort-state";
+export type { UseSortStateOptions, UseSortStateReturn } from "./use-sort-state";
