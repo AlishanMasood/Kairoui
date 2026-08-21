@@ -1,0 +1,200 @@
+---
+title: Table
+sidebar_position: 42
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import {
+  Table,
+  TableCaption,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Table"
+  description="Semantic HTML table for structured tabular data with accessible headers, sortable column hooks, and alignment support."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "Table",
+    "TableCaption",
+    "TableHeader",
+    "TableBody",
+    "TableFooter",
+    "TableRow",
+    "TableHead",
+    "TableCell",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Table">
+
+<Demo
+  code={`<Table>
+  <TableCaption>Team members</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Role</TableHead>
+      <TableHead align="end">Hours</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice</TableCell>
+      <TableCell>Engineer</TableCell>
+      <TableCell align="end">40</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob</TableCell>
+      <TableCell>Designer</TableCell>
+      <TableCell align="end">36</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+>
+  <Table>
+    <TableCaption>Team members</TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Role</TableHead>
+        <TableHead align="end">Hours</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Alice</TableCell>
+        <TableCell>Engineer</TableCell>
+        <TableCell align="end">40</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Bob</TableCell>
+        <TableCell>Designer</TableCell>
+        <TableCell align="end">36</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Footer">
+
+<Demo
+  code={`<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Item</TableHead>
+      <TableHead align="end">Price</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Widget</TableCell>
+      <TableCell align="end">$10</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Gadget</TableCell>
+      <TableCell align="end">$25</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell>Total</TableCell>
+      <TableCell align="end">$35</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>`}
+>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Item</TableHead>
+        <TableHead align="end">Price</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Widget</TableCell>
+        <TableCell align="end">$10</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Gadget</TableCell>
+        <TableCell align="end">$25</TableCell>
+      </TableRow>
+    </TableBody>
+    <TableFooter>
+      <TableRow>
+        <TableCell>Total</TableCell>
+        <TableCell align="end">$35</TableCell>
+      </TableRow>
+    </TableFooter>
+  </Table>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Selected Row">
+
+<Demo
+  code={`<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow selected>
+      <TableCell>Alice</TableCell>
+      <TableCell>Active</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob</TableCell>
+      <TableCell>Inactive</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Status</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow selected>
+        <TableCell>Alice</TableCell>
+        <TableCell>Active</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Bob</TableCell>
+        <TableCell>Inactive</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Uses native `<table>`, `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, `<td>` elements
+- `<caption>` provides an accessible name for the table
+- `aria-sort` set on sortable headers (`ascending` / `descending`)
+- `aria-selected` set on selected rows
+- Sortable headers get `tabIndex=0` and respond to Enter/Space
+- `scope`, `colSpan`, `rowSpan` all supported via native attributes
+
+</DocsSection>

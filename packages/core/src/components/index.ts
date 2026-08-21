@@ -723,6 +723,16 @@ export type {
   EmptyStateActionsRootProps,
 } from "./empty-state/index";
 
+export {
+  Table,
+  TableCaption,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "./table/index";
 export type {
   TableRootProps as TableComponentRootProps,
   TableCaptionRootProps,

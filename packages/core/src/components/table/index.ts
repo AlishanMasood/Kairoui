@@ -16,3 +16,14 @@ export type {
   TableHeadProps,
   TableCellProps,
 } from "./table-types";
+
+export {
+  Table,
+  TableCaption,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "./table";
