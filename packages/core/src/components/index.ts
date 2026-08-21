@@ -769,3 +769,15 @@ export type {
   DataTableRootProps,
   DataTableContextValue,
 } from "./data-table/index";
+
+export { TreeViewContext, useTreeViewContext } from "./tree-view/index";
+export { TreeViewItemContext, useTreeViewItemContext } from "./tree-view/index";
+export type {
+  TreeViewRootProps,
+  TreeViewItemRootProps,
+  TreeViewItemTriggerRootProps,
+  TreeViewItemContentRootProps,
+  TreeViewIndicatorRootProps,
+  TreeViewContextValue,
+  TreeViewItemContextValue,
+} from "./tree-view/index";
