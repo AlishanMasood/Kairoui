@@ -5,3 +5,13 @@ export type {
   DataTableRootProps,
   DataTableContextValue,
 } from "./data-table-types";
+
+export {
+  column,
+  columns,
+  getCellValue,
+  getHeaderContent,
+  getCellContent,
+  buildColumnMap,
+  getColumnAlign,
+} from "./column-utils";

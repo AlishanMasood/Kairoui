@@ -752,6 +752,15 @@ export type {
   TableCellProps as TableCellComponentProps,
 } from "./table/index";
 
+export {
+  column,
+  columns,
+  getCellValue,
+  getHeaderContent,
+  getCellContent,
+  buildColumnMap,
+  getColumnAlign,
+} from "./data-table/index";
 export type {
   DataTableColumnDef,
   DataTableSortProps,
