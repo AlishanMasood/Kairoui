@@ -760,6 +760,7 @@ export {
   getCellContent,
   buildColumnMap,
   getColumnAlign,
+  DataTable,
 } from "./data-table/index";
 export type {
   DataTableColumnDef,

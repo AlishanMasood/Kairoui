@@ -34,3 +34,5 @@ export type { SelectAllState } from "./selection-utils";
 
 export { useRowSelection } from "./use-row-selection";
 export type { UseRowSelectionOptions, UseRowSelectionReturn } from "./use-row-selection";
+
+export { DataTable } from "./data-table";

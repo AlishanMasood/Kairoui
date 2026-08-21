@@ -1,0 +1,105 @@
+---
+title: DataTable
+sidebar_position: 43
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { DataTable, column } from "@kairoui/core/components";
+
+export const users = [
+  { id: 1, name: "Alice", role: "Engineer", age: 30 },
+  { id: 2, name: "Bob", role: "Designer", age: 25 },
+  { id: 3, name: "Charlie", role: "Manager", age: 35 },
+];
+
+export const cols = [
+  column({ id: "name", header: "Name", accessorKey: "name", sortable: true }),
+  column({ id: "role", header: "Role", accessorKey: "role" }),
+  column({ id: "age", header: "Age", accessorKey: "age", sortable: true, align: "end" }),
+];
+
+<ComponentHeader
+  name="DataTable"
+  description="Typed data table with sorting, row selection, empty state, and loading indicators — built on the semantic Table component."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["DataTable", "column"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Usage">
+
+<Demo
+  code={`const users = [
+  { id: 1, name: "Alice", role: "Engineer", age: 30 },
+  { id: 2, name: "Bob", role: "Designer", age: 25 },
+  { id: 3, name: "Charlie", role: "Manager", age: 35 },
+];
+
+const cols = [
+column({ id: "name", header: "Name", accessorKey: "name", sortable: true }),
+column({ id: "role", header: "Role", accessorKey: "role" }),
+column({ id: "age", header: "Age", accessorKey: "age", sortable: true, align: "end" }),
+];
+
+<DataTable data={users} columns={cols} getRowId={(u) => u.id} />`}
+>
+  <DataTable data={users} columns={cols} getRowId={(u) => u.id} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Row Selection">
+
+<Demo
+  code={`<DataTable
+  data={users}
+  columns={cols}
+  getRowId={(u) => u.id}
+  selectionMode="multiple"
+/>`}
+>
+  <DataTable data={users} columns={cols} getRowId={(u) => u.id} selectionMode="multiple" />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Empty State">
+
+<Demo
+  code={`<DataTable
+  data={[]}
+  columns={cols}
+  getRowId={(u) => u.id}
+  emptyState={<div style={{ padding: "2rem", textAlign: "center" }}>No users found</div>}
+/>`}
+>
+  <DataTable
+    data={[]}
+    columns={cols}
+    getRowId={(u) => u.id}
+    emptyState={<div style={{ padding: "2rem", textAlign: "center" }}>No users found</div>}
+  />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Built on native `<table>` semantics via the Table component
+- Sortable headers use `aria-sort` and respond to Enter/Space
+- Selected rows have `aria-selected`
+- Select-all header has `aria-label`
+- Empty state shown when `data` is empty and not loading
+
+</DocsSection>
+
+<DocsSection title="Keyboard Navigation">
+
+| Key               | Context           | Action                  |
+| ----------------- | ----------------- | ----------------------- |
+| `Enter` / `Space` | Sortable header   | Toggle sort direction   |
+| `Enter` / `Space` | Selection cell    | Toggle row selection    |
+| `Enter` / `Space` | Select-all header | Toggle all visible rows |
+
+</DocsSection>
