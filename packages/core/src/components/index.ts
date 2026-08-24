@@ -788,3 +788,24 @@ export type {
   TreeViewContextValue,
   TreeViewItemContextValue,
 } from "./tree-view/index";
+
+export {
+  Timeline,
+  TimelineItem,
+  TimelineIndicator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineTitle,
+  TimelineDescription,
+  TimelineTime,
+} from "./timeline/index";
+export type {
+  TimelineRootProps,
+  TimelineItemRootProps,
+  TimelineIndicatorRootProps,
+  TimelineConnectorRootProps,
+  TimelineContentRootProps,
+  TimelineTitleRootProps,
+  TimelineDescriptionRootProps,
+  TimelineTimeRootProps,
+} from "./timeline/index";

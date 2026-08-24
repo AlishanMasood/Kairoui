@@ -1,0 +1,146 @@
+---
+title: Timeline
+sidebar_position: 45
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineIndicator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineTitle,
+  TimelineDescription,
+  TimelineTime,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Timeline"
+  description="Chronological or sequential event presentation with ordered list semantics, visual connectors, and customizable indicators."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement
+  imports={[
+    "Timeline",
+    "TimelineItem",
+    "TimelineIndicator",
+    "TimelineConnector",
+    "TimelineContent",
+    "TimelineTitle",
+    "TimelineDescription",
+    "TimelineTime",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<DocsSection title="Basic Timeline">
+
+<Demo
+  code={`<Timeline>
+  <TimelineItem>
+    <TimelineIndicator />
+    <TimelineConnector />
+    <TimelineContent>
+      <TimelineTitle>Project started</TimelineTitle>
+      <TimelineDescription>Initial architecture and setup.</TimelineDescription>
+      <TimelineTime dateTime="2026-01-15">Jan 15, 2026</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineIndicator />
+    <TimelineConnector />
+    <TimelineContent>
+      <TimelineTitle>Alpha release</TimelineTitle>
+      <TimelineDescription>First public preview.</TimelineDescription>
+      <TimelineTime dateTime="2026-06-01">Jun 1, 2026</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineIndicator />
+    <TimelineContent>
+      <TimelineTitle>GA release</TimelineTitle>
+      <TimelineDescription>General availability.</TimelineDescription>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>`}
+>
+  <Timeline>
+    <TimelineItem>
+      <TimelineIndicator />
+      <TimelineConnector />
+      <TimelineContent>
+        <TimelineTitle>Project started</TimelineTitle>
+        <TimelineDescription>Initial architecture and setup.</TimelineDescription>
+        <TimelineTime dateTime="2026-01-15">Jan 15, 2026</TimelineTime>
+      </TimelineContent>
+    </TimelineItem>
+    <TimelineItem>
+      <TimelineIndicator />
+      <TimelineConnector />
+      <TimelineContent>
+        <TimelineTitle>Alpha release</TimelineTitle>
+        <TimelineDescription>First public preview.</TimelineDescription>
+        <TimelineTime dateTime="2026-06-01">Jun 1, 2026</TimelineTime>
+      </TimelineContent>
+    </TimelineItem>
+    <TimelineItem>
+      <TimelineIndicator />
+      <TimelineContent>
+        <TimelineTitle>GA release</TimelineTitle>
+        <TimelineDescription>General availability.</TimelineDescription>
+      </TimelineContent>
+    </TimelineItem>
+  </Timeline>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Custom Indicators">
+
+<Demo
+  code={`<Timeline>
+  <TimelineItem>
+    <TimelineIndicator>✓</TimelineIndicator>
+    <TimelineConnector />
+    <TimelineContent>
+      <TimelineTitle>Completed</TimelineTitle>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineIndicator>●</TimelineIndicator>
+    <TimelineContent>
+      <TimelineTitle>In progress</TimelineTitle>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>`}
+>
+  <Timeline>
+    <TimelineItem>
+      <TimelineIndicator>✓</TimelineIndicator>
+      <TimelineConnector />
+      <TimelineContent>
+        <TimelineTitle>Completed</TimelineTitle>
+      </TimelineContent>
+    </TimelineItem>
+    <TimelineItem>
+      <TimelineIndicator>●</TimelineIndicator>
+      <TimelineContent>
+        <TimelineTitle>In progress</TimelineTitle>
+      </TimelineContent>
+    </TimelineItem>
+  </Timeline>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Renders as `<ol>` with `<li>` items — ordered list semantics convey sequence
+- `<time>` element with `dateTime` attribute for machine-readable dates
+- Indicator and connector are `aria-hidden` (decorative)
+- Title and description use `<p>` elements for text semantics
+
+</DocsSection>
