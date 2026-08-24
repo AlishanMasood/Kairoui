@@ -28,7 +28,7 @@ interface BudgetEntry {
   maxGzip: number;
 }
 
-// Budgets: baseline measured 2026-08-20, headroom = baseline × 1.5 (50%)
+// Budgets: baseline measured 2026-08-24, headroom = baseline × 1.5 (50%)
 const BUDGETS: BudgetEntry[] = [
   { pkg: "utils", file: "dist/index.js", baseline: 16977, maxRaw: 25500, maxGzip: 6000 },
   { pkg: "utils", file: "dist/dom.js", baseline: 10343, maxRaw: 15500, maxGzip: 4500 },
@@ -44,9 +44,9 @@ const BUDGETS: BudgetEntry[] = [
   {
     pkg: "core",
     file: "dist/components/index.js",
-    baseline: 274781,
-    maxRaw: 412000,
-    maxGzip: 64000,
+    baseline: 287951,
+    maxRaw: 432000,
+    maxGzip: 68000,
   },
   { pkg: "core", file: "dist/styles.css", baseline: 4031, maxRaw: 15000, maxGzip: 3000 },
 ];
@@ -246,13 +246,61 @@ describe("Bundle budgets: Phase 11 navigation", () => {
     expect(rovingDefs).toBe(1);
   });
 
-  it("components/index.js total under 412KB raw (50% headroom)", () => {
+  it("components/index.js total under 432KB raw (50% headroom)", () => {
     const { raw } = measure(componentsBundle);
-    expect(raw).toBeLessThan(412_000);
+    expect(raw).toBeLessThan(432_000);
   });
 
-  it("components/index.js gzip under 64KB", () => {
+  it("components/index.js gzip under 68KB", () => {
     const { gzip } = measure(componentsBundle);
-    expect(gzip).toBeLessThan(64_000);
+    expect(gzip).toBeLessThan(68_000);
+  });
+});
+
+// ─── Phase 12 data component budgets ────────────────────────────────
+
+describe("Bundle budgets: Phase 12 data", () => {
+  const componentsBundle = resolve(PACKAGES_DIR, "core", "dist", "components", "index.js");
+
+  it("no docs-only code leaks into production bundle", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    expect(content).not.toContain("ComponentMeta");
+    expect(content).not.toContain("component-meta");
+    expect(content).not.toContain("@kairoui/docs");
+  });
+
+  it("Phase 12 components present in bundle", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    const phase12 = [
+      "DataTable",
+      "TreeView",
+      "Calendar",
+      "Timeline",
+      "EmptyState",
+      "DescriptionList",
+    ];
+    for (const name of phase12) {
+      const count = (content.match(new RegExp(name, "g")) ?? []).length;
+      expect(count).toBeGreaterThan(0);
+    }
+  });
+
+  it("shared selection logic not duplicated", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    const defs = (content.match(/function toggleRowSelection/g) ?? []).length;
+    expect(defs).toBe(1);
+  });
+
+  it("calendar model is single definition", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    const defs = (content.match(/function generateMonthGrid/g) ?? []).length;
+    expect(defs).toBe(1);
+  });
+
+  it("row model functions are not duplicated when shared", () => {
+    const content = readFileSync(componentsBundle, "utf-8");
+    // sortRows uses getCellValue — should appear only once
+    const defs = (content.match(/function sortRows/g) ?? []).length;
+    expect(defs).toBeLessThanOrEqual(1);
   });
 });
