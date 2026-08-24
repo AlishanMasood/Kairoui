@@ -4,6 +4,7 @@ import type { HTMLAttributes, ReactNode, TimeHTMLAttributes } from "react";
 // ─── Types ──────────────────────────────────────────────────────────
 
 export interface TimelineRootProps {
+  label?: string;
   orientation?: "vertical";
   className?: string;
   children?: ReactNode;
@@ -50,13 +51,14 @@ export const Timeline = forwardRef<
   HTMLOListElement,
   TimelineRootProps & HTMLAttributes<HTMLOListElement>
 >(function Timeline(props, ref) {
-  const { orientation = "vertical", className, children, ...rest } = props;
+  const { label, orientation = "vertical", className, children, ...rest } = props;
 
   return createElement(
     "ol",
     {
       ...rest,
       ref,
+      "aria-label": label,
       "data-orientation": orientation,
       "data-kui-component": "Timeline",
       className,

@@ -59,14 +59,14 @@ export const Calendar = forwardRef<
   const [viewYear, setViewYear] = useState(initialMonth.getFullYear());
   const [viewMonth, setViewMonth] = useState(initialMonth.getMonth());
 
-  const constraints = useMemo(
-    () => ({
-      ...(min !== undefined ? { min } : undefined),
-      ...(max !== undefined ? { max } : undefined),
-      ...(disabled !== undefined ? { disabled } : undefined),
-    }),
-    [min, max, disabled],
-  );
+  const constraints: { min?: Date; max?: Date; disabled?: (date: Date) => boolean } =
+    useMemo(() => {
+      const c: { min?: Date; max?: Date; disabled?: (date: Date) => boolean } = {};
+      if (min !== undefined) c.min = min;
+      if (max !== undefined) c.max = max;
+      if (disabled !== undefined) c.disabled = disabled;
+      return c;
+    }, [min, max, disabled]);
 
   const [focusedDate, setFocusedDate] = useState<Date>(
     selectedDate ?? getFirstFocusableDay(viewYear, viewMonth, constraints),

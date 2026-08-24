@@ -83,6 +83,7 @@ export const DataTable = forwardRef<
     {
       ...(rest as HTMLAttributes<HTMLTableElement>),
       ref,
+      "aria-busy": loading || undefined,
       "data-kui-component": "DataTable" as never,
       className,
     } as never,
