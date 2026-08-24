@@ -21,3 +21,6 @@ export type {
   CalendarMonthGrid,
   CalendarGridOptions,
 } from "./calendar-model";
+
+export { Calendar } from "./calendar";
+export type { CalendarRootProps } from "./calendar";

@@ -1,0 +1,76 @@
+---
+title: Calendar
+sidebar_position: 46
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { Calendar } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="Calendar"
+  description="Month-view calendar with date selection, keyboard navigation, locale support, and accessible grid semantics."
+  package="@kairoui/core/components"
+  status="beta"
+/>
+
+<ImportStatement imports={["Calendar"]} from="@kairoui/core/components" />
+
+<DocsSection title="Basic Calendar">
+
+<Demo code={`<Calendar defaultValue={new Date(2026, 0, 15)} />`}>
+  <Calendar defaultValue={new Date(2026, 0, 15)} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="With Constraints">
+
+<Demo
+  code={`<Calendar
+  defaultValue={new Date(2026, 0, 15)}
+  min={new Date(2026, 0, 5)}
+  max={new Date(2026, 0, 25)}
+/>`}
+>
+  <Calendar
+    defaultValue={new Date(2026, 0, 15)}
+    min={new Date(2026, 0, 5)}
+    max={new Date(2026, 0, 25)}
+  />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Monday Start">
+
+<Demo code={`<Calendar defaultValue={new Date(2026, 0, 15)} weekStartsOn={1} />`}>
+  <Calendar defaultValue={new Date(2026, 0, 15)} weekStartsOn={1} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard Navigation">
+
+| Key               | Action              |
+| ----------------- | ------------------- |
+| `ArrowRight`      | Next day            |
+| `ArrowLeft`       | Previous day        |
+| `ArrowDown`       | Next week           |
+| `ArrowUp`         | Previous week       |
+| `Enter` / `Space` | Select focused date |
+
+RTL mode reverses ArrowRight/ArrowLeft.
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Uses `role="grid"` with `role="gridcell"` for days
+- `aria-selected` on selected date
+- `aria-disabled` on disabled dates
+- `aria-label` on the grid shows current month/year
+- `aria-live="polite"` on heading announces month changes
+- Previous/Next buttons have `aria-label`
+- Roving tabindex: only focused day has `tabIndex=0`
+
+</DocsSection>

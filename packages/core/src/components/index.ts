@@ -826,7 +826,9 @@ export {
   getFirstFocusableDay,
   clampDate,
 } from "./calendar/index";
+export { Calendar } from "./calendar/index";
 export type {
+  CalendarRootProps,
   WeekStart,
   CalendarDayInfo,
   CalendarWeekRow,
