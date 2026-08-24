@@ -32,6 +32,7 @@ export default defineConfig({
             "packages/utils/src/**/*.{test,spec}.{ts,tsx}",
             "packages/tokens/src/**/*.{test,spec}.{ts,tsx}",
             "packages/theme/src/**/*.{test,spec}.{ts,tsx}",
+            "tooling/docs-generator/src/**/*.{test,spec}.{ts,tsx}",
           ],
           environment: "node",
         },

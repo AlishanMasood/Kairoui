@@ -1,0 +1,17 @@
+{
+  "name": "@kairoui/docs-generator",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Automated API documentation metadata generator for KairoUI components.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "generate": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "typescript": "^5.9.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.0"
+  }
+}
