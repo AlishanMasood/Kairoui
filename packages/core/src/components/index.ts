@@ -809,3 +809,23 @@ export type {
   TimelineDescriptionRootProps,
   TimelineTimeRootProps,
 } from "./timeline/index";
+
+export {
+  getDaysInMonth,
+  getFirstDayOfMonth,
+  isSameDay,
+  isDateInRange,
+  startOfDay,
+  endOfDay,
+  addMonths,
+  generateMonthGrid,
+  getWeekdayLabels,
+  formatMonthYear,
+} from "./calendar/index";
+export type {
+  WeekStart,
+  CalendarDayInfo,
+  CalendarWeekRow,
+  CalendarMonthGrid,
+  CalendarGridOptions,
+} from "./calendar/index";
