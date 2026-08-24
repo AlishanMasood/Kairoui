@@ -10,6 +10,10 @@ import {
   generateMonthGrid,
   getWeekdayLabels,
   formatMonthYear,
+  addDays,
+  moveFocus,
+  getFirstFocusableDay,
+  clampDate,
 } from "./calendar-model";
 import type { CalendarGridOptions } from "./calendar-model";
 
@@ -307,5 +311,163 @@ describe("formatMonthYear", () => {
 
   it("formats different months correctly", () => {
     expect(formatMonthYear(2026, 11, "en")).toContain("December");
+  });
+});
+
+// ─── addDays ────────────────────────────────────────────────────────
+
+describe("addDays", () => {
+  it("adds 1 day", () => {
+    const result = addDays(new Date(2026, 0, 15), 1);
+    expect(result.getDate()).toBe(16);
+  });
+
+  it("subtracts 1 day", () => {
+    const result = addDays(new Date(2026, 0, 15), -1);
+    expect(result.getDate()).toBe(14);
+  });
+
+  it("crosses month boundary forward", () => {
+    const result = addDays(new Date(2026, 0, 31), 1);
+    expect(result.getMonth()).toBe(1);
+    expect(result.getDate()).toBe(1);
+  });
+
+  it("crosses month boundary backward", () => {
+    const result = addDays(new Date(2026, 1, 1), -1);
+    expect(result.getMonth()).toBe(0);
+    expect(result.getDate()).toBe(31);
+  });
+
+  it("adds 7 days (one week)", () => {
+    const result = addDays(new Date(2026, 0, 15), 7);
+    expect(result.getDate()).toBe(22);
+  });
+
+  it("crosses year boundary", () => {
+    const result = addDays(new Date(2025, 11, 31), 1);
+    expect(result.getFullYear()).toBe(2026);
+    expect(result.getMonth()).toBe(0);
+    expect(result.getDate()).toBe(1);
+  });
+
+  it("does not mutate original", () => {
+    const original = new Date(2026, 0, 15);
+    addDays(original, 5);
+    expect(original.getDate()).toBe(15);
+  });
+});
+
+// ─── moveFocus ──────────────────────────────────────────────────────
+
+describe("moveFocus", () => {
+  it("moves forward by 1 day", () => {
+    const result = moveFocus(new Date(2026, 0, 15), 1);
+    expect(result.getDate()).toBe(16);
+  });
+
+  it("moves backward by 1 day", () => {
+    const result = moveFocus(new Date(2026, 0, 15), -1);
+    expect(result.getDate()).toBe(14);
+  });
+
+  it("moves forward by 7 days (week)", () => {
+    const result = moveFocus(new Date(2026, 0, 15), 7);
+    expect(result.getDate()).toBe(22);
+  });
+
+  it("skips disabled dates when moving forward", () => {
+    const result = moveFocus(new Date(2026, 0, 15), 1, {
+      disabled: (d) => d.getDate() === 16,
+    });
+    expect(result.getDate()).toBe(17);
+  });
+
+  it("skips disabled dates when moving backward", () => {
+    const result = moveFocus(new Date(2026, 0, 15), -1, {
+      disabled: (d) => d.getDate() === 14,
+    });
+    expect(result.getDate()).toBe(13);
+  });
+
+  it("respects min constraint", () => {
+    const result = moveFocus(new Date(2026, 0, 2), -1, {
+      min: new Date(2026, 0, 2),
+    });
+    // Can't go before min, should stay at original
+    expect(result.getDate()).toBe(2);
+  });
+
+  it("respects max constraint", () => {
+    const result = moveFocus(new Date(2026, 0, 30), 1, {
+      max: new Date(2026, 0, 30),
+    });
+    expect(result.getDate()).toBe(30);
+  });
+
+  it("skips multiple disabled dates", () => {
+    const result = moveFocus(new Date(2026, 0, 15), 1, {
+      disabled: (d) => d.getDate() === 16 || d.getDate() === 17,
+    });
+    expect(result.getDate()).toBe(18);
+  });
+});
+
+// ─── getFirstFocusableDay ───────────────────────────────────────────
+
+describe("getFirstFocusableDay", () => {
+  it("returns first day when no constraints", () => {
+    const result = getFirstFocusableDay(2026, 0);
+    expect(result.getDate()).toBe(1);
+    expect(result.getMonth()).toBe(0);
+  });
+
+  it("skips disabled first days", () => {
+    const result = getFirstFocusableDay(2026, 0, {
+      disabled: (d) => d.getDate() <= 3,
+    });
+    expect(result.getDate()).toBe(4);
+  });
+
+  it("respects min constraint", () => {
+    const result = getFirstFocusableDay(2026, 0, {
+      min: new Date(2026, 0, 10),
+    });
+    expect(result.getDate()).toBe(10);
+  });
+
+  it("returns first day if entire month is disabled", () => {
+    const result = getFirstFocusableDay(2026, 0, {
+      disabled: () => true,
+    });
+    expect(result.getDate()).toBe(1);
+  });
+});
+
+// ─── clampDate ──────────────────────────────────────────────────────
+
+describe("clampDate", () => {
+  it("returns same date when within range", () => {
+    const date = new Date(2026, 0, 15);
+    const result = clampDate(date, new Date(2026, 0, 1), new Date(2026, 0, 31));
+    expect(isSameDay(result, date)).toBe(true);
+  });
+
+  it("clamps to min when before", () => {
+    const result = clampDate(new Date(2025, 11, 31), new Date(2026, 0, 1));
+    expect(result.getMonth()).toBe(0);
+    expect(result.getDate()).toBe(1);
+  });
+
+  it("clamps to max when after", () => {
+    const result = clampDate(new Date(2026, 1, 1), undefined, new Date(2026, 0, 31));
+    expect(result.getMonth()).toBe(0);
+    expect(result.getDate()).toBe(31);
+  });
+
+  it("returns same date with no constraints", () => {
+    const date = new Date(2026, 5, 15);
+    const result = clampDate(date);
+    expect(isSameDay(result, date)).toBe(true);
   });
 });

@@ -192,3 +192,55 @@ export function formatMonthYear(year: number, month: number, locale: string = "e
   const date = new Date(year, month, 1);
   return new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(date);
 }
+
+// ─── Focus movement ─────────────────────────────────────────────────
+
+/** Add days to a date, returning a new Date. */
+export function addDays(date: Date, count: number): Date {
+  const d = new Date(date);
+  d.setDate(d.getDate() + count);
+  return d;
+}
+
+/** Move focus by a number of days, skipping disabled dates. */
+export function moveFocus(
+  date: Date,
+  delta: number,
+  options: { min?: Date; max?: Date; disabled?: (date: Date) => boolean } = {},
+): Date {
+  const { min, max, disabled } = options;
+  let next = addDays(date, delta);
+  let attempts = 0;
+  const step = delta > 0 ? 1 : -1;
+  while (attempts < 365) {
+    if (isDateInRange(next, min, max) && !(disabled?.(next) ?? false)) {
+      return next;
+    }
+    next = addDays(next, step);
+    attempts++;
+  }
+  return date;
+}
+
+/** Get the first non-disabled day in a month. */
+export function getFirstFocusableDay(
+  year: number,
+  month: number,
+  options: { min?: Date; max?: Date; disabled?: (date: Date) => boolean } = {},
+): Date {
+  const daysInMonth = getDaysInMonth(year, month);
+  for (let day = 1; day <= daysInMonth; day++) {
+    const date = new Date(year, month, day);
+    if (isDateInRange(date, options.min, options.max) && !(options.disabled?.(date) ?? false)) {
+      return date;
+    }
+  }
+  return new Date(year, month, 1);
+}
+
+/** Clamp a date within min/max bounds. */
+export function clampDate(date: Date, min?: Date, max?: Date): Date {
+  if (min && date < startOfDay(min)) return new Date(min);
+  if (max && date > endOfDay(max)) return new Date(max);
+  return date;
+}

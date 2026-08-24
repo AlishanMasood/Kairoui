@@ -6,9 +6,13 @@ export {
   startOfDay,
   endOfDay,
   addMonths,
+  addDays,
   generateMonthGrid,
   getWeekdayLabels,
   formatMonthYear,
+  moveFocus,
+  getFirstFocusableDay,
+  clampDate,
 } from "./calendar-model";
 export type {
   WeekStart,

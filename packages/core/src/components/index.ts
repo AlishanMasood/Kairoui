@@ -818,9 +818,13 @@ export {
   startOfDay,
   endOfDay,
   addMonths,
+  addDays,
   generateMonthGrid,
   getWeekdayLabels,
   formatMonthYear,
+  moveFocus,
+  getFirstFocusableDay,
+  clampDate,
 } from "./calendar/index";
 export type {
   WeekStart,
