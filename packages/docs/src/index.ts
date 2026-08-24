@@ -28,3 +28,6 @@ export type { DemoProps } from "./demo";
 
 export { TabbedDemo } from "./tabbed-demo";
 export type { TabbedDemoProps, TabbedDemoTab } from "./tabbed-demo";
+
+export { ComponentMeta } from "./component-meta";
+export type { ComponentMetaProps } from "./component-meta";

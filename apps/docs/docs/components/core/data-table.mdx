@@ -3,7 +3,7 @@ title: DataTable
 sidebar_position: 43
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, DocsSection, Demo, ComponentMeta } from "@kairoui/docs";
 import { DataTable, column } from "@kairoui/core/components";
 
 export const users = [
@@ -101,5 +101,17 @@ column({ id: "age", header: "Age", accessorKey: "age", sortable: true, align: "e
 | `Enter` / `Space` | Sortable header   | Toggle sort direction   |
 | `Enter` / `Space` | Selection cell    | Toggle row selection    |
 | `Enter` / `Space` | Select-all header | Toggle all visible rows |
+
+</DocsSection>
+
+<DocsSection title="Component Info">
+
+<ComponentMeta
+  items={[
+    { term: "Package", details: "@kairoui/core/components" },
+    { term: "Status", details: "Beta" },
+    { term: "Since", details: "v0.12.0-alpha.0" },
+  ]}
+/>
 
 </DocsSection>
