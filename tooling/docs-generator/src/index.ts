@@ -39,6 +39,9 @@ export {
   isCompoundPart,
 } from "./compound";
 
+export { generate, runCli } from "./generator";
+export type { GenerateOptions } from "./generator";
+
 export { createProgramFromConfig, createProgramFromFiles, findExportedSymbols } from "./discovery";
 export { extractPropsFromSymbol } from "./extraction";
 export { typeToString } from "./type-stringifier";
