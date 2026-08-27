@@ -1,9 +1,17 @@
 export type {
   PropMeta,
+  ImportMeta,
+  SourceMeta,
   ComponentMeta,
   CompoundComponentMeta,
   PackageDocMeta,
   GeneratorOutput,
+} from "./schema";
+export {
+  SCHEMA_VERSION,
+  validatePropMeta,
+  validateComponentMeta,
+  validateGeneratorOutput,
 } from "./schema";
 
 export { createProgramFromConfig, createProgramFromFiles, findExportedSymbols } from "./discovery";

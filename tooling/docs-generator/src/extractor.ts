@@ -146,6 +146,20 @@ function isDeprecated(symbol: ts.Symbol): boolean {
   return tags.some((tag) => tag.name === "deprecated");
 }
 
+function getDeprecationMessage(symbol: ts.Symbol): string | undefined {
+  const tag = symbol.getJsDocTags().find((t) => t.name === "deprecated");
+  if (!tag) return undefined;
+  const text = ts.displayPartsToString(tag.text).trim();
+  return text || undefined;
+}
+
+function getSinceTag(symbol: ts.Symbol): string | undefined {
+  const tag = symbol.getJsDocTags().find((t) => t.name === "since");
+  if (!tag) return undefined;
+  const text = ts.displayPartsToString(tag.text).trim();
+  return text || undefined;
+}
+
 // ─── Prop extraction ────────────────────────────────────────────────
 
 export function extractPropsFromType(checker: ts.TypeChecker, type: ts.Type): PropMeta[] {
@@ -181,6 +195,8 @@ export function extractPropsFromType(checker: ts.TypeChecker, type: ts.Type): Pr
       defaultValue: undefined,
       description: getJsDocComment(prop),
       deprecated: isDeprecated(prop),
+      deprecationMessage: getDeprecationMessage(prop),
+      since: getSinceTag(prop),
     });
   }
 
@@ -232,5 +248,14 @@ export function extractComponentMeta(
     props,
     description: interfaceSymbol ? getJsDocComment(interfaceSymbol) : undefined,
     sourceFile: sourceFilePath,
+    since: interfaceSymbol ? getSinceTag(interfaceSymbol) : undefined,
+    import: {
+      packagePath,
+      namedExports: [componentName],
+    },
+    source: {
+      filePath: sourceFilePath,
+      propsInterface: propsInterfaceName,
+    },
   };
 }

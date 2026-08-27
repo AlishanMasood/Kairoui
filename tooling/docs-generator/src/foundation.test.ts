@@ -19,6 +19,9 @@ describe("normalizeComponents", () => {
         props: [],
         description: "A button",
         sourceFile: "src/components/button/button.tsx",
+        since: undefined,
+        import: { packagePath: "@kairoui/core/components", namedExports: ["Button"] },
+        source: { filePath: "src/components/button/button.tsx", propsInterface: "ButtonOwnProps" },
       },
     ];
     const result = normalizeComponents(components, "@kairoui/core", "./components");
@@ -37,10 +40,11 @@ describe("normalizeComponents", () => {
 // ─── createGeneratorOutput ──────────────────────────────────────────
 
 describe("createGeneratorOutput", () => {
-  it("creates output with timestamp and version", () => {
+  it("creates output with timestamp, version, and schema version", () => {
     const output = createGeneratorOutput([]);
     expect(output.generatedAt).toBeDefined();
     expect(output.generatorVersion).toBe("0.1.0");
+    expect(output.schemaVersion).toBe(1);
     expect(output.packages).toHaveLength(0);
   });
 

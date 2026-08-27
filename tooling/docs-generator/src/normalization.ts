@@ -1,9 +1,6 @@
 import type { ComponentMeta, PackageDocMeta, GeneratorOutput } from "./schema";
+import { SCHEMA_VERSION } from "./schema";
 
-/**
- * Normalizes extracted component metadata into the output schema.
- * Stub — full implementation in KUI-DOCGEN-006.
- */
 export function normalizeComponents(
   components: readonly ComponentMeta[],
   packageName: string,
@@ -16,11 +13,9 @@ export function normalizeComponents(
   };
 }
 
-/**
- * Creates the full generator output wrapper.
- */
 export function createGeneratorOutput(packages: readonly PackageDocMeta[]): GeneratorOutput {
   return {
+    schemaVersion: SCHEMA_VERSION,
     generatedAt: new Date().toISOString(),
     generatorVersion: "0.1.0",
     packages,

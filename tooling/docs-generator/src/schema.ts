@@ -6,71 +6,112 @@
  *
  * This schema is the contract between the generator and the renderer.
  * It is framework-agnostic — no React, no Docusaurus coupling.
+ *
+ * Schema version: 1
  */
+
+export const SCHEMA_VERSION = 1;
 
 // ─── Prop Metadata ──────────────────────────────────────────────────
 
 export interface PropMeta {
-  /** Property name. */
   readonly name: string;
-  /** Human-readable type string (e.g. "string", "'sm' | 'md' | 'lg'"). */
   readonly type: string;
-  /** Whether the prop is required (non-optional). */
   readonly required: boolean;
-  /** Default value as a string, if detected. */
   readonly defaultValue: string | undefined;
-  /** JSDoc description, if present. */
   readonly description: string | undefined;
-  /** Whether the prop is marked @deprecated. */
   readonly deprecated: boolean;
+  readonly deprecationMessage: string | undefined;
+  readonly since: string | undefined;
+}
+
+// ─── Import Metadata ────────────────────────────────────────────────
+
+export interface ImportMeta {
+  readonly packagePath: string;
+  readonly namedExports: readonly string[];
+}
+
+// ─── Source Metadata ────────────────────────────────────────────────
+
+export interface SourceMeta {
+  readonly filePath: string | undefined;
+  readonly propsInterface: string;
 }
 
 // ─── Component Metadata ─────────────────────────────────────────────
 
 export interface ComponentMeta {
-  /** Component display name (e.g. "Button", "TabsTrigger"). */
   readonly name: string;
-  /** Package import path (e.g. "@kairoui/core/components"). */
   readonly packagePath: string;
-  /** Props interface name (e.g. "ButtonOwnProps"). */
   readonly propsInterface: string;
-  /** Extracted prop metadata. */
   readonly props: readonly PropMeta[];
-  /** JSDoc description of the component or its props interface. */
   readonly description: string | undefined;
-  /** Source file path relative to the package root. */
   readonly sourceFile: string | undefined;
+  readonly since: string | undefined;
+  readonly import: ImportMeta;
+  readonly source: SourceMeta;
 }
 
 // ─── Compound Component Group ───────────────────────────────────────
 
 export interface CompoundComponentMeta {
-  /** Root component name (e.g. "Tabs", "DataTable"). */
   readonly name: string;
-  /** Package import path. */
   readonly packagePath: string;
-  /** All parts of the compound component. */
   readonly parts: readonly ComponentMeta[];
 }
 
 // ─── Package Documentation ──────────────────────────────────────────
 
 export interface PackageDocMeta {
-  /** Package name (e.g. "@kairoui/core"). */
   readonly packageName: string;
-  /** Entry point (e.g. "./components"). */
   readonly entryPoint: string;
-  /** All documented components. */
   readonly components: readonly ComponentMeta[];
 }
 
 // ─── Generation Output ──────────────────────────────────────────────
 
 export interface GeneratorOutput {
-  /** ISO timestamp of generation. */
+  readonly schemaVersion: number;
   readonly generatedAt: string;
-  /** Generator version. */
   readonly generatorVersion: string;
-  /** All package documentation. */
   readonly packages: readonly PackageDocMeta[];
+}
+
+// ─── Schema Validation ──────────────────────────────────────────────
+
+export function validatePropMeta(prop: unknown): prop is PropMeta {
+  if (typeof prop !== "object" || prop === null) return false;
+  const p = prop as Record<string, unknown>;
+  return (
+    typeof p["name"] === "string" &&
+    typeof p["type"] === "string" &&
+    typeof p["required"] === "boolean" &&
+    typeof p["deprecated"] === "boolean"
+  );
+}
+
+export function validateComponentMeta(comp: unknown): comp is ComponentMeta {
+  if (typeof comp !== "object" || comp === null) return false;
+  const c = comp as Record<string, unknown>;
+  return (
+    typeof c["name"] === "string" &&
+    typeof c["packagePath"] === "string" &&
+    typeof c["propsInterface"] === "string" &&
+    Array.isArray(c["props"]) &&
+    (c["props"] as unknown[]).every(validatePropMeta) &&
+    typeof c["import"] === "object" &&
+    typeof c["source"] === "object"
+  );
+}
+
+export function validateGeneratorOutput(output: unknown): output is GeneratorOutput {
+  if (typeof output !== "object" || output === null) return false;
+  const o = output as Record<string, unknown>;
+  return (
+    typeof o["schemaVersion"] === "number" &&
+    typeof o["generatedAt"] === "string" &&
+    typeof o["generatorVersion"] === "string" &&
+    Array.isArray(o["packages"])
+  );
 }
