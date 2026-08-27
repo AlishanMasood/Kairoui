@@ -1,5 +1,12 @@
 import ts from "typescript";
 import type { PropMeta, ComponentMeta } from "./schema";
+import {
+  getDescription,
+  isDeprecated,
+  getDeprecationMessage,
+  getSinceTag,
+  getDefaultTag,
+} from "./jsdoc";
 
 // ─── Inherited HTML prop filtering ──────────────────────────────────
 
@@ -132,34 +139,6 @@ function cleanTypeString(raw: string): string {
   return cleaned;
 }
 
-// ─── JSDoc extraction ───────────────────────────────────────────────
-
-function getJsDocComment(symbol: ts.Symbol): string | undefined {
-  const docs = symbol.getDocumentationComment(undefined);
-  if (docs.length === 0) return undefined;
-  const text = ts.displayPartsToString(docs).trim();
-  return text || undefined;
-}
-
-function isDeprecated(symbol: ts.Symbol): boolean {
-  const tags = symbol.getJsDocTags();
-  return tags.some((tag) => tag.name === "deprecated");
-}
-
-function getDeprecationMessage(symbol: ts.Symbol): string | undefined {
-  const tag = symbol.getJsDocTags().find((t) => t.name === "deprecated");
-  if (!tag) return undefined;
-  const text = ts.displayPartsToString(tag.text).trim();
-  return text || undefined;
-}
-
-function getSinceTag(symbol: ts.Symbol): string | undefined {
-  const tag = symbol.getJsDocTags().find((t) => t.name === "since");
-  if (!tag) return undefined;
-  const text = ts.displayPartsToString(tag.text).trim();
-  return text || undefined;
-}
-
 // ─── Prop extraction ────────────────────────────────────────────────
 
 export function extractPropsFromType(checker: ts.TypeChecker, type: ts.Type): PropMeta[] {
@@ -192,8 +171,8 @@ export function extractPropsFromType(checker: ts.TypeChecker, type: ts.Type): Pr
       name,
       type: stringifyType(checker, propType),
       required: !optional,
-      defaultValue: undefined,
-      description: getJsDocComment(prop),
+      defaultValue: getDefaultTag(prop),
+      description: getDescription(prop),
       deprecated: isDeprecated(prop),
       deprecationMessage: getDeprecationMessage(prop),
       since: getSinceTag(prop),
@@ -246,7 +225,7 @@ export function extractComponentMeta(
     packagePath,
     propsInterface: propsInterfaceName,
     props,
-    description: interfaceSymbol ? getJsDocComment(interfaceSymbol) : undefined,
+    description: interfaceSymbol ? getDescription(interfaceSymbol) : undefined,
     sourceFile: sourceFilePath,
     since: interfaceSymbol ? getSinceTag(interfaceSymbol) : undefined,
     import: {

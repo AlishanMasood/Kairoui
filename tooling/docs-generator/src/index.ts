@@ -14,6 +14,17 @@ export {
   validateGeneratorOutput,
 } from "./schema";
 
+export {
+  getDescription,
+  isDeprecated,
+  getDeprecationMessage,
+  getSinceTag,
+  getDefaultTag,
+  normalizeDescription,
+  diagnoseSymbol,
+} from "./jsdoc";
+export type { JsDocDiagnostic } from "./jsdoc";
+
 export { createProgramFromConfig, createProgramFromFiles, findExportedSymbols } from "./discovery";
 export { extractPropsFromSymbol } from "./extraction";
 export { typeToString } from "./type-stringifier";
