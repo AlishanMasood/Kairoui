@@ -32,6 +32,13 @@ export {
 } from "./defaults";
 export type { DefaultValueResult } from "./defaults";
 
+export {
+  getCompoundRoot,
+  groupCompoundComponents,
+  getCompoundPartNames,
+  isCompoundPart,
+} from "./compound";
+
 export { createProgramFromConfig, createProgramFromFiles, findExportedSymbols } from "./discovery";
 export { extractPropsFromSymbol } from "./extraction";
 export { typeToString } from "./type-stringifier";
