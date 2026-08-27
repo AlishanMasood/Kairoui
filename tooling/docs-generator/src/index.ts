@@ -6,9 +6,15 @@ export type {
   GeneratorOutput,
 } from "./schema";
 
-export { createProgramFromConfig, findExportedSymbols } from "./discovery";
+export { createProgramFromConfig, createProgramFromFiles, findExportedSymbols } from "./discovery";
 export { extractPropsFromSymbol } from "./extraction";
 export { typeToString } from "./type-stringifier";
+export {
+  extractPropsFromType,
+  extractComponentMeta,
+  findPropsInterface,
+  stringifyType,
+} from "./extractor";
 export { normalizeComponents, createGeneratorOutput } from "./normalization";
 export { writeMetadata } from "./serialization";
 export {

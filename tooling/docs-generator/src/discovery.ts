@@ -3,7 +3,6 @@ import { resolve } from "node:path";
 
 /**
  * Creates a TypeScript Program from a tsconfig file.
- * Returns the program and type checker for symbol inspection.
  */
 export function createProgramFromConfig(tsconfigPath: string): {
   program: ts.Program;
@@ -25,6 +24,26 @@ export function createProgramFromConfig(tsconfigPath: string): {
   const program = ts.createProgram(parsed.fileNames, parsed.options);
   const checker = program.getTypeChecker();
 
+  return { program, checker };
+}
+
+/**
+ * Creates a TypeScript Program from specific .d.ts files.
+ */
+export function createProgramFromFiles(filePaths: string[]): {
+  program: ts.Program;
+  checker: ts.TypeChecker;
+} {
+  const program = ts.createProgram(filePaths, {
+    target: ts.ScriptTarget.ES2022,
+    module: ts.ModuleKind.ES2022,
+    moduleResolution: ts.ModuleResolutionKind.Bundler,
+    declaration: true,
+    strict: true,
+    skipLibCheck: true,
+    jsx: ts.JsxEmit.ReactJSX,
+  });
+  const checker = program.getTypeChecker();
   return { program, checker };
 }
 
