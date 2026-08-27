@@ -25,6 +25,13 @@ export {
 } from "./jsdoc";
 export type { JsDocDiagnostic } from "./jsdoc";
 
+export {
+  extractDefaultsFromSource,
+  extractDefaultsFromComponentDir,
+  mergeDefaultsIntoPropMeta,
+} from "./defaults";
+export type { DefaultValueResult } from "./defaults";
+
 export { createProgramFromConfig, createProgramFromFiles, findExportedSymbols } from "./discovery";
 export { extractPropsFromSymbol } from "./extraction";
 export { typeToString } from "./type-stringifier";
