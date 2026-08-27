@@ -31,3 +31,6 @@ export type { TabbedDemoProps, TabbedDemoTab } from "./tabbed-demo";
 
 export { ComponentMeta } from "./component-meta";
 export type { ComponentMetaProps } from "./component-meta";
+
+export { PropsTable } from "./props-table";
+export type { PropsTableProps, PropsTableProp } from "./props-table";
