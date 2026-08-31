@@ -3,7 +3,15 @@ title: IconButton
 sidebar_position: 2
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 import { IconButton } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -129,20 +137,7 @@ The default appearance is `subtle` (no background), unlike Button which defaults
 
 <DocsSection title="API">
 
-| Prop              | Type                                          | Default    | Description                   |
-| ----------------- | --------------------------------------------- | ---------- | ----------------------------- |
-| `children`        | `ReactNode`                                   | —          | Icon content (required)       |
-| `aria-label`      | `string`                                      | —          | Accessible name               |
-| `aria-labelledby` | `string`                                      | —          | ID reference to label element |
-| `as`              | `ElementType`                                 | `"button"` | Rendered element              |
-| `appearance`      | `"solid" \| "outline" \| "subtle" \| "ghost"` | `"subtle"` | Visual variant                |
-| `size`            | `"sm" \| "md" \| "lg"`                        | `"md"`     | Size variant                  |
-| `disabled`        | `boolean`                                     | `false`    | Disables interaction          |
-| `loading`         | `boolean`                                     | `false`    | Shows loading indicator       |
-| `type`            | `"button" \| "submit" \| "reset"`             | `"button"` | Native button type            |
-| `ref`             | `Ref`                                         | —          | Forwarded to root element     |
-| `className`       | `string`                                      | —          | Merged with internal classes  |
-| `style`           | `CSSProperties`                               | —          | Inline style overrides        |
+<PropsTable props={getComponentProps("IconButton")} />
 
 </DocsSection>
 

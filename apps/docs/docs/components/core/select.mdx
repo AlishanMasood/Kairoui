@@ -3,7 +3,15 @@ title: Select
 sidebar_position: 11
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 import {
   Select,
   SelectTrigger,
@@ -172,27 +180,13 @@ When no value is selected, the trigger shows placeholder text.
 
 <DocsSection title="API: Select">
 
-| Prop            | Type                      | Default | Description                |
-| --------------- | ------------------------- | ------- | -------------------------- |
-| `value`         | `string`                  | —       | Controlled value           |
-| `defaultValue`  | `string`                  | —       | Uncontrolled initial value |
-| `onValueChange` | `(value: string) => void` | —       | Selection callback         |
-| `open`          | `boolean`                 | —       | Controlled open state      |
-| `defaultOpen`   | `boolean`                 | `false` | Initial open state         |
-| `onOpenChange`  | `(open: boolean) => void` | —       | Open/close callback        |
-| `name`          | `string`                  | —       | Form submission name       |
-| `disabled`      | `boolean`                 | `false` | Disables the select        |
-| `required`      | `boolean`                 | `false` | Marks as required          |
+<PropsTable props={getComponentProps("Select")} />
 
 </DocsSection>
 
 <DocsSection title="API: SelectItem">
 
-| Prop       | Type      | Default      | Description           |
-| ---------- | --------- | ------------ | --------------------- |
-| `value`    | `string`  | —            | Item value (required) |
-| `label`    | `string`  | text content | Typeahead label       |
-| `disabled` | `boolean` | `false`      | Disables the item     |
+<PropsTable props={getComponentProps("SelectItem")} />
 
 </DocsSection>
 

@@ -3,7 +3,8 @@ title: PinInput
 sidebar_position: 16
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 
 <ComponentHeader
   name="PinInput"
@@ -26,20 +27,7 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 
 <DocsSection title="API">
 
-| Prop            | Type                          | Default     | Description                |
-| --------------- | ----------------------------- | ----------- | -------------------------- |
-| `length`        | `number`                      | `4`         | Number of input fields     |
-| `value`         | `string`                      | —           | Controlled value           |
-| `defaultValue`  | `string`                      | `""`        | Initial value              |
-| `onValueChange` | `(value: string) => void`     | —           | Change callback            |
-| `onComplete`    | `(value: string) => void`     | —           | All fields filled          |
-| `mode`          | `"numeric" \| "alphanumeric"` | `"numeric"` | Allowed characters         |
-| `mask`          | `boolean`                     | `false`     | Password dots              |
-| `placeholder`   | `string`                      | `"○"`       | Per-field placeholder      |
-| `disabled`      | `boolean`                     | `false`     | Disables all fields        |
-| `readOnly`      | `boolean`                     | `false`     | Prevents editing           |
-| `name`          | `string`                      | —           | Form submission name       |
-| `autoFocus`     | `boolean`                     | `false`     | Focus first field on mount |
+<PropsTable props={getComponentProps("PinInput")} />
 
 </DocsSection>
 

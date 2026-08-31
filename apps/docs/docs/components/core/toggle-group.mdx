@@ -3,7 +3,8 @@ title: ToggleGroup
 sidebar_position: 18
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 
 <ComponentHeader
   name="ToggleGroup"
@@ -16,25 +17,13 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 
 <DocsSection title="API: ToggleGroup">
 
-| Prop            | Type                               | Default        | Description               |
-| --------------- | ---------------------------------- | -------------- | ------------------------- |
-| `type`          | `"single" \| "multiple"`           | —              | Selection mode (required) |
-| `value`         | `string \| string[]`               | —              | Controlled value(s)       |
-| `defaultValue`  | `string \| string[]`               | —              | Initial value(s)          |
-| `onValueChange` | `(value) => void`                  | —              | Change callback           |
-| `disabled`      | `boolean`                          | `false`        | Disables all items        |
-| `orientation`   | `"horizontal" \| "vertical"`       | `"horizontal"` | Layout                    |
-| `size`          | `"sm" \| "md" \| "lg"`             | `"md"`         | Propagated to items       |
-| `appearance`    | `"outline" \| "subtle" \| "ghost"` | `"outline"`    | Propagated to items       |
+<PropsTable props={getComponentProps("ToggleGroup")} />
 
 </DocsSection>
 
 <DocsSection title="API: ToggleGroupItem">
 
-| Prop       | Type      | Default | Description           |
-| ---------- | --------- | ------- | --------------------- |
-| `value`    | `string`  | —       | Item value (required) |
-| `disabled` | `boolean` | `false` | Disables this item    |
+<PropsTable props={getComponentProps("ToggleGroupItem")} />
 
 </DocsSection>
 

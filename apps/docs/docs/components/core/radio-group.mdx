@@ -3,7 +3,15 @@ title: RadioGroup
 sidebar_position: 9
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 import {
   RadioGroup,
   Radio,
@@ -112,19 +120,7 @@ import {
 
 <DocsSection title="API">
 
-| Prop            | Type                         | Default         | Description                   |
-| --------------- | ---------------------------- | --------------- | ----------------------------- |
-| `value`         | `string`                     | —               | Controlled selected value     |
-| `defaultValue`  | `string`                     | —               | Uncontrolled initial value    |
-| `onValueChange` | `(value: string) => void`    | —               | Selection change callback     |
-| `name`          | `string`                     | auto-generated  | Shared name for all radios    |
-| `disabled`      | `boolean`                    | `false`         | Disables all radios           |
-| `required`      | `boolean`                    | `false`         | At least one must be selected |
-| `orientation`   | `"vertical" \| "horizontal"` | `"vertical"`    | Layout direction              |
-| `id`            | `string`                     | auto from Field | Group element ID              |
-| `ref`           | `Ref<HTMLDivElement>`        | —               | Forwarded ref                 |
-| `className`     | `string`                     | —               | Custom class                  |
-| `style`         | `CSSProperties`              | —               | Inline styles                 |
+<PropsTable props={getComponentProps("RadioGroup")} />
 
 </DocsSection>
 

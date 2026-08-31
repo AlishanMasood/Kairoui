@@ -3,7 +3,15 @@ title: Button
 sidebar_position: 1
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 import { Button } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -141,21 +149,9 @@ Set `type="submit"` for form submission buttons. By default, type is `"button"`.
 
 <DocsSection title="API">
 
-| Prop         | Type                                          | Default    | Description                                   |
-| ------------ | --------------------------------------------- | ---------- | --------------------------------------------- |
-| `as`         | `ElementType`                                 | `"button"` | Rendered element                              |
-| `appearance` | `"solid" \| "outline" \| "subtle" \| "ghost"` | `"solid"`  | Visual variant                                |
-| `size`       | `"sm" \| "md" \| "lg"`                        | `"md"`     | Size variant                                  |
-| `disabled`   | `boolean`                                     | `false`    | Disables interaction                          |
-| `loading`    | `boolean`                                     | `false`    | Shows loading indicator, disables interaction |
-| `type`       | `"button" \| "submit" \| "reset"`             | `"button"` | Native button type                            |
-| `startIcon`  | `ReactNode`                                   | —          | Icon before content                           |
-| `endIcon`    | `ReactNode`                                   | —          | Icon after content                            |
-| `ref`        | `Ref`                                         | —          | Forwarded to root element                     |
-| `className`  | `string`                                      | —          | Merged with internal classes                  |
-| `style`      | `CSSProperties`                               | —          | Inline style overrides                        |
-| `slots`      | `object`                                      | —          | Slot element overrides                        |
-| `slotProps`  | `object`                                      | —          | Slot prop overrides                           |
+<PropsTable props={getComponentProps("Button")} />
+
+All standard `<button>` HTML attributes are also accepted when rendered as a button element.
 
 </DocsSection>
 

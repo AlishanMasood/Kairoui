@@ -3,7 +3,15 @@ title: Combobox
 sidebar_position: 12
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 
 <ComponentHeader
   name="Combobox"
@@ -35,18 +43,7 @@ Consumer controls filtering via `onInputValueChange`. Items are rendered declara
 
 <DocsSection title="API: Combobox">
 
-| Prop                 | Type                      | Default | Description               |
-| -------------------- | ------------------------- | ------- | ------------------------- |
-| `value`              | `string`                  | —       | Controlled selected value |
-| `defaultValue`       | `string`                  | —       | Initial value             |
-| `onValueChange`      | `(value: string) => void` | —       | Selection callback        |
-| `inputValue`         | `string`                  | —       | Controlled input text     |
-| `onInputValueChange` | `(text: string) => void`  | —       | Input text callback       |
-| `open`               | `boolean`                 | —       | Controlled open state     |
-| `onOpenChange`       | `(open: boolean) => void` | —       | Open/close callback       |
-| `name`               | `string`                  | —       | Form submission name      |
-| `disabled`           | `boolean`                 | `false` | Disables the combobox     |
-| `allowCustomValue`   | `boolean`                 | `false` | Accept freeform input     |
+<PropsTable props={getComponentProps("Combobox")} />
 
 </DocsSection>
 

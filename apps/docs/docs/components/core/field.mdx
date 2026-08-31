@@ -3,7 +3,15 @@ title: Field
 sidebar_position: 3
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 import {
   Field,
   Label,
@@ -189,16 +197,7 @@ Set `validationState="invalid"` to mark the field as invalid. FieldError renders
 
 <DocsSection title="Field API">
 
-| Prop              | Type                   | Default        | Description                    |
-| ----------------- | ---------------------- | -------------- | ------------------------------ |
-| `id`              | `string`               | auto-generated | Base ID for ARIA relationships |
-| `disabled`        | `boolean`              | `false`        | Disables all controls          |
-| `readOnly`        | `boolean`              | `false`        | Makes controls read-only       |
-| `required`        | `boolean`              | `false`        | Marks as required              |
-| `validationState` | `"valid" \| "invalid"` | —              | Validation state               |
-| `ref`             | `Ref<HTMLDivElement>`  | —              | Forwarded ref                  |
-| `className`       | `string`               | —              | Custom class                   |
-| `style`           | `CSSProperties`        | —              | Inline styles                  |
+<PropsTable props={getComponentProps("Field")} />
 
 </DocsSection>
 

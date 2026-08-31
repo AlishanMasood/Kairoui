@@ -3,7 +3,15 @@ title: Dialog
 sidebar_position: 20
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 import {
   Dialog,
   DialogTrigger,
@@ -90,5 +98,17 @@ import {
 - Focus is trapped within the dialog while open
 - Escape key closes the dialog
 - Focus returns to the trigger on close
+
+</DocsSection>
+
+<DocsSection title="API: Dialog">
+
+<PropsTable props={getComponentProps("Dialog")} />
+
+</DocsSection>
+
+<DocsSection title="API: DialogContent">
+
+<PropsTable props={getComponentProps("DialogContent")} />
 
 </DocsSection>

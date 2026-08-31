@@ -3,7 +3,8 @@ title: Slider
 sidebar_position: 14
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 
 <ComponentHeader
   name="Slider"
@@ -29,19 +30,7 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 
 <DocsSection title="API: Slider">
 
-| Prop            | Type                         | Default        | Description           |
-| --------------- | ---------------------------- | -------------- | --------------------- |
-| `value`         | `number`                     | —              | Controlled value      |
-| `defaultValue`  | `number`                     | `min`          | Initial value         |
-| `onValueChange` | `(value: number) => void`    | —              | Live change callback  |
-| `onValueCommit` | `(value: number) => void`    | —              | Final committed value |
-| `min`           | `number`                     | `0`            | Minimum               |
-| `max`           | `number`                     | `100`          | Maximum               |
-| `step`          | `number`                     | `1`            | Step increment        |
-| `orientation`   | `"horizontal" \| "vertical"` | `"horizontal"` | Layout                |
-| `disabled`      | `boolean`                    | `false`        | Disables slider       |
-| `name`          | `string`                     | —              | Form submission name  |
-| `getValueLabel` | `(value: number) => string`  | —              | Accessible value text |
+<PropsTable props={getComponentProps("Slider")} />
 
 </DocsSection>
 

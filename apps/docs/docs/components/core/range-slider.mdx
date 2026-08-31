@@ -3,7 +3,8 @@ title: RangeSlider
 sidebar_position: 15
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
+import { getComponentProps } from "@site/src/api-data";
 
 <ComponentHeader
   name="RangeSlider"
@@ -19,20 +20,7 @@ import { ComponentHeader, ImportStatement, DocsSection, Callout } from "@kairoui
 
 <DocsSection title="API">
 
-| Prop                    | Type                                | Default        | Description                             |
-| ----------------------- | ----------------------------------- | -------------- | --------------------------------------- |
-| `value`                 | `[number, number]`                  | —              | Controlled value pair                   |
-| `defaultValue`          | `[number, number]`                  | `[min, max]`   | Initial range                           |
-| `onValueChange`         | `(value: [number, number]) => void` | —              | Change callback                         |
-| `onValueCommit`         | `(value: [number, number]) => void` | —              | Final value                             |
-| `min`                   | `number`                            | `0`            | Minimum                                 |
-| `max`                   | `number`                            | `100`          | Maximum                                 |
-| `step`                  | `number`                            | `1`            | Step                                    |
-| `minStepsBetweenThumbs` | `number`                            | `0`            | Minimum gap in steps                    |
-| `orientation`           | `"horizontal" \| "vertical"`        | `"horizontal"` | Layout                                  |
-| `disabled`              | `boolean`                           | `false`        | Disables both thumbs                    |
-| `name`                  | `string`                            | —              | Form name (submits name[0] and name[1]) |
-| `getValueLabel`         | `(value, index) => string`          | —              | Per-thumb value text                    |
+<PropsTable props={getComponentProps("RangeSlider")} />
 
 </DocsSection>
 
