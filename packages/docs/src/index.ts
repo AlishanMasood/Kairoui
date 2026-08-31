@@ -34,3 +34,6 @@ export type { ComponentMetaProps } from "./component-meta";
 
 export { PropsTable } from "./props-table";
 export type { PropsTableProps, PropsTableProp } from "./props-table";
+
+export { ApiReference } from "./api-reference";
+export type { ApiReferenceProps, ApiReferencePart } from "./api-reference";
