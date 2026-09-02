@@ -1,0 +1,23 @@
+{
+  "name": "TabsList",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TabsListProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "loop",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Wrap keyboard navigation at boundaries. Defaults to true.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["TabsList"] },
+  "source": { "propsInterface": "TabsListProps" }
+}

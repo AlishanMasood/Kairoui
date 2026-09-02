@@ -1,0 +1,12 @@
+{
+  "name": "PopoverArrow",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "PopoverArrowProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    { "name": "height", "type": "undefined | number", "required": false, "deprecated": false },
+    { "name": "width", "type": "undefined | number", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["PopoverArrow"] },
+  "source": { "propsInterface": "PopoverArrowProps" }
+}

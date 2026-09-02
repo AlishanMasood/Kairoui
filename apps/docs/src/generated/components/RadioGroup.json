@@ -1,0 +1,67 @@
+{
+  "name": "RadioGroup",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "RadioGroupProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Initial value for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Disables all radios in the group.",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Shared name for all radios in the group.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: string) => void",
+      "required": false,
+      "description": "Called when selection changes.",
+      "deprecated": false
+    },
+    {
+      "name": "orientation",
+      "type": "undefined | \"horizontal\" | \"vertical\"",
+      "required": false,
+      "defaultValue": "\"vertical\"",
+      "description": "Layout orientation (affects aria-orientation).",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "At least one radio must be selected.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Controlled selected value.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["RadioGroup"] },
+  "source": { "propsInterface": "RadioGroupProps" }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Presence",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "PresenceProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | (props: { present: boolean; }) => ReactNode",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "present",
+      "type": "false | true",
+      "required": true,
+      "description": "Whether the child is currently present (mounted).",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Presence"] },
+  "source": { "propsInterface": "PresenceProps" }
+}

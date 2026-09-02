@@ -1,0 +1,97 @@
+{
+  "name": "Slider",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SliderProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Initial value for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Whether the slider is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "getValueLabel",
+      "type": "undefined | (value: number) => string",
+      "required": false,
+      "description": "Accessible label for the thumb's current value (e.g., \"50%\").",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "100",
+      "description": "Maximum value. Defaults to 100.",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "0",
+      "description": "Minimum value. Defaults to 0.",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Form submission name.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: number) => void",
+      "required": false,
+      "description": "Called when value changes (during drag and on commit).",
+      "deprecated": false
+    },
+    {
+      "name": "onValueCommit",
+      "type": "undefined | (value: number) => void",
+      "required": false,
+      "description": "Called when dragging ends (final committed value).",
+      "deprecated": false
+    },
+    {
+      "name": "orientation",
+      "type": "undefined | \"horizontal\" | \"vertical\"",
+      "required": false,
+      "defaultValue": "\"horizontal\"",
+      "description": "Layout orientation.",
+      "deprecated": false
+    },
+    {
+      "name": "step",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "1",
+      "description": "Step increment. Defaults to 1.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Controlled value.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Slider"] },
+  "source": { "propsInterface": "SliderProps" }
+}

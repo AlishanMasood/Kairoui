@@ -1,0 +1,22 @@
+{
+  "name": "MenubarMenu",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "MenubarMenuProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Unique value identifying this menu.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["MenubarMenu"] },
+  "source": { "propsInterface": "MenubarMenuProps" }
+}

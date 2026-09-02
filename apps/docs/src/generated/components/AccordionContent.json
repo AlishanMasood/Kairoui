@@ -1,0 +1,23 @@
+{
+  "name": "AccordionContent",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "AccordionContentRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "forceMount",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Force mount (useful for CSS animations). Defaults to false.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["AccordionContent"] },
+  "source": { "propsInterface": "AccordionContentRootProps" }
+}

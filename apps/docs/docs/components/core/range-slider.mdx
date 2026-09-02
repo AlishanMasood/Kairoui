@@ -4,7 +4,8 @@ sidebar_position: 15
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import RangeSliderMeta from "@site/src/generated/components/RangeSlider.json";
 
 <ComponentHeader
   name="RangeSlider"
@@ -20,7 +21,7 @@ import { getComponentProps } from "@site/src/api-data";
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("RangeSlider")} />
+<PropsTable props={toPropsList(RangeSliderMeta)} />
 
 </DocsSection>
 

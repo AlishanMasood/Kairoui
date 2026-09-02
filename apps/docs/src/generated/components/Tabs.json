@@ -1,0 +1,61 @@
+{
+  "name": "Tabs",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TabsRootProps",
+  "props": [
+    {
+      "name": "activationMode",
+      "type": "undefined | \"automatic\" | \"manual\"",
+      "required": false,
+      "defaultValue": "\"automatic\"",
+      "description": "\"automatic\" activates on focus; \"manual\" requires Enter/Space. Defaults to \"automatic\".",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "defaultValue",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Initial active tab for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "description": "Text direction for RTL support. Defaults to \"ltr\".",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: string) => void",
+      "required": false,
+      "description": "Called when active tab changes.",
+      "deprecated": false
+    },
+    {
+      "name": "orientation",
+      "type": "undefined | \"horizontal\" | \"vertical\"",
+      "required": false,
+      "defaultValue": "\"horizontal\"",
+      "description": "Layout orientation. Determines arrow key behavior. Defaults to \"horizontal\".",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Controlled active tab value.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Tabs"] },
+  "source": { "propsInterface": "TabsRootProps" }
+}

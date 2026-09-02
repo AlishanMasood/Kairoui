@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import ButtonMeta from "@site/src/generated/components/Button.json";
 import { Button } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -149,7 +150,7 @@ Set `type="submit"` for form submission buttons. By default, type is `"button"`.
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("Button")} />
+<PropsTable props={toPropsList(ButtonMeta)} />
 
 All standard `<button>` HTML attributes are also accepted when rendered as a button element.
 

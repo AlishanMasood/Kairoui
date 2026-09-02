@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import IconButtonMeta from "@site/src/generated/components/IconButton.json";
 import { IconButton } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -137,7 +138,7 @@ The default appearance is `subtle` (no background), unlike Button which defaults
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("IconButton")} />
+<PropsTable props={toPropsList(IconButtonMeta)} />
 
 </DocsSection>
 

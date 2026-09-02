@@ -1,0 +1,44 @@
+{
+  "name": "Tooltip",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TooltipProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "closeDelay",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "300",
+      "description": "Delay before hiding in ms.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "undefined | false | true",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "delayDuration",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "700",
+      "description": "Delay before showing in ms.",
+      "deprecated": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "undefined | (open: boolean) => void",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "open", "type": "undefined | false | true", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Tooltip"] },
+  "source": { "propsInterface": "TooltipProps" }
+}

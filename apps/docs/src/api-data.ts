@@ -1,6 +1,4 @@
 import type { PropsTableProp } from "@kairoui/docs";
-// eslint-disable-next-line import-x/no-internal-modules
-import metadata from "../../../tooling/docs-generator/generated/api-metadata.json";
 
 interface RawProp {
   name: string;
@@ -13,16 +11,9 @@ interface RawProp {
   since?: string;
 }
 
-interface RawComponent {
+export interface RawComponent {
   name: string;
   props: RawProp[];
-}
-
-const componentIndex = new Map<string, RawComponent>();
-for (const pkg of metadata.packages) {
-  for (const comp of pkg.components) {
-    componentIndex.set(comp.name, comp);
-  }
 }
 
 function prettifyType(type: string, required: boolean): string {
@@ -32,7 +23,6 @@ function prettifyType(type: string, required: boolean): string {
   }
   t = t.replace(/\bfalse \| true\b/g, "boolean");
   t = t.replace(/\btrue \| false\b/g, "boolean");
-  // Collapse verbose ReactNode expansion
   t = t.replace(
     /null \| string \| number \| bigint \| (?:false \| true|boolean) \| ReactElement<[^>]+> \| Iterable<ReactNode> \| ReactPortal \| Promise<AwaitedReactNode>/g,
     "ReactNode",
@@ -53,12 +43,10 @@ function toPropsTableProp(raw: RawProp): PropsTableProp {
   };
 }
 
-export function getComponentProps(name: string): PropsTableProp[] {
-  const comp = componentIndex.get(name);
-  if (!comp) return [];
-  return comp.props.map(toPropsTableProp);
-}
-
-export function hasComponentMeta(name: string): boolean {
-  return componentIndex.has(name);
+/**
+ * Converts a per-component metadata JSON blob into props ready for PropsTable.
+ * Import the JSON directly per page for code-splitting; avoid loading the aggregate.
+ */
+export function toPropsList(component: RawComponent): PropsTableProp[] {
+  return component.props.map(toPropsTableProp);
 }

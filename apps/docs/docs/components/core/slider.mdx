@@ -4,7 +4,8 @@ sidebar_position: 14
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import SliderMeta from "@site/src/generated/components/Slider.json";
 
 <ComponentHeader
   name="Slider"
@@ -30,7 +31,7 @@ import { getComponentProps } from "@site/src/api-data";
 
 <DocsSection title="API: Slider">
 
-<PropsTable props={getComponentProps("Slider")} />
+<PropsTable props={toPropsList(SliderMeta)} />
 
 </DocsSection>
 

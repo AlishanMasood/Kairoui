@@ -1,0 +1,50 @@
+{
+  "name": "FocusScope",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "FocusScopeProps",
+  "props": [
+    {
+      "name": "autoFocus",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Focus the first tabbable element on mount. Defaults to true when trapped.",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "enabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether the scope is active. Defaults to true.",
+      "deprecated": false
+    },
+    {
+      "name": "initialFocusRef",
+      "type": "undefined | RefObject<HTMLElement | null>",
+      "required": false,
+      "description": "Element to focus on mount (takes priority over autoFocus).",
+      "deprecated": false
+    },
+    {
+      "name": "restoreFocus",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Restore focus to previously focused element on unmount.",
+      "deprecated": false
+    },
+    {
+      "name": "trapped",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Trap focus within this scope (for modal overlays).",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["FocusScope"] },
+  "source": { "propsInterface": "FocusScopeProps" }
+}

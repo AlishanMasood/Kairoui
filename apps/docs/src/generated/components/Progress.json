@@ -1,0 +1,54 @@
+{
+  "name": "Progress",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ProgressProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "label",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"Loading\"",
+      "description": "Accessible label.",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "100",
+      "description": "Maximum value. Defaults to 100.",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "0",
+      "description": "Minimum value. Defaults to 0.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Current value. Undefined = indeterminate.",
+      "deprecated": false
+    },
+    {
+      "name": "valueText",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Custom value text for screen readers (e.g. \"3 of 10 steps\").",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Progress"] },
+  "source": { "propsInterface": "ProgressProps" }
+}

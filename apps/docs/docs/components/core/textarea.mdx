@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import TextareaMeta from "@site/src/generated/components/Textarea.json";
 import { Textarea, Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -87,7 +88,7 @@ By default, Textarea allows vertical resize. Use `resize` prop to change behavio
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("Textarea")} />
+<PropsTable props={toPropsList(TextareaMeta)} />
 
 All standard `<textarea>` HTML attributes are also accepted.
 

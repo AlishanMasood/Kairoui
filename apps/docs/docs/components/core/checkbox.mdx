@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import CheckboxMeta from "@site/src/generated/components/Checkbox.json";
 import { Checkbox, Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -100,7 +101,7 @@ The indeterminate state represents a "partial" selection (e.g., select-all with 
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("Checkbox")} />
+<PropsTable props={toPropsList(CheckboxMeta)} />
 
 </DocsSection>
 

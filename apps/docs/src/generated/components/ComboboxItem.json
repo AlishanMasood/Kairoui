@@ -1,0 +1,37 @@
+{
+  "name": "ComboboxItem",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ComboboxItemProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether this item is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "label",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Human-readable label (for display and matching). Falls back to text content.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Unique value for this item.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ComboboxItem"] },
+  "source": { "propsInterface": "ComboboxItemProps" }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "Accordion",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "AccordionRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "defaultValue",
+      "type": "undefined | string | string[]",
+      "required": false,
+      "description": "Initial open item for uncontrolled mode.\nInitial open items for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Disable all items.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: string) => void | (value: string[]) => void",
+      "required": false,
+      "description": "Called when open item changes. Empty string when collapsed.\nCalled when open items change.",
+      "deprecated": false
+    },
+    {
+      "name": "orientation",
+      "type": "undefined | \"horizontal\" | \"vertical\"",
+      "required": false,
+      "defaultValue": "\"vertical\"",
+      "description": "Keyboard orientation. Defaults to \"vertical\".",
+      "deprecated": false
+    },
+    { "name": "type", "type": "\"single\" | \"multiple\"", "required": true, "deprecated": false },
+    {
+      "name": "value",
+      "type": "undefined | string | string[]",
+      "required": false,
+      "description": "Controlled open item value.\nControlled open items.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Accordion"] },
+  "source": { "propsInterface": "AccordionRootProps" }
+}

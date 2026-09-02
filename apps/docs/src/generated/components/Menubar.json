@@ -1,0 +1,46 @@
+{
+  "name": "Menubar",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "MenubarRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "description": "Text direction.",
+      "deprecated": false
+    },
+    {
+      "name": "loop",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "true",
+      "description": "Loop trigger navigation. Defaults to true.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: string) => void",
+      "required": false,
+      "description": "Called when open menu changes. Empty string when all closed.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Currently open menu value.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Menubar"] },
+  "source": { "propsInterface": "MenubarRootProps" }
+}

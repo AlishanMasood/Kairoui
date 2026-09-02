@@ -11,7 +11,9 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import SelectMeta from "@site/src/generated/components/Select.json";
+import SelectItemMeta from "@site/src/generated/components/SelectItem.json";
 import {
   Select,
   SelectTrigger,
@@ -180,13 +182,13 @@ When no value is selected, the trigger shows placeholder text.
 
 <DocsSection title="API: Select">
 
-<PropsTable props={getComponentProps("Select")} />
+<PropsTable props={toPropsList(SelectMeta)} />
 
 </DocsSection>
 
 <DocsSection title="API: SelectItem">
 
-<PropsTable props={getComponentProps("SelectItem")} />
+<PropsTable props={toPropsList(SelectItemMeta)} />
 
 </DocsSection>
 

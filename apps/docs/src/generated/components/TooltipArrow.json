@@ -1,0 +1,12 @@
+{
+  "name": "TooltipArrow",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TooltipArrowProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    { "name": "height", "type": "undefined | number", "required": false, "deprecated": false },
+    { "name": "width", "type": "undefined | number", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["TooltipArrow"] },
+  "source": { "propsInterface": "TooltipArrowProps" }
+}

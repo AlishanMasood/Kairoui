@@ -1,0 +1,54 @@
+{
+  "name": "Radio",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "RadioProps",
+  "props": [
+    {
+      "name": "checked",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Controlled checked state (standalone usage).",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "description": "Label content rendered beside the radio.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultChecked",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Initial checked for uncontrolled standalone usage.",
+      "deprecated": false
+    },
+    {
+      "name": "onCheckedChange",
+      "type": "undefined | (checked: boolean) => void",
+      "required": false,
+      "description": "Called when selection changes (standalone).",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "description": "Size variant.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"on\"",
+      "description": "Form value submitted when selected.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Radio"] },
+  "source": { "propsInterface": "RadioProps" }
+}

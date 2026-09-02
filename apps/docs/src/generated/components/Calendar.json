@@ -1,0 +1,53 @@
+{
+  "name": "Calendar",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "CalendarRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    { "name": "defaultValue", "type": "undefined | Date", "required": false, "deprecated": false },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | (date: Date) => boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en\"",
+      "deprecated": false
+    },
+    { "name": "max", "type": "undefined | Date", "required": false, "deprecated": false },
+    { "name": "min", "type": "undefined | Date", "required": false, "deprecated": false },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (date: Date) => void",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "value", "type": "undefined | Date", "required": false, "deprecated": false },
+    {
+      "name": "weekStartsOn",
+      "type": "undefined | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+      "required": false,
+      "defaultValue": "0",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Calendar"] },
+  "source": { "propsInterface": "CalendarRootProps" }
+}

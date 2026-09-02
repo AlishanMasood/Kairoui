@@ -1,0 +1,75 @@
+{
+  "name": "AppShell",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "AppShellRootProps",
+  "props": [
+    {
+      "name": "asideWidth",
+      "type": "undefined | string | number",
+      "required": false,
+      "description": "Aside width. Defaults to \"280px\".",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "fixed",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Whether header/sidebar are fixed (sticky). Defaults to false.",
+      "deprecated": false
+    },
+    {
+      "name": "footerHeight",
+      "type": "undefined | string | number",
+      "required": false,
+      "description": "Footer height. Defaults to \"auto\".",
+      "deprecated": false
+    },
+    {
+      "name": "headerHeight",
+      "type": "undefined | string | number",
+      "required": false,
+      "description": "Header height token. Defaults to \"60px\".",
+      "deprecated": false
+    },
+    {
+      "name": "layout",
+      "type": "undefined | \"sidebar\" | \"header\" | \"stacked\"",
+      "required": false,
+      "defaultValue": "\"sidebar\"",
+      "description": "Layout variant. Defaults to \"sidebar\".",
+      "deprecated": false
+    },
+    {
+      "name": "sidebarCollapsed",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Whether sidebar is collapsed.",
+      "deprecated": false
+    },
+    {
+      "name": "sidebarCollapsedWidth",
+      "type": "undefined | string | number",
+      "required": false,
+      "description": "Collapsed sidebar width. Defaults to \"60px\".",
+      "deprecated": false
+    },
+    {
+      "name": "sidebarWidth",
+      "type": "undefined | string | number",
+      "required": false,
+      "description": "Sidebar width token. Defaults to \"240px\".",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["AppShell"] },
+  "source": { "propsInterface": "AppShellRootProps" }
+}

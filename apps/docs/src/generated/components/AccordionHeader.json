@@ -1,0 +1,23 @@
+{
+  "name": "AccordionHeader",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "AccordionHeaderProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "level",
+      "type": "undefined | 1 | 2 | 3 | 4 | 5 | 6",
+      "required": false,
+      "description": "Heading level (h1-h6). Defaults to h3.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["AccordionHeader"] },
+  "source": { "propsInterface": "AccordionHeaderProps" }
+}

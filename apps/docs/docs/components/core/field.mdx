@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import FieldMeta from "@site/src/generated/components/Field.json";
 import {
   Field,
   Label,
@@ -197,7 +198,7 @@ Set `validationState="invalid"` to mark the field as invalid. FieldError renders
 
 <DocsSection title="Field API">
 
-<PropsTable props={getComponentProps("Field")} />
+<PropsTable props={toPropsList(FieldMeta)} />
 
 </DocsSection>
 

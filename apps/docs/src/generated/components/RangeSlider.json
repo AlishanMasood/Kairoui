@@ -1,0 +1,99 @@
+{
+  "name": "RangeSlider",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "RangeSliderProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | RangeSliderValue",
+      "required": false,
+      "description": "Initial value for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether the slider is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "getValueLabel",
+      "type": "undefined | (value: number, index: number) => string",
+      "required": false,
+      "description": "Accessible label for a thumb's current value.",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Maximum value. Defaults to 100.",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Minimum value. Defaults to 0.",
+      "deprecated": false
+    },
+    {
+      "name": "minStepsBetweenThumbs",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Minimum distance between thumbs. Defaults to 0.",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Form submission name (submits as name[0] and name[1]).",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: RangeSliderValue) => void",
+      "required": false,
+      "description": "Called when value changes.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueCommit",
+      "type": "undefined | (value: RangeSliderValue) => void",
+      "required": false,
+      "description": "Called when dragging ends.",
+      "deprecated": false
+    },
+    {
+      "name": "orientation",
+      "type": "undefined | \"horizontal\" | \"vertical\"",
+      "required": false,
+      "description": "Layout orientation.",
+      "deprecated": false
+    },
+    {
+      "name": "step",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Step increment. Defaults to 1.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | RangeSliderValue",
+      "required": false,
+      "description": "Controlled value pair.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["RangeSlider"] },
+  "source": { "propsInterface": "RangeSliderProps" }
+}

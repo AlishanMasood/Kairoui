@@ -1,0 +1,69 @@
+{
+  "name": "Button",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ButtonOwnProps",
+  "props": [
+    {
+      "name": "appearance",
+      "type": "undefined | \"solid\" | \"outline\" | \"subtle\" | \"ghost\"",
+      "required": false,
+      "defaultValue": "\"solid\"",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "endIcon",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "loading",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "deprecated": false
+    },
+    {
+      "name": "slotProps",
+      "type": "undefined | Partial<T>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "slots", "type": "undefined | Partial<T>", "required": false, "deprecated": false },
+    {
+      "name": "startIcon",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "type",
+      "type": "undefined | \"button\" | \"submit\" | \"reset\"",
+      "required": false,
+      "defaultValue": "\"button\"",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Button"] },
+  "source": { "propsInterface": "ButtonOwnProps" }
+}

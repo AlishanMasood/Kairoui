@@ -1,0 +1,66 @@
+{
+  "name": "TreeView",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TreeViewRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "defaultExpandedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSelectedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "expandedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onExpandedChange",
+      "type": "undefined | (ids: ReadonlySet<RowId>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "undefined | (ids: ReadonlySet<RowId>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selectedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selectionMode",
+      "type": "undefined | \"single\" | \"multiple\" | \"none\"",
+      "required": false,
+      "defaultValue": "\"none\"",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["TreeView"] },
+  "source": { "propsInterface": "TreeViewRootProps" }
+}

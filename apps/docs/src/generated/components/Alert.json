@@ -1,0 +1,32 @@
+{
+  "name": "Alert",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "AlertProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "live",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Use role=\"alert\" for live announcements. Defaults to false (static).",
+      "deprecated": false
+    },
+    {
+      "name": "tone",
+      "type": "undefined | \"info\" | \"success\" | \"warning\" | \"danger\"",
+      "required": false,
+      "defaultValue": "\"info\"",
+      "description": "Visual tone. Defaults to \"info\".",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Alert"] },
+  "source": { "propsInterface": "AlertProps" }
+}

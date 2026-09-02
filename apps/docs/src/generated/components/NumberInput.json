@@ -1,0 +1,102 @@
+{
+  "name": "NumberInput",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "NumberInputProps",
+  "props": [
+    {
+      "name": "defaultValue",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Initial value for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether the input is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Input element ID.",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Maximum allowed value.",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Minimum allowed value.",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Form submission name.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: number | undefined) => void",
+      "required": false,
+      "description": "Called when value changes.",
+      "deprecated": false
+    },
+    {
+      "name": "placeholder",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Placeholder text.",
+      "deprecated": false
+    },
+    {
+      "name": "readOnly",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether the input is read-only.",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether a value is required.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "description": "Size variant.",
+      "deprecated": false
+    },
+    {
+      "name": "step",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "1",
+      "description": "Step amount for increment/decrement. Defaults to 1.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Controlled numeric value.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["NumberInput"] },
+  "source": { "propsInterface": "NumberInputProps" }
+}

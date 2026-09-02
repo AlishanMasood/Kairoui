@@ -1,0 +1,10 @@
+{
+  "name": "ProgressIndicator",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ProgressIndicatorProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ProgressIndicator"] },
+  "source": { "propsInterface": "ProgressIndicatorProps" }
+}

@@ -1,0 +1,106 @@
+{
+  "name": "PinInput",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "PinInputProps",
+  "props": [
+    {
+      "name": "autoFocus",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Auto-focus first field on mount.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"\"",
+      "description": "Initial value.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether the input is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "length",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "4",
+      "description": "Number of input fields. Defaults to 4.",
+      "deprecated": false
+    },
+    {
+      "name": "mask",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Whether to mask input (password dots).",
+      "deprecated": false
+    },
+    {
+      "name": "mode",
+      "type": "undefined | \"numeric\" | \"alphanumeric\"",
+      "required": false,
+      "defaultValue": "\"numeric\"",
+      "description": "Input mode: \"numeric\" or \"alphanumeric\". Defaults to \"numeric\".",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Form submission name.",
+      "deprecated": false
+    },
+    {
+      "name": "onComplete",
+      "type": "undefined | (value: string) => void",
+      "required": false,
+      "description": "Called when all fields are filled.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: string) => void",
+      "required": false,
+      "description": "Called when value changes.",
+      "deprecated": false
+    },
+    {
+      "name": "placeholder",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"○\"",
+      "description": "Placeholder character per field.",
+      "deprecated": false
+    },
+    {
+      "name": "readOnly",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether the input is read-only.",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether a value is required.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Controlled value string.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["PinInput"] },
+  "source": { "propsInterface": "PinInputProps" }
+}

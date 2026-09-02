@@ -1,0 +1,81 @@
+{
+  "name": "Select",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SelectProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Initial open state.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Initial value for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Whether the select is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Form submission name.",
+      "deprecated": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "undefined | (open: boolean) => void",
+      "required": false,
+      "description": "Called when open state changes.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: string) => void",
+      "required": false,
+      "description": "Called when selection changes.",
+      "deprecated": false
+    },
+    {
+      "name": "open",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Controlled open state.",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Whether a value is required.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Controlled selected value.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Select"] },
+  "source": { "propsInterface": "SelectProps" }
+}

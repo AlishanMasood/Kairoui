@@ -1,0 +1,72 @@
+{
+  "name": "IconButton",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "IconButtonOwnProps",
+  "props": [
+    {
+      "name": "appearance",
+      "type": "undefined | \"solid\" | \"outline\" | \"subtle\" | \"ghost\"",
+      "required": false,
+      "defaultValue": "\"subtle\"",
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Accessible label (required for screen readers).",
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "description": "ID of element providing accessible label.",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": true,
+      "description": "Icon content (required).",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "loading",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "deprecated": false
+    },
+    {
+      "name": "slotProps",
+      "type": "undefined | Partial<T>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "slots", "type": "undefined | Partial<T>", "required": false, "deprecated": false },
+    {
+      "name": "type",
+      "type": "undefined | \"button\" | \"submit\" | \"reset\"",
+      "required": false,
+      "defaultValue": "\"button\"",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["IconButton"] },
+  "source": { "propsInterface": "IconButtonOwnProps" }
+}

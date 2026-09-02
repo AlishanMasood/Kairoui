@@ -1,0 +1,17 @@
+{
+  "name": "ToastViewport",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ToastViewportProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "hotkey",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Hotkey to focus the viewport. Defaults to \"F8\".",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ToastViewport"] },
+  "source": { "propsInterface": "ToastViewportProps" }
+}

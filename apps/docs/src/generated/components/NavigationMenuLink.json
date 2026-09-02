@@ -1,0 +1,24 @@
+{
+  "name": "NavigationMenuLink",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "NavigationMenuLinkRootProps",
+  "props": [
+    {
+      "name": "active",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether this link represents the current page.",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    { "name": "href", "type": "undefined | string", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["NavigationMenuLink"] },
+  "source": { "propsInterface": "NavigationMenuLinkRootProps" }
+}

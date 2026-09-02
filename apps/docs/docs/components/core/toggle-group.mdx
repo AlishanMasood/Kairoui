@@ -4,7 +4,9 @@ sidebar_position: 18
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import ToggleGroupMeta from "@site/src/generated/components/ToggleGroup.json";
+import ToggleGroupItemMeta from "@site/src/generated/components/ToggleGroupItem.json";
 
 <ComponentHeader
   name="ToggleGroup"
@@ -17,13 +19,13 @@ import { getComponentProps } from "@site/src/api-data";
 
 <DocsSection title="API: ToggleGroup">
 
-<PropsTable props={getComponentProps("ToggleGroup")} />
+<PropsTable props={toPropsList(ToggleGroupMeta)} />
 
 </DocsSection>
 
 <DocsSection title="API: ToggleGroupItem">
 
-<PropsTable props={getComponentProps("ToggleGroupItem")} />
+<PropsTable props={toPropsList(ToggleGroupItemMeta)} />
 
 </DocsSection>
 

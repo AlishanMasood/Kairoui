@@ -12,7 +12,10 @@ import {
   TabbedDemo,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import TabsMeta from "@site/src/generated/components/Tabs.json";
+import TabsTriggerMeta from "@site/src/generated/components/TabsTrigger.json";
+import TabsContentMeta from "@site/src/generated/components/TabsContent.json";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -201,18 +204,18 @@ This tabbed panel itself uses the KairoUI `Tabs` component (dogfooding via `Tabb
 
 <DocsSection title="API: Tabs">
 
-<PropsTable props={getComponentProps("Tabs")} />
+<PropsTable props={toPropsList(TabsMeta)} />
 
 </DocsSection>
 
 <DocsSection title="API: TabsTrigger">
 
-<PropsTable props={getComponentProps("TabsTrigger")} />
+<PropsTable props={toPropsList(TabsTriggerMeta)} />
 
 </DocsSection>
 
 <DocsSection title="API: TabsContent">
 
-<PropsTable props={getComponentProps("TabsContent")} />
+<PropsTable props={toPropsList(TabsContentMeta)} />
 
 </DocsSection>

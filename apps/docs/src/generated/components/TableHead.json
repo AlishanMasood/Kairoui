@@ -1,0 +1,36 @@
+{
+  "name": "TableHead",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TableHeadRootProps",
+  "props": [
+    {
+      "name": "align",
+      "type": "undefined | \"center\" | \"start\" | \"end\"",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "onSort",
+      "type": "undefined | () => void",
+      "required": false,
+      "description": "Called when user activates sort on this column.",
+      "deprecated": false
+    },
+    {
+      "name": "sortDirection",
+      "type": "undefined | \"ascending\" | \"descending\"",
+      "required": false,
+      "description": "Current sort direction — sets aria-sort on the header cell.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["TableHead"] },
+  "source": { "propsInterface": "TableHeadRootProps" }
+}

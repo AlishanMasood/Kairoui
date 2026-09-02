@@ -1,0 +1,16 @@
+{
+  "name": "AlertDialogTrigger",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "AlertDialogTriggerProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["AlertDialogTrigger"] },
+  "source": { "propsInterface": "AlertDialogTriggerProps" }
+}

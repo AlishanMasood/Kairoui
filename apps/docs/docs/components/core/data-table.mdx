@@ -11,7 +11,8 @@ import {
   ComponentMeta,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import DataTableMeta from "@site/src/generated/components/DataTable.json";
 import { DataTable, column } from "@kairoui/core/components";
 
 export const users = [
@@ -114,7 +115,7 @@ column({ id: "age", header: "Age", accessorKey: "age", sortable: true, align: "e
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("DataTable")} />
+<PropsTable props={toPropsList(DataTableMeta)} />
 
 </DocsSection>
 

@@ -1,0 +1,25 @@
+{
+  "name": "Textarea",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TextareaProps",
+  "props": [
+    {
+      "name": "resize",
+      "type": "undefined | \"horizontal\" | \"vertical\" | \"none\" | \"both\"",
+      "required": false,
+      "defaultValue": "\"vertical\"",
+      "description": "Resize behavior. Defaults to \"vertical\".",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "description": "Size variant.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Textarea"] },
+  "source": { "propsInterface": "TextareaProps" }
+}

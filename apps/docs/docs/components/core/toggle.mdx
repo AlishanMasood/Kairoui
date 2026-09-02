@@ -4,7 +4,8 @@ sidebar_position: 17
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import ToggleMeta from "@site/src/generated/components/Toggle.json";
 
 <ComponentHeader
   name="Toggle"
@@ -17,7 +18,7 @@ import { getComponentProps } from "@site/src/api-data";
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("Toggle")} />
+<PropsTable props={toPropsList(ToggleMeta)} />
 
 </DocsSection>
 

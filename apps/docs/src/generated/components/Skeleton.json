@@ -1,0 +1,47 @@
+{
+  "name": "Skeleton",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SkeletonProps",
+  "props": [
+    {
+      "name": "animate",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "true",
+      "description": "Disable pulse animation.",
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "height",
+      "type": "undefined | string | number",
+      "required": false,
+      "description": "Height (CSS value).",
+      "deprecated": false
+    },
+    {
+      "name": "radius",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Border radius (CSS value). Overrides variant default.",
+      "deprecated": false
+    },
+    {
+      "name": "variant",
+      "type": "undefined | \"text\" | \"rectangular\" | \"circular\"",
+      "required": false,
+      "defaultValue": "\"text\"",
+      "description": "Shape variant. Defaults to \"text\".",
+      "deprecated": false
+    },
+    {
+      "name": "width",
+      "type": "undefined | string | number",
+      "required": false,
+      "description": "Width (CSS value).",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Skeleton"] },
+  "source": { "propsInterface": "SkeletonProps" }
+}

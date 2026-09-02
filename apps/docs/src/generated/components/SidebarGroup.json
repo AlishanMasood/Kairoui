@@ -1,0 +1,30 @@
+{
+  "name": "SidebarGroup",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SidebarGroupProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "collapsible",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Collapsible group (renders as disclosure).",
+      "deprecated": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Default open state for collapsible groups.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["SidebarGroup"] },
+  "source": { "propsInterface": "SidebarGroupProps" }
+}

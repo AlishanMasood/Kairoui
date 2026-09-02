@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import RadioGroupMeta from "@site/src/generated/components/RadioGroup.json";
 import {
   RadioGroup,
   Radio,
@@ -120,7 +121,7 @@ import {
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("RadioGroup")} />
+<PropsTable props={toPropsList(RadioGroupMeta)} />
 
 </DocsSection>
 

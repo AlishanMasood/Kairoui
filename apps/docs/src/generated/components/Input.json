@@ -1,0 +1,17 @@
+{
+  "name": "Input",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "InputProps",
+  "props": [
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "description": "Size variant.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Input"] },
+  "source": { "propsInterface": "InputProps" }
+}

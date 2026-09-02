@@ -1,0 +1,54 @@
+{
+  "name": "Checkbox",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "CheckboxProps",
+  "props": [
+    {
+      "name": "checked",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Controlled checked state.",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "description": "Label content rendered beside the checkbox.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultChecked",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Initial checked state for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "indeterminate",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Whether the checkbox is in indeterminate state.",
+      "deprecated": false
+    },
+    {
+      "name": "onCheckedChange",
+      "type": "undefined | (checked: boolean) => void",
+      "required": false,
+      "description": "Called when checked state changes.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "description": "Size variant.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Checkbox"] },
+  "source": { "propsInterface": "CheckboxProps" }
+}

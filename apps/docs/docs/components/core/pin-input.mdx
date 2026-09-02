@@ -4,7 +4,8 @@ sidebar_position: 16
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import PinInputMeta from "@site/src/generated/components/PinInput.json";
 
 <ComponentHeader
   name="PinInput"
@@ -27,7 +28,7 @@ import { getComponentProps } from "@site/src/api-data";
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("PinInput")} />
+<PropsTable props={toPropsList(PinInputMeta)} />
 
 </DocsSection>
 

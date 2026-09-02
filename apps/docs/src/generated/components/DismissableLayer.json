@@ -1,0 +1,64 @@
+{
+  "name": "DismissableLayer",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DismissableLayerProps",
+  "props": [
+    {
+      "name": "branches",
+      "type": "undefined | readonly (HTMLElement | null)[]",
+      "required": false,
+      "description": "Elements excluded from \"outside\" detection (e.g., portaled triggers).",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disableEscapeKeyDown",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether Escape dismissal is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "disableOutsidePointerEvents",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "When true, pointer events outside the layer are blocked (modal behavior).",
+      "deprecated": false
+    },
+    {
+      "name": "onDismiss",
+      "type": "undefined | () => void",
+      "required": false,
+      "description": "Called when the layer should dismiss (after consumer handlers).",
+      "deprecated": false
+    },
+    {
+      "name": "onEscapeKeyDown",
+      "type": "undefined | (event: KeyboardEvent) => void",
+      "required": false,
+      "description": "Called on Escape key. Call event.preventDefault() to cancel dismissal.",
+      "deprecated": false
+    },
+    {
+      "name": "onFocusOutside",
+      "type": "undefined | (event: FocusEvent) => void",
+      "required": false,
+      "description": "Called when focus moves outside. Call event.preventDefault() to cancel dismissal.",
+      "deprecated": false
+    },
+    {
+      "name": "onPointerDownOutside",
+      "type": "undefined | (event: PointerEvent) => void",
+      "required": false,
+      "description": "Called on pointer down outside. Call event.preventDefault() to cancel dismissal.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["DismissableLayer"] },
+  "source": { "propsInterface": "DismissableLayerProps" }
+}

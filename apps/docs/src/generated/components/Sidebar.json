@@ -1,0 +1,62 @@
+{
+  "name": "Sidebar",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SidebarRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "defaultValue": "\"Toggle sidebar\"",
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "collapsed",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether sidebar is collapsed.",
+      "deprecated": false
+    },
+    {
+      "name": "collapsedWidth",
+      "type": "undefined | string | number",
+      "required": false,
+      "defaultValue": "\"60px\"",
+      "description": "Width when collapsed. Defaults to \"60px\".",
+      "deprecated": false
+    },
+    {
+      "name": "defaultCollapsed",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Default collapsed state for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "onCollapsedChange",
+      "type": "undefined | (collapsed: boolean) => void",
+      "required": false,
+      "description": "Called when collapsed state changes.",
+      "deprecated": false
+    },
+    {
+      "name": "side",
+      "type": "undefined | \"left\" | \"right\"",
+      "required": false,
+      "defaultValue": "\"left\"",
+      "description": "Side of the layout. Defaults to \"left\".",
+      "deprecated": false
+    },
+    {
+      "name": "width",
+      "type": "undefined | string | number",
+      "required": false,
+      "defaultValue": "\"240px\"",
+      "description": "Width when expanded. Defaults to \"240px\".",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Sidebar"] },
+  "source": { "propsInterface": "SidebarRootProps" }
+}

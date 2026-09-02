@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import RadioMeta from "@site/src/generated/components/Radio.json";
 import { Radio } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -80,7 +81,7 @@ import { Radio } from "@kairoui/core/components";
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("Radio")} />
+<PropsTable props={toPropsList(RadioMeta)} />
 
 </DocsSection>
 

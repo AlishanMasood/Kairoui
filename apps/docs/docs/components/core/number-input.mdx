@@ -4,7 +4,8 @@ sidebar_position: 13
 ---
 
 import { ComponentHeader, ImportStatement, DocsSection, Callout, PropsTable } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import NumberInputMeta from "@site/src/generated/components/NumberInput.json";
 
 <ComponentHeader
   name="NumberInput"
@@ -25,7 +26,7 @@ import { getComponentProps } from "@site/src/api-data";
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("NumberInput")} />
+<PropsTable props={toPropsList(NumberInputMeta)} />
 
 </DocsSection>
 

@@ -11,7 +11,9 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import DialogMeta from "@site/src/generated/components/Dialog.json";
+import DialogContentMeta from "@site/src/generated/components/DialogContent.json";
 import {
   Dialog,
   DialogTrigger,
@@ -103,12 +105,12 @@ import {
 
 <DocsSection title="API: Dialog">
 
-<PropsTable props={getComponentProps("Dialog")} />
+<PropsTable props={toPropsList(DialogMeta)} />
 
 </DocsSection>
 
 <DocsSection title="API: DialogContent">
 
-<PropsTable props={getComponentProps("DialogContent")} />
+<PropsTable props={toPropsList(DialogContentMeta)} />
 
 </DocsSection>

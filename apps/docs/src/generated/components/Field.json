@@ -1,0 +1,53 @@
+{
+  "name": "Field",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "FieldProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Disables all controls within this field.",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Consumer-provided base ID. If omitted, a stable ID is generated.",
+      "deprecated": false
+    },
+    {
+      "name": "readOnly",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Makes all controls within this field read-only.",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Marks the field as required.",
+      "deprecated": false
+    },
+    {
+      "name": "validationState",
+      "type": "undefined | \"valid\" | \"invalid\"",
+      "required": false,
+      "description": "Validation state. When \"invalid\", triggers error display.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Field"] },
+  "source": { "propsInterface": "FieldProps" }
+}

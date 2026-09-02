@@ -1,0 +1,16 @@
+{
+  "name": "ScrollLock",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ScrollLockProps",
+  "props": [
+    {
+      "name": "enabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether scroll locking is active.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ScrollLock"] },
+  "source": { "propsInterface": "ScrollLockProps" }
+}

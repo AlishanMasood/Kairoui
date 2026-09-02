@@ -1,0 +1,10 @@
+{
+  "name": "TimelineConnector",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "TimelineConnectorRootProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["TimelineConnector"] },
+  "source": { "propsInterface": "TimelineConnectorRootProps" }
+}

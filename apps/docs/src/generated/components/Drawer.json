@@ -1,0 +1,36 @@
+{
+  "name": "Drawer",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DrawerProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "undefined | false | true",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "undefined | (open: boolean) => void",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "open", "type": "undefined | false | true", "required": false, "deprecated": false },
+    {
+      "name": "side",
+      "type": "undefined | \"left\" | \"right\" | \"top\" | \"bottom\"",
+      "required": false,
+      "defaultValue": "\"right\"",
+      "description": "Which edge the drawer slides from. Defaults to \"right\".",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Drawer"] },
+  "source": { "propsInterface": "DrawerProps" }
+}

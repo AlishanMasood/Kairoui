@@ -1,0 +1,82 @@
+{
+  "name": "Pagination",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "PaginationRootProps",
+  "props": [
+    {
+      "name": "boundaryCount",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Pages shown at start/end. Defaults to 1.",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "defaultValue": "\"Previous\"",
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "defaultPage",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Initial page for uncontrolled mode. Defaults to 1.",
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "description": "Text direction.",
+      "deprecated": false
+    },
+    {
+      "name": "getPageHref",
+      "type": "undefined | (page: number) => string",
+      "required": false,
+      "description": "Generate href for a page (enables link-based navigation).",
+      "deprecated": false
+    },
+    {
+      "name": "label",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"Pagination\"",
+      "description": "Accessible label for the nav. Defaults to \"Pagination\".",
+      "deprecated": false
+    },
+    {
+      "name": "onPageChange",
+      "type": "undefined | (page: number) => void",
+      "required": false,
+      "description": "Called when page changes.",
+      "deprecated": false
+    },
+    {
+      "name": "page",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Controlled current page (1-indexed).",
+      "deprecated": false
+    },
+    {
+      "name": "siblingCount",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Pages shown on each side of current. Defaults to 1.",
+      "deprecated": false
+    },
+    {
+      "name": "totalPages",
+      "type": "number",
+      "required": true,
+      "description": "Total number of pages.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Pagination"] },
+  "source": { "propsInterface": "PaginationRootProps" }
+}

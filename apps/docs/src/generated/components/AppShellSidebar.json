@@ -1,0 +1,23 @@
+{
+  "name": "AppShellSidebar",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "AppShellSidebarRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "side",
+      "type": "undefined | \"left\" | \"right\"",
+      "required": false,
+      "description": "Side of the layout. Defaults to \"left\".",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["AppShellSidebar"] },
+  "source": { "propsInterface": "AppShellSidebarRootProps" }
+}

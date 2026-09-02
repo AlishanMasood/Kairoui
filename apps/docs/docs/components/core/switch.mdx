@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import SwitchMeta from "@site/src/generated/components/Switch.json";
 import { Switch, Field, Label, FieldDescription } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -92,7 +93,7 @@ import { Switch, Field, Label, FieldDescription } from "@kairoui/core/components
 
 <DocsSection title="API">
 
-<PropsTable props={getComponentProps("Switch")} />
+<PropsTable props={toPropsList(SwitchMeta)} />
 
 </DocsSection>
 

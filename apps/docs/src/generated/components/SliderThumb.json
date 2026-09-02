@@ -1,0 +1,17 @@
+{
+  "name": "SliderThumb",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SliderThumbProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "index",
+      "type": "undefined | number",
+      "required": false,
+      "description": "For range slider: which thumb (0 or 1). Defaults to 0.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["SliderThumb"] },
+  "source": { "propsInterface": "SliderThumbProps" }
+}

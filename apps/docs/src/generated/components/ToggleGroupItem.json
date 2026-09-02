@@ -1,0 +1,22 @@
+{
+  "name": "ToggleGroupItem",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ToggleGroupItemProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "value", "type": "string", "required": true, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ToggleGroupItem"] },
+  "source": { "propsInterface": "ToggleGroupItemProps" }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "SelectSeparator",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SelectSeparatorProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["SelectSeparator"] },
+  "source": { "propsInterface": "SelectSeparatorProps" }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "ToggleGroup",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ToggleGroupProps",
+  "props": [
+    {
+      "name": "appearance",
+      "type": "undefined | \"outline\" | \"subtle\" | \"ghost\"",
+      "required": false,
+      "defaultValue": "\"outline\"",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | string | string[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    { "name": "loop", "type": "undefined | false | true", "required": false, "deprecated": false },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: string) => void | (value: string[]) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "orientation",
+      "type": "undefined | \"horizontal\" | \"vertical\"",
+      "required": false,
+      "defaultValue": "\"horizontal\"",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "deprecated": false
+    },
+    { "name": "type", "type": "\"single\" | \"multiple\"", "required": true, "deprecated": false },
+    {
+      "name": "value",
+      "type": "undefined | string | string[]",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ToggleGroup"] },
+  "source": { "propsInterface": "ToggleGroupProps" }
+}

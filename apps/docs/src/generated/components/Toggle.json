@@ -1,0 +1,53 @@
+{
+  "name": "Toggle",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ToggleProps",
+  "props": [
+    {
+      "name": "appearance",
+      "type": "undefined | \"outline\" | \"subtle\" | \"ghost\"",
+      "required": false,
+      "defaultValue": "\"outline\"",
+      "description": "Appearance variant.",
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultPressed",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Initial pressed state for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "onPressedChange",
+      "type": "undefined | (pressed: boolean) => void",
+      "required": false,
+      "description": "Called when pressed state changes.",
+      "deprecated": false
+    },
+    {
+      "name": "pressed",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Controlled pressed state.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "description": "Size variant.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Toggle"] },
+  "source": { "propsInterface": "ToggleProps" }
+}

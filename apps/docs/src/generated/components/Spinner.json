@@ -1,0 +1,24 @@
+{
+  "name": "Spinner",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "SpinnerProps",
+  "props": [
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "label",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Accessible label. Defaults to \"Loading\".",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "description": "Size variant. Defaults to \"md\".",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Spinner"] },
+  "source": { "propsInterface": "SpinnerProps" }
+}

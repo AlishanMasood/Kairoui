@@ -1,0 +1,75 @@
+{
+  "name": "DataTable",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DataTableRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "columns",
+      "type": "readonly DataTableColumnDef<TRow>[]",
+      "required": true,
+      "deprecated": false
+    },
+    { "name": "data", "type": "readonly TRow[]", "required": true, "deprecated": false },
+    {
+      "name": "defaultSelectedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSort",
+      "type": "undefined | SortState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "emptyState",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "getRowId", "type": "(row: TRow) => RowId", "required": true, "deprecated": false },
+    {
+      "name": "loading",
+      "type": "undefined | false | true",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "undefined | (ids: ReadonlySet<RowId>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSortChange",
+      "type": "undefined | (sort: SortState | undefined) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selectedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selectionMode",
+      "type": "undefined | \"single\" | \"multiple\" | \"none\"",
+      "required": false,
+      "defaultValue": "\"none\"",
+      "deprecated": false
+    },
+    { "name": "sort", "type": "undefined | SortState", "required": false, "deprecated": false }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["DataTable"] },
+  "source": { "propsInterface": "DataTableRootProps" }
+}

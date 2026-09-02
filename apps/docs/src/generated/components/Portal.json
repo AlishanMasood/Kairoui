@@ -1,0 +1,22 @@
+{
+  "name": "Portal",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "PortalProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "container",
+      "type": "undefined | null | HTMLElement",
+      "required": false,
+      "description": "Target container. Defaults to document.body.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Portal"] },
+  "source": { "propsInterface": "PortalProps" }
+}

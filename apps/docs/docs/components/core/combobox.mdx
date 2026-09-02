@@ -11,7 +11,8 @@ import {
   Callout,
   PropsTable,
 } from "@kairoui/docs";
-import { getComponentProps } from "@site/src/api-data";
+import { toPropsList } from "@site/src/api-data";
+import ComboboxMeta from "@site/src/generated/components/Combobox.json";
 
 <ComponentHeader
   name="Combobox"
@@ -43,7 +44,7 @@ Consumer controls filtering via `onInputValueChange`. Items are rendered declara
 
 <DocsSection title="API: Combobox">
 
-<PropsTable props={getComponentProps("Combobox")} />
+<PropsTable props={toPropsList(ComboboxMeta)} />
 
 </DocsSection>
 

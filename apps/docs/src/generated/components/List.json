@@ -1,0 +1,23 @@
+{
+  "name": "List",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "ListRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "variant",
+      "type": "undefined | \"unordered\" | \"ordered\"",
+      "required": false,
+      "defaultValue": "\"unordered\"",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["List"] },
+  "source": { "propsInterface": "ListRootProps" }
+}

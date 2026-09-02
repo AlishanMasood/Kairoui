@@ -1,0 +1,63 @@
+{
+  "name": "PopoverContent",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "PopoverContentProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "collisionPadding",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Padding from viewport edges in px.",
+      "deprecated": false
+    },
+    {
+      "name": "flip",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether to flip when overflowing viewport.",
+      "deprecated": false
+    },
+    {
+      "name": "offset",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Offset in px from the anchor.",
+      "deprecated": false
+    },
+    {
+      "name": "onEscapeKeyDown",
+      "type": "undefined | (event: KeyboardEvent) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onPointerDownOutside",
+      "type": "undefined | (event: PointerEvent) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "placement",
+      "type": "undefined | \"left\" | \"right\" | \"top\" | \"bottom\" | \"top-start\" | \"top-end\" | \"bottom-start\" | \"bottom-end\" | \"left-start\" | \"left-end\" | \"right-start\" | \"right-end\"",
+      "required": false,
+      "description": "Desired placement relative to anchor.",
+      "deprecated": false
+    },
+    {
+      "name": "shift",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Whether to shift along the axis to stay in viewport.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["PopoverContent"] },
+  "source": { "propsInterface": "PopoverContentProps" }
+}

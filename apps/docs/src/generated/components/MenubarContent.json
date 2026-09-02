@@ -1,0 +1,30 @@
+{
+  "name": "MenubarContent",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "MenubarContentProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "required": false,
+      "deprecated": false
+    },
+    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "loop",
+      "type": "undefined | false | true",
+      "required": false,
+      "description": "Loop item navigation.",
+      "deprecated": false
+    },
+    {
+      "name": "onEscapeKeyDown",
+      "type": "undefined | (event: KeyboardEvent) => void",
+      "required": false,
+      "description": "Called on Escape.",
+      "deprecated": false
+    }
+  ],
+  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["MenubarContent"] },
+  "source": { "propsInterface": "MenubarContentProps" }
+}
