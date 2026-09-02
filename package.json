@@ -25,6 +25,7 @@
     "storybook:build": "turbo run build --filter=@kairoui/storybook",
     "docs:dev": "turbo run dev --filter=@kairoui/docs-site",
     "docs:build": "turbo run build --filter=@kairoui/docs-site",
+    "docs": "tsx tooling/docs-generator/src/cli.ts",
     "generate:docs": "tsx tooling/docs-generator/src/cli.ts",
     "changeset": "changeset",
     "changeset:version": "changeset version",

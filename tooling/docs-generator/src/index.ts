@@ -66,3 +66,18 @@ export type {
   DiscoveryManifest,
   DiscoveryConfig,
 } from "./package-discovery";
+
+export {
+  validateMetadata,
+  validateMetadataFile,
+  formatDiagnostic,
+  formatReport,
+  isStaleAgainst,
+  DIAG_CODES,
+} from "./validation";
+export type {
+  ValidationDiagnostic,
+  ValidationOptions,
+  ValidationResult,
+  DiagnosticSeverity,
+} from "./validation";

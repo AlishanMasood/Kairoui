@@ -98,10 +98,38 @@ function resolveEntryPoint(
 
 // ─── Export classification ──────────────────────────────────────────
 
+const NON_COMPONENT_NAME_SUFFIXES = [
+  "Props",
+  "Contract",
+  "Options",
+  "Value",
+  "Ref",
+  "Type",
+  "Result",
+  "Config",
+  "Info",
+  "Handle",
+  "State",
+  "Callback",
+  "Fn",
+  "Constructor",
+];
+
+const NON_COMPONENT_NAME_PREFIXES = ["CSS_", "DEFAULT_", "PROP_"];
+
+const ALL_CAPS_RE = /^[A-Z0-9_]+$/;
+
 export function classifyExport(name: string): DiscoveredExport["kind"] {
   if (/^use[A-Z]/.test(name)) return "hook";
   if (/Context$/.test(name)) return "context";
-  if (/^[A-Z]/.test(name) && !/Props$|Contract$|Options$|Value$/.test(name)) return "component";
+  if (ALL_CAPS_RE.test(name)) return "other";
+  if (NON_COMPONENT_NAME_PREFIXES.some((p) => name.startsWith(p))) return "other";
+  if (/^[A-Z]/.test(name)) {
+    for (const suffix of NON_COMPONENT_NAME_SUFFIXES) {
+      if (name.endsWith(suffix)) return "type";
+    }
+    return "component";
+  }
   if (/^[a-z]/.test(name)) return "function";
   return "type";
 }
@@ -122,14 +150,18 @@ export function discoverExportsFromDts(
     if (!existsSync(fullPath)) continue;
 
     const content = readFileSync(fullPath, "utf-8");
-    const exportNames = extractExportNames(content);
+    const exportKinds = extractExportKinds(content);
+    const sortedNames = [...exportKinds.keys()].sort();
 
-    for (const name of exportNames) {
+    for (const name of sortedNames) {
       if (shouldExclude(name, config.excludePatterns)) continue;
+
+      const declKind = exportKinds.get(name);
+      const kind = declKind === "type" ? "type" : classifyExport(name);
 
       results.push({
         name,
-        kind: classifyExport(name),
+        kind,
         packageName: packageInfo.name,
         entryPoint: entry.subpath,
         sourceFile: relative(config.monorepoRoot, fullPath),
@@ -140,12 +172,26 @@ export function discoverExportsFromDts(
   return results;
 }
 
-/** Extracts exported names from .d.ts content via regex. */
-function extractExportNames(content: string): string[] {
-  const names: string[] = [];
-  const seen = new Set<string>();
+/**
+ * Extracts exported names with their declaration kind from .d.ts content.
+ * Names known to be types/interfaces are marked as "type" so they can be
+ * excluded from component classification.
+ */
+function extractExportKinds(content: string): Map<string, "value" | "type"> {
+  const kinds = new Map<string, "value" | "type">();
 
-  // Match: export { Name, Name2 } or export { Name as Alias }
+  const declareRe = /export\s+declare\s+(const|function|class|type|interface|enum)\s+(\w+)/g;
+  let declMatch = declareRe.exec(content);
+  while (declMatch) {
+    const kw = declMatch[1] ?? "";
+    const name = declMatch[2] ?? "";
+    if (name) {
+      const kind = kw === "type" || kw === "interface" ? "type" : "value";
+      kinds.set(name, kind);
+    }
+    declMatch = declareRe.exec(content);
+  }
+
   const braceExportRe = /export\s*\{([^}]+)\}/g;
   let match = braceExportRe.exec(content);
   while (match) {
@@ -153,29 +199,18 @@ function extractExportNames(content: string): string[] {
     const items = matchContent.split(",");
     for (const item of items) {
       const trimmed = item.trim();
-      const asMatch = /(\w+)\s+as\s+(\w+)/.exec(trimmed);
-      const name = asMatch ? (asMatch[2] ?? "") : trimmed.replace(/^type\s+/, "");
-      if (name && /^\w+$/.test(name) && !seen.has(name)) {
-        seen.add(name);
-        names.push(name);
+      const isTypeExport = /^type\s+/.test(trimmed);
+      const cleaned = trimmed.replace(/^type\s+/, "");
+      const asMatch = /(\w+)\s+as\s+(\w+)/.exec(cleaned);
+      const name = asMatch ? (asMatch[2] ?? "") : cleaned;
+      if (name && /^\w+$/.test(name) && !kinds.has(name)) {
+        kinds.set(name, isTypeExport ? "type" : "value");
       }
     }
     match = braceExportRe.exec(content);
   }
 
-  // Match: export declare ...
-  const declareRe = /export\s+declare\s+(?:const|function|class|type|interface|enum)\s+(\w+)/g;
-  let declMatch = declareRe.exec(content);
-  while (declMatch) {
-    const name = declMatch[1] ?? "";
-    if (!seen.has(name)) {
-      seen.add(name);
-      names.push(name);
-    }
-    declMatch = declareRe.exec(content);
-  }
-
-  return names.sort();
+  return kinds;
 }
 
 function shouldExclude(name: string, patterns?: readonly RegExp[]): boolean {

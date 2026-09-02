@@ -54,6 +54,9 @@ jobs:
       - name: Run tests
         run: pnpm test:run
 
+      - name: Validate generated documentation metadata
+        run: pnpm docs --check
+
       - name: Build Storybook
         run: pnpm storybook:build
 

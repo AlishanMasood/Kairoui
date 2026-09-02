@@ -8,8 +8,9 @@ import { groupCompoundComponents } from "./compound";
 import { normalizeComponents, createGeneratorOutput } from "./normalization";
 import { writeMetadata } from "./serialization";
 import { discoverPackages, discoverExportsFromDts } from "./package-discovery";
-import type { ComponentMeta } from "./schema";
+import type { ComponentMeta, GeneratorOutput } from "./schema";
 import type { DiscoveryConfig } from "./package-discovery";
+import { validateMetadata, formatReport, isStaleAgainst } from "./validation";
 
 // ─── Config ─────────────────────────────────────────────────────────
 
@@ -98,31 +99,70 @@ export function generate(options: GenerateOptions): { success: boolean; componen
 
   const output = createGeneratorOutput(packageDocs);
 
+  const discoveredComponentNames = collectDiscoveredComponentNames(pkgs, config);
+
   if (check) {
     const outPath = resolve(outputDir, "api-metadata.json");
     if (!existsSync(outPath)) {
       console.error("[docs-generator] CHECK FAILED: api-metadata.json not found");
+      console.error("[docs-generator] Run 'pnpm generate:docs' to create it.");
       return { success: false, componentCount: allComponents.length };
     }
-    const existing = readFileSync(outPath, "utf-8");
-    // Compare ignoring generatedAt timestamp
-    const existingParsed = JSON.parse(existing) as Record<string, unknown>;
-    const newJson = JSON.parse(JSON.stringify(output)) as Record<string, unknown>;
-    delete existingParsed["generatedAt"];
-    delete newJson["generatedAt"];
-    const isStale = JSON.stringify(existingParsed) !== JSON.stringify(newJson);
-    if (isStale) {
-      console.error("[docs-generator] CHECK FAILED: metadata is stale, re-run generation");
+
+    const existingRaw = readFileSync(outPath, "utf-8");
+    const existingParsed = JSON.parse(existingRaw) as GeneratorOutput;
+
+    if (isStaleAgainst(existingParsed, output)) {
+      console.error("[docs-generator] CHECK FAILED [DOC010]: metadata is stale.");
+      console.error(
+        "[docs-generator] The current generator output differs from generated/api-metadata.json.",
+      );
+      console.error("[docs-generator] Run 'pnpm generate:docs' and commit the result.");
       return { success: false, componentCount: allComponents.length };
     }
-    console.log("[docs-generator] CHECK PASSED: metadata is up to date");
+
+    const validation = validateMetadata(existingParsed, {
+      monorepoRoot,
+      discoveredComponents: discoveredComponentNames,
+    });
+    console.log(formatReport(validation));
+
+    if (!validation.ok) {
+      console.error("[docs-generator] CHECK FAILED: validation errors present.");
+      return { success: false, componentCount: allComponents.length };
+    }
+
+    console.log("[docs-generator] CHECK PASSED: metadata is up to date and valid.");
     return { success: true, componentCount: allComponents.length };
   }
 
   // 4. Write output
   writeMetadata(output, resolve(outputDir, "api-metadata.json"));
   console.log(`[docs-generator] Generated ${String(allComponents.length)} components`);
-  return { success: true, componentCount: allComponents.length };
+
+  const validation = validateMetadata(output, {
+    monorepoRoot,
+    discoveredComponents: discoveredComponentNames,
+  });
+  if (validation.warningCount > 0 || validation.errorCount > 0) {
+    console.log(formatReport(validation));
+  }
+
+  return { success: validation.errorCount === 0, componentCount: allComponents.length };
+}
+
+function collectDiscoveredComponentNames(
+  pkgs: readonly ReturnType<typeof discoverPackages>[number][],
+  config: DiscoveryConfig,
+): readonly string[] {
+  const names = new Set<string>();
+  for (const pkg of pkgs) {
+    const exports = discoverExportsFromDts(pkg, config);
+    for (const exp of exports) {
+      if (exp.kind === "component") names.add(exp.name);
+    }
+  }
+  return [...names];
 }
 
 // ─── Component directory finder ─────────────────────────────────────
