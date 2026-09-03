@@ -5,18 +5,13 @@
   "props": [
     {
       "name": "allowCustomValue",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether freeform input is allowed (value doesn't need to match an item).",
       "deprecated": false
     },
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     {
       "name": "defaultInputValue",
       "type": "undefined | string",
@@ -27,7 +22,7 @@
     },
     {
       "name": "defaultOpen",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Initial open state.",
@@ -42,7 +37,7 @@
     },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether the combobox is disabled.",
@@ -85,14 +80,14 @@
     },
     {
       "name": "open",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Controlled open state.",
       "deprecated": false
     },
     {
       "name": "required",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether a value is required.",

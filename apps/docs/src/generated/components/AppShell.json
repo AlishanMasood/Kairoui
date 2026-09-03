@@ -10,16 +10,11 @@
       "description": "Aside width. Defaults to \"280px\".",
       "deprecated": false
     },
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
     {
       "name": "fixed",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether header/sidebar are fixed (sticky). Defaults to false.",
@@ -49,7 +44,7 @@
     },
     {
       "name": "sidebarCollapsed",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether sidebar is collapsed.",

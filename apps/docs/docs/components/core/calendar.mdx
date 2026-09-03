@@ -3,7 +3,9 @@ title: Calendar
 sidebar_position: 46
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, DocsSection, Demo, PropsTable } from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import CalendarMeta from "@site/src/generated/components/Calendar.json";
 import { Calendar } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -72,5 +74,11 @@ RTL mode reverses ArrowRight/ArrowLeft.
 - `aria-live="polite"` on heading announces month changes
 - Previous/Next buttons have `aria-label`
 - Roving tabindex: only focused day has `tabIndex=0`
+
+</DocsSection>
+
+<DocsSection title="API">
+
+<PropsTable props={toPropsList(CalendarMeta)} />
 
 </DocsSection>

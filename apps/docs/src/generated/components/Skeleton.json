@@ -5,7 +5,7 @@
   "props": [
     {
       "name": "animate",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "true",
       "description": "Disable pulse animation.",

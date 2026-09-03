@@ -10,22 +10,17 @@
       "description": "Elements excluded from \"outside\" detection (e.g., portaled triggers).",
       "deprecated": false
     },
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     {
       "name": "disableEscapeKeyDown",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether Escape dismissal is disabled.",
       "deprecated": false
     },
     {
       "name": "disableOutsidePointerEvents",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "When true, pointer events outside the layer are blocked (modal behavior).",
       "deprecated": false

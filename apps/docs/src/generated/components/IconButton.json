@@ -26,21 +26,21 @@
     },
     {
       "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "type": "undefined | ReactNode",
       "required": true,
       "description": "Icon content (required).",
       "deprecated": false
     },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "deprecated": false
     },
     {
       "name": "loading",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "deprecated": false
@@ -54,11 +54,16 @@
     },
     {
       "name": "slotProps",
-      "type": "undefined | Partial<T>",
+      "type": "undefined | Partial<Record<IconButtonSlotNames, Record<string, unknown>>>",
       "required": false,
       "deprecated": false
     },
-    { "name": "slots", "type": "undefined | Partial<T>", "required": false, "deprecated": false },
+    {
+      "name": "slots",
+      "type": "undefined | Partial<Record<IconButtonSlotNames, ElementType>>",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "type",
       "type": "undefined | \"button\" | \"submit\" | \"reset\"",

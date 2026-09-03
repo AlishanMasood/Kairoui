@@ -3,15 +3,10 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "SelectProps",
   "props": [
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     {
       "name": "defaultOpen",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Initial open state.",
@@ -26,7 +21,7 @@
     },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether the select is disabled.",
@@ -55,14 +50,14 @@
     },
     {
       "name": "open",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Controlled open state.",
       "deprecated": false
     },
     {
       "name": "required",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether a value is required.",

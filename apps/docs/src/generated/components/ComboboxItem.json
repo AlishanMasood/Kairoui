@@ -3,16 +3,11 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "ComboboxItemProps",
   "props": [
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether this item is disabled.",
       "deprecated": false

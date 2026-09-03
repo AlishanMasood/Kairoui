@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-02T18:27:23.146Z",
+  "generatedAt": "2026-09-03T18:19:49.055Z",
   "generatorVersion": "0.1.0",
   "packages": [
     {
@@ -14,7 +14,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -40,7 +40,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Disable all items.",
@@ -92,7 +92,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -104,7 +104,7 @@
             },
             {
               "name": "forceMount",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Force mount (useful for CSS animations). Defaults to false.",
               "deprecated": false
@@ -127,7 +127,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -162,7 +162,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -174,7 +174,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Disable this item.",
               "deprecated": false
@@ -204,7 +204,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -232,7 +232,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -244,7 +244,7 @@
             },
             {
               "name": "live",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Use role=\"alert\" for live announcements. Defaults to false (static).",
@@ -276,7 +276,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -304,7 +304,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -332,13 +332,13 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -350,7 +350,7 @@
             },
             {
               "name": "open",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             }
@@ -372,7 +372,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -400,7 +400,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -428,7 +428,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -456,7 +456,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -490,7 +490,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -518,7 +518,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -546,7 +546,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -574,7 +574,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -602,7 +602,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -630,7 +630,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -665,7 +665,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -677,7 +677,7 @@
             },
             {
               "name": "fixed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether header/sidebar are fixed (sticky). Defaults to false.",
@@ -707,7 +707,7 @@
             },
             {
               "name": "sidebarCollapsed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether sidebar is collapsed.",
@@ -745,7 +745,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -773,7 +773,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -785,7 +785,7 @@
             },
             {
               "name": "fixed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Stick to bottom.",
               "deprecated": false
@@ -808,7 +808,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -820,7 +820,7 @@
             },
             {
               "name": "fixed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Stick to top. Inherits from root `fixed` unless overridden.",
               "deprecated": false
@@ -843,7 +843,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -871,7 +871,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -906,7 +906,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "defaultValue": "\"/\"",
               "deprecated": false
@@ -943,7 +943,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -971,7 +971,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -999,7 +999,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1033,7 +1033,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1061,7 +1061,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1096,26 +1096,26 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "deprecated": false
             },
             {
               "name": "endIcon",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "loading",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "deprecated": false
@@ -1129,19 +1129,19 @@
             },
             {
               "name": "slotProps",
-              "type": "undefined | Partial<T>",
+              "type": "undefined | Partial<Record<ButtonSlotNames, Record<string, unknown>>>",
               "required": false,
               "deprecated": false
             },
             {
               "name": "slots",
-              "type": "undefined | Partial<T>",
+              "type": "undefined | Partial<Record<ButtonSlotNames, ElementType>>",
               "required": false,
               "deprecated": false
             },
             {
               "name": "startIcon",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1170,7 +1170,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1255,21 +1255,21 @@
           "props": [
             {
               "name": "checked",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Controlled checked state.",
               "deprecated": false
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "description": "Label content rendered beside the checkbox.",
               "deprecated": false
             },
             {
               "name": "defaultChecked",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Initial checked state for uncontrolled mode.",
@@ -1277,7 +1277,7 @@
             },
             {
               "name": "indeterminate",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether the checkbox is in indeterminate state.",
@@ -1316,7 +1316,7 @@
           "props": [
             {
               "name": "allowCustomValue",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether freeform input is allowed (value doesn't need to match an item).",
@@ -1324,7 +1324,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1338,7 +1338,7 @@
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Initial open state.",
@@ -1353,7 +1353,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether the combobox is disabled.",
@@ -1396,14 +1396,14 @@
             },
             {
               "name": "open",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Controlled open state.",
               "deprecated": false
             },
             {
               "name": "required",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether a value is required.",
@@ -1434,7 +1434,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1462,7 +1462,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1490,7 +1490,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1518,7 +1518,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1581,7 +1581,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1593,7 +1593,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether this item is disabled.",
               "deprecated": false
@@ -1630,7 +1630,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1658,7 +1658,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1686,7 +1686,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1714,7 +1714,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1742,7 +1742,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1778,7 +1778,7 @@
             },
             {
               "name": "emptyState",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1790,7 +1790,7 @@
             },
             {
               "name": "loading",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "deprecated": false
@@ -1844,7 +1844,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1872,7 +1872,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1907,7 +1907,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -1935,19 +1935,19 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
             {
               "name": "modal",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "true",
               "deprecated": false
@@ -1960,7 +1960,7 @@
             },
             {
               "name": "open",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             }
@@ -1982,7 +1982,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2010,7 +2010,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2038,7 +2038,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2078,7 +2078,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2106,7 +2106,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2134,7 +2134,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2162,7 +2162,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2197,20 +2197,20 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "disableEscapeKeyDown",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether Escape dismissal is disabled.",
               "deprecated": false
             },
             {
               "name": "disableOutsidePointerEvents",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "When true, pointer events outside the layer are blocked (modal behavior).",
               "deprecated": false
@@ -2261,13 +2261,13 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -2279,7 +2279,7 @@
             },
             {
               "name": "open",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -2309,7 +2309,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2337,7 +2337,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2365,7 +2365,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2405,7 +2405,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2433,7 +2433,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2461,7 +2461,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2489,7 +2489,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2517,7 +2517,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2545,7 +2545,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2573,7 +2573,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2601,7 +2601,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2629,7 +2629,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2657,13 +2657,13 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Disables all controls within this field.",
@@ -2678,7 +2678,7 @@
             },
             {
               "name": "readOnly",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Makes all controls within this field read-only.",
@@ -2686,7 +2686,7 @@
             },
             {
               "name": "required",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Marks the field as required.",
@@ -2717,7 +2717,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             }
@@ -2739,7 +2739,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             }
@@ -2761,20 +2761,20 @@
           "props": [
             {
               "name": "autoFocus",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Focus the first tabbable element on mount. Defaults to true when trapped.",
               "deprecated": false
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "enabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether the scope is active. Defaults to true.",
               "deprecated": false
@@ -2788,14 +2788,14 @@
             },
             {
               "name": "restoreFocus",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Restore focus to previously focused element on unmount.",
               "deprecated": false
             },
             {
               "name": "trapped",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Trap focus within this scope (for modal overlays).",
               "deprecated": false
@@ -2839,21 +2839,21 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": true,
               "description": "Icon content (required).",
               "deprecated": false
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "deprecated": false
             },
             {
               "name": "loading",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "deprecated": false
@@ -2867,13 +2867,13 @@
             },
             {
               "name": "slotProps",
-              "type": "undefined | Partial<T>",
+              "type": "undefined | Partial<Record<IconButtonSlotNames, Record<string, unknown>>>",
               "required": false,
               "deprecated": false
             },
             {
               "name": "slots",
-              "type": "undefined | Partial<T>",
+              "type": "undefined | Partial<Record<IconButtonSlotNames, ElementType>>",
               "required": false,
               "deprecated": false
             },
@@ -2926,7 +2926,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             }
@@ -2948,7 +2948,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -2983,7 +2983,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3011,7 +3011,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3031,7 +3031,7 @@
             },
             {
               "name": "loop",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "true",
               "description": "Loop trigger navigation. Defaults to true.",
@@ -3069,7 +3069,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3081,7 +3081,7 @@
             },
             {
               "name": "loop",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Loop item navigation.",
               "deprecated": false
@@ -3111,7 +3111,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3140,7 +3140,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3152,7 +3152,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             }
@@ -3174,7 +3174,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3255,7 +3255,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3283,7 +3283,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3311,7 +3311,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3346,14 +3346,14 @@
           "props": [
             {
               "name": "active",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether this link represents the current page.",
               "deprecated": false
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3387,7 +3387,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3415,7 +3415,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3472,7 +3472,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether the input is disabled.",
               "deprecated": false
@@ -3521,14 +3521,14 @@
             },
             {
               "name": "readOnly",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether the input is read-only.",
               "deprecated": false
             },
             {
               "name": "required",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether a value is required.",
               "deprecated": false
@@ -3581,7 +3581,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "defaultValue": "\"Previous\"",
               "deprecated": false
@@ -3668,7 +3668,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3696,7 +3696,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3731,7 +3731,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3759,7 +3759,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -3787,7 +3787,7 @@
           "props": [
             {
               "name": "autoFocus",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Auto-focus first field on mount.",
@@ -3803,7 +3803,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether the input is disabled.",
               "deprecated": false
@@ -3818,7 +3818,7 @@
             },
             {
               "name": "mask",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether to mask input (password dots).",
@@ -3863,14 +3863,14 @@
             },
             {
               "name": "readOnly",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether the input is read-only.",
               "deprecated": false
             },
             {
               "name": "required",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether a value is required.",
               "deprecated": false
@@ -3900,19 +3900,19 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
             {
               "name": "modal",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "deprecated": false
@@ -3925,7 +3925,7 @@
             },
             {
               "name": "open",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             }
@@ -3947,7 +3947,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4009,7 +4009,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4037,7 +4037,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4056,7 +4056,7 @@
             },
             {
               "name": "flip",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether to flip when overflowing viewport.",
               "deprecated": false
@@ -4089,7 +4089,7 @@
             },
             {
               "name": "shift",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether to shift along the axis to stay in viewport.",
               "deprecated": false
@@ -4112,7 +4112,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4140,7 +4140,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4168,7 +4168,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4197,13 +4197,13 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | (props: { present: boolean; }) => ReactNode",
+              "type": "undefined | ReactNode | (props: { present: boolean; }) => ReactNode",
               "required": true,
               "deprecated": false
             },
             {
               "name": "present",
-              "type": "false | true",
+              "type": "boolean",
               "required": true,
               "description": "Whether the child is currently present (mounted).",
               "deprecated": false
@@ -4226,7 +4226,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4314,7 +4314,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4342,21 +4342,21 @@
           "props": [
             {
               "name": "checked",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Controlled checked state (standalone usage).",
               "deprecated": false
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "description": "Label content rendered beside the radio.",
               "deprecated": false
             },
             {
               "name": "defaultChecked",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Initial checked for uncontrolled standalone usage.",
@@ -4403,7 +4403,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4416,7 +4416,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Disables all radios in the group.",
@@ -4446,7 +4446,7 @@
             },
             {
               "name": "required",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "At least one radio must be selected.",
@@ -4477,7 +4477,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4490,7 +4490,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether the slider is disabled.",
               "deprecated": false
@@ -4583,7 +4583,7 @@
           "props": [
             {
               "name": "enabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether scroll locking is active.",
               "deprecated": false
@@ -4606,13 +4606,13 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Initial open state.",
@@ -4627,7 +4627,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether the select is disabled.",
@@ -4656,14 +4656,14 @@
             },
             {
               "name": "open",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Controlled open state.",
               "deprecated": false
             },
             {
               "name": "required",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether a value is required.",
@@ -4694,7 +4694,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4729,7 +4729,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4757,7 +4757,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4769,7 +4769,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether this item is disabled.",
               "deprecated": false
@@ -4806,7 +4806,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4856,7 +4856,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4897,7 +4897,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "defaultValue": "\"Toggle sidebar\"",
               "deprecated": false
@@ -4910,7 +4910,7 @@
             },
             {
               "name": "collapsed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether sidebar is collapsed.",
               "deprecated": false
@@ -4925,7 +4925,7 @@
             },
             {
               "name": "defaultCollapsed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Default collapsed state for uncontrolled mode.",
               "deprecated": false
@@ -4971,7 +4971,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -4999,7 +4999,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5027,7 +5027,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5039,14 +5039,14 @@
             },
             {
               "name": "collapsible",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Collapsible group (renders as disclosure).",
               "deprecated": false
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Default open state for collapsible groups.",
               "deprecated": false
@@ -5069,7 +5069,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5097,7 +5097,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5125,14 +5125,14 @@
           "props": [
             {
               "name": "active",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether this item is the current/active page.",
               "deprecated": false
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5144,7 +5144,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             }
@@ -5166,14 +5166,14 @@
           "props": [
             {
               "name": "active",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether this link is the current page.",
               "deprecated": false
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5185,7 +5185,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -5213,7 +5213,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5241,7 +5241,7 @@
           "props": [
             {
               "name": "animate",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "true",
               "description": "Disable pulse animation.",
@@ -5300,7 +5300,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5313,7 +5313,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Whether the slider is disabled.",
@@ -5455,7 +5455,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5519,21 +5519,21 @@
           "props": [
             {
               "name": "checked",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Controlled checked state.",
               "deprecated": false
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "description": "Label content rendered beside the switch.",
               "deprecated": false
             },
             {
               "name": "defaultChecked",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Initial checked state for uncontrolled mode.",
@@ -5587,7 +5587,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5615,7 +5615,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5643,7 +5643,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5677,7 +5677,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5705,7 +5705,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5739,7 +5739,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5781,7 +5781,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5809,7 +5809,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5821,7 +5821,7 @@
             },
             {
               "name": "selected",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             }
@@ -5851,7 +5851,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5916,7 +5916,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5928,14 +5928,14 @@
             },
             {
               "name": "keepMounted",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "After first activation, keep mounted even when inactive. Defaults to false.",
               "deprecated": false
             },
             {
               "name": "lazy",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Only mount when active (unmount when inactive). Defaults to false.",
               "deprecated": false
@@ -5965,7 +5965,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -5977,7 +5977,7 @@
             },
             {
               "name": "loop",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Wrap keyboard navigation at boundaries. Defaults to true.",
               "deprecated": false
@@ -6000,7 +6000,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6012,7 +6012,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether this trigger is disabled.",
               "deprecated": false
@@ -6074,7 +6074,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6137,7 +6137,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6165,7 +6165,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6193,7 +6193,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6221,7 +6221,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6249,7 +6249,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6283,7 +6283,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6318,7 +6318,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6346,7 +6346,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6374,7 +6374,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6402,7 +6402,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6429,7 +6429,7 @@
             },
             {
               "name": "pauseOnHover",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Pause timers on hover/focus. Defaults to true.",
               "deprecated": false
@@ -6459,7 +6459,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6524,13 +6524,13 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "defaultPressed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "description": "Initial pressed state for uncontrolled mode.",
@@ -6545,7 +6545,7 @@
             },
             {
               "name": "pressed",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Controlled pressed state.",
               "deprecated": false
@@ -6583,7 +6583,7 @@
             },
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6595,14 +6595,14 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "defaultValue": "false",
               "deprecated": false
             },
             {
               "name": "loop",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -6656,13 +6656,13 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -6690,7 +6690,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6704,7 +6704,7 @@
             },
             {
               "name": "defaultOpen",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -6724,7 +6724,7 @@
             },
             {
               "name": "open",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             }
@@ -6780,7 +6780,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6799,7 +6799,7 @@
             },
             {
               "name": "flip",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether to flip when overflowing viewport.",
               "deprecated": false
@@ -6820,7 +6820,7 @@
             },
             {
               "name": "shift",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "description": "Whether to shift along the axis to stay in viewport.",
               "deprecated": false
@@ -6843,7 +6843,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6871,7 +6871,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6899,7 +6899,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -6977,7 +6977,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -7005,7 +7005,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -7017,7 +7017,7 @@
             },
             {
               "name": "disabled",
-              "type": "undefined | false | true",
+              "type": "undefined | boolean",
               "required": false,
               "deprecated": false
             },
@@ -7045,7 +7045,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },
@@ -7073,7 +7073,7 @@
           "props": [
             {
               "name": "children",
-              "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+              "type": "undefined | ReactNode",
               "required": false,
               "deprecated": false
             },

@@ -3,12 +3,7 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "ToastProviderProps",
   "props": [
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     {
       "name": "defaultDuration",
       "type": "undefined | number",
@@ -32,7 +27,7 @@
     },
     {
       "name": "pauseOnHover",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Pause timers on hover/focus. Defaults to true.",
       "deprecated": false

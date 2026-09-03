@@ -3,7 +3,9 @@ title: TreeView
 sidebar_position: 44
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, DocsSection, Demo, PropsTable } from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import TreeViewMeta from "@site/src/generated/components/TreeView.json";
 import {
   TreeView,
   TreeViewItem,
@@ -143,5 +145,11 @@ RTL reverses ArrowLeft/ArrowRight behavior.
 - `aria-disabled` on disabled items
 - Indicator is `aria-hidden` (decorative)
 - `data-depth` attribute enables indentation styling
+
+</DocsSection>
+
+<DocsSection title="API">
+
+<PropsTable props={toPropsList(TreeViewMeta)} />
 
 </DocsSection>

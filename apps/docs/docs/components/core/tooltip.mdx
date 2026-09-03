@@ -3,7 +3,16 @@ title: Tooltip
 sidebar_position: 24
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import TooltipMeta from "@site/src/generated/components/Tooltip.json";
 import { Tooltip, TooltipTrigger, TooltipPortal, TooltipContent } from "@kairoui/core/components";
 
 <ComponentHeader
@@ -45,5 +54,11 @@ import { Tooltip, TooltipTrigger, TooltipPortal, TooltipContent } from "@kairoui
   non-interactive — content cannot be hovered or focused. Use Popover for interactive floating
   content.
 </Callout>
+
+</DocsSection>
+
+<DocsSection title="API">
+
+<PropsTable props={toPropsList(TooltipMeta)} />
 
 </DocsSection>

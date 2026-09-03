@@ -10,12 +10,7 @@
       "defaultValue": "\"outline\"",
       "deprecated": false
     },
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     {
       "name": "defaultValue",
       "type": "undefined | string | string[]",
@@ -24,12 +19,12 @@
     },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "deprecated": false
     },
-    { "name": "loop", "type": "undefined | false | true", "required": false, "deprecated": false },
+    { "name": "loop", "type": "undefined | boolean", "required": false, "deprecated": false },
     {
       "name": "onValueChange",
       "type": "undefined | (value: string) => void | (value: string[]) => void",

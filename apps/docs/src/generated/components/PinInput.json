@@ -5,7 +5,7 @@
   "props": [
     {
       "name": "autoFocus",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Auto-focus first field on mount.",
@@ -21,7 +21,7 @@
     },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether the input is disabled.",
       "deprecated": false
@@ -36,7 +36,7 @@
     },
     {
       "name": "mask",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Whether to mask input (password dots).",
@@ -81,14 +81,14 @@
     },
     {
       "name": "readOnly",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether the input is read-only.",
       "deprecated": false
     },
     {
       "name": "required",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether a value is required.",
       "deprecated": false

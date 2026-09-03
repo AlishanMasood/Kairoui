@@ -3,12 +3,7 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "DataTableRootProps",
   "props": [
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
     {
       "name": "columns",
@@ -31,14 +26,14 @@
     },
     {
       "name": "emptyState",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "type": "undefined | ReactNode",
       "required": false,
       "deprecated": false
     },
     { "name": "getRowId", "type": "(row: TRow) => RowId", "required": true, "deprecated": false },
     {
       "name": "loading",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "deprecated": false

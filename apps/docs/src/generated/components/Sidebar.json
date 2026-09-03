@@ -5,7 +5,7 @@
   "props": [
     {
       "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "type": "undefined | ReactNode",
       "required": false,
       "defaultValue": "\"Toggle sidebar\"",
       "deprecated": false
@@ -13,7 +13,7 @@
     { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
     {
       "name": "collapsed",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether sidebar is collapsed.",
       "deprecated": false
@@ -28,7 +28,7 @@
     },
     {
       "name": "defaultCollapsed",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Default collapsed state for uncontrolled mode.",
       "deprecated": false

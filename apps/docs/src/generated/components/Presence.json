@@ -5,13 +5,13 @@
   "props": [
     {
       "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | (props: { present: boolean; }) => ReactNode",
+      "type": "undefined | ReactNode | (props: { present: boolean; }) => ReactNode",
       "required": true,
       "deprecated": false
     },
     {
       "name": "present",
-      "type": "false | true",
+      "type": "boolean",
       "required": true,
       "description": "Whether the child is currently present (mounted).",
       "deprecated": false

@@ -3,7 +3,16 @@ title: Sidebar
 sidebar_position: 37
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import SidebarMeta from "@site/src/generated/components/Sidebar.json";
 import {
   Sidebar,
   SidebarHeader,
@@ -207,5 +216,11 @@ Groups with `collapsible` render their label as a disclosure button.
 - Active links marked with `aria-current="page"`
 - Disabled links have `aria-disabled` and remove `href`
 - `SidebarTrigger` has `aria-expanded` and `aria-label`
+
+</DocsSection>
+
+<DocsSection title="API">
+
+<PropsTable props={toPropsList(SidebarMeta)} />
 
 </DocsSection>

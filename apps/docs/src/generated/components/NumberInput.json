@@ -12,7 +12,7 @@
     },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether the input is disabled.",
       "deprecated": false
@@ -61,14 +61,14 @@
     },
     {
       "name": "readOnly",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether the input is read-only.",
       "deprecated": false
     },
     {
       "name": "required",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether a value is required.",
       "deprecated": false

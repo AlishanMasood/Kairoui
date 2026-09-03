@@ -18,15 +18,10 @@ export interface RawComponent {
 
 function prettifyType(type: string, required: boolean): string {
   let t = type;
+  // Strip leading `undefined |` for optional props — the required column already conveys it.
   if (!required && t.startsWith("undefined | ")) {
     t = t.slice("undefined | ".length);
   }
-  t = t.replace(/\bfalse \| true\b/g, "boolean");
-  t = t.replace(/\btrue \| false\b/g, "boolean");
-  t = t.replace(
-    /null \| string \| number \| bigint \| (?:false \| true|boolean) \| ReactElement<[^>]+> \| Iterable<ReactNode> \| ReactPortal \| Promise<AwaitedReactNode>/g,
-    "ReactNode",
-  );
   return t;
 }
 

@@ -11,15 +11,10 @@
       "description": "Appearance variant.",
       "deprecated": false
     },
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     {
       "name": "defaultPressed",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Initial pressed state for uncontrolled mode.",
@@ -34,7 +29,7 @@
     },
     {
       "name": "pressed",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Controlled pressed state.",
       "deprecated": false

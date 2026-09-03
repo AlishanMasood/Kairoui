@@ -58,16 +58,30 @@ export function stringifyType(checker: ts.TypeChecker, type: ts.Type): string {
   return cleanTypeString(raw);
 }
 
+function isBuiltinLibDeclaration(decl: ts.Declaration): boolean {
+  const fileName = decl.getSourceFile().fileName;
+  return fileName.includes("node_modules/typescript/lib/");
+}
+
+function isGenericInstantiation(type: ts.Type): boolean {
+  const typeRef = type as ts.TypeReference;
+  if (typeRef.typeArguments && typeRef.typeArguments.length > 0) return true;
+  const anyType = type as ts.Type & { aliasTypeArguments?: readonly ts.Type[] };
+  if (anyType.aliasTypeArguments && anyType.aliasTypeArguments.length > 0) return true;
+  return false;
+}
+
 function expandTypeAlias(checker: ts.TypeChecker, type: ts.Type): ts.Type {
-  // If it's a union type, try expanding each non-primitive member
-  if (type.isUnion()) {
-    return type;
-  }
-  // If the type has an alias symbol, get the actual type
+  // Union types are expanded by the caller.
+  if (type.isUnion()) return type;
+  // Never expand generic instantiations (e.g., Partial<Foo>) — the alias body
+  // references a type parameter that has no context here.
+  if (isGenericInstantiation(type)) return type;
+
   if (type.aliasSymbol) {
     const aliasDecl = type.aliasSymbol.getDeclarations();
     const firstDecl = aliasDecl?.[0];
-    if (firstDecl && ts.isTypeAliasDeclaration(firstDecl)) {
+    if (firstDecl && !isBuiltinLibDeclaration(firstDecl) && ts.isTypeAliasDeclaration(firstDecl)) {
       return checker.getTypeFromTypeNode(firstDecl.type);
     }
   }
@@ -75,7 +89,7 @@ function expandTypeAlias(checker: ts.TypeChecker, type: ts.Type): ts.Type {
   if (symbol) {
     const decls = symbol.getDeclarations();
     const firstDecl = decls?.[0];
-    if (firstDecl && ts.isTypeAliasDeclaration(firstDecl)) {
+    if (firstDecl && !isBuiltinLibDeclaration(firstDecl) && ts.isTypeAliasDeclaration(firstDecl)) {
       return checker.getTypeFromTypeNode(firstDecl.type);
     }
   }
@@ -128,6 +142,13 @@ function cleanTypeString(raw: string): string {
     .replace(/React\.FocusEvent<[^>]*>/g, "FocusEvent")
     .replace(/React\.ChangeEvent<[^>]*>/g, "ChangeEvent");
 
+  // Collapse the verbose ReactNode expansion TypeScript emits.
+  cleaned = collapseReactNodeExpansion(cleaned);
+
+  // Normalize boolean unions.
+  cleaned = cleaned.replace(/\bfalse \| true\b/g, "boolean");
+  cleaned = cleaned.replace(/\btrue \| false\b/g, "boolean");
+
   // Collapse "string | number | boolean" patterns that are too verbose
   if (cleaned.length > 120) {
     cleaned = cleaned.replace(
@@ -137,6 +158,53 @@ function cleanTypeString(raw: string): string {
   }
 
   return cleaned;
+}
+
+const REACT_NODE_PREFIX = "null | string | number | bigint | boolean | ";
+const REACT_NODE_ALT_PREFIX = "null | string | number | bigint | false | true | ";
+const REACT_NODE_SUFFIX = " | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>";
+
+function collapseReactNodeExpansion(input: string): string {
+  let result = input;
+  let guard = 0;
+  while (guard++ < 20) {
+    const idx = result.indexOf("ReactElement<");
+    if (idx < 0) break;
+
+    const closingIdx = findMatchingAngleBracket(result, idx + "ReactElement".length);
+    if (closingIdx < 0) break;
+
+    const reactElementEnd = closingIdx + 1;
+    const before = result.slice(0, idx);
+    const after = result.slice(reactElementEnd);
+
+    let prefixLen = 0;
+    if (before.endsWith(REACT_NODE_PREFIX)) prefixLen = REACT_NODE_PREFIX.length;
+    else if (before.endsWith(REACT_NODE_ALT_PREFIX)) prefixLen = REACT_NODE_ALT_PREFIX.length;
+
+    const hasSuffix = after.startsWith(REACT_NODE_SUFFIX);
+    if (prefixLen === 0 || !hasSuffix) {
+      return result;
+    }
+
+    const collapsedBefore = before.slice(0, before.length - prefixLen);
+    const collapsedAfter = after.slice(REACT_NODE_SUFFIX.length);
+    result = collapsedBefore + "ReactNode" + collapsedAfter;
+  }
+  return result;
+}
+
+function findMatchingAngleBracket(s: string, openIdx: number): number {
+  if (s[openIdx] !== "<") return -1;
+  let depth = 0;
+  for (let i = openIdx; i < s.length; i++) {
+    if (s[i] === "<") depth += 1;
+    else if (s[i] === ">") {
+      depth -= 1;
+      if (depth === 0) return i;
+    }
+  }
+  return -1;
 }
 
 // ─── Prop extraction ────────────────────────────────────────────────

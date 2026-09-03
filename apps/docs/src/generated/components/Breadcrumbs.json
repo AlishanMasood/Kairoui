@@ -5,7 +5,7 @@
   "props": [
     {
       "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
+      "type": "undefined | ReactNode",
       "required": false,
       "defaultValue": "\"/\"",
       "deprecated": false

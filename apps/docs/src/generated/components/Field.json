@@ -3,15 +3,10 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "FieldProps",
   "props": [
-    {
-      "name": "children",
-      "type": "undefined | null | string | number | bigint | false | true | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode>",
-      "required": false,
-      "deprecated": false
-    },
+    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
     {
       "name": "disabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Disables all controls within this field.",
@@ -26,7 +21,7 @@
     },
     {
       "name": "readOnly",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Makes all controls within this field read-only.",
@@ -34,7 +29,7 @@
     },
     {
       "name": "required",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
       "description": "Marks the field as required.",

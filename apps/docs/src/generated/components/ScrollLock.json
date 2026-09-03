@@ -5,7 +5,7 @@
   "props": [
     {
       "name": "enabled",
-      "type": "undefined | false | true",
+      "type": "undefined | boolean",
       "required": false,
       "description": "Whether scroll locking is active.",
       "deprecated": false
