@@ -10,7 +10,12 @@
       "defaultValue": "\"solid\"",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "disabled",
       "type": "undefined | boolean",
@@ -18,7 +23,12 @@
       "defaultValue": "false",
       "deprecated": false
     },
-    { "name": "endIcon", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "endIcon",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "loading",
       "type": "undefined | boolean",
@@ -59,6 +69,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Button"] },
-  "source": { "propsInterface": "ButtonOwnProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Button"
+    ]
+  },
+  "source": {
+    "propsInterface": "ButtonOwnProps"
+  }
 }

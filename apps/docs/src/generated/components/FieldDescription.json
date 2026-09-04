@@ -3,8 +3,20 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "FieldDescriptionProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false }
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["FieldDescription"] },
-  "source": { "propsInterface": "FieldDescriptionProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "FieldDescription"
+    ]
+  },
+  "source": {
+    "propsInterface": "FieldDescriptionProps"
+  }
 }

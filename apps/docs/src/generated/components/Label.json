@@ -3,8 +3,20 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "LabelProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false }
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Label"] },
-  "source": { "propsInterface": "LabelProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Label"
+    ]
+  },
+  "source": {
+    "propsInterface": "LabelProps"
+  }
 }

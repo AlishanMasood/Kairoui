@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "SpinnerProps",
   "props": [
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "label",
       "type": "undefined | string",
@@ -19,6 +24,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Spinner"] },
-  "source": { "propsInterface": "SpinnerProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Spinner"
+    ]
+  },
+  "source": {
+    "propsInterface": "SpinnerProps"
+  }
 }

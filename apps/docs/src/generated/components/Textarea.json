@@ -20,6 +20,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Textarea"] },
-  "source": { "propsInterface": "TextareaProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Textarea"
+    ]
+  },
+  "source": {
+    "propsInterface": "TextareaProps"
+  }
 }

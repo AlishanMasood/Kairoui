@@ -3,8 +3,18 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "ProgressProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "label",
       "type": "undefined | string",
@@ -44,6 +54,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Progress"] },
-  "source": { "propsInterface": "ProgressProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Progress"
+    ]
+  },
+  "source": {
+    "propsInterface": "ProgressProps"
+  }
 }

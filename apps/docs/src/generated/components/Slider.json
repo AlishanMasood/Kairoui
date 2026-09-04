@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "SliderProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultValue",
       "type": "undefined | number",
@@ -87,6 +92,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Slider"] },
-  "source": { "propsInterface": "SliderProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Slider"
+    ]
+  },
+  "source": {
+    "propsInterface": "SliderProps"
+  }
 }

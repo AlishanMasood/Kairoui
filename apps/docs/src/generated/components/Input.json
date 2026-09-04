@@ -12,6 +12,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Input"] },
-  "source": { "propsInterface": "InputProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Input"
+    ]
+  },
+  "source": {
+    "propsInterface": "InputProps"
+  }
 }

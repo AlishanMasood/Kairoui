@@ -11,6 +11,7 @@ storybook-static/
 pnpm-lock.yaml
 *.tsbuildinfo
 tooling/docs-generator/generated/
+apps/docs/src/generated/
 
 # Tool caches
 .turbo/

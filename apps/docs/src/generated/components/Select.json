@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "SelectProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultOpen",
       "type": "undefined | boolean",
@@ -71,6 +76,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Select"] },
-  "source": { "propsInterface": "SelectProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Select"
+    ]
+  },
+  "source": {
+    "propsInterface": "SelectProps"
+  }
 }

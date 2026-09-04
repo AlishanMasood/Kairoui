@@ -3,8 +3,18 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "TreeViewRootProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultExpandedIds",
       "type": "undefined | ReadonlySet<RowId>",
@@ -56,6 +66,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["TreeView"] },
-  "source": { "propsInterface": "TreeViewRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "TreeView"
+    ]
+  },
+  "source": {
+    "propsInterface": "TreeViewRootProps"
+  }
 }

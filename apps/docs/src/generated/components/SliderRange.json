@@ -3,8 +3,20 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "SliderRangeProps",
   "props": [
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false }
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["SliderRange"] },
-  "source": { "propsInterface": "SliderRangeProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "SliderRange"
+    ]
+  },
+  "source": {
+    "propsInterface": "SliderRangeProps"
+  }
 }

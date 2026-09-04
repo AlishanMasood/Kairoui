@@ -56,6 +56,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Switch"] },
-  "source": { "propsInterface": "SwitchProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Switch"
+    ]
+  },
+  "source": {
+    "propsInterface": "SwitchProps"
+  }
 }

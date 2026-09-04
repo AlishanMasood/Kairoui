@@ -3,8 +3,18 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "AccordionItemRootProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "disabled",
       "type": "undefined | boolean",
@@ -20,6 +30,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["AccordionItem"] },
-  "source": { "propsInterface": "AccordionItemRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "AccordionItem"
+    ]
+  },
+  "source": {
+    "propsInterface": "AccordionItemRootProps"
+  }
 }

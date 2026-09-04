@@ -10,7 +10,12 @@
       "defaultValue": "\"Toggle sidebar\"",
       "deprecated": false
     },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "collapsed",
       "type": "undefined | boolean",
@@ -57,6 +62,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Sidebar"] },
-  "source": { "propsInterface": "SidebarRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Sidebar"
+    ]
+  },
+  "source": {
+    "propsInterface": "SidebarRootProps"
+  }
 }

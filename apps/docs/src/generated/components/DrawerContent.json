@@ -3,8 +3,18 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "DrawerContentProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "onEscapeKeyDown",
       "type": "undefined | (event: KeyboardEvent) => void",
@@ -18,6 +28,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["DrawerContent"] },
-  "source": { "propsInterface": "DrawerContentProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DrawerContent"
+    ]
+  },
+  "source": {
+    "propsInterface": "DrawerContentProps"
+  }
 }

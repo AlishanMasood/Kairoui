@@ -3,8 +3,18 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "AccordionRootProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultValue",
       "type": "undefined | string | string[]",
@@ -42,7 +52,12 @@
       "description": "Keyboard orientation. Defaults to \"vertical\".",
       "deprecated": false
     },
-    { "name": "type", "type": "\"single\" | \"multiple\"", "required": true, "deprecated": false },
+    {
+      "name": "type",
+      "type": "\"single\" | \"multiple\"",
+      "required": true,
+      "deprecated": false
+    },
     {
       "name": "value",
       "type": "undefined | string | string[]",
@@ -51,6 +66,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Accordion"] },
-  "source": { "propsInterface": "AccordionRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Accordion"
+    ]
+  },
+  "source": {
+    "propsInterface": "AccordionRootProps"
+  }
 }

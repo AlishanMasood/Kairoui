@@ -11,7 +11,12 @@
       "description": "Disable pulse animation.",
       "deprecated": false
     },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "height",
       "type": "undefined | string | number",
@@ -42,6 +47,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Skeleton"] },
-  "source": { "propsInterface": "SkeletonProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Skeleton"
+    ]
+  },
+  "source": {
+    "propsInterface": "SkeletonProps"
+  }
 }

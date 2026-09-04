@@ -3,12 +3,26 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "NavigationMenuIndicatorProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false }
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
   ],
   "import": {
     "packagePath": "@kairoui/core/components",
-    "namedExports": ["NavigationMenuIndicator"]
+    "namedExports": [
+      "NavigationMenuIndicator"
+    ]
   },
-  "source": { "propsInterface": "NavigationMenuIndicatorProps" }
+  "source": {
+    "propsInterface": "NavigationMenuIndicatorProps"
+  }
 }

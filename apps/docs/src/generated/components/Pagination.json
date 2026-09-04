@@ -17,7 +17,12 @@
       "defaultValue": "\"Previous\"",
       "deprecated": false
     },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultPage",
       "type": "undefined | number",
@@ -77,6 +82,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Pagination"] },
-  "source": { "propsInterface": "PaginationRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Pagination"
+    ]
+  },
+  "source": {
+    "propsInterface": "PaginationRootProps"
+  }
 }

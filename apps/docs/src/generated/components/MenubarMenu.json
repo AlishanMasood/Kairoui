@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "MenubarMenuProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "value",
       "type": "string",
@@ -12,6 +17,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["MenubarMenu"] },
-  "source": { "propsInterface": "MenubarMenuProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "MenubarMenu"
+    ]
+  },
+  "source": {
+    "propsInterface": "MenubarMenuProps"
+  }
 }

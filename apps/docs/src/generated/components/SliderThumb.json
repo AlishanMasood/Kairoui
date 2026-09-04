@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "SliderThumbProps",
   "props": [
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "index",
       "type": "undefined | number",
@@ -12,6 +17,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["SliderThumb"] },
-  "source": { "propsInterface": "SliderThumbProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "SliderThumb"
+    ]
+  },
+  "source": {
+    "propsInterface": "SliderThumbProps"
+  }
 }

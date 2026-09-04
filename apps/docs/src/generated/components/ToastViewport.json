@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "ToastViewportProps",
   "props": [
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "hotkey",
       "type": "undefined | string",
@@ -12,6 +17,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ToastViewport"] },
-  "source": { "propsInterface": "ToastViewportProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "ToastViewport"
+    ]
+  },
+  "source": {
+    "propsInterface": "ToastViewportProps"
+  }
 }

@@ -11,6 +11,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ScrollLock"] },
-  "source": { "propsInterface": "ScrollLockProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "ScrollLock"
+    ]
+  },
+  "source": {
+    "propsInterface": "ScrollLockProps"
+  }
 }

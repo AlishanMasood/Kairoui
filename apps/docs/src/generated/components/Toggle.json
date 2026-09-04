@@ -11,7 +11,12 @@
       "description": "Appearance variant.",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultPressed",
       "type": "undefined | boolean",
@@ -43,6 +48,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Toggle"] },
-  "source": { "propsInterface": "ToggleProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Toggle"
+    ]
+  },
+  "source": {
+    "propsInterface": "ToggleProps"
+  }
 }

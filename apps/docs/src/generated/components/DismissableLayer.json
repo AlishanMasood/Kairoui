@@ -10,7 +10,12 @@
       "description": "Elements excluded from \"outside\" detection (e.g., portaled triggers).",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "disableEscapeKeyDown",
       "type": "undefined | boolean",
@@ -54,6 +59,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["DismissableLayer"] },
-  "source": { "propsInterface": "DismissableLayerProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DismissableLayer"
+    ]
+  },
+  "source": {
+    "propsInterface": "DismissableLayerProps"
+  }
 }

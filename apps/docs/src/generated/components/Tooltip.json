@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "TooltipProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "closeDelay",
       "type": "undefined | number",
@@ -32,8 +37,20 @@
       "required": false,
       "deprecated": false
     },
-    { "name": "open", "type": "undefined | boolean", "required": false, "deprecated": false }
+    {
+      "name": "open",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Tooltip"] },
-  "source": { "propsInterface": "TooltipProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Tooltip"
+    ]
+  },
+  "source": {
+    "propsInterface": "TooltipProps"
+  }
 }

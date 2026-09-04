@@ -3,10 +3,32 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "MenubarTriggerProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
-    { "name": "disabled", "type": "undefined | boolean", "required": false, "deprecated": false }
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["MenubarTrigger"] },
-  "source": { "propsInterface": "MenubarTriggerProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "MenubarTrigger"
+    ]
+  },
+  "source": {
+    "propsInterface": "MenubarTriggerProps"
+  }
 }

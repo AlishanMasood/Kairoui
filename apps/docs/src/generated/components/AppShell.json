@@ -10,8 +10,18 @@
       "description": "Aside width. Defaults to \"280px\".",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "fixed",
       "type": "undefined | boolean",
@@ -65,6 +75,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["AppShell"] },
-  "source": { "propsInterface": "AppShellRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "AppShell"
+    ]
+  },
+  "source": {
+    "propsInterface": "AppShellRootProps"
+  }
 }

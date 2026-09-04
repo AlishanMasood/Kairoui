@@ -3,10 +3,32 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "ToggleGroupItemProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "disabled", "type": "undefined | boolean", "required": false, "deprecated": false },
-    { "name": "value", "type": "string", "required": true, "deprecated": false }
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ToggleGroupItem"] },
-  "source": { "propsInterface": "ToggleGroupItemProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "ToggleGroupItem"
+    ]
+  },
+  "source": {
+    "propsInterface": "ToggleGroupItemProps"
+  }
 }

@@ -10,7 +10,12 @@
       "defaultValue": "\"/\"",
       "deprecated": false
     },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "label",
       "type": "undefined | string",
@@ -20,6 +25,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Breadcrumbs"] },
-  "source": { "propsInterface": "BreadcrumbsRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Breadcrumbs"
+    ]
+  },
+  "source": {
+    "propsInterface": "BreadcrumbsRootProps"
+  }
 }

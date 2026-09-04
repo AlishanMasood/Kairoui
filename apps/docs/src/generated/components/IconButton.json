@@ -72,6 +72,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["IconButton"] },
-  "source": { "propsInterface": "IconButtonOwnProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "IconButton"
+    ]
+  },
+  "source": {
+    "propsInterface": "IconButtonOwnProps"
+  }
 }

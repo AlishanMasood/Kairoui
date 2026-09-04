@@ -101,6 +101,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["PinInput"] },
-  "source": { "propsInterface": "PinInputProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "PinInput"
+    ]
+  },
+  "source": {
+    "propsInterface": "PinInputProps"
+  }
 }

@@ -47,5 +47,5 @@ export function writePerComponentMetadata(
 }
 
 function componentToJson(comp: ComponentMeta): string {
-  return JSON.stringify(comp) + "\n";
+  return JSON.stringify(comp, null, 2) + "\n";
 }

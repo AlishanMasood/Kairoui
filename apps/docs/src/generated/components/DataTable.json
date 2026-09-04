@@ -3,15 +3,30 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "DataTableRootProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "columns",
       "type": "readonly DataTableColumnDef<TRow>[]",
       "required": true,
       "deprecated": false
     },
-    { "name": "data", "type": "readonly TRow[]", "required": true, "deprecated": false },
+    {
+      "name": "data",
+      "type": "readonly TRow[]",
+      "required": true,
+      "deprecated": false
+    },
     {
       "name": "defaultSelectedIds",
       "type": "undefined | ReadonlySet<RowId>",
@@ -30,7 +45,12 @@
       "required": false,
       "deprecated": false
     },
-    { "name": "getRowId", "type": "(row: TRow) => RowId", "required": true, "deprecated": false },
+    {
+      "name": "getRowId",
+      "type": "(row: TRow) => RowId",
+      "required": true,
+      "deprecated": false
+    },
     {
       "name": "loading",
       "type": "undefined | boolean",
@@ -63,8 +83,20 @@
       "defaultValue": "\"none\"",
       "deprecated": false
     },
-    { "name": "sort", "type": "undefined | SortState", "required": false, "deprecated": false }
+    {
+      "name": "sort",
+      "type": "undefined | SortState",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["DataTable"] },
-  "source": { "propsInterface": "DataTableRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DataTable"
+    ]
+  },
+  "source": {
+    "propsInterface": "DataTableRootProps"
+  }
 }

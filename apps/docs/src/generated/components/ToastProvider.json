@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "ToastProviderProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultDuration",
       "type": "undefined | number",
@@ -40,6 +45,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ToastProvider"] },
-  "source": { "propsInterface": "ToastProviderProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "ToastProvider"
+    ]
+  },
+  "source": {
+    "propsInterface": "ToastProviderProps"
+  }
 }

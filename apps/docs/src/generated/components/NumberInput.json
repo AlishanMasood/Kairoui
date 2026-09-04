@@ -97,6 +97,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["NumberInput"] },
-  "source": { "propsInterface": "NumberInputProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "NumberInput"
+    ]
+  },
+  "source": {
+    "propsInterface": "NumberInputProps"
+  }
 }

@@ -10,7 +10,12 @@
       "defaultValue": "\"outline\"",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultValue",
       "type": "undefined | string | string[]",
@@ -24,7 +29,12 @@
       "defaultValue": "false",
       "deprecated": false
     },
-    { "name": "loop", "type": "undefined | boolean", "required": false, "deprecated": false },
+    {
+      "name": "loop",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "onValueChange",
       "type": "undefined | (value: string) => void | (value: string[]) => void",
@@ -45,7 +55,12 @@
       "defaultValue": "\"md\"",
       "deprecated": false
     },
-    { "name": "type", "type": "\"single\" | \"multiple\"", "required": true, "deprecated": false },
+    {
+      "name": "type",
+      "type": "\"single\" | \"multiple\"",
+      "required": true,
+      "deprecated": false
+    },
     {
       "name": "value",
       "type": "undefined | string | string[]",
@@ -53,6 +68,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ToggleGroup"] },
-  "source": { "propsInterface": "ToggleGroupProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "ToggleGroup"
+    ]
+  },
+  "source": {
+    "propsInterface": "ToggleGroupProps"
+  }
 }

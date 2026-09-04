@@ -10,7 +10,12 @@
       "description": "Focus the first tabbable element on mount. Defaults to true when trapped.",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "enabled",
       "type": "undefined | boolean",
@@ -40,6 +45,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["FocusScope"] },
-  "source": { "propsInterface": "FocusScopeProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "FocusScope"
+    ]
+  },
+  "source": {
+    "propsInterface": "FocusScopeProps"
+  }
 }

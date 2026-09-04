@@ -11,8 +11,18 @@
       "description": "\"automatic\" activates on focus; \"manual\" requires Enter/Space. Defaults to \"automatic\".",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultValue",
       "type": "undefined | string",
@@ -51,6 +61,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Tabs"] },
-  "source": { "propsInterface": "TabsRootProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Tabs"
+    ]
+  },
+  "source": {
+    "propsInterface": "TabsRootProps"
+  }
 }

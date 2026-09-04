@@ -17,6 +17,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Presence"] },
-  "source": { "propsInterface": "PresenceProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Presence"
+    ]
+  },
+  "source": {
+    "propsInterface": "PresenceProps"
+  }
 }

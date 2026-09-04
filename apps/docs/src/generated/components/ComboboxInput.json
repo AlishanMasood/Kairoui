@@ -3,8 +3,18 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "ComboboxInputProps",
   "props": [
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
-    { "name": "id", "type": "undefined | string", "required": false, "deprecated": false },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "placeholder",
       "type": "undefined | string",
@@ -13,6 +23,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["ComboboxInput"] },
-  "source": { "propsInterface": "ComboboxInputProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "ComboboxInput"
+    ]
+  },
+  "source": {
+    "propsInterface": "ComboboxInputProps"
+  }
 }

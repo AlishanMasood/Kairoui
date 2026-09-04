@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "RadioGroupProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultValue",
       "type": "undefined | string",
@@ -57,6 +62,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["RadioGroup"] },
-  "source": { "propsInterface": "RadioGroupProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "RadioGroup"
+    ]
+  },
+  "source": {
+    "propsInterface": "RadioGroupProps"
+  }
 }

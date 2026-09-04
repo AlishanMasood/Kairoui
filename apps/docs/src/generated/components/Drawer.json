@@ -3,7 +3,12 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "DrawerProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultOpen",
       "type": "undefined | boolean",
@@ -16,7 +21,12 @@
       "required": false,
       "deprecated": false
     },
-    { "name": "open", "type": "undefined | boolean", "required": false, "deprecated": false },
+    {
+      "name": "open",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "side",
       "type": "undefined | \"left\" | \"right\" | \"top\" | \"bottom\"",
@@ -26,6 +36,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Drawer"] },
-  "source": { "propsInterface": "DrawerProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Drawer"
+    ]
+  },
+  "source": {
+    "propsInterface": "DrawerProps"
+  }
 }

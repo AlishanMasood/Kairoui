@@ -3,10 +3,32 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "BreadcrumbsLinkProps",
   "props": [
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
-    { "name": "href", "type": "undefined | string", "required": false, "deprecated": false }
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "href",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["BreadcrumbsLink"] },
-  "source": { "propsInterface": "BreadcrumbsLinkProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "BreadcrumbsLink"
+    ]
+  },
+  "source": {
+    "propsInterface": "BreadcrumbsLinkProps"
+  }
 }

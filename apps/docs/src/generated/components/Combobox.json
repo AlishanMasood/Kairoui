@@ -11,7 +11,12 @@
       "description": "Whether freeform input is allowed (value doesn't need to match an item).",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
     {
       "name": "defaultInputValue",
       "type": "undefined | string",
@@ -101,6 +106,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Combobox"] },
-  "source": { "propsInterface": "ComboboxProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Combobox"
+    ]
+  },
+  "source": {
+    "propsInterface": "ComboboxProps"
+  }
 }

@@ -49,6 +49,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Radio"] },
-  "source": { "propsInterface": "RadioProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Radio"
+    ]
+  },
+  "source": {
+    "propsInterface": "RadioProps"
+  }
 }

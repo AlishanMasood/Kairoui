@@ -49,6 +49,13 @@
       "deprecated": false
     }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["Checkbox"] },
-  "source": { "propsInterface": "CheckboxProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "Checkbox"
+    ]
+  },
+  "source": {
+    "propsInterface": "CheckboxProps"
+  }
 }

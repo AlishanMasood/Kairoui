@@ -10,11 +10,38 @@
       "description": "Whether this link is the current page.",
       "deprecated": false
     },
-    { "name": "children", "type": "undefined | ReactNode", "required": false, "deprecated": false },
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false },
-    { "name": "disabled", "type": "undefined | boolean", "required": false, "deprecated": false },
-    { "name": "href", "type": "undefined | string", "required": false, "deprecated": false }
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "href",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
   ],
-  "import": { "packagePath": "@kairoui/core/components", "namedExports": ["SidebarLink"] },
-  "source": { "propsInterface": "SidebarLinkProps" }
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "SidebarLink"
+    ]
+  },
+  "source": {
+    "propsInterface": "SidebarLinkProps"
+  }
 }

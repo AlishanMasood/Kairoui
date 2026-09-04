@@ -3,11 +3,20 @@
   "packagePath": "@kairoui/core/components",
   "propsInterface": "NavigationMenuViewportRootProps",
   "props": [
-    { "name": "className", "type": "undefined | string", "required": false, "deprecated": false }
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
   ],
   "import": {
     "packagePath": "@kairoui/core/components",
-    "namedExports": ["NavigationMenuViewport"]
+    "namedExports": [
+      "NavigationMenuViewport"
+    ]
   },
-  "source": { "propsInterface": "NavigationMenuViewportRootProps" }
+  "source": {
+    "propsInterface": "NavigationMenuViewportRootProps"
+  }
 }
