@@ -33,6 +33,7 @@ const BUDGETS: BudgetEntry[] = [
   { pkg: "utils", file: "dist/index.js", baseline: 16977, maxRaw: 25500, maxGzip: 6000 },
   { pkg: "utils", file: "dist/dom.js", baseline: 10343, maxRaw: 15500, maxGzip: 4500 },
   { pkg: "utils", file: "dist/events.js", baseline: 4066, maxRaw: 6100, maxGzip: 2000 },
+  { pkg: "utils", file: "dist/date.js", baseline: 12304, maxRaw: 18500, maxGzip: 5000 },
   { pkg: "tokens", file: "dist/index.js", baseline: 63350, maxRaw: 95000, maxGzip: 18000 },
   { pkg: "theme", file: "dist/index.js", baseline: 47169, maxRaw: 71000, maxGzip: 14000 },
   { pkg: "theme", file: "dist/dom.js", baseline: 16009, maxRaw: 24000, maxGzip: 6000 },

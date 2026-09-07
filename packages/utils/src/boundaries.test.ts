@@ -26,9 +26,9 @@ describe("@kairoui/utils package boundaries", () => {
       expect(mod).toBeDefined();
     });
 
-    it("exports field declares exactly 4 paths", () => {
+    it("exports field declares exactly 5 paths", () => {
       const paths = Object.keys(pkg["exports"]);
-      expect(paths).toEqual([".", "./dom", "./events", "./package.json"]);
+      expect(paths).toEqual([".", "./dom", "./events", "./date", "./package.json"]);
     });
 
     it("all declared dist files exist", () => {
@@ -38,6 +38,8 @@ describe("@kairoui/utils package boundaries", () => {
       expect(existsSync(join(DIST, "dom.d.ts"))).toBe(true);
       expect(existsSync(join(DIST, "events.js"))).toBe(true);
       expect(existsSync(join(DIST, "events.d.ts"))).toBe(true);
+      expect(existsSync(join(DIST, "date.js"))).toBe(true);
+      expect(existsSync(join(DIST, "date.d.ts"))).toBe(true);
     });
   });
 

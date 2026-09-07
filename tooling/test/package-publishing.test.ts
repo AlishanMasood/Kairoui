@@ -181,7 +181,7 @@ describe("Publishing: no private source exposure", () => {
 
 describe("Publishing: pack size sanity", () => {
   const budgets: Record<string, number> = {
-    utils: 200,
+    utils: 275,
     tokens: 600,
     theme: 350,
     hooks: 50,

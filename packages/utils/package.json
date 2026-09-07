@@ -17,6 +17,10 @@
       "types": "./dist/events.d.ts",
       "import": "./dist/events.js"
     },
+    "./date": {
+      "types": "./dist/date.d.ts",
+      "import": "./dist/date.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
