@@ -125,6 +125,7 @@ export default defineConfig(
             "@kairoui/theme/dom",
             "@kairoui/utils/dom",
             "@kairoui/utils/events",
+            "@kairoui/utils/date",
             "@kairoui/core/composition",
             "@kairoui/core/primitives",
             "@kairoui/core/components",

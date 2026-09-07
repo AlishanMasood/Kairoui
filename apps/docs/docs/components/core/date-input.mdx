@@ -1,0 +1,135 @@
+---
+title: DateInput
+sidebar_position: 14
+---
+
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Callout,
+  Demo,
+  PropsTable,
+} from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import DateInputMeta from "@site/src/generated/components/DateInput.json";
+import { DateInput, Field, Label, FieldDescription, FieldError } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="DateInput"
+  description="Locale-aware, typeable text input for calendar dates with strict parsing, min/max bounds, and native form participation. Emits Date at the API boundary."
+  package="@kairoui/core/components"
+  status="alpha"
+/>
+
+<ImportStatement imports={["DateInput"]} from="@kairoui/core/components" />
+
+<Callout type="info" title="Timezone policy">
+  Values are browser-local calendar dates. No hidden UTC conversion. Cross-timezone editing is not
+  supported.
+</Callout>
+
+<DocsSection title="Basic Usage">
+
+<Demo code={`<DateInput locale="en-US" />`}>
+  <DateInput locale="en-US" />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Controlled with Default Value">
+
+<Demo code={`<DateInput defaultValue={new Date(2026, 2, 5)} locale="en-US" />`}>
+  <DateInput defaultValue={new Date(2026, 2, 5)} locale="en-US" />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Locale">
+
+The placeholder and parse order change with the locale. `en-US` → `MM/DD/YYYY`, `en-GB` →
+`DD/MM/YYYY`, `ja-JP` → `YYYY/MM/DD`.
+
+<Demo
+  code={`<DateInput locale="en-US" />
+<DateInput locale="en-GB" />
+<DateInput locale="ja-JP" />`}
+>
+  <div style={{ display: "flex", flexDirection: "column", gap: 8, maxWidth: 240 }}>
+    <DateInput locale="en-US" />
+    <DateInput locale="en-GB" />
+    <DateInput locale="ja-JP" />
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Min / Max">
+
+<Demo
+  code={`<DateInput
+  min={new Date(2026, 0, 1)}
+  max={new Date(2026, 11, 31)}
+  locale="en-US"
+/>`}
+>
+  <DateInput min={new Date(2026, 0, 1)} max={new Date(2026, 11, 31)} locale="en-US" />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Clearable">
+
+<Demo code={`<DateInput clearable defaultValue={new Date(2026, 5, 15)} />`}>
+  <DateInput clearable defaultValue={new Date(2026, 5, 15)} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Field Integration">
+
+<Demo
+  code={`<Field required>
+  <Label>Birthdate</Label>
+  <DateInput name="dob" locale="en-US" />
+  <FieldDescription>Format: MM/DD/YYYY</FieldDescription>
+</Field>`}
+>
+  <Field required>
+    <Label>Birthdate</Label>
+    <DateInput name="dob" locale="en-US" />
+    <FieldDescription>Format: MM/DD/YYYY</FieldDescription>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Native form submission">
+
+`DateInput` writes an ISO-8601 date (`YYYY-MM-DD`) to a hidden `<input>` when `name` is provided.
+The value uses the browser's local calendar — no UTC shift.
+
+</DocsSection>
+
+<DocsSection title="Keyboard">
+
+- **Enter** — commits and blurs
+- **Escape** — reverts to the last committed value and blurs
+- **Tab** — commits on blur
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- `aria-invalid="true"` is set when input fails to parse or falls outside min/max
+- Integrates with `Field` — inherits `disabled`, `readOnly`, `required`, `invalid`
+- `aria-describedby` / `aria-errormessage` are wired automatically inside `Field`
+- `data-min` / `data-max` expose the ISO bounds for tooling
+
+</DocsSection>
+
+<DocsSection title="API">
+
+<PropsTable props={toPropsList(DateInputMeta)} />
+
+</DocsSection>
