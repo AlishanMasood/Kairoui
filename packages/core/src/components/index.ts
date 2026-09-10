@@ -150,6 +150,29 @@ export { TimeInput } from "./time-input/index";
 export type { TimeInputProps, TimeInputOwnProps, TimeInputSize } from "./time-input/index";
 
 export {
+  DatePicker,
+  DatePickerInput,
+  DatePickerClear,
+  DatePickerTrigger,
+  DatePickerContent,
+  DatePickerCalendar,
+  DatePickerContext,
+  useDatePickerContext,
+} from "./date-picker/index";
+export type {
+  DatePickerProps,
+  DatePickerOwnProps,
+  DatePickerInputProps,
+  DatePickerClearProps,
+  DatePickerTriggerProps,
+  DatePickerContentProps,
+  DatePickerCalendarProps,
+  DatePickerContextValue,
+  DatePickerParseFn,
+  DatePickerFormatFn,
+} from "./date-picker/index";
+
+export {
   SliderContext,
   useSliderContext,
   snapToStep,

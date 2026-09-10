@@ -82,6 +82,13 @@
       "deprecated": false
     },
     {
+      "name": "inputProps",
+      "type": "undefined | Record<string, unknown>",
+      "required": false,
+      "description": "Extra props merged onto the underlying `<input>` element (escape hatch).\nPrefer named props above; use this only for attributes the higher-level API\ndoesn't expose (e.g. combobox ARIA when composed inside DatePicker).",
+      "deprecated": false
+    },
+    {
       "name": "invalid",
       "type": "undefined | boolean",
       "required": false,

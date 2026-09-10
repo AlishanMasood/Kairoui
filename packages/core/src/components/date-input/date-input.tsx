@@ -74,6 +74,12 @@ export interface DateInputOwnProps {
   "aria-describedby"?: string;
   /** aria-errormessage. */
   "aria-errormessage"?: string;
+  /**
+   * Extra props merged onto the underlying `<input>` element (escape hatch).
+   * Prefer named props above; use this only for attributes the higher-level API
+   * doesn't expose (e.g. combobox ARIA when composed inside DatePicker).
+   */
+  inputProps?: Record<string, unknown>;
 }
 
 export type DateInputProps = DateInputOwnProps &
@@ -137,6 +143,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
       "aria-labelledby": ariaLabelledBy,
       "aria-describedby": ariaDescribedBy,
       "aria-errormessage": ariaErrorMessage,
+      inputProps,
       ...rootProps
     } = props;
 
@@ -336,6 +343,7 @@ export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
         ...ariaAttrs,
         ...(min ? { "data-min": formatDateOnlyISO(dateOnlyFromDate(min)) } : undefined),
         ...(max ? { "data-max": formatDateOnlyISO(dateOnlyFromDate(max)) } : undefined),
+        ...(inputProps ?? {}),
       }),
       clearable && dateOnly && !resolvedDisabled && !resolvedReadOnly
         ? createElement(

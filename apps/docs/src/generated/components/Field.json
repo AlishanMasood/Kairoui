@@ -42,7 +42,7 @@
     },
     {
       "name": "validationState",
-      "type": "undefined | \"valid\" | \"invalid\"",
+      "type": "undefined | \"invalid\" | \"valid\"",
       "required": false,
       "description": "Validation state. When \"invalid\", triggers error display.",
       "deprecated": false

@@ -1,0 +1,170 @@
+{
+  "name": "DatePicker",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DatePickerOwnProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Uncontrolled initial open state.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | null | Date",
+      "required": false,
+      "description": "Uncontrolled initial value.",
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "description": "Layout direction. Defaults to `ltr`.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Whether the picker is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "disabledDate",
+      "type": "undefined | (date: Date) => boolean",
+      "required": false,
+      "description": "Predicate returning `true` disables a candidate date in the calendar.",
+      "deprecated": false
+    },
+    {
+      "name": "form",
+      "type": "undefined | string",
+      "required": false,
+      "description": "External form ID.",
+      "deprecated": false
+    },
+    {
+      "name": "format",
+      "type": "undefined | DatePickerFormatFn",
+      "required": false,
+      "description": "Custom formatter.",
+      "deprecated": false
+    },
+    {
+      "name": "invalid",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Explicit invalid signal (overrides parse validity).",
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en-US\"",
+      "description": "BCP-47 locale. Defaults to `en-US`.",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "type": "undefined | Date",
+      "required": false,
+      "description": "Inclusive maximum bound. Applied to both input parse and calendar.",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "type": "undefined | Date",
+      "required": false,
+      "description": "Inclusive minimum bound. Applied to both input parse and calendar.",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Form submission name (proxied to the hidden input in DateInput).",
+      "deprecated": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "undefined | (open: boolean) => void",
+      "required": false,
+      "description": "Called when open state changes.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: Date | null) => void",
+      "required": false,
+      "description": "Called when the selected date changes (calendar pick or typed commit).",
+      "deprecated": false
+    },
+    {
+      "name": "open",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Controlled open state.",
+      "deprecated": false
+    },
+    {
+      "name": "parse",
+      "type": "undefined | DatePickerParseFn",
+      "required": false,
+      "description": "Custom parser (overrides `parseDateOnlyLocalized`).",
+      "deprecated": false
+    },
+    {
+      "name": "readOnly",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Whether the picker is read-only.",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Whether the picker is required (form validation).",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | null | Date",
+      "required": false,
+      "description": "Controlled value. `null` clears, `undefined` = uncontrolled.",
+      "deprecated": false
+    },
+    {
+      "name": "weekStartsOn",
+      "type": "undefined | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+      "required": false,
+      "description": "First day of the week in the calendar view.",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DatePicker"
+    ]
+  },
+  "source": {
+    "propsInterface": "DatePickerOwnProps"
+  }
+}

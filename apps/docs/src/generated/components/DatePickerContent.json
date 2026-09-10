@@ -1,0 +1,28 @@
+{
+  "name": "DatePickerContent",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DatePickerContentProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DatePickerContent"
+    ]
+  },
+  "source": {
+    "propsInterface": "DatePickerContentProps"
+  }
+}

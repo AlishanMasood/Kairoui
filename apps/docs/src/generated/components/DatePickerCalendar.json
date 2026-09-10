@@ -1,0 +1,22 @@
+{
+  "name": "DatePickerCalendar",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DatePickerCalendarProps",
+  "props": [
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DatePickerCalendar"
+    ]
+  },
+  "source": {
+    "propsInterface": "DatePickerCalendarProps"
+  }
+}

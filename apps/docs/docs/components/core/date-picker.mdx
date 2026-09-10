@@ -1,0 +1,222 @@
+---
+title: DatePicker
+sidebar_position: 16
+---
+
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Callout,
+  Demo,
+  PropsTable,
+} from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import DatePickerMeta from "@site/src/generated/components/DatePicker.json";
+import {
+  DatePicker,
+  DatePickerInput,
+  DatePickerClear,
+  DatePickerTrigger,
+  DatePickerContent,
+  DatePickerCalendar,
+  Field,
+  Label,
+  FieldDescription,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="DatePicker"
+  description="Compound picker composing DateInput + Popover-mounted Calendar. Emits Date at the API boundary; delegates parsing/formatting to DateInput."
+  package="@kairoui/core/components"
+  status="alpha"
+/>
+
+<ImportStatement
+  imports={[
+    "DatePicker",
+    "DatePickerInput",
+    "DatePickerClear",
+    "DatePickerTrigger",
+    "DatePickerContent",
+    "DatePickerCalendar",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<Callout type="info" title="No time selection, no ranges">
+  DatePicker handles calendar dates only. Use `TimeInput` for time-only values, `DateTimeInput`
+  for combined date-time (Phase 13 forthcoming), and `DateRangePicker` for ranges.
+</Callout>
+
+<DocsSection title="Anatomy">
+
+DatePicker is a compound component. The `DatePickerInput` and `DatePickerTrigger` sit inline; the
+calendar renders inside a portal-mounted `DatePickerContent`.
+
+<Demo
+  code={`<DatePicker locale="en-US">
+  <DatePickerInput />
+  <DatePickerClear />
+  <DatePickerTrigger />
+  <DatePickerContent>
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}
+>
+  <DatePicker locale="en-US">
+    <DatePickerInput />
+    <DatePickerClear />
+    <DatePickerTrigger />
+    <DatePickerContent>
+      <DatePickerCalendar />
+    </DatePickerContent>
+  </DatePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Default value">
+
+<Demo
+  code={`<DatePicker defaultValue={new Date(2026, 2, 5)} locale="en-US">
+  <DatePickerInput />
+  <DatePickerClear />
+  <DatePickerTrigger />
+  <DatePickerContent>
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}
+>
+  <DatePicker defaultValue={new Date(2026, 2, 5)} locale="en-US">
+    <DatePickerInput />
+    <DatePickerClear />
+    <DatePickerTrigger />
+    <DatePickerContent>
+      <DatePickerCalendar />
+    </DatePickerContent>
+  </DatePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Min / Max">
+
+<Demo
+  code={`<DatePicker
+  min={new Date(2026, 0, 1)}
+  max={new Date(2026, 11, 31)}
+  locale="en-US"
+>
+  <DatePickerInput />
+  <DatePickerTrigger />
+  <DatePickerContent><DatePickerCalendar /></DatePickerContent>
+</DatePicker>`}
+>
+  <DatePicker
+    min={new Date(2026, 0, 1)}
+    max={new Date(2026, 11, 31)}
+    locale="en-US"
+  >
+    <DatePickerInput />
+    <DatePickerTrigger />
+    <DatePickerContent>
+      <DatePickerCalendar />
+    </DatePickerContent>
+  </DatePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled dates">
+
+Pass a predicate that returns `true` for dates that should be disabled. The calendar refuses
+focus and clicks on disabled dates.
+
+<Demo
+  code={`<DatePicker
+  locale="en-US"
+  disabledDate={(d) => d.getDay() === 0 || d.getDay() === 6}
+>
+  <DatePickerInput />
+  <DatePickerTrigger />
+  <DatePickerContent><DatePickerCalendar /></DatePickerContent>
+</DatePicker>`}
+>
+  <DatePicker
+    locale="en-US"
+    disabledDate={(d) => d.getDay() === 0 || d.getDay() === 6}
+  >
+    <DatePickerInput />
+    <DatePickerTrigger />
+    <DatePickerContent>
+      <DatePickerCalendar />
+    </DatePickerContent>
+  </DatePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Field integration">
+
+<Demo
+  code={`<Field required>
+  <Label>Birthdate</Label>
+  <DatePicker name="dob" locale="en-US">
+    <DatePickerInput />
+    <DatePickerClear />
+    <DatePickerTrigger />
+    <DatePickerContent><DatePickerCalendar /></DatePickerContent>
+  </DatePicker>
+  <FieldDescription>MM/DD/YYYY</FieldDescription>
+</Field>`}
+>
+  <Field required>
+    <Label>Birthdate</Label>
+    <DatePicker name="dob" locale="en-US">
+      <DatePickerInput />
+      <DatePickerClear />
+      <DatePickerTrigger />
+      <DatePickerContent>
+        <DatePickerCalendar />
+      </DatePickerContent>
+    </DatePicker>
+    <FieldDescription>MM/DD/YYYY</FieldDescription>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard">
+
+- **ArrowDown** on the input — opens the popover and focuses the selected day
+- **Alt+ArrowUp** on the input — closes the popover
+- **Enter / Space** on a calendar day — selects and closes; focus returns to the input
+- **Escape** — closes the popover
+- **Tab** — normal focus flow; closes the popover if it was open
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- The input has `role="combobox"`, `aria-haspopup="dialog"`, `aria-expanded`, and `aria-controls`
+- The trigger button has `aria-haspopup="dialog"` and `aria-expanded`
+- The content has `role="dialog"` and `aria-label="Choose date"`
+- The Calendar grid inside inherits `role="grid"` and `aria-selected` / `aria-disabled` on cells
+- Focus is trapped inside the popover only for modal Popovers (default is non-modal)
+- The clear button has `aria-label="Clear date"`
+
+</DocsSection>
+
+<DocsSection title="Form participation">
+
+DatePicker delegates form participation to `DateInput`. When `name` is set, a hidden `<input>` is
+emitted carrying an ISO `YYYY-MM-DD` value (browser-local; no UTC shift).
+
+</DocsSection>
+
+<DocsSection title="API">
+
+<PropsTable props={toPropsList(DatePickerMeta)} />
+
+</DocsSection>
