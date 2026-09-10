@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T18:59:52.601Z",
+  "generatedAt": "2026-09-10T18:26:40.881Z",
   "components": [
     "Accordion",
     "AccordionContent",
@@ -154,6 +154,7 @@
     "TabsList",
     "TabsTrigger",
     "Textarea",
+    "TimeInput",
     "Timeline",
     "TimelineConnector",
     "TimelineContent",

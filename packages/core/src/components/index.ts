@@ -146,6 +146,9 @@ export type { NumberInputProps, NumberInputSize } from "./number-input/index";
 export { DateInput } from "./date-input/index";
 export type { DateInputProps, DateInputOwnProps, DateInputSize } from "./date-input/index";
 
+export { TimeInput } from "./time-input/index";
+export type { TimeInputProps, TimeInputOwnProps, TimeInputSize } from "./time-input/index";
+
 export {
   SliderContext,
   useSliderContext,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T18:59:52.601Z",
+  "generatedAt": "2026-09-10T18:26:40.881Z",
   "generatorVersion": "0.1.0",
   "packages": [
     {
@@ -6252,6 +6252,211 @@
           },
           "source": {
             "propsInterface": "TextareaProps"
+          }
+        },
+        {
+          "name": "TimeInput",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "TimeInputOwnProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-errormessage",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "description": "className passthrough on root element.",
+              "deprecated": false
+            },
+            {
+              "name": "clearable",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Show a clear button when there is a value.",
+              "deprecated": false
+            },
+            {
+              "name": "defaultValue",
+              "type": "undefined | null | TimeOfDay",
+              "required": false,
+              "description": "Initial value for uncontrolled mode.",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Whether the input is disabled.",
+              "deprecated": false
+            },
+            {
+              "name": "form",
+              "type": "undefined | string",
+              "required": false,
+              "description": "External form ID (matches native `form` attr).",
+              "deprecated": false
+            },
+            {
+              "name": "format",
+              "type": "undefined | (value: TimeOfDay, context: { locale: string; hour12: boolean; includeSeconds: boolean; }) => string",
+              "required": false,
+              "description": "Custom formatter override.",
+              "deprecated": false
+            },
+            {
+              "name": "hour12",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Force 12-hour or 24-hour presentation. When `undefined`, follows the\nlocale (via `Intl.DateTimeFormat`).",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "description": "Input element ID.",
+              "deprecated": false
+            },
+            {
+              "name": "includeSeconds",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Whether to display and validate seconds. Defaults to `true` when `step`\nis less than 60 or the min/max bounds carry non-zero seconds.",
+              "deprecated": false
+            },
+            {
+              "name": "invalid",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Explicit invalid signal (overrides parse validity).",
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en-US\"",
+              "description": "BCP-47 locale for display and parsing. Defaults to `en-US`.",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "undefined | TimeOfDay",
+              "required": false,
+              "description": "Inclusive maximum bound.",
+              "deprecated": false
+            },
+            {
+              "name": "min",
+              "type": "undefined | TimeOfDay",
+              "required": false,
+              "description": "Inclusive minimum bound.",
+              "deprecated": false
+            },
+            {
+              "name": "name",
+              "type": "undefined | string",
+              "required": false,
+              "description": "Form submission name.",
+              "deprecated": false
+            },
+            {
+              "name": "onInputChange",
+              "type": "undefined | (input: string) => void",
+              "required": false,
+              "description": "Called with the raw input string on every keystroke.",
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "undefined | (value: TimeOfDay | null) => void",
+              "required": false,
+              "description": "Called with the parsed TimeOfDay (or `null` when empty or unparseable).",
+              "deprecated": false
+            },
+            {
+              "name": "parse",
+              "type": "undefined | (input: string, context: { locale: string; hour12: boolean; includeSeconds: boole…) => ParseResult<TimeOfDay>",
+              "required": false,
+              "description": "Custom parser override. Receives the locale/hour12 context so custom\nimplementations can honor the same conventions.",
+              "deprecated": false
+            },
+            {
+              "name": "placeholder",
+              "type": "undefined | string",
+              "required": false,
+              "description": "Placeholder text. Defaults to a locale/hour12-derived hint.",
+              "deprecated": false
+            },
+            {
+              "name": "readOnly",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Whether the input is read-only.",
+              "deprecated": false
+            },
+            {
+              "name": "required",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Whether a value is required.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+              "required": false,
+              "defaultValue": "\"md\"",
+              "description": "Size variant.",
+              "deprecated": false
+            },
+            {
+              "name": "step",
+              "type": "undefined | number",
+              "required": false,
+              "defaultValue": "60",
+              "description": "Granularity in seconds. Values are snapped to the nearest multiple.\nDefault `60` (rounds to whole minutes).",
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "undefined | null | TimeOfDay",
+              "required": false,
+              "description": "Controlled value. `null` clears the input; `undefined` = uncontrolled.",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "TimeInput"
+            ]
+          },
+          "source": {
+            "propsInterface": "TimeInputOwnProps"
           }
         },
         {
