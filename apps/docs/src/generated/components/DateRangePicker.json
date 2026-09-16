@@ -1,0 +1,195 @@
+{
+  "name": "DateRangePicker",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DateRangePickerProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | DateRange<Date>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabledDate",
+      "type": "undefined | (date: Date) => boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "form",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "format",
+      "type": "undefined | DateRangePickerFormatFn",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "hoverPreview",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "description": "Enable pointer-hover preview of the pending end date. Defaults to `true`.",
+      "deprecated": false
+    },
+    {
+      "name": "invalid",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en-US\"",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "type": "undefined | Date",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "maxLength",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Enforce a maximum span in days (inclusive of both endpoints).",
+      "deprecated": false
+    },
+    {
+      "name": "messages",
+      "type": "undefined | Partial<DateRangePickerMessages>",
+      "required": false,
+      "description": "Localized announcements for the live region.",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "type": "undefined | Date",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "minLength",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Enforce a minimum span in days (inclusive of both endpoints).",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onEndpointCommit",
+      "type": "undefined | (endpoint: DateRangePickerEndpoint, value: Date | null) => void",
+      "required": false,
+      "description": "Fires per-endpoint commit before ordering — useful for logging user intent.",
+      "deprecated": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "undefined | (open: boolean) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: DateRange<Date>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "open",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "parse",
+      "type": "undefined | DateRangePickerParseFn",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "readOnly",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "requireComplete",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Emit only complete ranges. Partial ranges are buffered internally.",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | DateRange<Date>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "weekStartsOn",
+      "type": "undefined | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+      "required": false,
+      "defaultValue": "0",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DateRangePicker"
+    ]
+  },
+  "source": {
+    "propsInterface": "DateRangePickerProps"
+  }
+}

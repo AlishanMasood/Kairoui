@@ -1,0 +1,29 @@
+{
+  "name": "DateRangePickerCalendars",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DateRangePickerCalendarsProps",
+  "props": [
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "months",
+      "type": "undefined | 1 | 2",
+      "required": false,
+      "description": "Number of months to render side by side. Defaults to 2.",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DateRangePickerCalendars"
+    ]
+  },
+  "source": {
+    "propsInterface": "DateRangePickerCalendarsProps"
+  }
+}

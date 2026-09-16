@@ -1,0 +1,92 @@
+{
+  "name": "DateRangePickerStartInput",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DateRangePickerStartInputProps",
+  "props": [
+    {
+      "name": "aria-describedby",
+      "type": "undefined | string",
+      "required": false,
+      "description": "aria-describedby.",
+      "deprecated": false
+    },
+    {
+      "name": "aria-errormessage",
+      "type": "undefined | string",
+      "required": false,
+      "description": "aria-errormessage.",
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "description": "aria-label.",
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "description": "aria-labelledby.",
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "description": "className passthrough on root element.",
+      "deprecated": false
+    },
+    {
+      "name": "clearable",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Show a clear button when there is a value.",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "inputProps",
+      "type": "undefined | Record<string, unknown>",
+      "required": false,
+      "description": "Extra props merged onto the underlying `<input>` element (escape hatch).\nPrefer named props above; use this only for attributes the higher-level API\ndoesn't expose (e.g. combobox ARIA when composed inside DatePicker).",
+      "deprecated": false
+    },
+    {
+      "name": "onInputChange",
+      "type": "undefined | (input: string) => void",
+      "required": false,
+      "description": "Called with the raw input string on every keystroke.",
+      "deprecated": false
+    },
+    {
+      "name": "placeholder",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Placeholder text. Defaults to a locale-derived pattern hint.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "description": "Size variant.",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DateRangePickerStartInput"
+    ]
+  },
+  "source": {
+    "propsInterface": "DateRangePickerStartInputProps"
+  }
+}

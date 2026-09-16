@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T19:16:23.248Z",
+  "generatedAt": "2026-09-16T10:52:15.668Z",
   "components": [
     "Accordion",
     "AccordionContent",
@@ -55,6 +55,13 @@
     "DatePickerContent",
     "DatePickerInput",
     "DatePickerTrigger",
+    "DateRangePicker",
+    "DateRangePickerCalendars",
+    "DateRangePickerClear",
+    "DateRangePickerContent",
+    "DateRangePickerEndInput",
+    "DateRangePickerStartInput",
+    "DateRangePickerTrigger",
     "DescriptionDetails",
     "DescriptionList",
     "DescriptionTerm",

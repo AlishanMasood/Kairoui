@@ -1,0 +1,265 @@
+---
+title: DateRangePicker
+sidebar_position: 17
+---
+
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Callout,
+  Demo,
+  PropsTable,
+} from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import DateRangePickerMeta from "@site/src/generated/components/DateRangePicker.json";
+import {
+  DateRangePicker,
+  DateRangePickerStartInput,
+  DateRangePickerEndInput,
+  DateRangePickerClear,
+  DateRangePickerTrigger,
+  DateRangePickerContent,
+  DateRangePickerCalendars,
+  Field,
+  Label,
+  FieldDescription,
+} from "@kairoui/core/components";
+
+<ComponentHeader
+  name="DateRangePicker"
+  description="Compound picker for date ranges. Two DateInputs share a single two-month range calendar with hover preview, range highlighting, and normalized reversed ranges."
+  package="@kairoui/core/components"
+  status="alpha"
+/>
+
+<ImportStatement
+  imports={[
+    "DateRangePicker",
+    "DateRangePickerStartInput",
+    "DateRangePickerEndInput",
+    "DateRangePickerClear",
+    "DateRangePickerTrigger",
+    "DateRangePickerContent",
+    "DateRangePickerCalendars",
+  ]}
+  from="@kairoui/core/components"
+/>
+
+<Callout type="info" title="Emits DateRange">
+  DateRangePicker emits a `DateRange` shape (`{ start: Date | null; end: Date | null }`). Partial
+  ranges are emitted by default; opt into buffered complete-only emissions with `requireComplete`.
+</Callout>
+
+<DocsSection title="Anatomy">
+
+The two inputs sit inline. The trigger opens a popover-mounted calendar rendering two months
+side by side with hover preview.
+
+<Demo
+  code={`<DateRangePicker locale="en-US">
+  <DateRangePickerStartInput />
+  <DateRangePickerEndInput />
+  <DateRangePickerClear />
+  <DateRangePickerTrigger />
+  <DateRangePickerContent>
+    <DateRangePickerCalendars />
+  </DateRangePickerContent>
+</DateRangePicker>`}
+>
+  <DateRangePicker locale="en-US">
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerClear />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Default value">
+
+<Demo
+  code={`<DateRangePicker
+  defaultValue={{ start: new Date(2026, 2, 5), end: new Date(2026, 2, 12) }}
+  locale="en-US"
+>
+  <DateRangePickerStartInput />
+  <DateRangePickerEndInput />
+  <DateRangePickerClear />
+  <DateRangePickerTrigger />
+  <DateRangePickerContent>
+    <DateRangePickerCalendars />
+  </DateRangePickerContent>
+</DateRangePicker>`}
+>
+  <DateRangePicker
+    defaultValue={{ start: new Date(2026, 2, 5), end: new Date(2026, 2, 12) }}
+    locale="en-US"
+  >
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerClear />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Min / Max">
+
+<Demo
+  code={`<DateRangePicker
+  min={new Date(2026, 0, 1)}
+  max={new Date(2026, 11, 31)}
+  locale="en-US"
+>
+  <DateRangePickerStartInput />
+  <DateRangePickerEndInput />
+  <DateRangePickerTrigger />
+  <DateRangePickerContent><DateRangePickerCalendars /></DateRangePickerContent>
+</DateRangePicker>`}
+>
+  <DateRangePicker min={new Date(2026, 0, 1)} max={new Date(2026, 11, 31)} locale="en-US">
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Disabled dates">
+
+Same predicate contract as `DatePicker` and `Calendar`. Cells that fail the predicate are
+un-focusable and un-clickable in both months.
+
+<Demo
+  code={`<DateRangePicker
+  locale="en-US"
+  disabledDate={(d) => d.getDay() === 0 || d.getDay() === 6}
+>
+  <DateRangePickerStartInput />
+  <DateRangePickerEndInput />
+  <DateRangePickerTrigger />
+  <DateRangePickerContent><DateRangePickerCalendars /></DateRangePickerContent>
+</DateRangePicker>`}
+>
+  <DateRangePicker locale="en-US" disabledDate={(d) => d.getDay() === 0 || d.getDay() === 6}>
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Length constraints">
+
+Enforce a minimum or maximum span with `minLength` / `maxLength` (in days, inclusive of both
+endpoints). Cells beyond `maxLength` from the pending start are visually dimmed and rejected.
+
+<Demo
+  code={`<DateRangePicker locale="en-US" minLength={2} maxLength={14}>
+  <DateRangePickerStartInput />
+  <DateRangePickerEndInput />
+  <DateRangePickerTrigger />
+  <DateRangePickerContent><DateRangePickerCalendars /></DateRangePickerContent>
+</DateRangePicker>`}
+>
+  <DateRangePicker locale="en-US" minLength={2} maxLength={14}>
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Complete ranges only">
+
+`requireComplete` buffers the start commit internally and only emits `onValueChange` once the
+end is picked. Useful for form-driven flows where a partial range is invalid.
+
+<Demo
+  code={`<DateRangePicker locale="en-US" requireComplete>
+  <DateRangePickerStartInput />
+  <DateRangePickerEndInput />
+  <DateRangePickerTrigger />
+  <DateRangePickerContent><DateRangePickerCalendars /></DateRangePickerContent>
+</DateRangePicker>`}
+>
+  <DateRangePicker locale="en-US" requireComplete>
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Field integration">
+
+Compose inside a `Field` for label, description, and error handling. Only the start input
+carries `aria-errormessage`; the end input carries `aria-describedby` for description slots.
+
+<Demo
+  code={`<Field>
+  <Label>Trip dates</Label>
+  <FieldDescription>Select your departure and return dates.</FieldDescription>
+  <DateRangePicker locale="en-US" name="trip">
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerClear />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent><DateRangePickerCalendars /></DateRangePickerContent>
+  </DateRangePicker>
+</Field>`}
+>
+  <Field>
+    <Label>Trip dates</Label>
+    <FieldDescription>Select your departure and return dates.</FieldDescription>
+    <DateRangePicker locale="en-US" name="trip">
+      <DateRangePickerStartInput />
+      <DateRangePickerEndInput />
+      <DateRangePickerClear />
+      <DateRangePickerTrigger />
+      <DateRangePickerContent>
+        <DateRangePickerCalendars />
+      </DateRangePickerContent>
+    </DateRangePicker>
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Form serialization">
+
+When `name` is provided, two hidden inputs are emitted as `${name}.start` and `${name}.end`,
+each holding an ISO `YYYY-MM-DD` string.
+
+</DocsSection>
+
+<DocsSection title="Props">
+
+<PropsTable props={toPropsList(DateRangePickerMeta)} />
+
+</DocsSection>

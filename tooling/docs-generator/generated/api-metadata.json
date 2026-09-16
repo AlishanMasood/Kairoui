@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T19:16:23.248Z",
+  "generatedAt": "2026-09-16T10:52:15.668Z",
   "generatorVersion": "0.1.0",
   "packages": [
     {
@@ -2410,6 +2410,510 @@
           },
           "source": {
             "propsInterface": "DatePickerTriggerProps"
+          }
+        },
+        {
+          "name": "DateRangePicker",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "DateRangePickerProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultOpen",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultValue",
+              "type": "undefined | DateRange<Date>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "disabledDate",
+              "type": "undefined | (date: Date) => boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "form",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "format",
+              "type": "undefined | DateRangePickerFormatFn",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "hoverPreview",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "description": "Enable pointer-hover preview of the pending end date. Defaults to `true`.",
+              "deprecated": false
+            },
+            {
+              "name": "invalid",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en-US\"",
+              "deprecated": false
+            },
+            {
+              "name": "max",
+              "type": "undefined | Date",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "maxLength",
+              "type": "undefined | number",
+              "required": false,
+              "description": "Enforce a maximum span in days (inclusive of both endpoints).",
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | Partial<DateRangePickerMessages>",
+              "required": false,
+              "description": "Localized announcements for the live region.",
+              "deprecated": false
+            },
+            {
+              "name": "min",
+              "type": "undefined | Date",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "minLength",
+              "type": "undefined | number",
+              "required": false,
+              "description": "Enforce a minimum span in days (inclusive of both endpoints).",
+              "deprecated": false
+            },
+            {
+              "name": "name",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onEndpointCommit",
+              "type": "undefined | (endpoint: DateRangePickerEndpoint, value: Date | null) => void",
+              "required": false,
+              "description": "Fires per-endpoint commit before ordering — useful for logging user intent.",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "undefined | (open: boolean) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onValueChange",
+              "type": "undefined | (value: DateRange<Date>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "parse",
+              "type": "undefined | DateRangePickerParseFn",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "readOnly",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "requireComplete",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Emit only complete ranges. Partial ranges are buffered internally.",
+              "deprecated": false
+            },
+            {
+              "name": "required",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "value",
+              "type": "undefined | DateRange<Date>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "weekStartsOn",
+              "type": "undefined | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+              "required": false,
+              "defaultValue": "0",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "DateRangePicker"
+            ]
+          },
+          "source": {
+            "propsInterface": "DateRangePickerProps"
+          }
+        },
+        {
+          "name": "DateRangePickerCalendars",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "DateRangePickerCalendarsProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "months",
+              "type": "undefined | 1 | 2",
+              "required": false,
+              "description": "Number of months to render side by side. Defaults to 2.",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "DateRangePickerCalendars"
+            ]
+          },
+          "source": {
+            "propsInterface": "DateRangePickerCalendarsProps"
+          }
+        },
+        {
+          "name": "DateRangePickerClear",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "DateRangePickerClearProps",
+          "props": [
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "DateRangePickerClear"
+            ]
+          },
+          "source": {
+            "propsInterface": "DateRangePickerClearProps"
+          }
+        },
+        {
+          "name": "DateRangePickerContent",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "DateRangePickerContentProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "DateRangePickerContent"
+            ]
+          },
+          "source": {
+            "propsInterface": "DateRangePickerContentProps"
+          }
+        },
+        {
+          "name": "DateRangePickerEndInput",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "DateRangePickerEndInputProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-describedby.",
+              "deprecated": false
+            },
+            {
+              "name": "aria-errormessage",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-errormessage.",
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-label.",
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-labelledby.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "description": "className passthrough on root element.",
+              "deprecated": false
+            },
+            {
+              "name": "clearable",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Show a clear button when there is a value.",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "inputProps",
+              "type": "undefined | Record<string, unknown>",
+              "required": false,
+              "description": "Extra props merged onto the underlying `<input>` element (escape hatch).\nPrefer named props above; use this only for attributes the higher-level API\ndoesn't expose (e.g. combobox ARIA when composed inside DatePicker).",
+              "deprecated": false
+            },
+            {
+              "name": "onInputChange",
+              "type": "undefined | (input: string) => void",
+              "required": false,
+              "description": "Called with the raw input string on every keystroke.",
+              "deprecated": false
+            },
+            {
+              "name": "placeholder",
+              "type": "undefined | string",
+              "required": false,
+              "description": "Placeholder text. Defaults to a locale-derived pattern hint.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+              "required": false,
+              "description": "Size variant.",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "DateRangePickerEndInput"
+            ]
+          },
+          "source": {
+            "propsInterface": "DateRangePickerEndInputProps"
+          }
+        },
+        {
+          "name": "DateRangePickerStartInput",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "DateRangePickerStartInputProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-describedby.",
+              "deprecated": false
+            },
+            {
+              "name": "aria-errormessage",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-errormessage.",
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-label.",
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "description": "aria-labelledby.",
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "description": "className passthrough on root element.",
+              "deprecated": false
+            },
+            {
+              "name": "clearable",
+              "type": "undefined | boolean",
+              "required": false,
+              "description": "Show a clear button when there is a value.",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "inputProps",
+              "type": "undefined | Record<string, unknown>",
+              "required": false,
+              "description": "Extra props merged onto the underlying `<input>` element (escape hatch).\nPrefer named props above; use this only for attributes the higher-level API\ndoesn't expose (e.g. combobox ARIA when composed inside DatePicker).",
+              "deprecated": false
+            },
+            {
+              "name": "onInputChange",
+              "type": "undefined | (input: string) => void",
+              "required": false,
+              "description": "Called with the raw input string on every keystroke.",
+              "deprecated": false
+            },
+            {
+              "name": "placeholder",
+              "type": "undefined | string",
+              "required": false,
+              "description": "Placeholder text. Defaults to a locale-derived pattern hint.",
+              "deprecated": false
+            },
+            {
+              "name": "size",
+              "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+              "required": false,
+              "description": "Size variant.",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "DateRangePickerStartInput"
+            ]
+          },
+          "source": {
+            "propsInterface": "DateRangePickerStartInputProps"
+          }
+        },
+        {
+          "name": "DateRangePickerTrigger",
+          "packagePath": "@kairoui/core/components",
+          "propsInterface": "DateRangePickerTriggerProps",
+          "props": [
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui/core/components",
+            "namedExports": [
+              "DateRangePickerTrigger"
+            ]
+          },
+          "source": {
+            "propsInterface": "DateRangePickerTriggerProps"
           }
         },
         {

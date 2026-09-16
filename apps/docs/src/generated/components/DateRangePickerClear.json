@@ -1,0 +1,34 @@
+{
+  "name": "DateRangePickerClear",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DateRangePickerClearProps",
+  "props": [
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DateRangePickerClear"
+    ]
+  },
+  "source": {
+    "propsInterface": "DateRangePickerClearProps"
+  }
+}

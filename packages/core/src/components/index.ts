@@ -173,6 +173,33 @@ export type {
 } from "./date-picker/index";
 
 export {
+  DateRangePicker,
+  DateRangePickerStartInput,
+  DateRangePickerEndInput,
+  DateRangePickerClear,
+  DateRangePickerTrigger,
+  DateRangePickerContent,
+  DateRangePickerCalendars,
+  DateRangePickerContext,
+  useDateRangePickerContext,
+  DATE_RANGE_PICKER_DEFAULT_MESSAGES,
+} from "./date-range-picker/index";
+export type {
+  DateRangePickerProps,
+  DateRangePickerStartInputProps,
+  DateRangePickerEndInputProps,
+  DateRangePickerClearProps,
+  DateRangePickerTriggerProps,
+  DateRangePickerContentProps,
+  DateRangePickerCalendarsProps,
+  DateRangePickerContextValue,
+  DateRangePickerEndpoint,
+  DateRangePickerMessages,
+  DateRangePickerParseFn,
+  DateRangePickerFormatFn,
+} from "./date-range-picker/index";
+
+export {
   SliderContext,
   useSliderContext,
   snapToStep,
