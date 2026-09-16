@@ -149,6 +149,13 @@ export type { DateInputProps, DateInputOwnProps, DateInputSize } from "./date-in
 export { TimeInput } from "./time-input/index";
 export type { TimeInputProps, TimeInputOwnProps, TimeInputSize } from "./time-input/index";
 
+export { DateTimeInput } from "./date-time-input/index";
+export type {
+  DateTimeInputProps,
+  DateTimeInputOwnProps,
+  DateTimeInputSize,
+} from "./date-time-input/index";
+
 export {
   DatePicker,
   DatePickerInput,

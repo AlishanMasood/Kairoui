@@ -1,0 +1,140 @@
+---
+title: DateTimeInput
+sidebar_position: 15
+---
+
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Callout,
+  Demo,
+  PropsTable,
+} from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import DateTimeInputMeta from "@site/src/generated/components/DateTimeInput.json";
+import { DateTimeInput, Field, Label, FieldDescription } from "@kairoui/core/components";
+
+<ComponentHeader
+  name="DateTimeInput"
+  description="Composed DateInput + TimeInput for editing a local wall-clock date-time. Timezone-free and consistent with the KUI-ADV-002 date contracts — no UTC coercion."
+  package="@kairoui/core/components"
+  status="alpha"
+/>
+
+<ImportStatement imports={["DateTimeInput"]} from="@kairoui/core/components" />
+
+<Callout type="info" title="Local wall-clock only">
+  DateTimeInput edits a `DateTimeLocal` — a calendar date plus a wall-clock time with **no**
+  timezone anchor. Reading the same value in a different timezone produces a different `Date`
+  instant. No UTC shifting is performed at the API boundary. For range picking use
+  `DateRangePicker`; for time-only use `TimeInput`.
+</Callout>
+
+<DocsSection title="Anatomy">
+
+<Demo code={`<DateTimeInput locale="en-US" />`}>
+  <DateTimeInput locale="en-US" />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Default value">
+
+<Demo
+  code={`<DateTimeInput
+  defaultValue={{
+    date: { year: 2026, month: 3, day: 5 },
+    time: { hour: 14, minute: 30, second: 0, millisecond: 0 },
+  }}
+  locale="en-US"
+/>`}
+>
+  <DateTimeInput
+    defaultValue={{
+      date: { year: 2026, month: 3, day: 5 },
+      time: { hour: 14, minute: 30, second: 0, millisecond: 0 },
+    }}
+    locale="en-US"
+  />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="24-hour and seconds">
+
+<Demo code={`<DateTimeInput locale="en-US" hour12={false} step={1} />`}>
+  <DateTimeInput locale="en-US" hour12={false} step={1} />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Min / Max">
+
+Bounds are applied at whole-datetime granularity. The date sub-input rejects days outside the
+`min.date`–`max.date` range; the time sub-input applies time bounds only when the current date
+sits on the boundary day.
+
+<Demo
+  code={`<DateTimeInput
+  min={{
+    date: { year: 2026, month: 1, day: 1 },
+    time: { hour: 9, minute: 0, second: 0, millisecond: 0 },
+  }}
+  max={{
+    date: { year: 2026, month: 12, day: 31 },
+    time: { hour: 17, minute: 0, second: 0, millisecond: 0 },
+  }}
+  locale="en-US"
+/>`}
+>
+  <DateTimeInput
+    min={{
+      date: { year: 2026, month: 1, day: 1 },
+      time: { hour: 9, minute: 0, second: 0, millisecond: 0 },
+    }}
+    max={{
+      date: { year: 2026, month: 12, day: 31 },
+      time: { hour: 17, minute: 0, second: 0, millisecond: 0 },
+    }}
+    locale="en-US"
+  />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Field integration">
+
+When wrapped in a `Field`, the date sub-input receives `aria-labelledby`, `aria-describedby`, and
+`aria-errormessage`. The time sub-input carries a distinct default `aria-label` of `"Time"` so
+screen readers can distinguish the two controls.
+
+<Demo
+  code={`<Field>
+  <Label>Meeting time</Label>
+  <FieldDescription>Pick date and time.</FieldDescription>
+  <DateTimeInput locale="en-US" name="meeting" />
+</Field>`}
+>
+  <Field>
+    <Label>Meeting time</Label>
+    <FieldDescription>Pick date and time.</FieldDescription>
+    <DateTimeInput locale="en-US" name="meeting" />
+  </Field>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Form serialization">
+
+When `name` is provided, DateTimeInput emits a single hidden input carrying the ISO datetime-local
+string `YYYY-MM-DDTHH:MM[:SS[.sss]]`. **No `Z` suffix and no timezone offset are emitted** — this
+value is a wall-clock instant, not a UTC anchor.
+
+</DocsSection>
+
+<DocsSection title="Props">
+
+<PropsTable props={toPropsList(DateTimeInputMeta)} />
+
+</DocsSection>

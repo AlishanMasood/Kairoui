@@ -1,0 +1,181 @@
+{
+  "name": "DateTimeInput",
+  "packagePath": "@kairoui/core/components",
+  "propsInterface": "DateTimeInputOwnProps",
+  "props": [
+    {
+      "name": "aria-describedby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-errormessage",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dateProps",
+      "type": "undefined | Omit<DateInputProps, \"form\" | \"size\" | \"disabled\" | \"max\" | \"min\" | \"name\" | \"readOnly\" | \"required\" | \"value\" | \"defaultValue\" | \"id\" | \"aria-describedby\" | \"aria-errormessage\" | \"aria-label\" | \"aria-labelledby\" | \"onValueChange\" | \"locale\" | \"invalid\">",
+      "required": false,
+      "description": "Additional props forwarded to the underlying date sub-input.",
+      "deprecated": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "undefined | null | DateTimeLocal",
+      "required": false,
+      "description": "Initial value for uncontrolled mode.",
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Whether the input is disabled.",
+      "deprecated": false
+    },
+    {
+      "name": "form",
+      "type": "undefined | string",
+      "required": false,
+      "description": "External form ID.",
+      "deprecated": false
+    },
+    {
+      "name": "hour12",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Force 12-hour or 24-hour presentation.",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Root element ID. The date sub-input receives the labelable ID.",
+      "deprecated": false
+    },
+    {
+      "name": "includeSeconds",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Whether to display seconds. Passed to the time part.",
+      "deprecated": false
+    },
+    {
+      "name": "invalid",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Explicit invalid signal (overrides internal range validity).",
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en-US\"",
+      "description": "BCP-47 locale for display and parsing. Defaults to `en-US`.",
+      "deprecated": false
+    },
+    {
+      "name": "max",
+      "type": "undefined | DateTimeLocal",
+      "required": false,
+      "description": "Inclusive maximum bound.",
+      "deprecated": false
+    },
+    {
+      "name": "min",
+      "type": "undefined | DateTimeLocal",
+      "required": false,
+      "description": "Inclusive minimum bound.",
+      "deprecated": false
+    },
+    {
+      "name": "name",
+      "type": "undefined | string",
+      "required": false,
+      "description": "Form submission name. Emits a hidden input carrying the ISO value.",
+      "deprecated": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "undefined | (value: DateTimeLocal | null) => void",
+      "required": false,
+      "description": "Called with the combined value (or `null` if either part is empty).",
+      "deprecated": false
+    },
+    {
+      "name": "readOnly",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Whether the input is read-only.",
+      "deprecated": false
+    },
+    {
+      "name": "required",
+      "type": "undefined | boolean",
+      "required": false,
+      "description": "Whether a value is required.",
+      "deprecated": false
+    },
+    {
+      "name": "size",
+      "type": "undefined | \"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "defaultValue": "\"md\"",
+      "description": "Size variant.",
+      "deprecated": false
+    },
+    {
+      "name": "step",
+      "type": "undefined | number",
+      "required": false,
+      "description": "Time granularity in seconds. Passed to the time part. Default `60`.",
+      "deprecated": false
+    },
+    {
+      "name": "timeProps",
+      "type": "undefined | Omit<TimeInputProps, \"form\" | \"size\" | \"disabled\" | \"max\" | \"min\" | \"name\" | \"readOnly\" | \"required\" | \"step\" | \"value\" | \"defaultValue\" | \"aria-describedby\" | \"aria-errormessage\" | \"aria-label\" | \"aria-labelledby\" | \"onValueChange\" | \"locale\" | \"invalid\" | \"includeSeconds\" | \"hour12\">",
+      "required": false,
+      "description": "Additional props forwarded to the underlying time sub-input.",
+      "deprecated": false
+    },
+    {
+      "name": "value",
+      "type": "undefined | null | DateTimeLocal",
+      "required": false,
+      "description": "Controlled value. `null` clears both parts; `undefined` = uncontrolled.",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui/core/components",
+    "namedExports": [
+      "DateTimeInput"
+    ]
+  },
+  "source": {
+    "propsInterface": "DateTimeInputOwnProps"
+  }
+}
