@@ -2,10 +2,11 @@ import { forwardRef, createElement, useMemo } from "react";
 import type { HTMLAttributes } from "react";
 import type { DataTableRootProps } from "./data-table-types";
 import { getCellContent, getHeaderContent } from "./column-utils";
-import { sortRows } from "./sort-utils";
 import { useSortState } from "./use-sort-state";
 import { useRowSelection } from "./use-row-selection";
 import { getSelectAllState } from "./selection-utils";
+import { useFilterState } from "./use-filter-state";
+import { runRowModelPipeline } from "./row-model-pipeline";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "../table/table";
 
 // ─── DataTable ──────────────────────────────────────────────────────
@@ -25,6 +26,9 @@ export const DataTable = forwardRef<
     selectedIds: selectedIdsProp,
     defaultSelectedIds,
     onSelectionChange: onSelectionChangeProp,
+    filterState: filterStateProp,
+    defaultFilterState,
+    onFilterStateChange,
     emptyState,
     loading = false,
     className,
@@ -38,6 +42,12 @@ export const DataTable = forwardRef<
     ...(onSortChangeProp ? { onSortChange: onSortChangeProp } : undefined),
   });
 
+  const { filterState } = useFilterState({
+    ...(filterStateProp !== undefined ? { filterState: filterStateProp } : undefined),
+    ...(defaultFilterState !== undefined ? { defaultFilterState } : undefined),
+    ...(onFilterStateChange ? { onFilterStateChange } : undefined),
+  });
+
   const { selectedIds, toggleRow, toggleAll, isSelected } = useRowSelection({
     selectionMode,
     ...(selectedIdsProp !== undefined ? { selectedIds: selectedIdsProp } : undefined),
@@ -45,14 +55,21 @@ export const DataTable = forwardRef<
     ...(onSelectionChangeProp ? { onSelectionChange: onSelectionChangeProp } : undefined),
   });
 
-  const sortedData = useMemo(
-    () => sortRows({ data, sort, columns: columns }),
-    [data, sort, columns],
+  // Pipeline: filter → sort. Pagination is reserved for a future task.
+  const pipelineRows = useMemo(
+    () =>
+      runRowModelPipeline({
+        data,
+        columns,
+        filterState,
+        ...(sort !== undefined ? { sort } : undefined),
+      }),
+    [data, columns, filterState, sort],
   );
 
   const visibleRowIds = useMemo(
-    () => sortedData.map((row) => getRowId(row)),
-    [sortedData, getRowId],
+    () => pipelineRows.map((row) => getRowId(row)),
+    [pipelineRows, getRowId],
   );
 
   const selectAllState = useMemo(
@@ -150,7 +167,7 @@ export const DataTable = forwardRef<
               children ?? "Loading…",
             ),
           )
-        : sortedData.map((row) => {
+        : pipelineRows.map((row) => {
             const rowId = getRowId(row);
             const selected = isSelected(rowId);
             return createElement(

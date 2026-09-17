@@ -67,4 +67,7 @@ export type { UseFilterStateOptions, UseFilterStateReturn } from "./use-filter-s
 export { useGlobalSearch } from "./use-global-search";
 export type { UseGlobalSearchOptions, UseGlobalSearchReturn } from "./use-global-search";
 
+export { runRowModelPipeline } from "./row-model-pipeline";
+export type { RunRowModelPipelineOptions } from "./row-model-pipeline";
+
 export { DataTable } from "./data-table";
