@@ -52,10 +52,10 @@ export interface DataTableSelectionProps {
 // ─── Filter State ───────────────────────────────────────────────────
 
 /**
- * Filter passthrough shape on `DataTableRootProps`. The DataTable UI does
- * not yet consume this — consumers apply `applyFilters` themselves and feed
- * the filtered rows to `data`. Types are declared here so the wiring point
- * is stable for a future task.
+/**
+ * Filter passthrough shape on `DataTableRootProps`. Consumers can drive
+ * filtering entirely from outside (server-controlled) or let the built-in
+ * `useFilterState` manage it internally (uncontrolled with defaults).
  */
 export interface DataTableFilterProps {
   readonly filterState?: FilterState;
@@ -72,8 +72,12 @@ export interface DataTableRootProps<TRow>
   readonly getRowId: (row: TRow) => RowId;
 
   readonly emptyState?: ReactNode;
+  /** Shown when active filters remove every row. Falls back to `emptyState`. */
+  readonly filteredEmptyState?: ReactNode;
   readonly loading?: boolean;
 
+  /** Stable ID exposed on the table element for `aria-controls` linkage from external filter widgets. */
+  readonly id?: string;
   readonly className?: string;
   readonly children?: ReactNode;
 }

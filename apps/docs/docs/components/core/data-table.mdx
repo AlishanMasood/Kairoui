@@ -10,10 +10,23 @@ import {
   Demo,
   ComponentMeta,
   PropsTable,
+  Callout,
 } from "@kairoui/docs";
 import { toPropsList } from "@site/src/api-data";
 import DataTableMeta from "@site/src/generated/components/DataTable.json";
-import { DataTable, column } from "@kairoui/core/components";
+import {
+  DataTable,
+  column,
+  useFilterState,
+  useColumnFilter,
+  useGlobalSearch,
+  Input,
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+} from "@kairoui/core/components";
+import { useEffect } from "react";
 
 export const users = [
   { id: 1, name: "Alice", role: "Engineer", age: 30 },
@@ -90,6 +103,229 @@ column({ id: "age", header: "Age", accessorKey: "age", sortable: true, align: "e
     emptyState={<div style={{ padding: "2rem", textAlign: "center" }}>No users found</div>}
   />
 </Demo>
+
+</DocsSection>
+
+<DocsSection title="Column Filter — text input">
+
+Filter UI is composable — you build the widget with any `Input` and wire it to the shared filter
+state via `useColumnFilter`. The DataTable exposes `id` so the filter widget can reference it via
+`aria-controls`.
+
+export const TextFilterDemo = () => {
+  const store = useFilterState();
+  const nameFilter = useColumnFilter({
+    columnId: "name",
+    filterState: store.filterState,
+    setColumnFilter: store.setColumnFilter,
+    defaultOp: "contains",
+  });
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+      <Input
+        value={String(nameFilter.value ?? "")}
+        onChange={(e) => nameFilter.setValue(e.target.value)}
+        placeholder="Filter by name…"
+        aria-controls="users-text-filter-table"
+        aria-label="Filter users by name"
+      />
+      <DataTable
+        id="users-text-filter-table"
+        data={users}
+        columns={cols}
+        getRowId={(u) => u.id}
+        filterState={store.filterState}
+        onFilterStateChange={store.setFilterState}
+        filteredEmptyState={
+          <div style={{ padding: "1rem", opacity: 0.7 }}>No users match that filter.</div>
+        }
+      />
+    </div>
+  );
+};
+
+<Demo
+  code={`const store = useFilterState();
+const nameFilter = useColumnFilter({
+  columnId: "name",
+  filterState: store.filterState,
+  setColumnFilter: store.setColumnFilter,
+  defaultOp: "contains",
+});
+
+<Input
+  value={String(nameFilter.value ?? "")}
+  onChange={(e) => nameFilter.setValue(e.target.value)}
+  aria-controls="users-table"
+  aria-label="Filter users by name"
+/>
+<DataTable
+  id="users-table"
+  data={users}
+  columns={cols}
+  getRowId={(u) => u.id}
+  filterState={store.filterState}
+  onFilterStateChange={store.setFilterState}
+  filteredEmptyState={<div>No matches</div>}
+/>`}
+>
+  <TextFilterDemo />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Column Filter — select">
+
+For enumerable columns, use any Select widget and drive the filter with the `equals` operator.
+
+export const SelectFilterDemo = () => {
+  const store = useFilterState();
+  const roleFilter = useColumnFilter({
+    columnId: "role",
+    filterState: store.filterState,
+    setColumnFilter: store.setColumnFilter,
+    defaultOp: "equals",
+  });
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+      <Select
+        value={String(roleFilter.value ?? "")}
+        onValueChange={(v) => roleFilter.setValue(v === "" ? undefined : v)}
+      >
+        <SelectTrigger
+          placeholder="All roles"
+          aria-controls="users-select-filter-table"
+          aria-label="Filter users by role"
+        />
+        <SelectContent>
+          <SelectItem value="">All</SelectItem>
+          <SelectItem value="Engineer">Engineer</SelectItem>
+          <SelectItem value="Designer">Designer</SelectItem>
+          <SelectItem value="Manager">Manager</SelectItem>
+        </SelectContent>
+      </Select>
+      <DataTable
+        id="users-select-filter-table"
+        data={users}
+        columns={cols}
+        getRowId={(u) => u.id}
+        filterState={store.filterState}
+        onFilterStateChange={store.setFilterState}
+        filteredEmptyState={
+          <div style={{ padding: "1rem", opacity: 0.7 }}>No users match that role.</div>
+        }
+      />
+    </div>
+  );
+};
+
+<Demo
+  code={`const store = useFilterState();
+const roleFilter = useColumnFilter({
+  columnId: "role",
+  filterState: store.filterState,
+  setColumnFilter: store.setColumnFilter,
+  defaultOp: "equals",
+});
+
+<Select
+  value={String(roleFilter.value ?? "")}
+  onValueChange={(v) => roleFilter.setValue(v === "" ? undefined : v)}
+>
+  <SelectTrigger aria-controls="users-table" aria-label="Filter users by role" />
+  <SelectContent>...</SelectContent>
+</Select>
+<DataTable id="users-table" ... />`}
+>
+  <SelectFilterDemo />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Global search">
+
+Compose `useGlobalSearch` with `useFilterState` for debounced free-text search across every
+filterable column. The debounce runs in `useGlobalSearch`; the DataTable receives the settled
+value.
+
+export const GlobalSearchDemo = () => {
+  const store = useFilterState();
+  const search = useGlobalSearch({ delayMs: 200 });
+  useEffect(() => {
+    store.setGlobalFilter(search.debounced);
+  }, [search.debounced]);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+      <Input
+        value={search.input}
+        onChange={(e) => search.setInput(e.target.value)}
+        placeholder="Search users…"
+        aria-controls="users-global-search-table"
+        aria-label="Search users"
+      />
+      <DataTable
+        id="users-global-search-table"
+        data={users}
+        columns={cols}
+        getRowId={(u) => u.id}
+        filterState={store.filterState}
+        onFilterStateChange={store.setFilterState}
+        filteredEmptyState={<div style={{ padding: "1rem", opacity: 0.7 }}>No matches.</div>}
+      />
+    </div>
+  );
+};
+
+<Demo
+  code={`const store = useFilterState();
+const search = useGlobalSearch({ delayMs: 200 });
+
+React.useEffect(() => {
+store.setGlobalFilter(search.debounced);
+}, [search.debounced]);
+
+<Input
+  value={search.input}
+  onChange={(e) => search.setInput(e.target.value)}
+  aria-controls="users-table"
+  aria-label="Search users"
+/>
+<DataTable
+  id="users-table"
+  ...
+  filterState={store.filterState}
+  onFilterStateChange={store.setFilterState}
+/>`}
+>
+  <GlobalSearchDemo />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Server-controlled filtering">
+
+Data fetching stays outside the component. Wire `onFilterStateChange` to your query layer and
+feed the filtered rows back through `data`. `filterState` is plain data — serialize with
+`JSON.stringify` and send it to any backend.
+
+```tsx
+const [rows, setRows] = React.useState([]);
+const [filterState, setFilterState] = React.useState(EMPTY_FILTER_STATE);
+
+React.useEffect(() => {
+  fetch("/api/users?filter=" + encodeURIComponent(JSON.stringify(filterState)))
+    .then((r) => r.json())
+    .then(setRows);
+}, [filterState]);
+
+<DataTable
+  data={rows}
+  columns={cols}
+  getRowId={(u) => u.id}
+  filterState={filterState}
+  onFilterStateChange={setFilterState}
+/>;
+```
 
 </DocsSection>
 

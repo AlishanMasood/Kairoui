@@ -207,3 +207,112 @@ describe("DataTable: stable filtering", () => {
     }
   });
 });
+
+// ─── Filtered empty state ──────────────────────────────────────────
+
+describe("DataTable: filtered empty state", () => {
+  it("renders `filteredEmptyState` when every row is filtered out", () => {
+    const filterState: FilterState = {
+      globalFilter: "zzz-no-match",
+      combinator: "and",
+      columnFilters: [],
+    };
+    renderTable({
+      filterState,
+      filteredEmptyState: createElement("div", { role: "note" }, "No matches"),
+    });
+    expect(screen.getByRole("note")).toHaveTextContent("No matches");
+  });
+
+  it("falls back to `emptyState` when only `emptyState` is provided", () => {
+    const filterState: FilterState = {
+      globalFilter: "zzz-no-match",
+      combinator: "and",
+      columnFilters: [],
+    };
+    renderTable({
+      filterState,
+      emptyState: createElement("div", { role: "note" }, "Nothing here"),
+    });
+    expect(screen.getByRole("note")).toHaveTextContent("Nothing here");
+  });
+
+  it("emits data-filtered-empty on the wrapper when filters are active", () => {
+    const filterState: FilterState = {
+      globalFilter: "zzz-no-match",
+      combinator: "and",
+      columnFilters: [],
+    };
+    const { container } = renderTable({
+      filterState,
+      filteredEmptyState: createElement("div", null, "None"),
+    });
+    const wrapper = container.querySelector("[data-kui-component='DataTable']");
+    expect(wrapper?.getAttribute("data-filtered-empty")).toBe("true");
+  });
+
+  it("does not render filtered-empty when data itself is empty", () => {
+    render(
+      createElement(DataTable, {
+        data: [] as User[],
+        columns: cols,
+        getRowId: (u: User) => u.id,
+        emptyState: createElement("div", { role: "note" }, "No data"),
+        filteredEmptyState: createElement("div", { role: "alert" }, "No matches"),
+      } as never),
+    );
+    expect(screen.getByRole("note")).toHaveTextContent("No data");
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("still renders the table when no empty node is provided", () => {
+    const filterState: FilterState = {
+      globalFilter: "zzz-no-match",
+      combinator: "and",
+      columnFilters: [],
+    };
+    renderTable({ filterState });
+    expect(screen.getByRole("table")).toBeInTheDocument();
+    // No data rows.
+    expect(screen.getAllByRole("row")).toHaveLength(1);
+  });
+});
+
+// ─── Accessible id linkage ─────────────────────────────────────────
+
+describe("DataTable: accessible id linkage", () => {
+  it("propagates the id to the table element", () => {
+    renderTable({ id: "users-table" });
+    expect(screen.getByRole("table").id).toBe("users-table");
+  });
+
+  it("propagates the id to the empty-state wrapper", () => {
+    render(
+      createElement(DataTable, {
+        data: [] as User[],
+        columns: cols,
+        getRowId: (u: User) => u.id,
+        id: "users-table",
+        emptyState: createElement("div", null, "No data"),
+      } as never),
+    );
+    const wrapper = document.getElementById("users-table");
+    expect(wrapper).not.toBeNull();
+    expect(wrapper?.getAttribute("data-kui-component")).toBe("DataTable");
+  });
+
+  it("propagates the id to the filtered-empty wrapper", () => {
+    const filterState: FilterState = {
+      globalFilter: "zzz-no-match",
+      combinator: "and",
+      columnFilters: [],
+    };
+    renderTable({
+      id: "users-table",
+      filterState,
+      filteredEmptyState: createElement("div", null, "No matches"),
+    });
+    const wrapper = document.getElementById("users-table");
+    expect(wrapper?.getAttribute("data-filtered-empty")).toBe("true");
+  });
+});

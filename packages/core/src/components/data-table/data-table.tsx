@@ -30,7 +30,9 @@ export const DataTable = forwardRef<
     defaultFilterState,
     onFilterStateChange,
     emptyState,
+    filteredEmptyState,
     loading = false,
+    id,
     className,
     children,
     ...rest
@@ -79,14 +81,16 @@ export const DataTable = forwardRef<
 
   const hasSelection = selectionMode !== "none";
   const typedColumns = columns;
+  const hasActiveFilters = filterState.globalFilter !== "" || filterState.columnFilters.length > 0;
 
-  // Empty state
+  // Empty state — original data is empty.
   if (!loading && data.length === 0 && emptyState) {
     return createElement(
       "div",
       {
         ...rest,
         ref: ref as React.Ref<HTMLDivElement>,
+        ...(id ? { id } : undefined),
         "data-kui-component": "DataTable",
         "data-empty": "true",
         className,
@@ -95,11 +99,32 @@ export const DataTable = forwardRef<
     );
   }
 
+  // Filtered-empty state — data has rows but every row is filtered out.
+  if (!loading && data.length > 0 && pipelineRows.length === 0) {
+    const filteredNode = filteredEmptyState ?? emptyState;
+    if (filteredNode) {
+      return createElement(
+        "div",
+        {
+          ...rest,
+          ref: ref as React.Ref<HTMLDivElement>,
+          ...(id ? { id } : undefined),
+          "data-kui-component": "DataTable",
+          "data-empty": "true",
+          ...(hasActiveFilters ? { "data-filtered-empty": "true" } : undefined),
+          className,
+        },
+        filteredNode,
+      );
+    }
+  }
+
   return createElement(
     Table,
     {
       ...(rest as HTMLAttributes<HTMLTableElement>),
       ref,
+      ...(id ? { id } : undefined),
       "aria-busy": loading || undefined,
       "data-kui-component": "DataTable" as never,
       className,

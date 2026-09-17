@@ -2,6 +2,7 @@ export type {
   DataTableColumnDef,
   DataTableSortProps,
   DataTableSelectionProps,
+  DataTableFilterProps,
   DataTableRootProps,
   DataTableContextValue,
 } from "./data-table-types";
@@ -66,6 +67,9 @@ export type { UseFilterStateOptions, UseFilterStateReturn } from "./use-filter-s
 
 export { useGlobalSearch } from "./use-global-search";
 export type { UseGlobalSearchOptions, UseGlobalSearchReturn } from "./use-global-search";
+
+export { useColumnFilter } from "./use-column-filter";
+export type { UseColumnFilterOptions, UseColumnFilterReturn } from "./use-column-filter";
 
 export { runRowModelPipeline } from "./row-model-pipeline";
 export type { RunRowModelPipelineOptions } from "./row-model-pipeline";

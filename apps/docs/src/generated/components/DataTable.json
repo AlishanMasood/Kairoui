@@ -28,6 +28,12 @@
       "deprecated": false
     },
     {
+      "name": "defaultFilterState",
+      "type": "undefined | FilterState",
+      "required": false,
+      "deprecated": false
+    },
+    {
       "name": "defaultSelectedIds",
       "type": "undefined | ReadonlySet<RowId>",
       "required": false,
@@ -46,6 +52,12 @@
       "deprecated": false
     },
     {
+      "name": "filterState",
+      "type": "undefined | FilterState",
+      "required": false,
+      "deprecated": false
+    },
+    {
       "name": "getRowId",
       "type": "(row: TRow) => RowId",
       "required": true,
@@ -56,6 +68,12 @@
       "type": "undefined | boolean",
       "required": false,
       "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "onFilterStateChange",
+      "type": "undefined | (state: FilterState) => void",
+      "required": false,
       "deprecated": false
     },
     {
