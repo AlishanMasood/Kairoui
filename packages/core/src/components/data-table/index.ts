@@ -35,4 +35,36 @@ export type { SelectAllState } from "./selection-utils";
 export { useRowSelection } from "./use-row-selection";
 export type { UseRowSelectionOptions, UseRowSelectionReturn } from "./use-row-selection";
 
+export {
+  EMPTY_FILTER_STATE,
+  DEFAULT_OP_FOR_KIND,
+  filterPredicates,
+  isColumnFilterable,
+  matchesGlobalFilter,
+  evaluateColumnFilter,
+  applyFilters,
+  setGlobalFilter,
+  setColumnFilter,
+  clearColumnFilter,
+  clearAllFilters,
+} from "./filter-utils";
+export type {
+  FilterOp,
+  FilterKind,
+  FilterCombinator,
+  ColumnFilter,
+  FilterState,
+  FilterOption,
+  FilterFn,
+  DataTableColumnFilterMeta,
+  EvaluateColumnFilterOptions,
+  ApplyFiltersOptions,
+} from "./filter-utils";
+
+export { useFilterState } from "./use-filter-state";
+export type { UseFilterStateOptions, UseFilterStateReturn } from "./use-filter-state";
+
+export { useGlobalSearch } from "./use-global-search";
+export type { UseGlobalSearchOptions, UseGlobalSearchReturn } from "./use-global-search";
+
 export { DataTable } from "./data-table";
