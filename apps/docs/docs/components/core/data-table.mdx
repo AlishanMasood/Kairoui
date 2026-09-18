@@ -329,6 +329,48 @@ React.useEffect(() => {
 
 </DocsSection>
 
+<DocsSection title="Virtualization (opt-in)">
+
+For very large datasets, DataTable can render only the rows currently in view.
+Virtualization is **off by default** — enable it with `virtualized`, a fixed
+`rowHeight`, and a `virtualScrollHeight` for the internal scroll container.
+
+```tsx
+<DataTable
+  data={fiveThousandRows}
+  columns={cols}
+  getRowId={(u) => u.id}
+  virtualized
+  rowHeight={40}
+  overscan={4}
+  virtualScrollHeight={400}
+/>
+```
+
+**Accessibility posture** (see
+[PHASE13-VIRTUALIZATION-ARCHITECTURE.md](https://github.com/kairoui/kairoui/blob/main/docs/architecture/PHASE13-VIRTUALIZATION-ARCHITECTURE.md)
+for the full policy):
+
+- `aria-rowcount` on `<table>` reflects the true total row count, not the DOM slice.
+- Each rendered `<tr>` carries `aria-rowindex` matching its 1-based table position.
+- Top / bottom spacer `<tr aria-hidden="true">` elements preserve virtual scroll height.
+- Focused rows stay mounted while focus is inside them, even if they scroll out of view.
+- SSR renders every row so print / no-JS UX is preserved; the client swaps to windowed
+  rendering after mount.
+
+**Documented limitations**:
+
+- Fixed row height only — variable heights are deferred to a future phase.
+- Columns are never virtualized.
+- Sticky footers are not supported inside the scroll container.
+- The scroll container uses `overflowY: auto` — very tall CSS row content may reflow.
+- Keyboard `PageUp` / `PageDown` scroll the container natively; no autoscroll on focus.
+
+**Selection, sort, and filter** continue to operate on the entire dataset. A selected
+row that scrolls out of the render window remains in the selection set.
+
+</DocsSection>
+
 <DocsSection title="Accessibility">
 
 - Built on native `<table>` semantics via the Table component
@@ -336,6 +378,7 @@ React.useEffect(() => {
 - Selected rows have `aria-selected`
 - Select-all header has `aria-label`
 - Empty state shown when `data` is empty and not loading
+- Virtualization preserves `aria-rowcount` / `aria-rowindex` and keeps focused rows mounted
 
 </DocsSection>
 

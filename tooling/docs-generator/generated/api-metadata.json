@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T18:35:18.163Z",
+  "generatedAt": "2026-09-18T11:19:18.314Z",
   "generatorVersion": "0.1.0",
   "packages": [
     {
@@ -1789,6 +1789,13 @@
               "deprecated": false
             },
             {
+              "name": "filteredEmptyState",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "description": "Shown when active filters remove every row. Falls back to `emptyState`.",
+              "deprecated": false
+            },
+            {
               "name": "filterState",
               "type": "undefined | FilterState",
               "required": false,
@@ -1798,6 +1805,13 @@
               "name": "getRowId",
               "type": "(row: TRow) => RowId",
               "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "description": "Stable ID exposed on the table element for `aria-controls` linkage from external filter widgets.",
               "deprecated": false
             },
             {

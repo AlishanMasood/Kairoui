@@ -63,10 +63,41 @@ export interface DataTableFilterProps {
   readonly onFilterStateChange?: (state: FilterState) => void;
 }
 
+// ─── Virtualization ─────────────────────────────────────────────────
+
+/**
+ * Opt-in row virtualization. When enabled, DataTable wraps its `<table>` in
+ * an internal scroll container and renders only the rows currently in view.
+ * Fixed row height only in v1 — variable heights are deferred.
+ *
+ * Accessibility: `aria-rowcount` reflects the total row count and each
+ * rendered `<tr>` carries `aria-rowindex` matching its 1-based position in
+ * the table. Focused rows scrolling out of view remain in the DOM until
+ * focus moves. See `docs/architecture/PHASE13-VIRTUALIZATION-ARCHITECTURE.md`
+ * for the full accessibility posture and limitations.
+ */
+export interface DataTableVirtualizationProps {
+  /** Opt-in row virtualization. Default `false`. */
+  readonly virtualized?: boolean;
+  /** Required when `virtualized === true`. Fixed row height in CSS pixels. */
+  readonly rowHeight?: number;
+  /** Extra rows rendered above and below the viewport. Default `3`. */
+  readonly overscan?: number;
+  /**
+   * Viewport height (CSS pixels) applied to the internal scroll container.
+   * Optional — if omitted, the consumer must size the DataTable via CSS.
+   */
+  readonly virtualScrollHeight?: number;
+}
+
 // ─── DataTable Props ────────────────────────────────────────────────
 
 export interface DataTableRootProps<TRow>
-  extends DataTableSortProps, DataTableSelectionProps, DataTableFilterProps {
+  extends
+    DataTableSortProps,
+    DataTableSelectionProps,
+    DataTableFilterProps,
+    DataTableVirtualizationProps {
   readonly data: readonly TRow[];
   readonly columns: readonly DataTableColumnDef<TRow>[];
   readonly getRowId: (row: TRow) => RowId;
