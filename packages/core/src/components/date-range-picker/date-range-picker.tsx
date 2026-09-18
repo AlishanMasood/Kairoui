@@ -3,6 +3,7 @@ import {
   createElement,
   forwardRef,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -683,6 +684,8 @@ export interface DateRangePickerCalendarsProps {
 interface RangeCalendarGridProps {
   viewYear: number;
   viewMonth: number;
+  focusedDate: Date;
+  registerCell: (iso: string, el: HTMLButtonElement | null) => void;
 }
 
 function useHandleDayClick() {
@@ -710,7 +713,7 @@ function useHandleDayClick() {
 }
 
 function RangeCalendarGrid(props: RangeCalendarGridProps) {
-  const { viewYear, viewMonth } = props;
+  const { viewYear, viewMonth, focusedDate, registerCell } = props;
   const ctx = useDateRangePickerContext();
   const handleDayClick = useHandleDayClick();
 
@@ -797,17 +800,22 @@ function RangeCalendarGrid(props: RangeCalendarGridProps) {
             day.date.getTime() < (start?.getTime() ?? 0);
 
           const isCellDisabled = day.isDisabled || outOfMax || belowMin;
+          const iso = day.date.toISOString();
+          const isRovingTarget = !day.isOutsideMonth && isSameDay(day.date, focusedDate);
 
           return createElement(
             "button",
             {
               type: "button",
-              key: day.date.toISOString(),
+              key: iso,
+              ref: (el: HTMLButtonElement | null) => {
+                if (!day.isOutsideMonth) registerCell(iso, el);
+              },
               role: "gridcell",
               "aria-selected": isStart || isEnd || undefined,
               "aria-disabled": isCellDisabled || undefined,
               disabled: isCellDisabled,
-              tabIndex: -1,
+              tabIndex: isRovingTarget ? 0 : -1,
               onClick: () => {
                 if (isCellDisabled) return;
                 handleDayClick(day.date);
@@ -852,6 +860,26 @@ export const DateRangePickerCalendars = forwardRef<
     month: anchor.getMonth(),
   }));
 
+  const [focusedDate, setFocusedDate] = useState<Date>(
+    () => new Date(anchor.getFullYear(), anchor.getMonth(), anchor.getDate()),
+  );
+
+  const cellRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+  const registerCell = useCallback((iso: string, el: HTMLButtonElement | null) => {
+    if (el) cellRefs.current.set(iso, el);
+    else cellRefs.current.delete(iso);
+  }, []);
+
+  // Only focus the cell imperatively when a keyboard action moved focus.
+  const shouldRefocusRef = useRef(false);
+  useEffect(() => {
+    if (!shouldRefocusRef.current) return;
+    shouldRefocusRef.current = false;
+    const iso = focusedDate.toISOString();
+    const el = cellRefs.current.get(iso);
+    el?.focus();
+  }, [focusedDate]);
+
   const goPrev = useCallback(() => {
     setViewMonth((prev) => {
       const d = addMonths(new Date(prev.year, prev.month, 1), -1);
@@ -872,6 +900,83 @@ export const DateRangePickerCalendars = forwardRef<
     return { year: d.getFullYear(), month: d.getMonth() };
   }, [months, viewMonth]);
 
+  const advanceViewToInclude = useCallback(
+    (next: Date) => {
+      const nextY = next.getFullYear();
+      const nextM = next.getMonth();
+      const firstIndex = viewMonth.year * 12 + viewMonth.month;
+      const lastIndex = secondMonth ? secondMonth.year * 12 + secondMonth.month : firstIndex;
+      const nextIndex = nextY * 12 + nextM;
+      if (nextIndex < firstIndex) {
+        setViewMonth({ year: nextY, month: nextM });
+      } else if (nextIndex > lastIndex) {
+        const anchorFirst = secondMonth
+          ? addMonths(new Date(nextY, nextM, 1), -1)
+          : new Date(nextY, nextM, 1);
+        setViewMonth({
+          year: anchorFirst.getFullYear(),
+          month: anchorFirst.getMonth(),
+        });
+      }
+    },
+    [viewMonth, secondMonth],
+  );
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLDivElement>) => {
+      const isRtl = ctx.dir === "rtl";
+      let delta = 0;
+      switch (e.key) {
+        case "ArrowRight":
+          delta = isRtl ? -1 : 1;
+          break;
+        case "ArrowLeft":
+          delta = isRtl ? 1 : -1;
+          break;
+        case "ArrowUp":
+          delta = -7;
+          break;
+        case "ArrowDown":
+          delta = 7;
+          break;
+        case "PageUp":
+          delta = e.shiftKey ? -365 : -30;
+          break;
+        case "PageDown":
+          delta = e.shiftKey ? 365 : 30;
+          break;
+        case "Home": {
+          e.preventDefault();
+          const dayOfWeek = focusedDate.getDay();
+          const daysBack = (dayOfWeek - ctx.weekStartsOn + 7) % 7;
+          const next = addDays(focusedDate, -daysBack);
+          shouldRefocusRef.current = true;
+          setFocusedDate(next);
+          advanceViewToInclude(next);
+          return;
+        }
+        case "End": {
+          e.preventDefault();
+          const dayOfWeek = focusedDate.getDay();
+          const daysForward = 6 - ((dayOfWeek - ctx.weekStartsOn + 7) % 7);
+          const next = addDays(focusedDate, daysForward);
+          shouldRefocusRef.current = true;
+          setFocusedDate(next);
+          advanceViewToInclude(next);
+          return;
+        }
+        default:
+          return;
+      }
+      e.preventDefault();
+      const next = addDays(focusedDate, delta);
+      shouldRefocusRef.current = true;
+      setFocusedDate(next);
+      advanceViewToInclude(next);
+    },
+    [ctx.dir, ctx.weekStartsOn, focusedDate, advanceViewToInclude],
+  );
+
   return createElement(
     "div",
     {
@@ -881,6 +986,7 @@ export const DateRangePickerCalendars = forwardRef<
       "data-kui-component": "DateRangePickerCalendars",
       "data-months": String(months),
       dir: ctx.dir,
+      onKeyDown: handleKeyDown,
     },
     createElement(
       "div",
@@ -912,11 +1018,15 @@ export const DateRangePickerCalendars = forwardRef<
       createElement(RangeCalendarGrid, {
         viewYear: viewMonth.year,
         viewMonth: viewMonth.month,
+        focusedDate,
+        registerCell,
       }),
       secondMonth
         ? createElement(RangeCalendarGrid, {
             viewYear: secondMonth.year,
             viewMonth: secondMonth.month,
+            focusedDate,
+            registerCell,
           })
         : null,
     ),
