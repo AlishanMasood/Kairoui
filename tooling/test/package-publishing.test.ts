@@ -184,7 +184,7 @@ describe("Publishing: pack size sanity", () => {
     utils: 275,
     tokens: 600,
     theme: 350,
-    hooks: 50,
+    hooks: 60,
     icons: 5,
     core: 1900,
   };

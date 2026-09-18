@@ -23,3 +23,5 @@ export type {
   UseAccessibilityRelationshipsOptions,
   AccessibilityRelationships,
 } from "./use-accessibility-relationships";
+export { useVirtualizer } from "./use-virtualizer";
+export type { UseVirtualizerOptions, UseVirtualizerReturn } from "./use-virtualizer";

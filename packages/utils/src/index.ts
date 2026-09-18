@@ -86,6 +86,20 @@ export { createStableCallback, createEventCallback, composeCallbacks } from "./c
 export type { StableCallback, EventCallback } from "./callback";
 export { canUseDOM, canUseWindow, canUseDocument, isServer } from "./environment";
 
+export {
+  computeVirtualizedRange,
+  getItemOffset,
+  getRangeSize,
+  getIndexAtOffset,
+  computeScrollToIndex,
+} from "./virtualizer";
+export type {
+  VirtualizerConfig,
+  VirtualizedRange,
+  ScrollAlignment,
+  ScrollToIndexOptions,
+} from "./virtualizer";
+
 /**
  * A no-op function. Useful as a default callback or placeholder.
  */

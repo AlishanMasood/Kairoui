@@ -291,7 +291,7 @@ describe("Dev-only code stripping", () => {
 
 describe("Bundle size sanity", () => {
   const sizeChecks = [
-    { pkg: "utils", file: "dist/index.js", maxKB: 20 },
+    { pkg: "utils", file: "dist/index.js", maxKB: 25 },
     { pkg: "tokens", file: "dist/index.js", maxKB: 65 },
     { pkg: "theme", file: "dist/index.js", maxKB: 50 },
     { pkg: "hooks", file: "dist/index.js", maxKB: 15 },
