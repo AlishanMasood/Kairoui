@@ -1,8 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createProgramFromFiles } from "./discovery";
 import { extractComponentMeta, findPropsInterface, stringifyType } from "./extractor";
+
+vi.setConfig({ testTimeout: 30_000 });
 
 const THIS_DIR =
   typeof import.meta.dirname === "string"

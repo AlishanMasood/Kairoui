@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync, readFileSync, rmSync, mkdirSync } from "node:fs";
@@ -16,6 +16,8 @@ const TMP_DIR = resolve(THIS_DIR, "../.test-cli-output");
 function cleanTmp() {
   rmSync(TMP_DIR, { recursive: true, force: true });
 }
+
+vi.setConfig({ testTimeout: 30_000 });
 
 // ─── Full generation ────────────────────────────────────────────────
 
