@@ -133,6 +133,76 @@ value is a wall-clock instant, not a UTC anchor.
 
 </DocsSection>
 
+<DocsSection title="Controlled / uncontrolled">
+
+Pass `value` for controlled mode or `defaultValue` for uncontrolled. Emit changes via
+`onValueChange`. The composite value is `null` whenever either the date or the time part is
+missing — DateTimeInput preserves partial edits internally so the user can complete the value
+without losing what they typed.
+
+<Demo
+  code={`function ControlledDateTime() {
+  const [dt, setDt] = React.useState(null);
+  return <DateTimeInput value={dt} onValueChange={setDt} locale="en-US" />;
+}`}
+>
+  <DateTimeInput
+    defaultValue={{
+      date: { year: 2026, month: 6, day: 15 },
+      time: { hour: 9, minute: 0, second: 0, millisecond: 0 },
+    }}
+    locale="en-US"
+  />
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Locale">
+
+`locale` (BCP-47) drives both sub-inputs. Set `hour12={false}` to force 24-hour presentation
+regardless of locale, or `hour12={true}` to force AM/PM.
+
+<Demo
+  code={`<div style={{ display: "grid", gap: 8 }}>
+  <DateTimeInput locale="en-US" />
+  <DateTimeInput locale="en-GB" />
+  <DateTimeInput locale="ja-JP" hour12={false} />
+  <DateTimeInput locale="de-DE" hour12={false} />
+</div>`}
+>
+  <div style={{ display: "grid", gap: 8 }}>
+    <DateTimeInput locale="en-US" />
+    <DateTimeInput locale="en-GB" />
+    <DateTimeInput locale="ja-JP" hour12={false} />
+    <DateTimeInput locale="de-DE" hour12={false} />
+  </div>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard">
+
+Both sub-inputs behave like `DateInput` and `TimeInput` individually:
+
+- Type digits and separators; `Enter` or blur commits.
+- Invalid intermediate input stays visible with `aria-invalid="true"`.
+- Backspace or clearing either sub-input reduces the composite value to `null` but keeps the
+  other sub-input's text visible so the user can finish typing.
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- The date sub-input inherits `aria-labelledby`, `aria-describedby`, and `aria-errormessage`
+  from `Field` context.
+- The time sub-input is isolated from Field context via `FieldContext.Provider value={null}` so
+  it does **not** double-inherit errormessage. It carries a distinct default
+  `aria-label="Time"` so screen readers announce two separate controls.
+- The wrapper emits `data-invalid` when the composite value falls outside `min` / `max`.
+- No timezone selector — the value is a wall-clock instant with no UTC anchor.
+
+</DocsSection>
+
 <DocsSection title="Props">
 
 <PropsTable props={toPropsList(DateTimeInputMeta)} />

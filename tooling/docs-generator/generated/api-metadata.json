@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T11:19:18.314Z",
+  "generatedAt": "2026-09-18T12:58:50.065Z",
   "generatorVersion": "0.1.0",
   "packages": [
     {
@@ -1840,6 +1840,20 @@
               "deprecated": false
             },
             {
+              "name": "overscan",
+              "type": "undefined | number",
+              "required": false,
+              "description": "Extra rows rendered above and below the viewport. Default `3`.",
+              "deprecated": false
+            },
+            {
+              "name": "rowHeight",
+              "type": "undefined | number",
+              "required": false,
+              "description": "Required when `virtualized === true`. Fixed row height in CSS pixels.",
+              "deprecated": false
+            },
+            {
               "name": "selectedIds",
               "type": "undefined | ReadonlySet<RowId>",
               "required": false,
@@ -1856,6 +1870,21 @@
               "name": "sort",
               "type": "undefined | SortState",
               "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "virtualized",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Opt-in row virtualization. Default `false`.",
+              "deprecated": false
+            },
+            {
+              "name": "virtualScrollHeight",
+              "type": "undefined | number",
+              "required": false,
+              "description": "Viewport height (CSS pixels) applied to the internal scroll container.\nOptional — if omitted, the consumer must size the DataTable via CSS.",
               "deprecated": false
             }
           ],

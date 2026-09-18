@@ -150,6 +150,84 @@ focus and clicks on disabled dates.
 
 </DocsSection>
 
+<DocsSection title="Controlled / uncontrolled">
+
+DatePicker accepts either `value` (controlled) or `defaultValue` (uncontrolled). The same
+pattern applies to the popover with `open` / `defaultOpen`. Emit changes via `onValueChange`
+and `onOpenChange`.
+
+<Demo
+  code={`function ControlledDatePicker() {
+  const [date, setDate] = React.useState(null);
+  return (
+    <DatePicker value={date} onValueChange={setDate} locale="en-US">
+      <DatePickerInput />
+      <DatePickerClear />
+      <DatePickerTrigger />
+      <DatePickerContent><DatePickerCalendar /></DatePickerContent>
+    </DatePicker>
+  );
+}`}
+>
+  <DatePicker defaultValue={new Date(2026, 5, 15)} locale="en-US">
+    <DatePickerInput />
+    <DatePickerClear />
+    <DatePickerTrigger />
+    <DatePickerContent>
+      <DatePickerCalendar />
+    </DatePickerContent>
+  </DatePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Locale">
+
+Pass any BCP-47 locale via the `locale` prop. Placeholder text, calendar labels, and parsing all
+adapt to the locale's date order (YMD / DMY / MDY) and separator.
+
+<Demo
+  code={`<div style={{ display: "grid", gap: 8 }}>
+  <DatePicker locale="en-US"><DatePickerInput /><DatePickerTrigger /><DatePickerContent><DatePickerCalendar /></DatePickerContent></DatePicker>
+  <DatePicker locale="en-GB"><DatePickerInput /><DatePickerTrigger /><DatePickerContent><DatePickerCalendar /></DatePickerContent></DatePicker>
+  <DatePicker locale="ja-JP"><DatePickerInput /><DatePickerTrigger /><DatePickerContent><DatePickerCalendar /></DatePickerContent></DatePicker>
+  <DatePicker locale="de-DE"><DatePickerInput /><DatePickerTrigger /><DatePickerContent><DatePickerCalendar /></DatePickerContent></DatePicker>
+</div>`}
+>
+  <div style={{ display: "grid", gap: 8 }}>
+    <DatePicker locale="en-US">
+      <DatePickerInput />
+      <DatePickerTrigger />
+      <DatePickerContent>
+        <DatePickerCalendar />
+      </DatePickerContent>
+    </DatePicker>
+    <DatePicker locale="en-GB">
+      <DatePickerInput />
+      <DatePickerTrigger />
+      <DatePickerContent>
+        <DatePickerCalendar />
+      </DatePickerContent>
+    </DatePicker>
+    <DatePicker locale="ja-JP">
+      <DatePickerInput />
+      <DatePickerTrigger />
+      <DatePickerContent>
+        <DatePickerCalendar />
+      </DatePickerContent>
+    </DatePicker>
+    <DatePicker locale="de-DE">
+      <DatePickerInput />
+      <DatePickerTrigger />
+      <DatePickerContent>
+        <DatePickerCalendar />
+      </DatePickerContent>
+    </DatePicker>
+  </div>
+</Demo>
+
+</DocsSection>
+
 <DocsSection title="Field integration">
 
 <Demo

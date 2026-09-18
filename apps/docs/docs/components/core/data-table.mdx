@@ -371,6 +371,33 @@ row that scrolls out of the render window remains in the selection set.
 
 </DocsSection>
 
+<DocsSection title="Performance guidance">
+
+Rules of thumb for when virtualization pays off:
+
+| Dataset size   | Virtualize?                                                                  |
+| -------------- | ---------------------------------------------------------------------------- |
+| ≤ 200 rows     | No — the DOM cost is negligible; virtualization overhead exceeds it.         |
+| 200 – 1 000    | Optional — profile first; virtualization helps only if row content is heavy. |
+| 1 000 – 10 000 | Yes — DOM node count dominates render time without it.                       |
+| > 10 000       | Yes, plus consider server-side pagination or filtering.                      |
+
+Practical tips:
+
+- **Pick a realistic `rowHeight`.** Values that drift from your CSS produce visual gaps or
+  overlap. Measure the rendered row once and pin the value.
+- **Keep `overscan` small.** The default of `3` covers fast scrolls without ballooning DOM
+  size. Values above `10` regress the very cost virtualization is meant to eliminate.
+- **Filter before you virtualize.** DataTable already runs filter → sort → window. If your
+  data can be narrowed cheaply on the server, do so and pass the smaller `data` prop.
+- **Do not render heavy cell content in a virtualized table.** Every scroll re-renders the
+  windowed slice — expensive cells (charts, editors) will feel sluggish. Move heavy content
+  to an on-demand row-detail view.
+- **Selection state is a Set.** Large selections do not affect scroll performance because
+  membership checks are `O(1)`.
+
+</DocsSection>
+
 <DocsSection title="Accessibility">
 
 - Built on native `<table>` semantics via the Table component

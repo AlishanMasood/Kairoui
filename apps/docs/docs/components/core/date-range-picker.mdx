@@ -258,6 +258,102 @@ each holding an ISO `YYYY-MM-DD` string.
 
 </DocsSection>
 
+<DocsSection title="Controlled / uncontrolled">
+
+DateRangePicker accepts either `value: DateRange` (controlled) or `defaultValue` (uncontrolled).
+Fire `onValueChange` to observe changes. The popover state uses the same pattern via `open` /
+`defaultOpen` / `onOpenChange`. Server-controlled flows can drive both from state populated by
+a query layer.
+
+<Demo
+  code={`function ControlledRange() {
+  const [range, setRange] = React.useState({ start: null, end: null });
+  return (
+    <DateRangePicker value={range} onValueChange={setRange} locale="en-US">
+      <DateRangePickerStartInput />
+      <DateRangePickerEndInput />
+      <DateRangePickerClear />
+      <DateRangePickerTrigger />
+      <DateRangePickerContent><DateRangePickerCalendars /></DateRangePickerContent>
+    </DateRangePicker>
+  );
+}`}
+>
+  <DateRangePicker
+    defaultValue={{ start: new Date(2026, 5, 15), end: new Date(2026, 5, 22) }}
+    locale="en-US"
+  >
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerClear />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Locale">
+
+`locale` (BCP-47) drives every displayed string — placeholder pattern, month heading, weekday
+labels, and parsing separators. Combined with the `dir="rtl"` prop, DateRangePicker supports
+right-to-left layouts.
+
+<Demo
+  code={`<DateRangePicker locale="ja-JP" weekStartsOn={0}>
+  <DateRangePickerStartInput />
+  <DateRangePickerEndInput />
+  <DateRangePickerTrigger />
+  <DateRangePickerContent><DateRangePickerCalendars /></DateRangePickerContent>
+</DateRangePicker>`}
+>
+  <DateRangePicker locale="ja-JP" weekStartsOn={0}>
+    <DateRangePickerStartInput />
+    <DateRangePickerEndInput />
+    <DateRangePickerTrigger />
+    <DateRangePickerContent>
+      <DateRangePickerCalendars />
+    </DateRangePickerContent>
+  </DateRangePicker>
+</Demo>
+
+</DocsSection>
+
+<DocsSection title="Keyboard">
+
+The two text inputs behave like `DateInput` (Enter/Blur commits, typed text tolerates locale
+separators). Inside the popover, the calendar grid supports a full roving-tabindex model:
+
+- **ArrowLeft / ArrowRight** — previous / next day (RTL flips these).
+- **ArrowUp / ArrowDown** — previous / next week.
+- **Home / End** — first / last day of the current week (honors `weekStartsOn`).
+- **PageUp / PageDown** — 30 days (365 with `Shift`).
+- **Enter / Space** — commit the focused day as start (or end if start is set).
+- **ArrowDown on a text input** — opens the popover with that endpoint active.
+- **Alt+ArrowUp** on a text input — closes the popover.
+- **Escape** — closes the popover without committing.
+
+</DocsSection>
+
+<DocsSection title="Accessibility">
+
+- Both inputs carry `aria-haspopup="dialog"`, `aria-expanded`, and `aria-controls` (when open).
+- Only the **start input** carries `aria-errormessage` when in a `Field` with `FieldError` — the
+  end input receives `aria-labelledby` and `aria-describedby` but not the errormessage.
+- The calendar surface uses `role="grid"`, weekday cells `role="columnheader"`, week rows
+  `role="row"`, and day buttons `role="gridcell"`.
+- A polite live region announces commits, swaps, and clears. Announcement strings are
+  localizable via the `messages` prop.
+- Day cells expose data attributes (`data-range-start`, `data-range-end`, `data-in-range`,
+  `data-preview-in-range`, `data-today`, `data-outside-month`, `data-disabled`) for
+  high-contrast styling.
+- See [PHASE13-A11Y-AUDIT.md](https://github.com/kairoui/kairoui/blob/main/docs/architecture/PHASE13-A11Y-AUDIT.md)
+  for the full audit and keyboard matrix.
+
+</DocsSection>
+
 <DocsSection title="Props">
 
 <PropsTable props={toPropsList(DateRangePickerMeta)} />
