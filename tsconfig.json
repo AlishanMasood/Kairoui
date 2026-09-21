@@ -25,6 +25,9 @@
       "path": "packages/utils"
     },
     {
+      "path": "packages/data-grid"
+    },
+    {
       "path": "tooling/test"
     }
   ]
