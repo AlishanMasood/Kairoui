@@ -110,3 +110,31 @@ export type {
 
 export { useGrouping } from "./use-grouping";
 export type { UseGroupingOptions, UseGroupingReturn } from "./use-grouping";
+
+export type {
+  CellEditEvent,
+  EditingCell,
+  EditingMode,
+  EditingState,
+  RowEditEvent,
+} from "./editing-types";
+
+export {
+  EMPTY_EDITING_STATE,
+  beginEdit,
+  cancelEdit,
+  changeEdit,
+  discardAllPending,
+  discardPendingRow,
+  emptyEditingState,
+  getCellError,
+  getPendingValue,
+  isCellEditing,
+  isRowEditing,
+  setEditingMode,
+  stagePendingValue,
+  stageValidationError,
+} from "./editing-model";
+
+export { useEditing } from "./use-editing";
+export type { UseEditingOptions, UseEditingReturn } from "./use-editing";
