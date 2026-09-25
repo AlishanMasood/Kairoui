@@ -1,0 +1,269 @@
+---
+title: DataGrid
+sidebar_position: 100
+---
+
+import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import { DataGrid } from "@kairoui-pro/data-grid";
+
+export const people = [
+  { id: "1", name: "Alice", team: "Engineering", role: "Staff", age: 32, salary: 165000 },
+  { id: "2", name: "Bob", team: "Engineering", role: "Senior", age: 28, salary: 140000 },
+  { id: "3", name: "Carol", team: "Engineering", role: "Principal", age: 41, salary: 210000 },
+  { id: "4", name: "Dave", team: "Design", role: "Senior", age: 35, salary: 135000 },
+  { id: "5", name: "Eve", team: "Design", role: "Staff", age: 29, salary: 145000 },
+  { id: "6", name: "Frank", team: "Sales", role: "Senior", age: 45, salary: 180000 },
+];
+
+export const columns = [
+  { id: "name", header: "Name", accessorKey: "name", sortable: true },
+  { id: "team", header: "Team", accessorKey: "team", sortable: true, groupable: true },
+  { id: "role", header: "Role", accessorKey: "role", sortable: true },
+  {
+    id: "age",
+    header: "Age",
+    accessorKey: "age",
+    sortable: true,
+    aggregate: {
+      reducer: "avg",
+      formatter: (v) => (typeof v === "number" ? v.toFixed(1) : "—"),
+    },
+  },
+  {
+    id: "salary",
+    header: "Salary",
+    accessorKey: "salary",
+    sortable: true,
+    aggregate: {
+      reducer: "sum",
+      footer: true,
+      formatter: (v) => (typeof v === "number" ? `$${v.toLocaleString()}` : "—"),
+    },
+  },
+];
+
+<ComponentHeader
+  name="DataGrid"
+  status="alpha"
+  packagePath="@kairoui-pro/data-grid"
+  description="Enterprise DataGrid — row virtualization, multi-column sorting, filtering, selection, column resize/reorder/pin/visibility, grouping, aggregation, inline editing, and keyboard cell focus. Ships in the KairoUI Pro tier."
+/>
+
+<Callout type="info" title="Pro tier">
+  `DataGrid` ships in `@kairoui-pro/data-grid` — the KairoUI Pro tier. Free consumers should
+  continue to use [`DataTable`](/components/core/data-table) for read-only tabular UIs.
+</Callout>
+
+## Import
+
+<ImportStatement imports={["DataGrid"]} from="@kairoui-pro/data-grid" />
+
+## Overview
+
+<Demo
+  title="Basic DataGrid"
+  description="Data + columns + getRowId is all that is required. Every other capability is opt-in."
+  code={`<DataGrid data={people} columns={columns} getRowId={(p) => p.id} />`}
+>
+  <DataGrid data={people} columns={columns} getRowId={(p) => p.id} />
+</Demo>
+
+## Sorting
+
+Click a column header to cycle unsorted → ascending → descending. Hold
+`Shift` (or set `multiSort={true}`) to add secondary sort keys.
+
+<Demo
+  title="Multi-column sort"
+  code={`<DataGrid
+  data={people}
+  columns={columns}
+  getRowId={(p) => p.id}
+  multiSort
+  defaultSort={[
+    { columnId: "team", direction: "ascending" },
+    { columnId: "salary", direction: "descending" },
+  ]}
+/>`}
+>
+  <DataGrid
+    data={people}
+    columns={columns}
+    getRowId={(p) => p.id}
+    multiSort
+    defaultSort={[
+      { columnId: "team", direction: "ascending" },
+      { columnId: "salary", direction: "descending" },
+    ]}
+  />
+</Demo>
+
+## Selection
+
+Set `selectionMode="single"` or `"multiple"` to auto-render a checkbox
+column. The selected row IDs are exposed via `selectedIds`
+(controlled) or `defaultSelectedIds` (uncontrolled).
+
+<Demo
+  title="Multiple row selection"
+  code={`<DataGrid
+  data={people}
+  columns={columns}
+  getRowId={(p) => p.id}
+  selectionMode="multiple"
+/>`}
+>
+  <DataGrid data={people} columns={columns} getRowId={(p) => p.id} selectionMode="multiple" />
+</Demo>
+
+## Grouping and aggregation
+
+Pass `defaultGroupBy` with column IDs to group rows hierarchically.
+Any column with an `aggregate` spec surfaces per-group summary values
+and, when `aggregate.footer === true`, a grand-total row (opt-in via
+`showAggregatedFooter`).
+
+<Demo
+  title="Grouped by team with aggregates"
+  code={`<DataGrid
+  data={people}
+  columns={columns}
+  getRowId={(p) => p.id}
+  defaultGroupBy={["team"]}
+  defaultExpanded={{
+    expandedIds: new Set([
+      "__grp__team=Engineering",
+      "__grp__team=Design",
+    ]),
+  }}
+  showAggregatedFooter
+/>`}
+>
+  <DataGrid
+    data={people}
+    columns={columns}
+    getRowId={(p) => p.id}
+    defaultGroupBy={["team"]}
+    defaultExpanded={{
+      expandedIds: new Set(["__grp__team=Engineering", "__grp__team=Design"]),
+    }}
+    showAggregatedFooter
+  />
+</Demo>
+
+## Row virtualization
+
+Turn on `virtualized` and provide `rowHeight` (required) to render only
+the rows in view. `virtualScrollHeight` sets the scroll container
+height in CSS pixels.
+
+<Demo
+  title="Virtualized 5,000-row DataGrid"
+  code={`<DataGrid
+  data={fiveThousandRows}
+  columns={columns}
+  getRowId={(row) => row.id}
+  virtualized
+  rowHeight={40}
+  virtualScrollHeight={320}
+/>`}
+>
+  <DataGrid
+    data={Array.from({ length: 5000 }, (_, i) => ({
+      id: String(i),
+      name: `Person ${i}`,
+      team: ["Engineering", "Design", "Sales"][i % 3],
+      role: ["Junior", "Staff", "Senior"][i % 3],
+      age: 20 + (i % 40),
+      salary: 80000 + (i % 200) * 500,
+    }))}
+    columns={columns}
+    getRowId={(row) => row.id}
+    virtualized
+    rowHeight={40}
+    virtualScrollHeight={320}
+  />
+</Demo>
+
+## Keyboard model
+
+DataGrid uses the WAI-ARIA `grid` pattern with roving tabindex —
+exactly one cell has `tabindex={0}` at any time.
+
+| Key                        | Action                                                     |
+| -------------------------- | ---------------------------------------------------------- |
+| `ArrowUp` / `ArrowDown`    | Move focus by one row                                      |
+| `ArrowLeft` / `ArrowRight` | Move focus by one column (inverted in RTL)                 |
+| `Home` / `End`             | First / last column of the current row                     |
+| `Ctrl+Home` / `Ctrl+End`   | Top-left / bottom-right of the grid                        |
+| `PageUp` / `PageDown`      | Move focus by one viewport of rows                         |
+| `Enter` / `F2`             | Begin cell edit (when `editMode` is set and column allows) |
+| `Escape`                   | Cancel the active edit                                     |
+| `Space`                    | Toggle row selection (when selection is enabled)           |
+
+## Editing
+
+Set `editMode` to `"cell"`, `"row"`, or `"batch"`. Columns opt in
+individually with `editable: true` and a `editCell` renderer.
+DataGrid never persists on its own — `onCellEdit` and `onRowEdit`
+carry plain-data events for the consumer to apply.
+
+```tsx
+<DataGrid
+  data={data}
+  columns={[
+    {
+      id: "salary",
+      header: "Salary",
+      accessorKey: "salary",
+      editable: true,
+      parseEdit: (v) => Number(v),
+      validateEdit: (v) => {
+        const n = Number(v);
+        return Number.isFinite(n) && n >= 0
+          ? { ok: true }
+          : { ok: false, message: "must be non-negative" };
+      },
+      editCell: (ctx) => (
+        <input
+          autoFocus
+          defaultValue={String(ctx.rawInput ?? "")}
+          onChange={(e) => ctx.setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") ctx.commit();
+            if (e.key === "Escape") ctx.cancel();
+          }}
+        />
+      ),
+    },
+  ]}
+  getRowId={(row) => row.id}
+  editMode="cell"
+  onCellEdit={(event) => {
+    // event.rowId, event.columnId, event.rawInput, event.value
+    persistToBackend(event);
+  }}
+/>
+```
+
+## Server-controlled state
+
+Every stateful concern is controllable. Pair the `state` prop with an
+`onStateChange` callback and skip the internal computation with the
+matching `serverX` flag when applicable:
+
+- `sort` + `onSortChange` + `serverSort`
+- `filterState` + `onFilterStateChange` + `serverFilter`
+- `selectedIds` + `onSelectionChange`
+- `columnSizing`, `columnOrder`, `columnPinning`, `columnVisibility`
+- `groupBy`, `expanded`
+- `editingState`, `focusState`
+
+DataGrid never fetches data. Consumers own the query, the mutation, and
+the persistence.
+
+## Deferred capability
+
+Pivot tables, spreadsheet formulas, column virtualization, and export
+file emitters (CSV / XLSX) are **not** in the initial DataGrid release
+and require a separately approved task.

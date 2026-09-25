@@ -138,3 +138,16 @@ export {
 
 export { useEditing } from "./use-editing";
 export type { UseEditingOptions, UseEditingReturn } from "./use-editing";
+
+export { DataGrid } from "./data-grid";
+export type { DataGridRootProps, FocusState, GroupSummaryRenderer } from "./data-grid-types";
+
+export {
+  EMPTY_FOCUS_STATE,
+  blurFocus,
+  focusCell,
+  locateFocus,
+  moveFocus,
+  pageFocus,
+} from "./data-grid-focus";
+export type { FocusLayout, FocusMoveDirection } from "./data-grid-focus";

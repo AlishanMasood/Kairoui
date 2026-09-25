@@ -30,6 +30,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Enterprise (Pro)",
+      items: ["components/pro/data-grid"],
+    },
+    {
+      type: "category",
       label: "Contributing",
       items: ["contributing/guide", "contributing/development"],
     },
