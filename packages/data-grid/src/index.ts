@@ -75,3 +75,38 @@ export type {
 
 export { useColumnPinning } from "./use-column-pinning";
 export type { UseColumnPinningOptions, UseColumnPinningReturn } from "./use-column-pinning";
+
+export {
+  applyReducer,
+  computeAggregates,
+  computeFooterAggregates,
+  hasFooterAggregate,
+  reduceAverage,
+  reduceCount,
+  reduceCountUnique,
+  reduceMax,
+  reduceMin,
+  reduceSum,
+} from "./aggregation";
+
+export {
+  FOOTER_NODE_ID,
+  GROUP_ID_PREFIX,
+  buildRowNodes,
+  buildRowState,
+  filterGroupableColumns,
+  groupNodeId,
+  stableKeyString,
+} from "./row-model";
+export type {
+  BuildRowNodesOptions,
+  GridFooterRowNode,
+  GridGroupRowNode,
+  GridLeafRowNode,
+  GridRowNode,
+  GroupingState,
+  RowState,
+} from "./row-model";
+
+export { useGrouping } from "./use-grouping";
+export type { UseGroupingOptions, UseGroupingReturn } from "./use-grouping";
