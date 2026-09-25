@@ -16,6 +16,7 @@ export default defineConfig({
           name: "react",
           include: [
             "packages/core/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/data-grid/src/**/*.{test,spec}.{ts,tsx}",
             "packages/docs/src/**/*.{test,spec}.{ts,tsx}",
             "packages/hooks/src/**/*.{test,spec}.{ts,tsx}",
             "packages/icons/src/**/*.{test,spec}.{ts,tsx}",
@@ -32,7 +33,6 @@ export default defineConfig({
             "packages/utils/src/**/*.{test,spec}.{ts,tsx}",
             "packages/tokens/src/**/*.{test,spec}.{ts,tsx}",
             "packages/theme/src/**/*.{test,spec}.{ts,tsx}",
-            "packages/data-grid/src/**/*.{test,spec}.{ts,tsx}",
             "tooling/docs-generator/src/**/*.{test,spec}.{ts,tsx}",
           ],
           environment: "node",
