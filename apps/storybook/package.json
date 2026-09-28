@@ -9,6 +9,7 @@
     "build": "storybook build"
   },
   "dependencies": {
+    "@kairoui-pro/command": "workspace:*",
     "@kairoui-pro/data-grid": "workspace:*",
     "@kairoui/core": "workspace:*",
     "@kairoui/theme": "workspace:*",

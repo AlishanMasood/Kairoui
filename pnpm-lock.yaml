@@ -119,6 +119,9 @@ importers:
       '@docusaurus/preset-classic':
         specifier: ^3.8.0
         version: 3.10.2(@algolia/client-search@5.56.0)(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@18.3.1))(@types/react@19.2.17)(esbuild@0.27.7)(postcss@8.5.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(search-insights@2.17.3)(typescript@5.9.3)
+      '@kairoui-pro/command':
+        specifier: workspace:*
+        version: link:../../packages/command
       '@kairoui-pro/data-grid':
         specifier: workspace:*
         version: link:../../packages/data-grid
@@ -156,6 +159,9 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@kairoui-pro/command':
+        specifier: workspace:*
+        version: link:../../packages/command
       '@kairoui-pro/data-grid':
         specifier: workspace:*
         version: link:../../packages/data-grid
@@ -199,6 +205,21 @@ importers:
       vite:
         specifier: ^6.0.0
         version: 6.4.3(@types/node@26.1.2)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0)
+
+  packages/command:
+    dependencies:
+      '@kairoui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@kairoui/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      '@kairoui/utils':
+        specifier: workspace:*
+        version: link:../utils
+      react:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.8
 
   packages/core:
     dependencies:

@@ -31,7 +31,7 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Enterprise (Pro)",
-      items: ["components/pro/data-grid"],
+      items: ["components/pro/data-grid", "components/pro/command"],
     },
     {
       type: "category",

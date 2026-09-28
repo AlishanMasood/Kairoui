@@ -1,0 +1,132 @@
+---
+title: Command Palette
+sidebar_position: 101
+---
+
+import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="Command"
+  status="experimental"
+  packagePath="@kairoui-pro/command"
+  description="Enterprise Command Palette — keyboard-first surface with search, groups, nested pages, and consumer-defined execution. Ships in the KairoUI Pro tier."
+/>
+
+<Callout type="info" title="Pro tier">
+  `Command` ships in `@kairoui-pro/command` — the KairoUI Pro tier. It reuses `@kairoui/core`
+  overlay and collection primitives; no additional runtime dependencies are introduced.
+</Callout>
+
+## Import
+
+<ImportStatement imports={["Command", "useCommandShortcut"]} from="@kairoui-pro/command" />
+
+## Anatomy
+
+```tsx
+<Command.Root>
+  <Command.Trigger>Open</Command.Trigger>
+  <Command.Dialog aria-label="Command palette">
+    <Command.Input placeholder="Search commands…" />
+    <Command.List>
+      <Command.Empty>No results.</Command.Empty>
+      <Command.Group id="general" heading="General">
+        <Command.Item id="new" onSelect={createFile}>
+          New file
+        </Command.Item>
+        <Command.Item id="open" onSelect={openProject}>
+          Open project
+        </Command.Item>
+      </Command.Group>
+      <Command.Separator />
+      <Command.Group id="edit" heading="Edit">
+        <Command.Item id="copy" onSelect={copy} keywords={["clipboard"]}>
+          Copy
+        </Command.Item>
+      </Command.Group>
+    </Command.List>
+  </Command.Dialog>
+</Command.Root>
+```
+
+## Keyboard model
+
+| Key                     | Action                                               |
+| ----------------------- | ---------------------------------------------------- |
+| `ArrowUp` / `ArrowDown` | Move highlight (wraps at ends, skips disabled items) |
+| `Home` / `End`          | Snap to first / last enabled item                    |
+| `Enter`                 | Execute the highlighted item's `onSelect`            |
+| `Escape`                | Close the palette (or pop a nested page)             |
+| `Backspace`             | Pop the current page when the query is empty         |
+
+## Nested pages
+
+Items can push a new page via `onSelect`. Consumers hold the page stack
+in controlled state — the palette resets query and highlight on push
+and pop.
+
+```tsx
+const [pageStack, setPageStack] = useState<readonly string[]>([]);
+
+<Command.Root pageStack={pageStack} onPageStackChange={setPageStack}>
+  <Command.Dialog aria-label="Palette">
+    <Command.Input />
+    <Command.List>
+      <Command.Group id="root">
+        <Command.Item id="theme-menu" onSelect={() => setPageStack(["theme"])}>
+          Change theme…
+        </Command.Item>
+      </Command.Group>
+      <Command.Group id="theme-page" pageId="theme">
+        <Command.Item id="light" onSelect={setLightTheme}>
+          Light
+        </Command.Item>
+        <Command.Item id="dark" onSelect={setDarkTheme}>
+          Dark
+        </Command.Item>
+      </Command.Group>
+    </Command.List>
+  </Command.Dialog>
+</Command.Root>;
+```
+
+## Global keyboard shortcut
+
+`useCommandShortcut` attaches a `keydown` listener without registering a
+global command registry — it wires a single shortcut to a single
+`onTrigger`.
+
+```tsx
+useCommandShortcut({
+  key: "k", // Ctrl/Cmd + K by default
+  onTrigger: (event) => {
+    event.preventDefault();
+    setOpen(true);
+  },
+});
+```
+
+## Filtering
+
+The default filter is a case-insensitive word-boundary substring match
+across each item's `searchText` (auto-derived from rendered content) and
+`keywords`. Consumers who need fuzzy search supply a custom `filter`
+prop — no fuzzy search dependency is bundled by default.
+
+```tsx
+import { fuzzyMatch } from "your-fuzzy-lib";
+
+<Command.Root filter={(item, query) => fuzzyMatch(item.searchText, query)}>{/* … */}</Command.Root>;
+```
+
+## Consumer-provided execution
+
+DataGrid never persists on its own — nor does Command. Each item's
+`onSelect` is the only place execution happens. String-driven or
+arbitrary code evaluation is out of scope.
+
+<Callout type="warning" title="Not shipped">
+  - Global command registry — deferred; each palette owns its items. - Fuzzy-search dependency —
+  opt-in only. - Arbitrary code execution via strings — not supported. - Application commands baked
+  into the library — consumers own them.
+</Callout>

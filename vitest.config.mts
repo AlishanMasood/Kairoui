@@ -16,6 +16,7 @@ export default defineConfig({
           name: "react",
           include: [
             "packages/core/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/command/src/**/*.{test,spec}.{ts,tsx}",
             "packages/data-grid/src/**/*.{test,spec}.{ts,tsx}",
             "packages/docs/src/**/*.{test,spec}.{ts,tsx}",
             "packages/hooks/src/**/*.{test,spec}.{ts,tsx}",
