@@ -21,6 +21,7 @@ export default defineConfig({
             "packages/docs/src/**/*.{test,spec}.{ts,tsx}",
             "packages/hooks/src/**/*.{test,spec}.{ts,tsx}",
             "packages/icons/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/scheduler/src/**/*.{test,spec}.{ts,tsx}",
             "tooling/test/**/*.{test,spec}.{ts,tsx}",
           ],
           environment: "happy-dom",
