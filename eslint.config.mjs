@@ -43,7 +43,7 @@ export default defineConfig(
             "scripts/*.ts",
             "tooling/tsup/config.ts",
           ],
-          maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 24,
+          maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 28,
         },
         tsconfigRootDir: import.meta.dirname,
       },

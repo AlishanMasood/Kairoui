@@ -1,0 +1,266 @@
+/* KairoUI Workflow — minimal presentation. */
+
+.kui-workflow {
+  --kui-workflow-color-border: #d1d5db;
+  --kui-workflow-color-pending: #9ca3af;
+  --kui-workflow-color-current: #2563eb;
+  --kui-workflow-color-completed: #16a34a;
+  --kui-workflow-color-error: #dc2626;
+  --kui-workflow-color-disabled: rgba(0, 0, 0, 0.3);
+  --kui-workflow-color-connector: #d1d5db;
+  --kui-workflow-color-connector-active: #2563eb;
+  --kui-workflow-color-card-bg: #ffffff;
+  --kui-workflow-font-family: system-ui, sans-serif;
+  --kui-workflow-font-size: 14px;
+  --kui-workflow-icon-size: 32px;
+  --kui-workflow-gap: 8px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  gap: var(--kui-workflow-gap);
+  font-family: var(--kui-workflow-font-family);
+  font-size: var(--kui-workflow-font-size);
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.kui-workflow *,
+.kui-workflow *::before,
+.kui-workflow *::after {
+  box-sizing: border-box;
+}
+
+.kui-workflow__announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.kui-workflow__step-description-offscreen,
+.kui-workflow__step-sr-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── List ─────────────────────────────────── */
+
+.kui-workflow__list {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+  outline: none;
+}
+
+.kui-workflow--horizontal .kui-workflow__list {
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.kui-workflow--vertical .kui-workflow__list {
+  flex-direction: column;
+}
+
+/* ── Step wrapper ─────────────────────────── */
+
+.kui-workflow__step-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-workflow-gap);
+}
+
+.kui-workflow--horizontal .kui-workflow__step-wrapper {
+  flex-direction: row;
+  flex: 1 1 auto;
+}
+
+.kui-workflow--vertical .kui-workflow__step-wrapper {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* ── Step button ──────────────────────────── */
+
+.kui-workflow__step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-workflow-gap);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  min-width: 0;
+  text-align: start;
+  transition: border-color 120ms ease;
+}
+
+.kui-workflow__step:focus-visible {
+  outline: 2px solid var(--kui-workflow-color-current);
+  outline-offset: 2px;
+}
+
+.kui-workflow__step--disabled {
+  cursor: not-allowed;
+  color: var(--kui-workflow-color-disabled);
+}
+
+.kui-workflow__step--current {
+  border-color: var(--kui-workflow-color-current);
+}
+
+.kui-workflow__step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--kui-workflow-icon-size);
+  height: var(--kui-workflow-icon-size);
+  border-radius: 50%;
+  background: var(--kui-workflow-color-card-bg);
+  border: 2px solid var(--kui-workflow-color-pending);
+  color: var(--kui-workflow-color-pending);
+  font-weight: 600;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+
+.kui-workflow__step-icon--current {
+  border-color: var(--kui-workflow-color-current);
+  color: var(--kui-workflow-color-current);
+}
+
+.kui-workflow__step-icon--completed {
+  background: var(--kui-workflow-color-completed);
+  border-color: var(--kui-workflow-color-completed);
+  color: #ffffff;
+}
+
+.kui-workflow__step-icon--error {
+  background: var(--kui-workflow-color-error);
+  border-color: var(--kui-workflow-color-error);
+  color: #ffffff;
+}
+
+.kui-workflow__step-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.kui-workflow__step-label {
+  font-weight: 600;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-workflow__step-optional-hint {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.kui-workflow__step-description {
+  font-size: 12px;
+  opacity: 0.75;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-workflow__step--completed .kui-workflow__step-label {
+  color: var(--kui-workflow-color-completed);
+}
+
+.kui-workflow__step--error .kui-workflow__step-label {
+  color: var(--kui-workflow-color-error);
+}
+
+.kui-workflow__step--current .kui-workflow__step-label {
+  color: var(--kui-workflow-color-current);
+}
+
+/* ── Connector ────────────────────────────── */
+
+.kui-workflow__connector {
+  flex: 1 1 auto;
+  height: 2px;
+  min-width: 20px;
+  background: var(--kui-workflow-color-connector);
+  align-self: center;
+  margin: 0 4px;
+}
+
+.kui-workflow--vertical .kui-workflow__connector {
+  flex: 0 0 24px;
+  width: 2px;
+  height: auto;
+  align-self: stretch;
+  margin: 4px 15px;
+}
+
+.kui-workflow__step-wrapper--completed + .kui-workflow__step-wrapper .kui-workflow__connector,
+.kui-workflow__step-wrapper--completed .kui-workflow__connector {
+  background: var(--kui-workflow-color-connector-active);
+}
+
+/* ── Progress ─────────────────────────────── */
+
+.kui-workflow__progress {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--kui-workflow-color-border);
+  overflow: hidden;
+}
+
+.kui-workflow__progress-bar {
+  height: 100%;
+  background: var(--kui-workflow-color-current);
+  transition: width 120ms ease;
+}
+
+/* ── Nav ──────────────────────────────────── */
+
+.kui-workflow__nav {
+  display: inline-flex;
+  gap: var(--kui-workflow-gap);
+}
+
+.kui-workflow__nav-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--kui-workflow-color-border);
+  border-radius: 4px;
+  font: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.kui-workflow__nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kui-workflow__step,
+  .kui-workflow__progress-bar {
+    transition: none;
+  }
+}

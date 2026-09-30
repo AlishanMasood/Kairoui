@@ -1,0 +1,124 @@
+---
+title: Workflow / Stepper
+sidebar_position: 105
+---
+
+import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="Workflow"
+  status="experimental"
+  packagePath="@kairoui-pro/workflow"
+  description="Backend-agnostic Stepper / Workflow visualization — consumer-supplied steps with current / completed / error / optional states, horizontal or vertical orientation, and navigation callbacks. Ships in the KairoUI Pro tier."
+/>
+
+<Callout type="warning" title="No workflow engine">
+  This component visualizes a workflow — it does **not** execute one. No business rules, no
+  persistence, no back-end integration. Every navigation flows through a consumer callback.
+</Callout>
+
+## Import
+
+<ImportStatement imports={["Workflow"]} from="@kairoui-pro/workflow" />
+
+Load styles once at your app root:
+
+```ts
+import "@kairoui-pro/workflow/styles.css";
+```
+
+## Anatomy
+
+```tsx
+<Workflow
+  steps={[
+    { id: "start", label: "Start", state: "completed" },
+    { id: "configure", label: "Configure", state: "completed" },
+    { id: "review", label: "Review" },
+    { id: "finish", label: "Finish", optional: true },
+  ]}
+  currentStepId={currentStepId}
+  onStepChange={({ step }) => setCurrentStepId(step.id)}
+/>
+```
+
+For custom layouts, mount compound children explicitly:
+
+```tsx
+<Workflow steps={steps} currentStepId={id}>
+  <Workflow.Progress />
+  <Workflow.List>
+    {steps.map((s) => (
+      <Workflow.Step key={s.id} stepId={s.id} />
+    ))}
+  </Workflow.List>
+  <Workflow.Nav />
+</Workflow>
+```
+
+## Data model
+
+```ts
+type WorkflowStepState = "pending" | "current" | "completed" | "error";
+
+interface WorkflowStep {
+  id: string;
+  label: string;
+  description?: string;
+  state?: WorkflowStepState;
+  optional?: boolean;
+  disabled?: boolean;
+  meta?: Record<string, unknown>;
+}
+```
+
+- **Identity is consumer-owned.** Ids are opaque strings; duplicates throw at ingest.
+- **`currentStepId` overrides matching steps' state with `"current"`** at runtime so consumers can pass a mix of `completed` / `pending` / `error` values and forget about maintaining `"current"` on individual steps.
+- **`optional` and `disabled`** are visual / behavioral hints. `disabled` steps skip focus and refuse activation.
+
+## Orientation
+
+`orientation` accepts `"horizontal"` (default) or `"vertical"`. Arrow-key nav follows the axis:
+
+- Horizontal: `ArrowLeft` / `ArrowRight` (RTL swaps).
+- Vertical: `ArrowUp` / `ArrowDown`.
+
+Orthogonal arrow keys are no-ops.
+
+## Navigation model
+
+`navigationMode` is a **hint** exposed through context — the runtime never blocks navigation.
+
+- `"linear"` — the consumer prefers strict forward progression; the value is available for custom renderers that want to style unreachable steps.
+- `"non-linear"` — no ordering hint; every enabled step is navigable.
+
+`onStepChange` fires whenever the current step id changes. `onStepClick` fires on every click, even when the clicked step is already current. `onNavigate` fires on `Workflow.Nav` button clicks (`direction: "next" | "previous"`).
+
+## Progress
+
+Enable `showProgress` to render a `role="progressbar"` bar ahead of the list. The bar fills to `completed / total` percent — disabled steps are excluded from the total.
+
+## Keyboard model
+
+| Key                       | Action                                     |
+| ------------------------- | ------------------------------------------ |
+| Arrow keys (axis-aligned) | Move focus to previous / next enabled step |
+| `Home` / `End`            | Jump to first / last enabled step          |
+| `Enter` / `Space`         | Activate the focused step                  |
+| Orthogonal arrow keys     | No-op (focus stays put)                    |
+
+## Accessibility
+
+- Root exposes `role="group"` with `aria-label` fallback.
+- List uses `role="list"`; each step wrapper is `role="listitem"` with `aria-posinset` / `aria-setsize`.
+- Steps are native `<button>` elements. The current step carries `aria-current="step"` (the WAI-ARIA idiomatic pattern for stepper interfaces).
+- Connectors are decorative `aria-hidden="true"`.
+- Single `aria-live="polite"` announcer speaks step transitions.
+
+## Non-goals
+
+- No workflow engine.
+- No business-rule execution.
+- No persistence.
+- No enforced linear-only progression.
+- No hard-coded step catalog.

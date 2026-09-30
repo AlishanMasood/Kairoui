@@ -19,7 +19,8 @@
       "@kairoui-pro/command": ["./packages/command/src/index.ts"],
       "@kairoui-pro/scheduler": ["./packages/scheduler/src/index.ts"],
       "@kairoui-pro/kanban": ["./packages/kanban/src/index.ts"],
-      "@kairoui-pro/permission-matrix": ["./packages/permission-matrix/src/index.ts"]
+      "@kairoui-pro/permission-matrix": ["./packages/permission-matrix/src/index.ts"],
+      "@kairoui-pro/workflow": ["./packages/workflow/src/index.ts"]
     }
   },
   "include": ["packages/*/src/**/*.ts", "packages/*/src/**/*.tsx"],

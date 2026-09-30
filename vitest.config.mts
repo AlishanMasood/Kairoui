@@ -24,6 +24,7 @@ export default defineConfig({
             "packages/kanban/src/**/*.{test,spec}.{ts,tsx}",
             "packages/permission-matrix/src/**/*.{test,spec}.{ts,tsx}",
             "packages/scheduler/src/**/*.{test,spec}.{ts,tsx}",
+            "packages/workflow/src/**/*.{test,spec}.{ts,tsx}",
             "tooling/test/**/*.{test,spec}.{ts,tsx}",
           ],
           environment: "happy-dom",

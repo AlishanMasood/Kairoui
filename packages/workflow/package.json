@@ -1,0 +1,46 @@
+{
+  "name": "@kairoui-pro/workflow",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Backend-agnostic workflow / stepper UI for KairoUI — steps with current / completed / error / optional states, horizontal or vertical orientation, and consumer-owned navigation.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch"
+  },
+  "keywords": [
+    "kairoui",
+    "workflow",
+    "stepper",
+    "process",
+    "enterprise",
+    "react"
+  ],
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "dependencies": {
+    "@kairoui/core": "workspace:*",
+    "@kairoui/hooks": "workspace:*",
+    "@kairoui/utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  }
+}

@@ -40,6 +40,9 @@
       "path": "packages/permission-matrix"
     },
     {
+      "path": "packages/workflow"
+    },
+    {
       "path": "tooling/test"
     }
   ]
