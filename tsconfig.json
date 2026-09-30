@@ -37,6 +37,9 @@
       "path": "packages/kanban"
     },
     {
+      "path": "packages/permission-matrix"
+    },
+    {
       "path": "tooling/test"
     }
   ]

@@ -1,0 +1,226 @@
+---
+title: Permission Matrix
+sidebar_position: 104
+---
+
+import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="PermissionMatrix"
+  status="experimental"
+  packagePath="@kairoui-pro/permission-matrix"
+  description="Backend-agnostic Permission Matrix UI — subjects × actions grid with tri-state cells, bulk row/column actions, and keyboard-first navigation. Ships in the KairoUI Pro tier."
+/>
+
+<Callout type="warning" title="Backend-agnostic by design">
+  KairoUI must not dictate backend permission architecture. This component ships **no** RBAC / ABAC
+  schemas, performs **no** authorization, calls **no** APIs, and defines **no** persistence layer.
+  Consumers own every adapter into their own backend model. The matrix consumes plain readonly
+  arrays and emits plain-data callback payloads.
+</Callout>
+
+## Import
+
+<ImportStatement imports={["PermissionMatrix"]} from="@kairoui-pro/permission-matrix" />
+
+Load styles once at your app root:
+
+```ts
+import "@kairoui-pro/permission-matrix/styles.css";
+```
+
+## Anatomy
+
+```tsx
+<PermissionMatrix
+  subjects={roles}
+  actions={permissions}
+  cells={cells}
+  onCellChange={({ subject, action, toState }) => persist(subject.id, action.id, toState)}
+  onBulkChange={({ changes, source, targetState }) => persistBulk(changes)}
+/>
+```
+
+For custom layouts, mount compound children explicitly:
+
+```tsx
+<PermissionMatrix subjects={s} actions={a} cells={c}>
+  <PermissionMatrix.Header>
+    <MySearchBar />
+  </PermissionMatrix.Header>
+  <PermissionMatrix.Table />
+</PermissionMatrix>
+```
+
+## Data model
+
+```ts
+interface PermissionSubject {
+  id: string;
+  label: string;
+  groupId?: string;
+  meta?: Record<string, unknown>;
+}
+
+interface PermissionAction {
+  id: string;
+  label: string;
+  groupId?: string;
+  meta?: Record<string, unknown>;
+}
+
+type PermissionCellState = "granted" | "denied" | "unset" | "inherited" | "indeterminate";
+
+interface PermissionCell {
+  subjectId: string;
+  actionId: string;
+  state: PermissionCellState;
+  disabled?: boolean;
+  readOnly?: boolean;
+  label?: string;
+  meta?: Record<string, unknown>;
+}
+```
+
+- **Identity is opaque.** Ids are consumer-owned strings — the matrix never mints them, never infers hierarchy, and never treats them as wildcards.
+- **Missing cells default to `"unset"`.** No synthetic cells are ever emitted upstream.
+- **`inherited` / `indeterminate`** are display-only. The matrix does **not** compute inheritance — the consumer flags a cell as inherited from their own hierarchy logic.
+- **Duplicate ids or unknown cell references throw at ingest.**
+
+## Presentation modes
+
+Two supported modes fixed by the ADR:
+
+| Mode              | Row axis       | Column axis |
+| ----------------- | -------------- | ----------- |
+| `role-permission` | Role / subject | Permission  |
+| `resource-action` | Resource       | Action      |
+
+Both share the same underlying data shape. The `mode` prop only shifts default announcer strings and future default labels.
+
+## Toggle modes
+
+```ts
+toggleMode?: "grant-only" | "grant-deny" | "grant-deny-only";
+```
+
+| Mode                   | Cycle                                    |
+| ---------------------- | ---------------------------------------- |
+| `grant-only` (default) | `unset` → `granted` → `unset`            |
+| `grant-deny`           | `unset` → `granted` → `denied` → `unset` |
+| `grant-deny-only`      | `granted` ↔ `denied` (never `unset`)     |
+
+Inherited / indeterminate cells are a no-op by default. Opt into explicit override with `overrideOnInheritedToggle`.
+
+## Bulk actions
+
+`onBulkChange` fires **once** for row / column / all-cells toggles. Bulk actions skip disabled and read-only cells.
+
+```ts
+interface PermissionMatrixBulkChangePayload {
+  changes: readonly PermissionCellChange[];
+  source:
+    { kind: "row"; subjectId: string } | { kind: "column"; actionId: string } | { kind: "all" };
+  targetState: PermissionCellState;
+}
+```
+
+## Keyboard model
+
+| Key                      | Action                                       |
+| ------------------------ | -------------------------------------------- |
+| Arrow keys               | Move focus by one cell                       |
+| `Home` / `End`           | First / last cell in the current row         |
+| `Ctrl+Home` / `Ctrl+End` | First / last cell in the whole grid          |
+| `PageUp` / `PageDown`    | Move by page                                 |
+| `Space` / `Enter`        | Toggle focused cell                          |
+| `Shift+Space`            | Select the current row                       |
+| `Ctrl+Space`             | Select the current column                    |
+| `Ctrl+A`                 | Select all cells                             |
+| `Escape`                 | Clear selection                              |
+| `Ctrl+F`                 | Focus the search input (when `enableSearch`) |
+
+## Accessibility
+
+- Root exposes `role="application"` + `aria-roledescription="Permission matrix"`.
+- Grid uses `role="grid"` with `aria-rowcount` / `aria-colcount`.
+- Column / row headers carry `aria-pressed` for selection state.
+- Cells use `role="gridcell"` with `aria-checked` mapped as: `granted → "true"`, `denied → "false"`, `unset → "false"` (with `data-state="unset"`), `inherited → "mixed"`, `indeterminate → "mixed"`.
+- Single `aria-live="polite"` announcer speaks cell toggles, bulk actions, and rejections.
+- `aria-disabled` and `aria-readonly` propagate through to disabled / read-only cells.
+
+## Adapter examples
+
+The matrix ships zero backend helpers. Adapters live entirely in consumer code.
+
+### 1. Flat table backend
+
+```ts
+// Backend:
+//   permissions: [{ principal_id, permission_key, grant: 'allow' | 'deny' }]
+
+function fromBackend(rows: BackendRow[]): PermissionCell[] {
+  return rows.map((row) => ({
+    subjectId: row.principal_id,
+    actionId: row.permission_key,
+    state: row.grant === "allow" ? "granted" : "denied",
+  }));
+}
+
+function toBackend(change: PermissionMatrixCellChangePayload): BackendMutation {
+  return {
+    principal_id: change.subject.id,
+    permission_key: change.action.id,
+    grant: change.toState === "granted" ? "allow" : change.toState === "denied" ? "deny" : null,
+  };
+}
+```
+
+### 2. Role-hierarchy backend
+
+```ts
+// Backend evaluates inheritance itself. Frontend only shows the resolved
+// state and flags inherited values so the user knows they're not overriding
+// something directly.
+
+function fromBackend(resolved: ResolvedPermission[]): PermissionCell[] {
+  return resolved.map((r) => ({
+    subjectId: r.role_id,
+    actionId: r.permission_id,
+    state: r.direct ? (r.granted ? "granted" : "denied") : "inherited",
+  }));
+}
+```
+
+### 3. Policy-document backend
+
+```ts
+// Backend stores JSON policy documents. Adapter derives cells from parsed
+// statements. The matrix never sees the JSON.
+
+function fromBackend(policy: PolicyDocument): PermissionCell[] {
+  const cells: PermissionCell[] = [];
+  for (const stmt of policy.statements) {
+    for (const principal of stmt.principals) {
+      for (const action of stmt.actions) {
+        cells.push({
+          subjectId: principal,
+          actionId: action,
+          state: stmt.effect === "Allow" ? "granted" : "denied",
+        });
+      }
+    }
+  }
+  return cells;
+}
+```
+
+None of these adapters ship inside `@kairoui-pro/permission-matrix`. They belong in the consumer's codebase.
+
+## Non-goals for v1
+
+- No RBAC / ABAC / policy DSL is embedded.
+- No authorization — the matrix never answers "can user X do Y?".
+- No persistence, no HTTP calls, no offline queue.
+- No wildcard / hierarchy evaluation — the consumer flags inheritance.
+- No arbitrary rectangular multi-select.

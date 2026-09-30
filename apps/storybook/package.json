@@ -12,6 +12,7 @@
     "@kairoui-pro/command": "workspace:*",
     "@kairoui-pro/data-grid": "workspace:*",
     "@kairoui-pro/kanban": "workspace:*",
+    "@kairoui-pro/permission-matrix": "workspace:*",
     "@kairoui-pro/scheduler": "workspace:*",
     "@kairoui/core": "workspace:*",
     "@kairoui/theme": "workspace:*",

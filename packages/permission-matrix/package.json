@@ -1,0 +1,45 @@
+{
+  "name": "@kairoui-pro/permission-matrix",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Backend-agnostic Permission Matrix UI for KairoUI — subject × action grid with tri-state cells, bulk actions, and keyboard-first navigation.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch"
+  },
+  "keywords": [
+    "kairoui",
+    "permission-matrix",
+    "rbac",
+    "enterprise",
+    "react"
+  ],
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "dependencies": {
+    "@kairoui/core": "workspace:*",
+    "@kairoui/hooks": "workspace:*",
+    "@kairoui/utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  }
+}

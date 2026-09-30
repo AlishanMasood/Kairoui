@@ -1,0 +1,244 @@
+/* KairoUI Permission Matrix — minimal presentation. Consumers
+   override any hook via CSS custom properties or by redefining the
+   class selectors. */
+
+.kui-permission-matrix {
+  --kui-permission-matrix-color-border: #d1d5db;
+  --kui-permission-matrix-color-border-subtle: #e5e7eb;
+  --kui-permission-matrix-color-header-bg: #f3f4f6;
+  --kui-permission-matrix-color-cell-bg: #ffffff;
+  --kui-permission-matrix-color-cell-focused: #dbeafe;
+  --kui-permission-matrix-color-cell-selected: #eff6ff;
+  --kui-permission-matrix-color-granted: #16a34a;
+  --kui-permission-matrix-color-denied: #dc2626;
+  --kui-permission-matrix-color-inherited: #9333ea;
+  --kui-permission-matrix-color-indeterminate: #f59e0b;
+  --kui-permission-matrix-color-disabled: rgba(0, 0, 0, 0.3);
+  --kui-permission-matrix-font-family: system-ui, sans-serif;
+  --kui-permission-matrix-font-size: 14px;
+  --kui-permission-matrix-cell-size: 36px;
+  --kui-permission-matrix-row-header-width: 200px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  font-family: var(--kui-permission-matrix-font-family);
+  font-size: var(--kui-permission-matrix-font-size);
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--kui-permission-matrix-color-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.kui-permission-matrix *,
+.kui-permission-matrix *::before,
+.kui-permission-matrix *::after {
+  box-sizing: border-box;
+}
+
+.kui-permission-matrix__announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Header ───────────────────────────────── */
+
+.kui-permission-matrix__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--kui-permission-matrix-color-border);
+  background: var(--kui-permission-matrix-color-header-bg);
+}
+
+.kui-permission-matrix__search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+}
+
+.kui-permission-matrix__search-label {
+  font-weight: 600;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.kui-permission-matrix__search-input {
+  flex: 1 1 auto;
+  padding: 4px 8px;
+  border: 1px solid var(--kui-permission-matrix-color-border);
+  border-radius: 4px;
+  font: inherit;
+  min-width: 0;
+}
+
+.kui-permission-matrix__selection-actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.kui-permission-matrix__bulk-btn {
+  padding: 4px 8px;
+  border: 1px solid var(--kui-permission-matrix-color-border);
+  border-radius: 4px;
+  font: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.kui-permission-matrix__bulk-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Grid ─────────────────────────────────── */
+
+.kui-permission-matrix__grid {
+  display: grid;
+  overflow: auto;
+  outline: none;
+}
+
+.kui-permission-matrix__grid .kui-permission-matrix__row {
+  display: contents;
+}
+
+.kui-permission-matrix__grid {
+  grid-template-columns: var(--kui-permission-matrix-row-header-width) repeat(
+      auto-fit,
+      var(--kui-permission-matrix-cell-size)
+    );
+}
+
+.kui-permission-matrix__corner,
+.kui-permission-matrix__column-header,
+.kui-permission-matrix__row-header {
+  background: var(--kui-permission-matrix-color-header-bg);
+  border-block-end: 1px solid var(--kui-permission-matrix-color-border-subtle);
+  border-inline-end: 1px solid var(--kui-permission-matrix-color-border-subtle);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 6px 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.kui-permission-matrix__corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+}
+
+.kui-permission-matrix__column-header {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.kui-permission-matrix__column-header--selected,
+.kui-permission-matrix__row-header--selected,
+.kui-permission-matrix__corner--selected {
+  background: var(--kui-permission-matrix-color-cell-selected);
+  outline: 2px solid var(--kui-permission-matrix-color-inherited);
+  outline-offset: -2px;
+}
+
+.kui-permission-matrix__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-block-end: 1px solid var(--kui-permission-matrix-color-border-subtle);
+  border-inline-end: 1px solid var(--kui-permission-matrix-color-border-subtle);
+  background: var(--kui-permission-matrix-color-cell-bg);
+  cursor: pointer;
+  outline: none;
+}
+
+.kui-permission-matrix__cell--selected {
+  background: var(--kui-permission-matrix-color-cell-selected);
+}
+
+.kui-permission-matrix__cell--focused,
+.kui-permission-matrix__cell:focus-visible {
+  outline: 2px solid var(--kui-permission-matrix-color-inherited);
+  outline-offset: -2px;
+}
+
+.kui-permission-matrix__cell--disabled,
+.kui-permission-matrix__cell--readonly {
+  cursor: not-allowed;
+  color: var(--kui-permission-matrix-color-disabled);
+}
+
+.kui-permission-matrix__cell--granted {
+  color: var(--kui-permission-matrix-color-granted);
+}
+.kui-permission-matrix__cell--denied {
+  color: var(--kui-permission-matrix-color-denied);
+}
+.kui-permission-matrix__cell--inherited {
+  color: var(--kui-permission-matrix-color-inherited);
+}
+.kui-permission-matrix__cell--indeterminate {
+  color: var(--kui-permission-matrix-color-indeterminate);
+}
+
+.kui-permission-matrix__cell-icon {
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+}
+
+.kui-permission-matrix__empty {
+  padding: 32px;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.kui-permission-matrix__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--kui-permission-matrix-color-header-bg);
+  font-size: 12px;
+  margin-inline-end: 6px;
+}
+
+.kui-permission-matrix__legend-item--granted {
+  color: var(--kui-permission-matrix-color-granted);
+}
+.kui-permission-matrix__legend-item--denied {
+  color: var(--kui-permission-matrix-color-denied);
+}
+.kui-permission-matrix__legend-item--inherited {
+  color: var(--kui-permission-matrix-color-inherited);
+}
+.kui-permission-matrix__legend-item--indeterminate {
+  color: var(--kui-permission-matrix-color-indeterminate);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kui-permission-matrix__cell {
+    transition: none;
+  }
+}
