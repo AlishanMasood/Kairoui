@@ -1,0 +1,140 @@
+---
+title: Kanban
+sidebar_position: 103
+---
+
+import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="Kanban"
+  status="experimental"
+  packagePath="@kairoui-pro/kanban"
+  description="Enterprise Kanban board — Board / Column / Card with pointer and first-class keyboard drag, empty-column drop targets, custom card renderers, and RTL. Ships in the KairoUI Pro tier."
+/>
+
+<Callout type="info" title="Pro tier">
+  `Kanban` ships in `@kairoui-pro/kanban`. It reuses `@kairoui/core`, `@kairoui/hooks`, and
+  `@kairoui/utils`; no additional runtime dependencies are introduced.
+</Callout>
+
+## Import
+
+<ImportStatement imports={["Kanban"]} from="@kairoui-pro/kanban" />
+
+Load styles once at your app root:
+
+```ts
+import "@kairoui-pro/kanban/styles.css";
+```
+
+## Anatomy
+
+```tsx
+<Kanban
+  columns={columns}
+  cards={cards}
+  onCardMove={({ card, toColumnId, toIndex, order }) => reorder(card.id, toColumnId, order)}
+  onColumnMove={({ column, toIndex, order }) => reorderColumn(column.id, order)}
+  onCardClick={({ card }) => openCardDetail(card.id)}
+/>
+```
+
+For custom layouts, mount compound children explicitly:
+
+```tsx
+<Kanban columns={columns} cards={cards}>
+  <Kanban.Board>
+    {columns.map((c) => (
+      <Kanban.Column key={c.id} columnId={c.id} />
+    ))}
+  </Kanban.Board>
+  <Kanban.CardTemplate render={({ card }) => <MyCard card={card} />} />
+</Kanban>
+```
+
+## Data model
+
+```ts
+interface KanbanColumn {
+  id: string;
+  title: string;
+  order?: number;
+  meta?: Record<string, unknown>;
+}
+
+interface KanbanCard {
+  id: string;
+  columnId: string;
+  title: string;
+  description?: string;
+  order?: number;
+  meta?: Record<string, unknown>;
+}
+```
+
+- **Identity is consumer-owned.** The Kanban never mints ids. Duplicate ids or unknown `columnId` references throw at ingest.
+- **Ordering is consumer-authoritative.** When every card / column carries `order`, they sort ascending; otherwise the input array order wins.
+- **Persistence is consumer-owned.** The Kanban stores nothing internally. Every move fires a callback; the consumer applies the change and the new `cards` / `columns` flow back through props.
+
+<Callout type="warning" title="No hard-coded statuses">
+  The Kanban ships no `"todo"` / `"doing"` / `"done"` presets. Columns are whatever the consumer
+  passes.
+</Callout>
+
+## Keyboard model
+
+Drag/drop is **not** the only interaction method. Every drag gesture has a keyboard equivalent.
+
+| Key                        | Action                                         |
+| -------------------------- | ---------------------------------------------- |
+| `ArrowUp` / `ArrowDown`    | Move focus within a column                     |
+| `ArrowLeft` / `ArrowRight` | Move focus to sibling column                   |
+| `Home` / `End`             | First / last card in column                    |
+| `Ctrl+Home` / `Ctrl+End`   | First card of first / last column              |
+| `Enter` / `F2`             | Fire `onCardClick`                             |
+| `Space`                    | Pick up card for keyboard move                 |
+| Arrows during move         | Update insertion index                         |
+| `Space` during move        | Commit (fires `onCardMove`)                    |
+| `Escape` during move       | Cancel                                         |
+| `Delete` / `Backspace`     | Fire `onCardDelete` when the consumer wires it |
+
+The column header supports the same pickup / move / commit gesture via `Enter` + arrows.
+
+## Callbacks
+
+| Callback            | Payload                                                         |
+| ------------------- | --------------------------------------------------------------- |
+| `onCardClick`       | `{ card, column, nativeEvent }`                                 |
+| `onCardMove`        | `{ card, fromColumnId, fromIndex, toColumnId, toIndex, order }` |
+| `onColumnMove`      | `{ column, fromIndex, toIndex, order }`                         |
+| `onDrop`            | `{ card, fromColumnId, fromIndex, toColumnId, toIndex }`        |
+| `onSelectionChange` | `KanbanSelection` (none / card / column)                        |
+| `onCardDelete`      | `TCard`                                                         |
+
+`order` is computed via `nextOrderBetween(before, after)` — consumers with a monotonic order key can persist it directly.
+
+## Empty columns
+
+An empty column is a first-class drop target with its own `aria-label`. Consumers render a
+placeholder via `renderEmptyState` or `<Kanban.EmptyState>`.
+
+## Accessibility
+
+- Root exposes `role="application"` + `aria-roledescription="Kanban board"`.
+- Board is `role="list"` `aria-orientation="horizontal"`; column bodies are `role="list"` `aria-orientation="vertical"`.
+- Cards are `<button>` with `aria-roledescription="Card"`, `aria-pressed` for selection, and `aria-posinset` / `aria-setsize` for position.
+- A single `aria-live="polite"` announcer speaks pickup / over / drop / cancel events.
+- All bindings honor `prefers-reduced-motion`.
+
+## Locale and RTL
+
+- `locale` — BCP 47 tag consumed by any card metadata (consumer controls this through `renderCard`).
+- `dir="rtl"` — flips the visual column layout. Arrow-key semantics for horizontal moves swap accordingly.
+
+## Non-goals for v1
+
+- No project-management workflow (no swim-lanes / WIP limits / assignees).
+- No persistence — moves fire callbacks; the consumer owns storage.
+- No hard-coded status presets.
+- No card content library — the consumer renders card bodies.
+- Drag/drop is not required — every gesture has a keyboard equivalent.

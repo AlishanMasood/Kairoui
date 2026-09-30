@@ -17,7 +17,8 @@
       "@kairoui/icons": ["./packages/icons/src/index.ts"],
       "@kairoui-pro/data-grid": ["./packages/data-grid/src/index.ts"],
       "@kairoui-pro/command": ["./packages/command/src/index.ts"],
-      "@kairoui-pro/scheduler": ["./packages/scheduler/src/index.ts"]
+      "@kairoui-pro/scheduler": ["./packages/scheduler/src/index.ts"],
+      "@kairoui-pro/kanban": ["./packages/kanban/src/index.ts"]
     }
   },
   "include": ["packages/*/src/**/*.ts", "packages/*/src/**/*.tsx"],

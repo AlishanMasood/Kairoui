@@ -165,6 +165,9 @@ importers:
       '@kairoui-pro/data-grid':
         specifier: workspace:*
         version: link:../../packages/data-grid
+      '@kairoui-pro/kanban':
+        specifier: workspace:*
+        version: link:../../packages/kanban
       '@kairoui-pro/scheduler':
         specifier: workspace:*
         version: link:../../packages/scheduler
@@ -279,6 +282,21 @@ importers:
         version: 19.2.8
 
   packages/icons: {}
+
+  packages/kanban:
+    dependencies:
+      '@kairoui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@kairoui/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      '@kairoui/utils':
+        specifier: workspace:*
+        version: link:../utils
+      react:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.8
 
   packages/scheduler:
     dependencies:

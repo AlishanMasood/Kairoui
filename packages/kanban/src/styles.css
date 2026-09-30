@@ -1,0 +1,217 @@
+/* KairoUI Kanban — minimal presentation. Consumers override any hook
+   via CSS custom properties or by redefining the class selectors. */
+
+.kui-kanban {
+  --kui-kanban-color-border: #d1d5db;
+  --kui-kanban-color-border-subtle: #e5e7eb;
+  --kui-kanban-color-column-bg: #f3f4f6;
+  --kui-kanban-color-card-bg: #ffffff;
+  --kui-kanban-color-card-fg: #1f2937;
+  --kui-kanban-color-card-selected-bg: #dbeafe;
+  --kui-kanban-color-card-selected-fg: #1e3a8a;
+  --kui-kanban-color-drop-target: #2563eb;
+  --kui-kanban-font-family: system-ui, sans-serif;
+  --kui-kanban-font-size: 14px;
+  --kui-kanban-column-width: 280px;
+  --kui-kanban-gap: 12px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  font-family: var(--kui-kanban-font-family);
+  font-size: var(--kui-kanban-font-size);
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--kui-kanban-color-border);
+  border-radius: 6px;
+  padding: var(--kui-kanban-gap);
+  box-sizing: border-box;
+}
+
+.kui-kanban *,
+.kui-kanban *::before,
+.kui-kanban *::after {
+  box-sizing: border-box;
+}
+
+.kui-kanban__announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Board ────────────────────────────────── */
+
+.kui-kanban__board {
+  display: flex;
+  gap: var(--kui-kanban-gap);
+  overflow-x: auto;
+  align-items: stretch;
+  min-height: 200px;
+}
+
+/* ── Column ───────────────────────────────── */
+
+.kui-kanban__column {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 var(--kui-kanban-column-width);
+  min-width: 0;
+  background: var(--kui-kanban-color-column-bg);
+  border-radius: 6px;
+  padding: 8px;
+  gap: 8px;
+}
+
+.kui-kanban__column--selected {
+  outline: 2px solid var(--kui-kanban-color-drop-target);
+}
+
+.kui-kanban__column--dragging {
+  opacity: 0.5;
+}
+
+.kui-kanban__column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: grab;
+  font-weight: 600;
+  outline: none;
+}
+
+.kui-kanban__column-header:focus-visible {
+  outline: 2px solid var(--kui-kanban-color-drop-target);
+  outline-offset: 2px;
+}
+
+.kui-kanban__column-header[aria-pressed="true"] {
+  cursor: grabbing;
+  background: var(--kui-kanban-color-card-selected-bg);
+}
+
+.kui-kanban__column-title {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-kanban__column-count {
+  flex: 0 0 auto;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.kui-kanban__column-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 48px;
+  overflow-y: auto;
+}
+
+.kui-kanban__column-body--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--kui-kanban-color-border);
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.kui-kanban__column-body--drag-over {
+  outline: 2px dashed var(--kui-kanban-color-drop-target);
+  outline-offset: -2px;
+}
+
+.kui-kanban__column-footer {
+  padding: 4px 8px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.kui-kanban__empty {
+  font-style: italic;
+  opacity: 0.6;
+}
+
+/* ── Card ─────────────────────────────────── */
+
+.kui-kanban__card {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--kui-kanban-color-card-bg);
+  color: var(--kui-kanban-color-card-fg);
+  border: 1px solid var(--kui-kanban-color-border-subtle);
+  border-radius: 4px;
+  text-align: start;
+  cursor: pointer;
+  font: inherit;
+  touch-action: none;
+}
+
+.kui-kanban__card:focus-visible {
+  outline: 2px solid var(--kui-kanban-color-drop-target);
+  outline-offset: 2px;
+}
+
+.kui-kanban__card--selected {
+  background: var(--kui-kanban-color-card-selected-bg);
+  color: var(--kui-kanban-color-card-selected-fg);
+}
+
+.kui-kanban__card--dragging {
+  opacity: 0.4;
+}
+
+.kui-kanban__card--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.kui-kanban__card-default {
+  display: block;
+}
+
+.kui-kanban__card-title {
+  font-weight: 600;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-kanban__card-description {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-kanban__empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kui-kanban__card {
+    transition: none;
+  }
+}

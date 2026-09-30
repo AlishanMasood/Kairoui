@@ -1,0 +1,46 @@
+{
+  "name": "@kairoui-pro/kanban",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Enterprise Kanban board for KairoUI — pointer + keyboard drag, virtualization, custom card rendering.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch"
+  },
+  "keywords": [
+    "kairoui",
+    "kanban",
+    "board",
+    "drag-and-drop",
+    "enterprise",
+    "react"
+  ],
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "dependencies": {
+    "@kairoui/core": "workspace:*",
+    "@kairoui/hooks": "workspace:*",
+    "@kairoui/utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  }
+}
