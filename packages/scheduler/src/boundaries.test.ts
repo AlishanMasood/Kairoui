@@ -27,10 +27,8 @@ describe("@kairoui-pro/scheduler package boundaries", () => {
       expect(pkg.type).toBe("module");
     });
 
-    it("declares sideEffects=false for the layout-only build", () => {
-      // KUI-ENT-011 will flip this to include CSS side effects when
-      // React views land.
-      expect(pkg.sideEffects).toBe(false);
+    it("declares sideEffects covering CSS only", () => {
+      expect(pkg.sideEffects).toEqual(["**/*.css"]);
     });
 
     it("publishes only dist", () => {
@@ -39,12 +37,12 @@ describe("@kairoui-pro/scheduler package boundaries", () => {
   });
 
   describe("exports", () => {
-    it("declares exactly root + package.json", () => {
+    it("declares root + styles.css + package.json", () => {
       const paths = Object.keys(pkg.exports ?? {});
-      expect(paths).toEqual([".", "./package.json"]);
+      expect(paths.sort()).toEqual([".", "./package.json", "./styles.css"]);
     });
 
-    it("root entry resolves and exposes the layout API", async () => {
+    it("root entry resolves and exposes the layout API + React root", async () => {
       const mod = await import("@kairoui-pro/scheduler");
       expect(mod.computeEventLayout).toBeTypeOf("function");
       expect(mod.computeAllDayLayout).toBeTypeOf("function");
@@ -52,18 +50,26 @@ describe("@kairoui-pro/scheduler package boundaries", () => {
       expect(mod.computeSlots).toBeTypeOf("function");
       expect(mod.assertValidSchedulerEvent).toBeTypeOf("function");
       expect(mod.DEFAULT_MAX_EVENTS_PER_SLOT).toBe(6);
+      expect(mod.Scheduler).toBeTypeOf("function");
+      expect(mod.Scheduler.Root).toBeTypeOf("function");
+      expect(mod.Scheduler.Toolbar).toBeTypeOf("function");
+      expect(mod.Scheduler.WeekView).toBeTypeOf("function");
+      expect(mod.Scheduler.TimelineView).toBeTypeOf("function");
+      expect(mod.Scheduler.NowIndicator).toBeTypeOf("function");
+      expect(mod.useScheduler).toBeTypeOf("function");
     });
 
     it("all declared dist files exist", () => {
       expect(existsSync(join(DIST, "index.js"))).toBe(true);
       expect(existsSync(join(DIST, "index.d.ts"))).toBe(true);
+      expect(existsSync(join(DIST, "styles.css"))).toBe(true);
     });
   });
 
   describe("dependency direction", () => {
-    it("depends only on approved @kairoui/* packages for the layout foundation", () => {
+    it("depends only on approved @kairoui/* packages", () => {
       const deps = Object.keys(pkg.dependencies ?? {});
-      expect(deps.sort()).toEqual(["@kairoui/utils"]);
+      expect(deps.sort()).toEqual(["@kairoui/core", "@kairoui/hooks", "@kairoui/utils"]);
     });
 
     it("depends on no other @kairoui-pro/* package", () => {
@@ -81,8 +87,6 @@ describe("@kairoui-pro/scheduler package boundaries", () => {
     });
 
     it("declares react as peer, not runtime", () => {
-      // React is a peer even though this task ships no React code —
-      // KUI-ENT-011 will add view components against the same peer.
       expect(pkg.peerDependencies?.["react"]).toBeDefined();
       expect(pkg.dependencies?.["react"]).toBeUndefined();
     });

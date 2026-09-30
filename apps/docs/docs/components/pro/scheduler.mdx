@@ -1,0 +1,154 @@
+---
+title: Scheduler
+sidebar_position: 102
+---
+
+import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+
+<ComponentHeader
+  name="Scheduler"
+  status="experimental"
+  packagePath="@kairoui-pro/scheduler"
+  description="Enterprise Scheduler — day / week / resource-timeline views with drag-to-reschedule, edge-resize, and overlap-aware event layout. Ships in the KairoUI Pro tier."
+/>
+
+<Callout type="info" title="Pro tier">
+  `Scheduler` ships in `@kairoui-pro/scheduler`. It reuses `@kairoui/utils`, `@kairoui/core`, and
+  `@kairoui/hooks`; no additional runtime dependencies are introduced.
+</Callout>
+
+## Import
+
+<ImportStatement imports={["Scheduler"]} from="@kairoui-pro/scheduler" />
+
+Also load the styles once at your application root:
+
+```ts
+import "@kairoui-pro/scheduler/styles.css";
+```
+
+## Anatomy
+
+```tsx
+<Scheduler
+  events={events}
+  resources={[{ id: "r1", label: "Room A" }]}
+  defaultView="week"
+  defaultDate={new Date()}
+  onEventClick={({ event }) => open(event.id)}
+  onMoveEvent={({ event, start, end }) => reschedule(event.id, start, end)}
+  onResizeEvent={({ event, start, end }) => reschedule(event.id, start, end)}
+  onCreateRange={({ start, end }) => createDraft(start, end)}
+/>
+```
+
+For custom layouts, pass compound children explicitly:
+
+```tsx
+<Scheduler events={events}>
+  <Scheduler.Toolbar />
+  <Scheduler.Views>
+    <Scheduler.WeekView />
+  </Scheduler.Views>
+  <Scheduler.EventTemplate
+    render={({ event, isSelected }) => <MyEventCard event={event} highlighted={isSelected} />}
+  />
+</Scheduler>
+```
+
+## Data model
+
+```ts
+interface SchedulerEvent {
+  id: string;
+  start: Date;
+  end: Date; // exclusive
+  allDay: boolean;
+  resourceId?: string;
+  title: string;
+  description?: string;
+  meta?: Record<string, unknown>;
+}
+```
+
+`end` is **exclusive** — an event `09:00 → 10:00` does not overlap
+`10:00 → 11:00`. Timestamps are **local wall-clock** `Date` objects;
+the Scheduler never converts timezones.
+
+<Callout type="warning" title="Timezone policy">
+  The Scheduler renders entirely in the browser's local wall-clock. Consumers who store events in a
+  specific zone must convert to a local `Date` before passing them and convert back inside
+  `onMoveEvent` / `onResizeEvent` / `onCreateRange`. `timezoneLabel` is a **display-only** hint —
+  changing it does not shift layout.
+</Callout>
+
+## Views
+
+| View       | daysInView default | Axis       | Focus target                 |
+| ---------- | ------------------ | ---------- | ---------------------------- |
+| `day`      | 1                  | vertical   | grid cells + events          |
+| `week`     | 7                  | vertical   | grid cells + events          |
+| `timeline` | 1                  | horizontal | resource-time cells + events |
+
+## Keyboard model
+
+| Key                                 | Action                                    |
+| ----------------------------------- | ----------------------------------------- |
+| `ArrowUp` / `ArrowDown`             | Move focused event by one slot            |
+| `Shift+ArrowUp` / `Shift+ArrowDown` | Resize end by one slot                    |
+| `Ctrl+ArrowUp` / `Ctrl+ArrowDown`   | Resize start by one slot                  |
+| `Alt+ArrowLeft` / `Alt+ArrowRight`  | Move focused event to previous / next day |
+| `Enter` / `F2` / `Space`            | Fire `onEventClick`                       |
+| `Escape`                            | Cancel drag or clear selection            |
+| `PageUp` / `PageDown`               | Navigate previous / next view period      |
+| `Home`                              | Jump to today                             |
+
+The keymap is data-driven — override any binding via the
+`DEFAULT_SCHEDULER_KEYMAP` export.
+
+## Callbacks
+
+| Callback          | Payload                                         |
+| ----------------- | ----------------------------------------------- |
+| `onEventClick`    | `{ event, nativeEvent }`                        |
+| `onCreateRange`   | `{ start, end, resourceId?, allDay }`           |
+| `onMoveEvent`     | `{ event, start, end, resourceId? }`            |
+| `onResizeEvent`   | `{ event, start, end, edge: 'start' \| 'end' }` |
+| `onOverflowClick` | `readonly SchedulerEvent[]`                     |
+| `onViewChange`    | `SchedulerViewKind`                             |
+| `onDateChange`    | `Date`                                          |
+
+The Scheduler never persists changes — the consumer applies each
+payload to their own store, and the new event data flows back through
+the `events` prop.
+
+## Accessibility
+
+- Root exposes `role="application"` with
+  `aria-roledescription="Scheduler"`.
+- The time grid uses `role="grid"` with `aria-rowcount` /
+  `aria-colcount`.
+- Every event is a focusable `role="button"` with
+  `aria-label` and `aria-selected`.
+- A single `aria-live="polite"` region announces view changes.
+- All bindings honor `prefers-reduced-motion`.
+
+## Locale and RTL
+
+- `locale` — BCP 47 tag consumed by `Intl.DateTimeFormat` for hour and
+  day-of-week labels.
+- `weekStartsOn` — 0 = Sunday, 1 = Monday, …; derived from the locale
+  when omitted (falls back to Monday).
+- `hour12` — 12-hour / 24-hour toggle; derived from the locale when
+  omitted.
+- `dir="rtl"` — flips visual flow. Timeline time direction stays LTR
+  by default to match Gantt-style conventions.
+
+## Non-goals for v1
+
+- No recurring-event engine — consumers expand recurrences before
+  passing.
+- No timezone conversion — the escape hatch is explicit, never
+  automatic.
+- No conflict / availability blocking.
+- No month or agenda view (deferred).

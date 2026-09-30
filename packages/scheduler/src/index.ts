@@ -1,9 +1,8 @@
 // @kairoui-pro/scheduler — public API surface.
 //
-// Enterprise Scheduler for KairoUI. This entry exports the pure
-// framework-independent layout foundation. See
+// Enterprise Scheduler for KairoUI. See
 // docs/architecture/PHASE14-SCHEDULER-ARCHITECTURE.md for the full
-// contract. React views land in KUI-ENT-011.
+// contract.
 
 export type {
   AllDayLaneEntry,
@@ -13,9 +12,29 @@ export type {
   LaidOutEvent,
   Resource,
   ResourceBucket,
+  SchedulerAccessibilityProps,
+  SchedulerAllDayRenderer,
+  SchedulerDayViewProps,
   SchedulerEvent,
+  SchedulerEventClickPayload,
+  SchedulerEventRenderer,
+  SchedulerEventTemplateProps,
+  SchedulerMessages,
+  SchedulerMovePayload,
+  SchedulerNowIndicatorProps,
+  SchedulerRangePayload,
+  SchedulerResizePayload,
+  SchedulerResourceHeaderProps,
+  SchedulerRootProps,
+  SchedulerSelection,
+  SchedulerState,
+  SchedulerTimeAxisProps,
+  SchedulerTimelineViewProps,
+  SchedulerToolbarProps,
   SchedulerViewKind,
   SchedulerViewProps,
+  SchedulerViewsProps,
+  SchedulerWeekViewProps,
   TimeSlot,
   VisibleEventBucket,
   VisibleRange,
@@ -57,3 +76,23 @@ export {
   filterVisibleEvents,
   groupEventsByResource,
 } from "./layout";
+
+export { DEFAULT_SCHEDULER_KEYMAP, resolveKeymapAction } from "./keymap";
+export type { SchedulerAction, SchedulerKeyBinding, SchedulerKeymap } from "./keymap";
+
+export {
+  Scheduler,
+  SchedulerDayView,
+  SchedulerEventTemplate,
+  SchedulerForwarded,
+  SchedulerNowIndicator,
+  SchedulerResourceHeader,
+  SchedulerRoot,
+  SchedulerTimeAxis,
+  SchedulerTimelineView,
+  SchedulerToolbar,
+  SchedulerViews,
+  SchedulerWeekView,
+} from "./scheduler";
+export { SchedulerContext, useScheduler } from "./scheduler-context";
+export type { SchedulerContextValue } from "./scheduler-context";

@@ -1,0 +1,386 @@
+/* KairoUI Scheduler — minimal presentation.
+   Consumers can override any hook via CSS custom properties or by
+   redefining the class-based selectors.
+*/
+
+.kui-scheduler {
+  --kui-scheduler-color-border: #d1d5db;
+  --kui-scheduler-color-border-subtle: #e5e7eb;
+  --kui-scheduler-color-event-bg: #dbeafe;
+  --kui-scheduler-color-event-fg: #1e3a8a;
+  --kui-scheduler-color-event-selected-bg: #93c5fd;
+  --kui-scheduler-color-event-selected-fg: #1e3a8a;
+  --kui-scheduler-color-now: #ef4444;
+  --kui-scheduler-color-today-bg: #fef9c3;
+  --kui-scheduler-font-family: system-ui, sans-serif;
+  --kui-scheduler-font-size: 14px;
+  --kui-scheduler-toolbar-height: 48px;
+  --kui-scheduler-day-header-height: 32px;
+  --kui-scheduler-time-axis-width: 64px;
+  --kui-scheduler-resource-column-width: 128px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  font-family: var(--kui-scheduler-font-family);
+  font-size: var(--kui-scheduler-font-size);
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--kui-scheduler-color-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.kui-scheduler *,
+.kui-scheduler *::before,
+.kui-scheduler *::after {
+  box-sizing: border-box;
+}
+
+.kui-scheduler__announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Toolbar ───────────────────────────────── */
+
+.kui-scheduler__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  height: var(--kui-scheduler-toolbar-height);
+  border-bottom: 1px solid var(--kui-scheduler-color-border);
+  background: transparent;
+}
+
+.kui-scheduler__nav {
+  padding: 4px 8px;
+  border: 1px solid var(--kui-scheduler-color-border);
+  border-radius: 4px;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.kui-scheduler__nav:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.kui-scheduler__range-label {
+  margin-inline-start: auto;
+  font-weight: 600;
+}
+
+.kui-scheduler__tz-label {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.kui-scheduler__view-switcher {
+  display: inline-flex;
+  gap: 4px;
+  margin-inline-start: 12px;
+}
+
+.kui-scheduler__view-tab {
+  padding: 4px 8px;
+  border: 1px solid var(--kui-scheduler-color-border);
+  border-radius: 4px;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.kui-scheduler__view-tab--selected {
+  background: var(--kui-scheduler-color-event-bg);
+  color: var(--kui-scheduler-color-event-fg);
+}
+
+/* ── Views ─────────────────────────────────── */
+
+.kui-scheduler__views {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.kui-scheduler__grid--vertical {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.kui-scheduler__day-header-row {
+  display: grid;
+  grid-template-columns: var(--kui-scheduler-time-axis-width) 1fr;
+  border-bottom: 1px solid var(--kui-scheduler-color-border);
+  height: var(--kui-scheduler-day-header-height);
+}
+
+.kui-scheduler__day-header-row > .kui-scheduler__corner {
+  border-inline-end: 1px solid var(--kui-scheduler-color-border-subtle);
+}
+
+.kui-scheduler__day-header-row {
+  grid-auto-columns: 1fr;
+}
+
+.kui-scheduler__day-header {
+  padding: 4px 8px;
+  border-inline-start: 1px solid var(--kui-scheduler-color-border-subtle);
+  font-weight: 600;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-scheduler__day-header--today {
+  background: var(--kui-scheduler-color-today-bg);
+}
+
+.kui-scheduler__all-day-row {
+  display: grid;
+  grid-template-columns: var(--kui-scheduler-time-axis-width) 1fr;
+  border-bottom: 1px solid var(--kui-scheduler-color-border);
+}
+
+.kui-scheduler__all-day-label {
+  padding: 4px 8px;
+  border-inline-end: 1px solid var(--kui-scheduler-color-border-subtle);
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.kui-scheduler__all-day-strip {
+  display: grid;
+  grid-auto-rows: 22px;
+  gap: 2px;
+  padding: 2px;
+  position: relative;
+}
+
+.kui-scheduler__all-day-event {
+  border: 1px solid var(--kui-scheduler-color-event-fg);
+  background: var(--kui-scheduler-color-event-bg);
+  color: var(--kui-scheduler-color-event-fg);
+  border-radius: 3px;
+  font: inherit;
+  padding: 0 6px;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.kui-scheduler__all-day-event--selected {
+  background: var(--kui-scheduler-color-event-selected-bg);
+}
+
+.kui-scheduler__grid-body {
+  display: grid;
+  grid-template-columns: var(--kui-scheduler-time-axis-width) 1fr;
+  min-height: 0;
+  position: relative;
+}
+
+.kui-scheduler__time-axis {
+  border-inline-end: 1px solid var(--kui-scheduler-color-border-subtle);
+}
+
+.kui-scheduler__time-label {
+  padding: 2px 6px;
+  font-size: 12px;
+  opacity: 0.7;
+  border-block-end: 1px dashed var(--kui-scheduler-color-border-subtle);
+}
+
+.kui-scheduler__day-columns {
+  display: grid;
+  position: relative;
+}
+
+.kui-scheduler__day-column {
+  position: relative;
+  border-inline-start: 1px solid var(--kui-scheduler-color-border-subtle);
+}
+
+.kui-scheduler__slot {
+  border-block-end: 1px dashed var(--kui-scheduler-color-border-subtle);
+  cursor: pointer;
+}
+
+.kui-scheduler__event {
+  border: 1px solid var(--kui-scheduler-color-event-fg);
+  background: var(--kui-scheduler-color-event-bg);
+  color: var(--kui-scheduler-color-event-fg);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font: inherit;
+  text-align: start;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.kui-scheduler__event--selected {
+  background: var(--kui-scheduler-color-event-selected-bg);
+  color: var(--kui-scheduler-color-event-selected-fg);
+  outline: 2px solid var(--kui-scheduler-color-event-fg);
+}
+
+.kui-scheduler__event:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+.kui-scheduler__event-default {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-scheduler__event-title {
+  font-weight: 600;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-scheduler__event-description {
+  font-size: 11px;
+  opacity: 0.75;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-scheduler__overflow {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: var(--kui-scheduler-color-event-selected-bg);
+  color: var(--kui-scheduler-color-event-selected-fg);
+  border: none;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.kui-scheduler__now-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--kui-scheduler-color-now);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ── Timeline view ────────────────────────── */
+
+.kui-scheduler__grid--timeline {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.kui-scheduler__timeline-header {
+  display: flex;
+  border-bottom: 1px solid var(--kui-scheduler-color-border);
+}
+
+.kui-scheduler__timeline-corner {
+  flex: 0 0 var(--kui-scheduler-resource-column-width);
+  border-inline-end: 1px solid var(--kui-scheduler-color-border);
+}
+
+.kui-scheduler__timeline-hours {
+  display: flex;
+}
+
+.kui-scheduler__timeline-hour {
+  border-inline-start: 1px solid var(--kui-scheduler-color-border-subtle);
+  padding: 4px 6px;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kui-scheduler__timeline-body {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.kui-scheduler__timeline-resources {
+  flex: 0 0 var(--kui-scheduler-resource-column-width);
+  border-inline-end: 1px solid var(--kui-scheduler-color-border);
+}
+
+.kui-scheduler__resource-lane-label {
+  padding: 8px;
+  border-block-end: 1px solid var(--kui-scheduler-color-border-subtle);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.kui-scheduler__timeline-rows {
+  flex: 1 1 auto;
+}
+
+.kui-scheduler__timeline-row {
+  position: relative;
+  display: flex;
+  border-block-end: 1px solid var(--kui-scheduler-color-border-subtle);
+}
+
+.kui-scheduler__timeline-slot {
+  border-inline-start: 1px dashed var(--kui-scheduler-color-border-subtle);
+  height: 100%;
+  flex: 0 0 auto;
+}
+
+.kui-scheduler__event--timeline {
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+/* ── Resource header ──────────────────────── */
+
+.kui-scheduler__resource-header {
+  display: flex;
+  border-block-end: 1px solid var(--kui-scheduler-color-border);
+}
+
+.kui-scheduler__resource-label {
+  padding: 4px 8px;
+  border-inline-end: 1px solid var(--kui-scheduler-color-border-subtle);
+  font-weight: 600;
+}
+
+/* ── Reduced motion ───────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .kui-scheduler__now-indicator {
+    animation: none;
+  }
+}

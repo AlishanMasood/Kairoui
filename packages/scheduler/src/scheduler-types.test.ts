@@ -8,6 +8,14 @@ import type {
   Resource,
   ResourceBucket,
   SchedulerEvent,
+  SchedulerEventClickPayload,
+  SchedulerEventRenderer,
+  SchedulerMovePayload,
+  SchedulerRangePayload,
+  SchedulerResizePayload,
+  SchedulerRootProps,
+  SchedulerSelection,
+  SchedulerState,
   SchedulerViewKind,
   SchedulerViewProps,
   TimeSlot,
@@ -186,5 +194,92 @@ describe("Generic parameter propagation", () => {
   it("EventLayoutResult<TEvent> propagates through overflow", () => {
     const r: EventLayoutResult<CalendarEvent> = { laidOut: [], overflow: [] };
     expectTypeOf(r.overflow).toEqualTypeOf<readonly CalendarEvent[]>();
+  });
+});
+
+describe("Selection + State", () => {
+  it("SchedulerSelection is a discriminated union", () => {
+    const none: SchedulerSelection = { kind: "none" };
+    const single: SchedulerSelection = { kind: "event", eventId: "a" };
+    const range: SchedulerSelection = {
+      kind: "range",
+      start: new Date(),
+      end: new Date(),
+      resourceId: "r1",
+    };
+    expectTypeOf(none.kind).toEqualTypeOf<"none" | "event" | "range">();
+    expectTypeOf(single).toExtend<SchedulerSelection>();
+    expectTypeOf(range).toExtend<SchedulerSelection>();
+  });
+
+  it("SchedulerState carries view + date + selection", () => {
+    const state: SchedulerState = {
+      view: "week",
+      date: new Date(),
+      selection: { kind: "none" },
+    };
+    expectTypeOf(state.view).toEqualTypeOf<SchedulerViewKind>();
+  });
+});
+
+describe("Callback payloads propagate the concrete event type", () => {
+  interface CalEvent extends SchedulerEvent {
+    readonly color: string;
+  }
+
+  it("SchedulerEventClickPayload<TEvent> carries the concrete event", () => {
+    const payload: SchedulerEventClickPayload<CalEvent> = {
+      event: {
+        id: "a",
+        start: new Date(),
+        end: new Date(),
+        allDay: false,
+        title: "t",
+        color: "red",
+      },
+      nativeEvent: new MouseEvent("click"),
+    };
+    expectTypeOf(payload.event.color).toBeString();
+  });
+
+  it("SchedulerMovePayload / SchedulerResizePayload / SchedulerRangePayload have expected fields", () => {
+    const move: SchedulerMovePayload = {
+      event: { id: "a", start: new Date(), end: new Date(), allDay: false, title: "t" },
+      start: new Date(),
+      end: new Date(),
+      resourceId: "r1",
+    };
+    expectTypeOf(move.resourceId).toEqualTypeOf<string | undefined>();
+    const resize: SchedulerResizePayload = {
+      event: { id: "a", start: new Date(), end: new Date(), allDay: false, title: "t" },
+      start: new Date(),
+      end: new Date(),
+      edge: "end",
+    };
+    expectTypeOf(resize.edge).toEqualTypeOf<"start" | "end">();
+    const range: SchedulerRangePayload = {
+      start: new Date(),
+      end: new Date(),
+      allDay: false,
+    };
+    expectTypeOf(range.allDay).toBeBoolean();
+  });
+});
+
+describe("SchedulerRootProps", () => {
+  it("only requires events; every other field is optional", () => {
+    const minimal: SchedulerRootProps = { events: [] };
+    expectTypeOf(minimal).toExtend<SchedulerRootProps>();
+  });
+
+  it("carries the render prop as SchedulerEventRenderer<TEvent>", () => {
+    interface CalEvent extends SchedulerEvent {
+      readonly color: string;
+    }
+    const props: SchedulerRootProps<CalEvent> = {
+      events: [],
+      renderEvent: ({ event }) => event.color,
+    };
+    expectTypeOf(props.renderEvent).toEqualTypeOf<SchedulerEventRenderer<CalEvent> | undefined>();
   });
 });

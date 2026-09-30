@@ -165,6 +165,9 @@ importers:
       '@kairoui-pro/data-grid':
         specifier: workspace:*
         version: link:../../packages/data-grid
+      '@kairoui-pro/scheduler':
+        specifier: workspace:*
+        version: link:../../packages/scheduler
       '@kairoui/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -279,6 +282,12 @@ importers:
 
   packages/scheduler:
     dependencies:
+      '@kairoui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@kairoui/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@kairoui/utils':
         specifier: workspace:*
         version: link:../utils
