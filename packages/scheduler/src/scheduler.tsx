@@ -232,6 +232,7 @@ function SchedulerRoot<TEvent extends SchedulerEvent = SchedulerEvent>(
       previousLabel: messages?.previousLabel ?? "Previous",
       nextLabel: messages?.nextLabel ?? "Next",
       todayLabel: messages?.todayLabel ?? "Today",
+      createEventLabel: messages?.createEventLabel ?? "Create event",
       viewSwitcherLabel: messages?.viewSwitcherLabel ?? "View",
       dayLabel: messages?.dayLabel ?? "Day",
       weekLabel: messages?.weekLabel ?? "Week",
@@ -500,6 +501,19 @@ function SchedulerToolbar(props: SchedulerToolbarProps = {}): ReactNode {
     ctx.setDate(new Date());
   }, [ctx]);
 
+  // Keyboard-accessible range creation. The onCreateRange slot click
+  // is only reachable with a pointer; this button gives keyboard users
+  // the same affordance from the toolbar.
+  const createRange = useCallback(() => {
+    if (!ctx.onCreateRange) return;
+    const firstDay = range.days[0];
+    if (!firstDay) return;
+    const rangeStart = new Date(firstDay.getTime());
+    rangeStart.setHours(Math.max(9, ctx.startHour), 0, 0, 0);
+    const rangeEnd = new Date(rangeStart.getTime() + 30 * 60_000);
+    ctx.onCreateRange({ start: rangeStart, end: rangeEnd, allDay: false });
+  }, [ctx, range.days]);
+
   return (
     <div
       role="toolbar"
@@ -536,6 +550,17 @@ function SchedulerToolbar(props: SchedulerToolbarProps = {}): ReactNode {
           >
             ›
           </button>
+          {ctx.onCreateRange ? (
+            <button
+              type="button"
+              className="kui-scheduler__nav"
+              data-scheduler-create=""
+              onClick={createRange}
+              aria-label={ctx.messages.createEventLabel}
+            >
+              {ctx.messages.createEventLabel}
+            </button>
+          ) : null}
           <span
             className="kui-scheduler__range-label"
             aria-live="polite"

@@ -114,6 +114,30 @@ describe("Toolbar navigation", () => {
     );
     expect(onViewChange).toHaveBeenCalledWith("timeline");
   });
+
+  it("renders a keyboard-accessible 'Create event' button when onCreateRange is wired", () => {
+    const onCreateRange = vi.fn();
+    const { container } = render(
+      <Scheduler
+        events={[]}
+        defaultDate={ANCHOR}
+        defaultView="day"
+        onCreateRange={onCreateRange}
+      />,
+    );
+    const createBtn = container.querySelector<HTMLButtonElement>("[data-scheduler-create]");
+    expect(createBtn).not.toBeNull();
+    fireEvent.click(createBtn!);
+    expect(onCreateRange).toHaveBeenCalledOnce();
+    const payload = onCreateRange.mock.calls[0]?.[0] as { allDay: boolean; start: Date; end: Date };
+    expect(payload.allDay).toBe(false);
+    expect(payload.end.getTime() - payload.start.getTime()).toBe(30 * 60_000);
+  });
+
+  it("hides the 'Create event' button when onCreateRange is not wired", () => {
+    const { container } = render(<Scheduler events={[]} defaultDate={ANCHOR} defaultView="day" />);
+    expect(container.querySelector("[data-scheduler-create]")).toBeNull();
+  });
 });
 
 // ─── Event rendering ──────────────────────────────────────────────

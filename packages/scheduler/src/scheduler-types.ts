@@ -191,6 +191,7 @@ export interface SchedulerMessages {
   readonly previousLabel?: string;
   readonly nextLabel?: string;
   readonly todayLabel?: string;
+  readonly createEventLabel?: string;
   readonly viewSwitcherLabel?: string;
   readonly dayLabel?: string;
   readonly weekLabel?: string;
