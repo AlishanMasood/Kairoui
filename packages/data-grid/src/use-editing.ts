@@ -1,7 +1,8 @@
 import { useCallback, useMemo } from "react";
 import type { KeyboardEvent } from "react";
 import { useControllableState, useEventCallback } from "@kairoui/hooks";
-import { getCellValue } from "@kairoui/core/components";
+// eslint-disable-next-line import-x/no-internal-modules
+import { getCellValue } from "@kairoui/core/components/data-grid";
 import type { RowId } from "@kairoui/core/components";
 import type { DataGridColumnDef, EditCellRenderContext, ValidationResult } from "./column-types";
 import type { CellEditEvent, EditingMode, EditingState, RowEditEvent } from "./editing-types";

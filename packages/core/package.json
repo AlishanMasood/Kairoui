@@ -21,6 +21,14 @@
       "types": "./dist/components/index.d.ts",
       "import": "./dist/components/index.js"
     },
+    "./components/data-grid": {
+      "types": "./dist/components/data-table/data-grid.d.ts",
+      "import": "./dist/components/data-table/data-grid.js"
+    },
+    "./components/overlay/command": {
+      "types": "./dist/components/overlay/command.d.ts",
+      "import": "./dist/components/overlay/command.js"
+    },
     "./styles.css": {
       "import": "./dist/styles.css"
     },
@@ -33,7 +41,8 @@
     "**/*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "!dist/**/*.map"
   ],
   "scripts": {
     "build": "tsup && tsx scripts/generate-css.ts",

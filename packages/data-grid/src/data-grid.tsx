@@ -10,6 +10,7 @@ import {
 } from "react";
 import type { CSSProperties, KeyboardEvent, MouseEvent, ReactNode } from "react";
 import { useControllableState } from "@kairoui/hooks";
+/* eslint-disable import-x/no-internal-modules */
 import {
   applyFilters,
   getCellContent,
@@ -17,7 +18,8 @@ import {
   getHeaderContent,
   useFilterState,
   useRowSelection,
-} from "@kairoui/core/components";
+} from "@kairoui/core/components/data-grid";
+/* eslint-enable import-x/no-internal-modules */
 import type { RowId, SortState } from "@kairoui/core/components";
 import { computeVirtualizedRange } from "@kairoui/utils";
 import type { DataGridColumnDef } from "./column-types";

@@ -104,13 +104,15 @@ export function generate(options: GenerateOptions): {
 
   for (const pkg of pkgs) {
     const exports = discoverExportsFromDts(pkg, config);
-    const componentExports = exports.filter((e) => e.kind === "component");
 
     // Find the components .d.ts for this package
     const componentsDts = pkg.exports.find((e) => e.subpath === "./components");
     const mainDts = pkg.exports.find((e) => e.subpath === ".");
     const dtsEntry = componentsDts ?? mainDts;
     if (!dtsEntry?.typesPath) continue;
+    const componentExports = exports.filter(
+      (entry) => entry.kind === "component" && entry.entryPoint === dtsEntry.subpath,
+    );
 
     const dtsPath = resolve(pkg.path, dtsEntry.typesPath);
     if (!existsSync(dtsPath)) continue;

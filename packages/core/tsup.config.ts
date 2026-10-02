@@ -6,6 +6,8 @@ export default createConfig({
     "src/composition.ts",
     "src/primitives/index.ts",
     "src/components/index.ts",
+    "src/components/data-table/data-grid.ts",
+    "src/components/overlay/command.ts",
   ],
   tsconfig: "tsconfig.build.json",
 });

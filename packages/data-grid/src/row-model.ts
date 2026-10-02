@@ -1,4 +1,5 @@
-import { getCellValue } from "@kairoui/core/components";
+// eslint-disable-next-line import-x/no-internal-modules
+import { getCellValue } from "@kairoui/core/components/data-grid";
 import type { ExpansionState, RowId } from "@kairoui/core/components";
 import type { DataGridColumnDef } from "./column-types";
 import { computeAggregates, computeFooterAggregates } from "./aggregation";

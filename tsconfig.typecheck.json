@@ -12,6 +12,12 @@
       "@kairoui/theme": ["./packages/theme/src/index.ts"],
       "@kairoui/core": ["./packages/core/src/index.ts"],
       "@kairoui/core/components": ["./packages/core/src/components/index.ts"],
+      "@kairoui/core/components/data-grid": [
+        "./packages/core/src/components/data-table/data-grid.ts"
+      ],
+      "@kairoui/core/components/overlay/command": [
+        "./packages/core/src/components/overlay/command.ts"
+      ],
       "@kairoui/core/composition": ["./packages/core/src/composition.ts"],
       "@kairoui/core/primitives": ["./packages/core/src/primitives/index.ts"],
       "@kairoui/icons": ["./packages/icons/src/index.ts"],

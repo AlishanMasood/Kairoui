@@ -18,7 +18,8 @@ import type {
   ReactNode,
 } from "react";
 import { useControllableState, useEventCallback, useMergedRefs } from "@kairoui/hooks";
-import { DismissableLayer, FocusScope, Portal } from "@kairoui/core/components";
+// eslint-disable-next-line import-x/no-internal-modules
+import { DismissableLayer, FocusScope, Portal } from "@kairoui/core/components/overlay/command";
 import type {
   CommandDialogProps,
   CommandEmptyProps,

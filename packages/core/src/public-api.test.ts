@@ -33,8 +33,8 @@ describe("@kairoui/core public package APIs", () => {
       expect(deps["react-dom"]).toBeUndefined();
     });
 
-    it("only publishes dist", () => {
-      expect(CORE_PKG["files"]).toEqual(["dist"]);
+    it("publishes dist while excluding sourcemaps", () => {
+      expect(CORE_PKG["files"]).toEqual(["dist", "!dist/**/*.map"]);
     });
   });
 

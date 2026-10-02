@@ -24,6 +24,24 @@ describe("@kairoui/core composition package boundaries", () => {
       const paths = Object.keys(pkg["exports"]);
       expect(paths).toContain("./composition");
     });
+
+    it("exports narrow DataGrid and Command interop paths", () => {
+      const paths = Object.keys(pkg["exports"]);
+      expect(paths).toContain("./components/data-grid");
+      expect(paths).toContain("./components/overlay/command");
+      expect(existsSync(join(DIST, "components/data-table/data-grid.js"))).toBe(true);
+      expect(existsSync(join(DIST, "components/overlay/command.js"))).toBe(true);
+    });
+
+    it("data-grid interop exports the required utilities without the full table component", async () => {
+      // eslint-disable-next-line import-x/no-internal-modules
+      const mod = await import("@kairoui/core/components/data-grid");
+      expect(mod.applyFilters).toBeTypeOf("function");
+      expect(mod.getCellContent).toBeTypeOf("function");
+      expect(mod.getCellValue).toBeTypeOf("function");
+      expect(mod.getHeaderContent).toBeTypeOf("function");
+      expect("DataTable" in mod).toBe(false);
+    });
   });
 
   describe("dependencies", () => {
@@ -73,8 +91,8 @@ describe("@kairoui/core composition package boundaries", () => {
       expect(pkg["type"]).toBe("module");
     });
 
-    it("files includes only dist", () => {
-      expect(pkg["files"]).toEqual(["dist"]);
+    it("publishes dist while excluding sourcemaps", () => {
+      expect(pkg["files"]).toEqual(["dist", "!dist/**/*.map"]);
     });
   });
 });

@@ -191,7 +191,7 @@ describe("Publishing: pack size sanity", () => {
 
   for (const pkg of PACKAGES) {
     it(`@kairoui/${pkg}: unpacked under ${String(budgets[pkg])}KB`, () => {
-      const files = getDistFiles(pkg);
+      const files = getDistFiles(pkg).filter((file) => pkg !== "core" || !file.endsWith(".map"));
       let totalSize = 0;
       for (const file of files) {
         totalSize += statSync(resolve(PACKAGES_DIR, pkg, "dist", file)).size;
@@ -203,6 +203,13 @@ describe("Publishing: pack size sanity", () => {
       expect(sizeKB).toBeLessThan(budgets[pkg]!);
     });
   }
+
+  it("@kairoui/core: excludes sourcemaps from the published files", () => {
+    const packageJson = JSON.parse(
+      readFileSync(resolve(PACKAGES_DIR, "core", "package.json"), "utf-8"),
+    ) as { files: readonly string[] };
+    expect(packageJson.files).toContain("!dist/**/*.map");
+  });
 });
 
 // ─── Root LICENSE exists ────────────────────────────────────────────
