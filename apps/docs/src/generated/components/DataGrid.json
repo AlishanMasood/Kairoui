@@ -1,0 +1,365 @@
+{
+  "name": "DataGrid",
+  "packagePath": "@kairoui-pro/data-grid",
+  "propsInterface": "DataGridRootProps",
+  "props": [
+    {
+      "name": "columnOrder",
+      "type": "undefined | ColumnOrder",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "columnPinning",
+      "type": "undefined | ColumnPinning",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "columns",
+      "type": "readonly DataGridColumnDef<TRow>[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "columnSizing",
+      "type": "undefined | Readonly<Record<string, number>>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "columnVisibility",
+      "type": "undefined | Readonly<Record<string, boolean>>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "data",
+      "type": "readonly TRow[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "defaultColumnOrder",
+      "type": "undefined | ColumnOrder",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultColumnPinning",
+      "type": "undefined | ColumnPinning",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultColumnSizing",
+      "type": "undefined | Readonly<Record<string, number>>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultColumnVisibility",
+      "type": "undefined | Readonly<Record<string, boolean>>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultColumnWidth",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultEditingState",
+      "type": "undefined | EditingState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "undefined | ExpansionState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultFilterState",
+      "type": "undefined | FilterState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultFocusState",
+      "type": "undefined | FocusState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultGroupBy",
+      "type": "undefined | readonly string[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSelectedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSort",
+      "type": "undefined | readonly SortState[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "editingState",
+      "type": "undefined | EditingState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "editMode",
+      "type": "undefined | \"none\" | \"cell\" | \"row\" | \"batch\"",
+      "required": false,
+      "defaultValue": "\"none\"",
+      "deprecated": false
+    },
+    {
+      "name": "emptyState",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "expanded",
+      "type": "undefined | ExpansionState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "filteredEmptyState",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "filterState",
+      "type": "undefined | FilterState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "focusState",
+      "type": "undefined | FocusState",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "footer",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "getRowId",
+      "type": "(row: TRow) => RowId",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "groupBy",
+      "type": "undefined | readonly string[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "loading",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "multiSort",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "When `true`, click-only header toggles behave additively. Default `false`.",
+      "deprecated": false
+    },
+    {
+      "name": "onCellEdit",
+      "type": "undefined | (event: CellEditEvent<TRow>) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onColumnOrderChange",
+      "type": "undefined | (order: ColumnOrder) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onColumnPinningChange",
+      "type": "undefined | (pinning: ColumnPinning) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onColumnSizingChange",
+      "type": "undefined | (sizing: Readonly<Record<string, number>>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onColumnVisibilityChange",
+      "type": "undefined | (visibility: Readonly<Record<string, boolean>>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onEditingChange",
+      "type": "undefined | (state: EditingState) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onExpandChange",
+      "type": "undefined | (expanded: ExpansionState) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onFilterStateChange",
+      "type": "undefined | (state: FilterState) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onFocusChange",
+      "type": "undefined | (focus: FocusState) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onGroupByChange",
+      "type": "undefined | (groupBy: readonly string[]) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onRowEdit",
+      "type": "undefined | (event: RowEditEvent<TRow>) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "undefined | (ids: ReadonlySet<RowId>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSortChange",
+      "type": "undefined | (sort: readonly SortState[]) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "overscan",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "renderGroupSummary",
+      "type": "undefined | GroupSummaryRenderer<TRow>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "rowHeight",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selectedIds",
+      "type": "undefined | ReadonlySet<RowId>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selectionMode",
+      "type": "undefined | \"none\" | \"single\" | \"multiple\"",
+      "required": false,
+      "defaultValue": "\"none\"",
+      "deprecated": false
+    },
+    {
+      "name": "serverFilter",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "When `true`, DataGrid trusts `data` as already filtered. Default `false`.",
+      "deprecated": false
+    },
+    {
+      "name": "serverSort",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "When `true`, DataGrid trusts `data` as already sorted. Default `false`.",
+      "deprecated": false
+    },
+    {
+      "name": "showAggregatedFooter",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Render a grand-total footer row aggregated from column `aggregate.footer`.",
+      "deprecated": false
+    },
+    {
+      "name": "sort",
+      "type": "undefined | readonly SortState[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "toolbar",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "virtualized",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "virtualScrollHeight",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/data-grid",
+    "namedExports": [
+      "DataGrid"
+    ]
+  },
+  "source": {
+    "propsInterface": "DataGridRootProps"
+  }
+}

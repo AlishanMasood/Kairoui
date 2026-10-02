@@ -3,7 +3,16 @@ title: DataGrid
 sidebar_position: 100
 ---
 
-import { ComponentHeader, ImportStatement, DocsSection, Demo, Callout } from "@kairoui/docs";
+import {
+  ComponentHeader,
+  ImportStatement,
+  DocsSection,
+  Demo,
+  Callout,
+  PropsTable,
+} from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import DataGridMeta from "@site/src/generated/components/DataGrid.json";
 import { DataGrid } from "@kairoui-pro/data-grid";
 
 export const people = [
@@ -261,6 +270,49 @@ matching `serverX` flag when applicable:
 
 DataGrid never fetches data. Consumers own the query, the mutation, and
 the persistence.
+
+## Performance guidance
+
+- Prefer `virtualized` with a fixed `rowHeight` for datasets larger than
+  roughly 500 rows — the DOM cost is otherwise proportional to the row
+  count.
+- Set `virtualScrollHeight` (CSS pixels) when the grid is not placed in
+  an already-sized container; `measured viewport mode` requires the
+  grid to be rendered inside a scroll parent.
+- Memoize `data` and `columns` across renders. DataGrid runs
+  `assertValid*` on the inputs each render; stable references skip the
+  pipeline rebuild.
+- When using `serverSort` / `serverFilter`, keep the server round-trip
+  outside the render path — DataGrid never debounces for you.
+- Column virtualization is **not** included in v1. Grids with more than
+  roughly 40 columns should hide inactive columns via
+  `columnVisibility` rather than relying on horizontal scroll.
+
+## Package boundary
+
+`DataGrid` ships only in `@kairoui-pro/data-grid`. The free tier
+provides [`DataTable`](/components/core/data-table) for read-only
+tabular UIs that do not need multi-sort / grouping / editing /
+virtualization. The two components do not share runtime code — mixing
+them in the same page is supported.
+
+## API and DX gaps
+
+- `DataGrid` has a wide prop surface (50+ props). The generated table
+  is accurate, but discoverability is harder than slimmer components.
+- Several callback payload types are deep unions. They are type-safe,
+  but verbose to scan in docs.
+- Column virtualization is not available in v1, so wide grids still
+  require consumer-managed visibility and layout strategies.
+
+## API Reference
+
+<PropsTable props={toPropsList(DataGridMeta)} />
+
+Every stateful prop pairs with an `on<State>Change` callback. For
+server-controlled pipelines, pair `sort` + `onSortChange` + `serverSort`
+(or the equivalent filter / selection trio) so DataGrid passes your
+pre-computed rows through untouched.
 
 ## Deferred capability
 

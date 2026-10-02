@@ -1,0 +1,75 @@
+{
+  "name": "CommandDialog",
+  "packagePath": "@kairoui-pro/command",
+  "propsInterface": "CommandDialogProps",
+  "props": [
+    {
+      "name": "aria-describedby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "container",
+      "type": "undefined | null | HTMLElement",
+      "required": false,
+      "description": "Container element for the portal. Defaults to `document.body`.\n`null` disables portalling and renders in-place.",
+      "deprecated": false
+    },
+    {
+      "name": "forceMount",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "description": "Renders the dialog even when closed (`display: none`). Default `false`.",
+      "deprecated": false
+    },
+    {
+      "name": "onCloseAutoFocus",
+      "type": "undefined | (event: Event) => void",
+      "required": false,
+      "description": "Called when the dialog closes; consumer may `event.preventDefault()`.",
+      "deprecated": false
+    },
+    {
+      "name": "onOpenAutoFocus",
+      "type": "undefined | (event: Event) => void",
+      "required": false,
+      "description": "Called after the dialog opens and focus lands on the input.",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/command",
+    "namedExports": [
+      "CommandDialog"
+    ]
+  },
+  "source": {
+    "propsInterface": "CommandDialogProps"
+  }
+}

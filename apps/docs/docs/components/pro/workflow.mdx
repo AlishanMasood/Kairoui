@@ -3,7 +3,34 @@ title: Workflow / Stepper
 sidebar_position: 105
 ---
 
-import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, Callout, Demo, PropsTable } from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import WorkflowMeta from "@site/src/generated/components/Workflow.json";
+import { useState } from "react";
+import { Workflow } from "@kairoui-pro/workflow";
+import "@kairoui-pro/workflow/styles.css";
+
+export function WorkflowDemo() {
+  const [currentStepId, setCurrentStepId] = useState("review");
+  const steps = [
+    { id: "details", label: "Details", state: "completed" },
+    { id: "access", label: "Access", state: "completed" },
+    { id: "review", label: "Review" },
+    { id: "finish", label: "Finish", optional: true },
+  ];
+
+return (
+
+<Workflow
+aria-label="Access request steps"
+steps={steps}
+currentStepId={currentStepId}
+onCurrentStepChange={setCurrentStepId}
+showProgress
+onStepClick={({ step }) => setCurrentStepId(step.id)}
+/>
+);
+}
 
 <ComponentHeader
   name="Workflow"
@@ -26,6 +53,24 @@ Load styles once at your app root:
 ```ts
 import "@kairoui-pro/workflow/styles.css";
 ```
+
+## Live demo
+
+Activate a step with click, Enter, or Space. The current step is
+controlled by this page; progression rules and any server work remain
+the consumer's responsibility.
+
+<Demo
+  title="Controlled workflow stepper"
+  code={`<Workflow
+  steps={steps}
+  currentStepId={currentStepId}
+  onCurrentStepChange={setCurrentStepId}
+  showProgress
+/>`}
+>
+  <WorkflowDemo />
+</Demo>
 
 ## Anatomy
 
@@ -92,7 +137,11 @@ Orthogonal arrow keys are no-ops.
 - `"linear"` — the consumer prefers strict forward progression; the value is available for custom renderers that want to style unreachable steps.
 - `"non-linear"` — no ordering hint; every enabled step is navigable.
 
-`onStepChange` fires whenever the current step id changes. `onStepClick` fires on every click, even when the clicked step is already current. `onNavigate` fires on `Workflow.Nav` button clicks (`direction: "next" | "previous"`).
+`onCurrentStepChange` fires whenever the current step id changes.
+`onStepClick` fires on every click, even when the clicked step is
+already current. `onStepChange` emits the richer step payload for
+consumers that want full step metadata. `onNavigate` fires on
+`Workflow.Nav` button clicks (`direction: "next" | "previous"`).
 
 ## Progress
 
@@ -122,3 +171,64 @@ Enable `showProgress` to render a `role="progressbar"` bar ahead of the list. Th
 - No persistence.
 - No enforced linear-only progression.
 - No hard-coded step catalog.
+
+## Controlled state
+
+- `currentStepId` + `onCurrentStepChange` — the active step pointer.
+- `focusedStepId` + `onFocusedStepChange` — the roving focus pointer.
+
+Both can be omitted to let the stepper own that slice; both control
+modes compose freely.
+
+## Performance guidance
+
+- Step counts above a few dozen are the exception, not the rule. The
+  component is not virtualized; the full step list renders in the DOM.
+- `resolveStepStates` runs once per render and is linear in the step
+  count. Memoize `steps` across renders if the array identity would
+  otherwise change on every parent render.
+- `showProgress` adds a single DOM node (`role="progressbar"`); the
+  cost is negligible even for long workflows.
+
+## Backend independence
+
+The stepper visualizes a workflow — it does not execute one.
+
+- `steps` is plain data. Compute it from any state container; the
+  stepper reads only `label`, `state`, `optional`, `disabled`,
+  `description`, and `meta`.
+- `navigationMode="linear"` is a **hint**, not a gate — the runtime
+  never blocks a click. Consumers who need strict forward-only
+  progression apply their own guard inside `onCurrentStepChange`.
+- `onNavigate` fires on the `Workflow.Nav` buttons; `onStepClick`
+  fires on every step click (even the current step);
+  `onCurrentStepChange` fires only when the current step id would
+  change; `onStepChange` emits the full step payload.
+
+## Package boundary
+
+`Workflow` ships only in `@kairoui-pro/workflow`. The free tier offers
+`@kairoui/core`'s [`Progress`](/components/core/progress) component for
+single-bar progress and
+[`Timeline`](/components/core/timeline) for linear event histories,
+but no stepper. The Pro package re-uses `@kairoui/core` focus
+primitives and `@kairoui/hooks` identity helpers; nothing is duplicated.
+
+## API and DX gaps
+
+- `onCurrentStepChange` and `onStepChange` intentionally coexist (id-only
+  vs payload-rich) but can look redundant at first glance.
+- `navigationMode` is advisory by design. Teams expecting hard gating
+  must implement their own guard logic.
+- The `Workflow.Step` slot currently has less generated metadata than
+  root-level APIs due export aliasing (`WorkflowStepComponent`).
+
+## API Reference
+
+<PropsTable props={toPropsList(WorkflowMeta)} />
+
+Compound children (`Workflow.List`, `Workflow.Step`, `Workflow.StepIcon`,
+`Workflow.StepLabel`, `Workflow.StepDescription`, `Workflow.Connector`,
+`Workflow.Progress`, `Workflow.Nav`) expose a small props surface.
+Most slots are style passthrough (`className` / `style`), while
+interactive slots include contextual props.

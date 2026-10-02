@@ -1,0 +1,116 @@
+{
+  "name": "CommandRoot",
+  "packagePath": "@kairoui-pro/command",
+  "propsInterface": "CommandRootProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultHighlightedId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultPageStack",
+      "type": "undefined | readonly string[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultQuery",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "filter",
+      "type": "undefined | CommandFilter",
+      "required": false,
+      "description": "Custom item filter — overrides the default word-match filter.",
+      "deprecated": false
+    },
+    {
+      "name": "highlightedId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "label",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"Command palette\"",
+      "description": "Human-friendly label announced to assistive tech (defaults to `\"Command palette\"`).",
+      "deprecated": false
+    },
+    {
+      "name": "onHighlightChange",
+      "type": "undefined | (id: string | null) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onItemSelect",
+      "type": "undefined | (item: CommandItem) => void",
+      "required": false,
+      "description": "Fired after an item's `onSelect` runs. Consumers commonly close the palette here.",
+      "deprecated": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "undefined | (open: boolean) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onPageStackChange",
+      "type": "undefined | (pages: readonly string[]) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onQueryChange",
+      "type": "undefined | (query: string) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "open",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "pageStack",
+      "type": "undefined | readonly string[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "query",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/command",
+    "namedExports": [
+      "CommandRoot"
+    ]
+  },
+  "source": {
+    "propsInterface": "CommandRootProps"
+  }
+}

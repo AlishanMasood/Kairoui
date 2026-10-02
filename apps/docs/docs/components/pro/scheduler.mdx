@@ -3,7 +3,52 @@ title: Scheduler
 sidebar_position: 102
 ---
 
-import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, Callout, Demo, PropsTable } from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import SchedulerMeta from "@site/src/generated/components/Scheduler.json";
+import { useState } from "react";
+import { Scheduler } from "@kairoui-pro/scheduler";
+import "@kairoui-pro/scheduler/styles.css";
+
+export function SchedulerDemo() {
+  const [message, setMessage] = useState("Select an event or create a range.");
+  const day = new Date();
+  day.setHours(0, 0, 0, 0);
+  const events = [
+    {
+      id: "planning",
+      title: "Planning",
+      start: new Date(day.getTime() + 9 * 60 * 60_000),
+      end: new Date(day.getTime() + 10 * 60 * 60_000),
+      allDay: false,
+    },
+    {
+      id: "review",
+      title: "Design review",
+      start: new Date(day.getTime() + 10 * 60 * 60_000),
+      end: new Date(day.getTime() + 11 * 60 * 60_000),
+      allDay: false,
+    },
+  ];
+
+return (
+
+<div>
+<Scheduler
+events={events}
+defaultView="day"
+defaultDate={day}
+startHour={8}
+endHour={17}
+onEventClick={({ event }) => setMessage(`Selected: ${event.title}`)}
+onCreateRange={({ start, end }) =>
+setMessage(`Draft range: ${start.toLocaleTimeString()}–${end.toLocaleTimeString()}`)
+}
+/>
+<p aria-live="polite">{message}</p>
+</div>
+);
+}
 
 <ComponentHeader
   name="Scheduler"
@@ -26,6 +71,24 @@ Also load the styles once at your application root:
 ```ts
 import "@kairoui-pro/scheduler/styles.css";
 ```
+
+## Live demo
+
+This demo keeps two sample events in the page and reports callbacks
+without persisting changes. Use the toolbar's Create event action with
+the keyboard, or select an event.
+
+<Demo
+  title="Day schedule"
+  code={`<Scheduler
+  events={events}
+  defaultView="day"
+  onEventClick={({ event }) => setMessage(event.title)}
+  onCreateRange={({ start, end }) => createDraft(start, end)}
+/>`}
+>
+  <SchedulerDemo />
+</Demo>
 
 ## Anatomy
 
@@ -129,7 +192,7 @@ the `events` prop.
 - The time grid uses `role="grid"` with `aria-rowcount` /
   `aria-colcount`.
 - Every event is a focusable `role="button"` with
-  `aria-label` and `aria-selected`.
+  `aria-label` and `aria-pressed`.
 - A single `aria-live="polite"` region announces view changes.
 - All bindings honor `prefers-reduced-motion`.
 
@@ -152,3 +215,75 @@ the `events` prop.
   automatic.
 - No conflict / availability blocking.
 - No month or agenda view (deferred).
+
+## Controlled state
+
+The toolbar / view / selection / drag triples are all controllable.
+Pair the controlled value with its `on*Change` callback:
+
+- `view` + `onViewChange`
+- `date` + `onDateChange`
+- `selection` + `onSelectionChange`
+
+Drag and resize are **callback-only** — the Scheduler never writes to
+your event store. `onMoveEvent`, `onResizeEvent`, and `onCreateRange`
+hand you plain-data payloads with pre-snapped `start` / `end`; apply
+them to your own store and the new data flows back through the
+`events` prop.
+
+## Performance guidance
+
+- Events outside the current view are filtered before layout runs, so
+  loading a month at a time is cheap. For year-view loads, chunk by
+  week before passing.
+- `minRenderedMinutes` controls the lower bound on event height so very
+  short events (sub-15-minute slots) stay clickable without widening
+  the slot grid.
+- `maxEventsPerSlot` caps per-cell concurrency; events beyond the cap
+  spill into an "overflow" chip that fires `onOverflowClick`.
+- Timeline view is horizontal — resource rows virtualize naturally
+  through CSS scroll; the number of resources is not an upper bound.
+- The scheduler never clones `Date` objects on the hot path. Pass
+  frozen or memoized events to avoid cascading re-renders.
+
+## Backend independence
+
+The Scheduler ships zero backend adapters.
+
+- Events are plain data — fetch them with any library, store them in
+  any state container, and persist them to any backend. The Scheduler
+  only reads the `events` prop and emits plain-data callback payloads.
+- Timezones are **not** converted. The ADR is explicit: all `Date`
+  values are rendered in local wall-clock. Consumers wrapping an
+  IANA-aware backend must convert at the boundary.
+- Recurrence is not resolved. If your backend stores an RRULE, expand
+  it in a derived memo before passing to the `events` prop.
+
+## Package boundary
+
+`Scheduler` ships only in `@kairoui-pro/scheduler`. There is no free
+Scheduler component — the free tier does not include a calendar grid
+primitive (see [`Calendar`](/components/core/calendar) for the day
+picker surface). The Pro package re-uses `@kairoui/core` overlay and
+`@kairoui/hooks` focus utilities; nothing is duplicated.
+
+## API and DX gaps
+
+- Timezone behavior is explicit but manual: consumers must convert at
+  IO boundaries for non-local storage models.
+- Recurrence expansion is consumer-owned. The scheduler accepts concrete
+  instances only.
+- Selection types are expressive but verbose, which can feel heavy in
+  app-level state wiring.
+
+## API Reference
+
+<PropsTable props={toPropsList(SchedulerMeta)} />
+
+The compound children (`Scheduler.Toolbar`, `Scheduler.DayView`,
+`Scheduler.WeekView`, `Scheduler.TimelineView`,
+`Scheduler.EventTemplate`, `Scheduler.NowIndicator`,
+`Scheduler.ResourceHeader`, `Scheduler.TimeAxis`) each expose their own
+small props surface (for example `className`/`style`, and `render` on
+`Scheduler.EventTemplate`). Mount them inside `<Scheduler>` to override
+the default layout.

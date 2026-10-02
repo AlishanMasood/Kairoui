@@ -1,0 +1,299 @@
+{
+  "name": "Scheduler",
+  "packagePath": "@kairoui-pro/scheduler",
+  "propsInterface": "SchedulerRootProps",
+  "props": [
+    {
+      "name": "aria-describedby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "date",
+      "type": "undefined | Date",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "daysInView",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultDate",
+      "type": "undefined | Date",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSelection",
+      "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"event\"; readonly eventId: string; } | { readonly kind: \"range\"; readonly start: Date; readonly end: Date; readonly resourceId?: string | undefined; }",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultView",
+      "type": "undefined | \"day\" | \"week\" | \"timeline\"",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "dragBoundary",
+      "type": "undefined | \"day\" | \"none\" | \"view\" | \"resource\"",
+      "required": false,
+      "defaultValue": "\"view\"",
+      "deprecated": false
+    },
+    {
+      "name": "draggable",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "endHour",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "24",
+      "deprecated": false
+    },
+    {
+      "name": "events",
+      "type": "readonly TEvent[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "hour12",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en\"",
+      "deprecated": false
+    },
+    {
+      "name": "maxDuration",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "maxEventsPerSlot",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "messages",
+      "type": "undefined | SchedulerMessages",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "minDuration",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "minRenderedMinutes",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onCreateRange",
+      "type": "undefined | (payload: SchedulerRangePayload) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onDateChange",
+      "type": "undefined | (date: Date) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onEventClick",
+      "type": "undefined | (payload: SchedulerEventClickPayload<TEvent>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onMoveEvent",
+      "type": "undefined | (payload: SchedulerMovePayload<TEvent>) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onOverflowClick",
+      "type": "undefined | (events: readonly TEvent[]) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onResizeEvent",
+      "type": "undefined | (payload: SchedulerResizePayload<TEvent>) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "undefined | (selection: SchedulerSelection) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onViewChange",
+      "type": "undefined | (view: SchedulerViewKind) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "pxPerMinute",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "renderAllDayEvent",
+      "type": "undefined | SchedulerAllDayRenderer<TEvent>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "renderEvent",
+      "type": "undefined | SchedulerEventRenderer<TEvent>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "resizable",
+      "type": "undefined | boolean | \"start\" | \"end\" | \"both\"",
+      "required": false,
+      "defaultValue": "\"both\"",
+      "deprecated": false
+    },
+    {
+      "name": "resources",
+      "type": "undefined | readonly Resource[]",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selection",
+      "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"event\"; readonly eventId: string; } | { readonly kind: \"range\"; readonly start: Date; readonly end: Date; readonly resourceId?: string | undefined; }",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "showAllDayStrip",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "slotMinutes",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "snapDuration",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "startHour",
+      "type": "undefined | number",
+      "required": false,
+      "defaultValue": "0",
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "timelinePxPerMinute",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "timezoneLabel",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "view",
+      "type": "undefined | \"day\" | \"week\" | \"timeline\"",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "weekStartsOn",
+      "type": "undefined | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/scheduler",
+    "namedExports": [
+      "Scheduler"
+    ]
+  },
+  "source": {
+    "propsInterface": "SchedulerRootProps"
+  }
+}

@@ -3,7 +3,68 @@ title: Permission Matrix
 sidebar_position: 104
 ---
 
-import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, Callout, Demo, PropsTable } from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import PermissionMatrixMeta from "@site/src/generated/components/PermissionMatrix.json";
+import { useState } from "react";
+import { PermissionMatrix } from "@kairoui-pro/permission-matrix";
+import "@kairoui-pro/permission-matrix/styles.css";
+
+export function PermissionMatrixDemo() {
+  const subjects = [
+    { id: "editor", label: "Editor" },
+    { id: "analyst", label: "Analyst" },
+    { id: "viewer", label: "Viewer" },
+  ];
+  const actions = [
+    { id: "read", label: "Read" },
+    { id: "write", label: "Write" },
+    { id: "manage", label: "Manage" },
+  ];
+  const [cells, setCells] = useState([
+    { subjectId: "editor", actionId: "read", state: "granted" },
+    { subjectId: "editor", actionId: "write", state: "granted" },
+    { subjectId: "editor", actionId: "manage", state: "unset" },
+    { subjectId: "analyst", actionId: "read", state: "granted" },
+    { subjectId: "analyst", actionId: "write", state: "denied" },
+    { subjectId: "analyst", actionId: "manage", state: "unset" },
+    { subjectId: "viewer", actionId: "read", state: "granted" },
+    { subjectId: "viewer", actionId: "write", state: "unset" },
+    { subjectId: "viewer", actionId: "manage", state: "unset" },
+  ]);
+  const [message, setMessage] = useState("Changes stay in this demo.");
+
+return (
+
+<div>
+<PermissionMatrix
+aria-label="Example role permissions"
+subjects={subjects}
+actions={actions}
+cells={cells}
+toggleMode="grant-deny"
+enableSearch
+onCellChange={({ subject, action, toState }) => {
+setCells((current) => {
+const exists = current.some(
+(cell) => cell.subjectId === subject.id && cell.actionId === action.id,
+);
+if (!exists) {
+return [...current, { subjectId: subject.id, actionId: action.id, state: toState }];
+}
+return current.map((cell) =>
+cell.subjectId === subject.id && cell.actionId === action.id
+? { ...cell, state: toState }
+: cell,
+);
+});
+setMessage(`${subject.label} / ${action.label}: ${toState}`);
+}}
+/>
+<p aria-live="polite">{message}</p>
+</div>
+);
+}
 
 <ComponentHeader
   name="PermissionMatrix"
@@ -28,6 +89,26 @@ Load styles once at your app root:
 ```ts
 import "@kairoui-pro/permission-matrix/styles.css";
 ```
+
+## Live demo
+
+Toggle a cell with Space or Enter. This demo applies emitted cell-change
+payloads to local React state; it does not authorize or persist them.
+
+<Demo
+  title="Role permissions"
+  code={`<PermissionMatrix
+  subjects={subjects}
+  actions={actions}
+  cells={cells}
+  toggleMode="grant-deny"
+  onCellChange={({ subject, action, toState }) =>
+    updateLocalCell(subject.id, action.id, toState)
+  }
+/>`}
+>
+  <PermissionMatrixDemo />
+</Demo>
 
 ## Anatomy
 
@@ -144,7 +225,7 @@ interface PermissionMatrixBulkChangePayload {
 
 - Root exposes `role="application"` + `aria-roledescription="Permission matrix"`.
 - Grid uses `role="grid"` with `aria-rowcount` / `aria-colcount`.
-- Column / row headers carry `aria-pressed` for selection state.
+- Column / row headers carry `aria-selected` for selection state.
 - Cells use `role="gridcell"` with `aria-checked` mapped as: `granted → "true"`, `denied → "false"`, `unset → "false"` (with `data-state="unset"`), `inherited → "mixed"`, `indeterminate → "mixed"`.
 - Single `aria-live="polite"` announcer speaks cell toggles, bulk actions, and rejections.
 - `aria-disabled` and `aria-readonly` propagate through to disabled / read-only cells.
@@ -224,3 +305,71 @@ None of these adapters ship inside `@kairoui-pro/permission-matrix`. They belong
 - No persistence, no HTTP calls, no offline queue.
 - No wildcard / hierarchy evaluation — the consumer flags inheritance.
 - No arbitrary rectangular multi-select.
+
+## Controlled state
+
+Every stateful concern is controllable:
+
+- `selection` + `onSelectionChange` — the active row / column / all
+  selection (used by bulk actions).
+- `focusedSubjectId` + `onFocusedSubjectChange` — the roving row focus.
+- `focusedActionId` + `onFocusedActionChange` — the roving column focus.
+- `search` + `onSearchChange` — when `enableSearch` is on.
+
+Omit a controlled value to let the matrix own that slice.
+
+## Performance guidance
+
+- Set `virtualizeRows` + `rowHeight` + `viewportHeight` on matrices
+  with more than roughly 200 subjects. The windowing walks the DOM for
+  the viewport only; `aria-rowindex` is preserved across the slice.
+- `cells` is scanned once per render by `assertValidPermissionInput`.
+  Memoize it across renders — the matrix never mutates the input.
+- `filterAxis` falls back to the full axis when a query matches zero
+  items on an axis so cross-axis search still renders. The scan is
+  linear in the axis size.
+- Bulk actions emit a single `onBulkChange` payload with every change.
+  The matrix never fires per-cell callbacks during a bulk operation,
+  so your write path sees exactly one event per bulk gesture.
+
+## Backend independence
+
+The matrix is **wire-format agnostic by design**. See the [adapter
+examples](#adapter-examples) section for three worked backends (flat
+table / role hierarchy / policy document). The matrix ships none of
+them.
+
+- The matrix never fetches, never persists, never authorizes.
+- `inherited` is a display-only state — the matrix does not infer
+  inheritance from any hierarchy field.
+- `onCellChange` and `onBulkChange` return `Promise<void>` so your
+  adapter can await the server round-trip. `onError` fires on
+  rejection; the matrix never swallows the error.
+
+## Package boundary
+
+`PermissionMatrix` ships only in `@kairoui-pro/permission-matrix`. The
+free tier does not include a permission-grid component. The Pro package
+re-uses `@kairoui/core` collection primitives and `@kairoui/hooks`
+focus helpers; nothing is duplicated.
+
+## API and DX gaps
+
+- Backend adapters are always consumer-authored by design. This keeps
+  the package backend-agnostic but increases setup work.
+- Tri-state + inherited semantics are explicit, which improves
+  correctness but increases payload and reducer complexity.
+- Axis-focused control (`focusedSubjectId`, `focusedActionId`) is more
+  verbose than a single-cell focus API, but maps cleanly to grid a11y.
+
+## API Reference
+
+<PropsTable props={toPropsList(PermissionMatrixMeta)} />
+
+Compound children (`PermissionMatrix.Header`, `PermissionMatrix.Table`,
+`PermissionMatrix.ColumnHeader`, `PermissionMatrix.RowHeader`,
+`PermissionMatrix.Cell`, `PermissionMatrix.EmptyState`,
+`PermissionMatrix.LegendItem`) expose a small props surface. Contextual
+slots such as `PermissionMatrix.ColumnHeader`,
+`PermissionMatrix.RowHeader`, and `PermissionMatrix.Cell` include
+identity props (`actionId`, `subjectId`) alongside style passthrough.

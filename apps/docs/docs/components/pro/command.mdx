@@ -3,7 +3,39 @@ title: Command Palette
 sidebar_position: 101
 ---
 
-import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, Callout, Demo, PropsTable } from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import CommandMeta from "@site/src/generated/components/Command.json";
+import { useState } from "react";
+import { Command } from "@kairoui-pro/command";
+
+export function CommandDemo() {
+  const [lastCommand, setLastCommand] = useState("No command selected");
+
+return (
+
+<div>
+<Command.Root onItemSelect={(item) => setLastCommand(item.searchText)}>
+<Command.Trigger>Open command palette</Command.Trigger>
+<Command.Dialog aria-label="Command palette">
+<Command.Input placeholder="Search commands..." />
+<Command.List>
+<Command.Empty>No matching commands.</Command.Empty>
+<Command.Group id="workspace" heading="Workspace">
+<Command.Item id="new-file" keywords={["create"]} onSelect={() => {}}>
+New file
+</Command.Item>
+<Command.Item id="search-files" onSelect={() => {}}>
+Search files
+</Command.Item>
+</Command.Group>
+</Command.List>
+</Command.Dialog>
+</Command.Root>
+<p aria-live="polite">Last selected: {lastCommand}</p>
+</div>
+);
+}
 
 <ComponentHeader
   name="Command"
@@ -20,6 +52,31 @@ import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
 ## Import
 
 <ImportStatement imports={["Command", "useCommandShortcut"]} from="@kairoui-pro/command" />
+
+## Live demo
+
+Search commands, move with the arrow keys, then press Enter to select.
+The result label is demo-local state; the library does not execute
+application commands.
+
+<Demo
+  title="Searchable command palette"
+  code={`<Command.Root onItemSelect={(item) => setLastCommand(item.searchText)}>
+  <Command.Trigger>Open command palette</Command.Trigger>
+  <Command.Dialog aria-label="Command palette">
+    <Command.Input placeholder="Search commands..." />
+    <Command.List>
+      <Command.Empty>No matching commands.</Command.Empty>
+      <Command.Group id="workspace" heading="Workspace">
+        <Command.Item id="new-file" onSelect={createFile}>New file</Command.Item>
+        <Command.Item id="search-files" onSelect={searchFiles}>Search files</Command.Item>
+      </Command.Group>
+    </Command.List>
+  </Command.Dialog>
+</Command.Root>`}
+>
+  <CommandDemo />
+</Demo>
 
 ## Anatomy
 
@@ -121,7 +178,7 @@ import { fuzzyMatch } from "your-fuzzy-lib";
 
 ## Consumer-provided execution
 
-DataGrid never persists on its own — nor does Command. Each item's
+Command never persists on its own. Each item's
 `onSelect` is the only place execution happens. String-driven or
 arbitrary code evaluation is out of scope.
 
@@ -130,3 +187,51 @@ arbitrary code evaluation is out of scope.
   opt-in only. - Arbitrary code execution via strings — not supported. - Application commands baked
   into the library — consumers own them.
 </Callout>
+
+## Controlled state
+
+Every stateful concern is controllable. Pair the controlled value with
+its `on*Change` callback and the palette never writes internal state:
+
+- `open` + `onOpenChange`
+- `query` + `onQueryChange`
+- `highlightedId` + `onHighlightChange`
+- `pageStack` + `onPageStackChange`
+
+Omit the controlled value to let the palette own that slice; both modes
+compose freely.
+
+## Performance guidance
+
+- Items register themselves lazily — the registry rebuilds only when
+  the mounted item set changes. Hiding filtered items via the `hidden`
+  attribute keeps DOM refs stable and avoids re-renders.
+- For catalogues above a few hundred items, pre-filter in a derived
+  memo before mounting `Command.Item` elements. The palette does not
+  ship list virtualization in v1.
+- The default filter walks the registered item list once per query
+  keystroke; the complexity is linear in the mounted item count.
+
+## Package boundary
+
+`Command` ships only in `@kairoui-pro/command`. Overlay primitives
+(`Portal`, `FocusScope`, `DismissableLayer`) are consumed from
+`@kairoui/core` — nothing is duplicated. Free consumers who want a
+plain-overlay palette can compose those primitives directly without the
+Pro surface.
+
+## API and DX gaps
+
+- Large command sets still require consumer pre-filtering or paging;
+  list virtualization is not built into v1.
+- The generated API table cannot encode structural usage rules (for
+  example, that actionable items must be children of `Command.List`).
+- Alias exports such as `CommandItemComponent` are intentionally
+  low-level and are not primary docs entry points.
+
+## API Reference
+
+<PropsTable props={toPropsList(CommandMeta)} />
+
+Each item is a `<Command.Item>` child; items are not passed as props.
+This keeps rendering a React concern and avoids a parallel data schema.

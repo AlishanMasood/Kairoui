@@ -1,0 +1,50 @@
+{
+  "name": "CommandGroup",
+  "packagePath": "@kairoui-pro/command",
+  "propsInterface": "CommandGroupProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "heading",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "description": "Human-friendly heading.",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true,
+      "description": "Stable identifier — used as the base for the heading's `id`.",
+      "deprecated": false
+    },
+    {
+      "name": "pageId",
+      "type": "undefined | null | string",
+      "required": false,
+      "defaultValue": "null",
+      "description": "Restrict the group to a nested page. `null`/undefined = root page.",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/command",
+    "namedExports": [
+      "CommandGroup"
+    ]
+  },
+  "source": {
+    "propsInterface": "CommandGroupProps"
+  }
+}

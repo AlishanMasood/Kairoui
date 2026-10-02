@@ -1,0 +1,47 @@
+{
+  "name": "CommandTrigger",
+  "packagePath": "@kairoui-pro/command",
+  "propsInterface": "CommandTriggerProps",
+  "props": [
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "disabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/command",
+    "namedExports": [
+      "CommandTrigger"
+    ]
+  },
+  "source": {
+    "propsInterface": "CommandTriggerProps"
+  }
+}

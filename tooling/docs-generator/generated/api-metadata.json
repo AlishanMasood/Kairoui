@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T16:51:13.235Z",
+  "generatedAt": "2026-10-02T18:37:28.955Z",
   "generatorVersion": "0.1.0",
   "packages": [
     {
@@ -8618,6 +8618,3919 @@
           },
           "source": {
             "propsInterface": "TreeViewItemTriggerRootProps"
+          }
+        }
+      ]
+    },
+    {
+      "packageName": "@kairoui-pro/data-grid",
+      "entryPoint": ".",
+      "components": [
+        {
+          "name": "DataGrid",
+          "packagePath": "@kairoui-pro/data-grid",
+          "propsInterface": "DataGridRootProps",
+          "props": [
+            {
+              "name": "columnOrder",
+              "type": "undefined | ColumnOrder",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "columnPinning",
+              "type": "undefined | ColumnPinning",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "columns",
+              "type": "readonly DataGridColumnDef<TRow>[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "columnSizing",
+              "type": "undefined | Readonly<Record<string, number>>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "columnVisibility",
+              "type": "undefined | Readonly<Record<string, boolean>>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "data",
+              "type": "readonly TRow[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "defaultColumnOrder",
+              "type": "undefined | ColumnOrder",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultColumnPinning",
+              "type": "undefined | ColumnPinning",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultColumnSizing",
+              "type": "undefined | Readonly<Record<string, number>>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultColumnVisibility",
+              "type": "undefined | Readonly<Record<string, boolean>>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultColumnWidth",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultEditingState",
+              "type": "undefined | EditingState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultExpanded",
+              "type": "undefined | ExpansionState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFilterState",
+              "type": "undefined | FilterState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusState",
+              "type": "undefined | FocusState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultGroupBy",
+              "type": "undefined | readonly string[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelectedIds",
+              "type": "undefined | ReadonlySet<RowId>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSort",
+              "type": "undefined | readonly SortState[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "editingState",
+              "type": "undefined | EditingState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "editMode",
+              "type": "undefined | \"none\" | \"cell\" | \"row\" | \"batch\"",
+              "required": false,
+              "defaultValue": "\"none\"",
+              "deprecated": false
+            },
+            {
+              "name": "emptyState",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "expanded",
+              "type": "undefined | ExpansionState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "filteredEmptyState",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "filterState",
+              "type": "undefined | FilterState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusState",
+              "type": "undefined | FocusState",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "footer",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "getRowId",
+              "type": "(row: TRow) => RowId",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "groupBy",
+              "type": "undefined | readonly string[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "loading",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "multiSort",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "When `true`, click-only header toggles behave additively. Default `false`.",
+              "deprecated": false
+            },
+            {
+              "name": "onCellEdit",
+              "type": "undefined | (event: CellEditEvent<TRow>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onColumnOrderChange",
+              "type": "undefined | (order: ColumnOrder) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onColumnPinningChange",
+              "type": "undefined | (pinning: ColumnPinning) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onColumnSizingChange",
+              "type": "undefined | (sizing: Readonly<Record<string, number>>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onColumnVisibilityChange",
+              "type": "undefined | (visibility: Readonly<Record<string, boolean>>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onEditingChange",
+              "type": "undefined | (state: EditingState) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onExpandChange",
+              "type": "undefined | (expanded: ExpansionState) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFilterStateChange",
+              "type": "undefined | (state: FilterState) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusChange",
+              "type": "undefined | (focus: FocusState) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onGroupByChange",
+              "type": "undefined | (groupBy: readonly string[]) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onRowEdit",
+              "type": "undefined | (event: RowEditEvent<TRow>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "undefined | (ids: ReadonlySet<RowId>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSortChange",
+              "type": "undefined | (sort: readonly SortState[]) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "overscan",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderGroupSummary",
+              "type": "undefined | GroupSummaryRenderer<TRow>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "rowHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selectedIds",
+              "type": "undefined | ReadonlySet<RowId>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selectionMode",
+              "type": "undefined | \"none\" | \"single\" | \"multiple\"",
+              "required": false,
+              "defaultValue": "\"none\"",
+              "deprecated": false
+            },
+            {
+              "name": "serverFilter",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "When `true`, DataGrid trusts `data` as already filtered. Default `false`.",
+              "deprecated": false
+            },
+            {
+              "name": "serverSort",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "When `true`, DataGrid trusts `data` as already sorted. Default `false`.",
+              "deprecated": false
+            },
+            {
+              "name": "showAggregatedFooter",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Render a grand-total footer row aggregated from column `aggregate.footer`.",
+              "deprecated": false
+            },
+            {
+              "name": "sort",
+              "type": "undefined | readonly SortState[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "toolbar",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "virtualized",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "virtualScrollHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/data-grid",
+            "namedExports": [
+              "DataGrid"
+            ]
+          },
+          "source": {
+            "propsInterface": "DataGridRootProps"
+          }
+        }
+      ]
+    },
+    {
+      "packageName": "@kairoui-pro/command",
+      "entryPoint": ".",
+      "components": [
+        {
+          "name": "Command",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandRootProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultHighlightedId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultOpen",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultPageStack",
+              "type": "undefined | readonly string[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultQuery",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "filter",
+              "type": "undefined | CommandFilter",
+              "required": false,
+              "description": "Custom item filter — overrides the default word-match filter.",
+              "deprecated": false
+            },
+            {
+              "name": "highlightedId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"Command palette\"",
+              "description": "Human-friendly label announced to assistive tech (defaults to `\"Command palette\"`).",
+              "deprecated": false
+            },
+            {
+              "name": "onHighlightChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onItemSelect",
+              "type": "undefined | (item: CommandItem) => void",
+              "required": false,
+              "description": "Fired after an item's `onSelect` runs. Consumers commonly close the palette here.",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "undefined | (open: boolean) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onPageStackChange",
+              "type": "undefined | (pages: readonly string[]) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onQueryChange",
+              "type": "undefined | (query: string) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "pageStack",
+              "type": "undefined | readonly string[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "query",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "Command"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandRootProps"
+          }
+        },
+        {
+          "name": "CommandDialog",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandDialogProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "container",
+              "type": "undefined | null | HTMLElement",
+              "required": false,
+              "description": "Container element for the portal. Defaults to `document.body`.\n`null` disables portalling and renders in-place.",
+              "deprecated": false
+            },
+            {
+              "name": "forceMount",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Renders the dialog even when closed (`display: none`). Default `false`.",
+              "deprecated": false
+            },
+            {
+              "name": "onCloseAutoFocus",
+              "type": "undefined | (event: Event) => void",
+              "required": false,
+              "description": "Called when the dialog closes; consumer may `event.preventDefault()`.",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenAutoFocus",
+              "type": "undefined | (event: Event) => void",
+              "required": false,
+              "description": "Called after the dialog opens and focus lands on the input.",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandDialog"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandDialogProps"
+          }
+        },
+        {
+          "name": "CommandEmpty",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandEmptyProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandEmpty"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandEmptyProps"
+          }
+        },
+        {
+          "name": "CommandGroup",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandGroupProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "heading",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "description": "Human-friendly heading.",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": true,
+              "description": "Stable identifier — used as the base for the heading's `id`.",
+              "deprecated": false
+            },
+            {
+              "name": "pageId",
+              "type": "undefined | null | string",
+              "required": false,
+              "defaultValue": "null",
+              "description": "Restrict the group to a nested page. `null`/undefined = root page.",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandGroup"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandGroupProps"
+          }
+        },
+        {
+          "name": "CommandInput",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandInputProps",
+          "props": [
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "autoFocus",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "placeholder",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandInput"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandInputProps"
+          }
+        },
+        {
+          "name": "CommandList",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandListProps",
+          "props": [
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandList"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandListProps"
+          }
+        },
+        {
+          "name": "CommandRoot",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandRootProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultHighlightedId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultOpen",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultPageStack",
+              "type": "undefined | readonly string[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultQuery",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "filter",
+              "type": "undefined | CommandFilter",
+              "required": false,
+              "description": "Custom item filter — overrides the default word-match filter.",
+              "deprecated": false
+            },
+            {
+              "name": "highlightedId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "label",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"Command palette\"",
+              "description": "Human-friendly label announced to assistive tech (defaults to `\"Command palette\"`).",
+              "deprecated": false
+            },
+            {
+              "name": "onHighlightChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onItemSelect",
+              "type": "undefined | (item: CommandItem) => void",
+              "required": false,
+              "description": "Fired after an item's `onSelect` runs. Consumers commonly close the palette here.",
+              "deprecated": false
+            },
+            {
+              "name": "onOpenChange",
+              "type": "undefined | (open: boolean) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onPageStackChange",
+              "type": "undefined | (pages: readonly string[]) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onQueryChange",
+              "type": "undefined | (query: string) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "open",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "pageStack",
+              "type": "undefined | readonly string[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "query",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandRoot"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandRootProps"
+          }
+        },
+        {
+          "name": "CommandSeparator",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandSeparatorProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandSeparator"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandSeparatorProps"
+          }
+        },
+        {
+          "name": "CommandTrigger",
+          "packagePath": "@kairoui-pro/command",
+          "propsInterface": "CommandTriggerProps",
+          "props": [
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "disabled",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/command",
+            "namedExports": [
+              "CommandTrigger"
+            ]
+          },
+          "source": {
+            "propsInterface": "CommandTriggerProps"
+          }
+        }
+      ]
+    },
+    {
+      "packageName": "@kairoui-pro/scheduler",
+      "entryPoint": ".",
+      "components": [
+        {
+          "name": "Scheduler",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerRootProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "date",
+              "type": "undefined | Date",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "daysInView",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultDate",
+              "type": "undefined | Date",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"event\"; readonly eventId: string; } | { readonly kind: \"range\"; readonly start: Date; readonly end: Date; readonly resourceId?: string | undefined; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultView",
+              "type": "undefined | \"day\" | \"week\" | \"timeline\"",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "dragBoundary",
+              "type": "undefined | \"day\" | \"none\" | \"view\" | \"resource\"",
+              "required": false,
+              "defaultValue": "\"view\"",
+              "deprecated": false
+            },
+            {
+              "name": "draggable",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "endHour",
+              "type": "undefined | number",
+              "required": false,
+              "defaultValue": "24",
+              "deprecated": false
+            },
+            {
+              "name": "events",
+              "type": "readonly TEvent[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "hour12",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "maxDuration",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "maxEventsPerSlot",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | SchedulerMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "minDuration",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "minRenderedMinutes",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCreateRange",
+              "type": "undefined | (payload: SchedulerRangePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onDateChange",
+              "type": "undefined | (date: Date) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onEventClick",
+              "type": "undefined | (payload: SchedulerEventClickPayload<TEvent>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onMoveEvent",
+              "type": "undefined | (payload: SchedulerMovePayload<TEvent>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onOverflowClick",
+              "type": "undefined | (events: readonly TEvent[]) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onResizeEvent",
+              "type": "undefined | (payload: SchedulerResizePayload<TEvent>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "undefined | (selection: SchedulerSelection) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onViewChange",
+              "type": "undefined | (view: SchedulerViewKind) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "pxPerMinute",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderAllDayEvent",
+              "type": "undefined | SchedulerAllDayRenderer<TEvent>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderEvent",
+              "type": "undefined | SchedulerEventRenderer<TEvent>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "resizable",
+              "type": "undefined | boolean | \"start\" | \"end\" | \"both\"",
+              "required": false,
+              "defaultValue": "\"both\"",
+              "deprecated": false
+            },
+            {
+              "name": "resources",
+              "type": "undefined | readonly Resource[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"event\"; readonly eventId: string; } | { readonly kind: \"range\"; readonly start: Date; readonly end: Date; readonly resourceId?: string | undefined; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "showAllDayStrip",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "slotMinutes",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "snapDuration",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "startHour",
+              "type": "undefined | number",
+              "required": false,
+              "defaultValue": "0",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "timelinePxPerMinute",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "timezoneLabel",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "view",
+              "type": "undefined | \"day\" | \"week\" | \"timeline\"",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "weekStartsOn",
+              "type": "undefined | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "Scheduler"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerRootProps"
+          }
+        },
+        {
+          "name": "SchedulerDayView",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerDayViewProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerDayView"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerDayViewProps"
+          }
+        },
+        {
+          "name": "SchedulerEventTemplate",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerEventTemplateProps",
+          "props": [
+            {
+              "name": "render",
+              "type": "SchedulerEventRenderer<TEvent>",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "renderAllDay",
+              "type": "undefined | SchedulerAllDayRenderer<TEvent>",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerEventTemplate"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerEventTemplateProps"
+          }
+        },
+        {
+          "name": "SchedulerNowIndicator",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerNowIndicatorProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerNowIndicator"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerNowIndicatorProps"
+          }
+        },
+        {
+          "name": "SchedulerResourceHeader",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerResourceHeaderProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerResourceHeader"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerResourceHeaderProps"
+          }
+        },
+        {
+          "name": "SchedulerRoot",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerRootProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "date",
+              "type": "undefined | Date",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "daysInView",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultDate",
+              "type": "undefined | Date",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"event\"; readonly eventId: string; } | { readonly kind: \"range\"; readonly start: Date; readonly end: Date; readonly resourceId?: string | undefined; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultView",
+              "type": "undefined | \"day\" | \"week\" | \"timeline\"",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "dragBoundary",
+              "type": "undefined | \"day\" | \"none\" | \"view\" | \"resource\"",
+              "required": false,
+              "defaultValue": "\"view\"",
+              "deprecated": false
+            },
+            {
+              "name": "draggable",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "endHour",
+              "type": "undefined | number",
+              "required": false,
+              "defaultValue": "24",
+              "deprecated": false
+            },
+            {
+              "name": "events",
+              "type": "readonly TEvent[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "hour12",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "maxDuration",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "maxEventsPerSlot",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | SchedulerMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "minDuration",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "minRenderedMinutes",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCreateRange",
+              "type": "undefined | (payload: SchedulerRangePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onDateChange",
+              "type": "undefined | (date: Date) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onEventClick",
+              "type": "undefined | (payload: SchedulerEventClickPayload<TEvent>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onMoveEvent",
+              "type": "undefined | (payload: SchedulerMovePayload<TEvent>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onOverflowClick",
+              "type": "undefined | (events: readonly TEvent[]) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onResizeEvent",
+              "type": "undefined | (payload: SchedulerResizePayload<TEvent>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "undefined | (selection: SchedulerSelection) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onViewChange",
+              "type": "undefined | (view: SchedulerViewKind) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "pxPerMinute",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderAllDayEvent",
+              "type": "undefined | SchedulerAllDayRenderer<TEvent>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderEvent",
+              "type": "undefined | SchedulerEventRenderer<TEvent>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "resizable",
+              "type": "undefined | boolean | \"start\" | \"end\" | \"both\"",
+              "required": false,
+              "defaultValue": "\"both\"",
+              "deprecated": false
+            },
+            {
+              "name": "resources",
+              "type": "undefined | readonly Resource[]",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"event\"; readonly eventId: string; } | { readonly kind: \"range\"; readonly start: Date; readonly end: Date; readonly resourceId?: string | undefined; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "showAllDayStrip",
+              "type": "undefined | boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "slotMinutes",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "snapDuration",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "startHour",
+              "type": "undefined | number",
+              "required": false,
+              "defaultValue": "0",
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "timelinePxPerMinute",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "timezoneLabel",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "view",
+              "type": "undefined | \"day\" | \"week\" | \"timeline\"",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "weekStartsOn",
+              "type": "undefined | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerRoot"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerRootProps"
+          }
+        },
+        {
+          "name": "SchedulerTimeAxis",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerTimeAxisProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerTimeAxis"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerTimeAxisProps"
+          }
+        },
+        {
+          "name": "SchedulerTimelineView",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerTimelineViewProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerTimelineView"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerTimelineViewProps"
+          }
+        },
+        {
+          "name": "SchedulerToolbar",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerToolbarProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerToolbar"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerToolbarProps"
+          }
+        },
+        {
+          "name": "SchedulerViews",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerViewsProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerViews"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerViewsProps"
+          }
+        },
+        {
+          "name": "SchedulerWeekView",
+          "packagePath": "@kairoui-pro/scheduler",
+          "propsInterface": "SchedulerWeekViewProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/scheduler",
+            "namedExports": [
+              "SchedulerWeekView"
+            ]
+          },
+          "source": {
+            "propsInterface": "SchedulerWeekViewProps"
+          }
+        }
+      ]
+    },
+    {
+      "packageName": "@kairoui-pro/kanban",
+      "entryPoint": ".",
+      "components": [
+        {
+          "name": "Kanban",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanRootProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "cardDraggable",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "cardDropBoundary",
+              "type": "undefined | \"none\" | \"column\" | \"board\"",
+              "required": false,
+              "defaultValue": "\"board\"",
+              "deprecated": false
+            },
+            {
+              "name": "cardHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "cards",
+              "type": "readonly TCard[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "columnDraggable",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "columnDropBoundary",
+              "type": "undefined | \"none\" | \"board\"",
+              "required": false,
+              "defaultValue": "\"board\"",
+              "deprecated": false
+            },
+            {
+              "name": "columns",
+              "type": "readonly KanbanColumn[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "columnWidth",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedCardId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedColumnId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"card\"; readonly cardId: string; } | { readonly kind: \"column\"; readonly columnId: string; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "dragActivationDistance",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dragActivationHoldMs",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dragDisabled",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "dropAcceptance",
+              "type": "undefined | (context: KanbanDropAcceptanceContext<TCard>) => boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedCardId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedColumnId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | KanbanMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCardClick",
+              "type": "undefined | (payload: KanbanCardClickPayload<TCard>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCardDelete",
+              "type": "undefined | (card: TCard) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCardMove",
+              "type": "undefined | (payload: KanbanCardMovePayload<TCard>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onColumnMove",
+              "type": "undefined | (payload: KanbanColumnMovePayload) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onDrop",
+              "type": "undefined | (payload: KanbanDropPayload<TCard>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedCardChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedColumnChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "undefined | (selection: KanbanSelection) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderCard",
+              "type": "undefined | KanbanCardRenderer<TCard>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderColumn",
+              "type": "undefined | KanbanColumnRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderEmptyState",
+              "type": "undefined | KanbanEmptyStateRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"card\"; readonly cardId: string; } | { readonly kind: \"column\"; readonly columnId: string; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "virtualizeCards",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "virtualizeColumns",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "Kanban"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanRootProps"
+          }
+        },
+        {
+          "name": "KanbanBoard",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanBoardProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "KanbanBoard"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanBoardProps"
+          }
+        },
+        {
+          "name": "KanbanCardTemplate",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanCardTemplateProps",
+          "props": [
+            {
+              "name": "render",
+              "type": "KanbanCardRenderer<TCard>",
+              "required": true,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "KanbanCardTemplate"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanCardTemplateProps"
+          }
+        },
+        {
+          "name": "KanbanColumnBody",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanColumnBodyProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "KanbanColumnBody"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanColumnBodyProps"
+          }
+        },
+        {
+          "name": "KanbanColumnFooter",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanColumnFooterProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "KanbanColumnFooter"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanColumnFooterProps"
+          }
+        },
+        {
+          "name": "KanbanColumnHeader",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanColumnHeaderProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "KanbanColumnHeader"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanColumnHeaderProps"
+          }
+        },
+        {
+          "name": "KanbanDragPreview",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanDragPreviewProps",
+          "props": [
+            {
+              "name": "render",
+              "type": "undefined | KanbanCardRenderer<TCard>",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "KanbanDragPreview"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanDragPreviewProps"
+          }
+        },
+        {
+          "name": "KanbanRoot",
+          "packagePath": "@kairoui-pro/kanban",
+          "propsInterface": "KanbanRootProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "cardDraggable",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "cardDropBoundary",
+              "type": "undefined | \"none\" | \"column\" | \"board\"",
+              "required": false,
+              "defaultValue": "\"board\"",
+              "deprecated": false
+            },
+            {
+              "name": "cardHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "cards",
+              "type": "readonly TCard[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "columnDraggable",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "columnDropBoundary",
+              "type": "undefined | \"none\" | \"board\"",
+              "required": false,
+              "defaultValue": "\"board\"",
+              "deprecated": false
+            },
+            {
+              "name": "columns",
+              "type": "readonly KanbanColumn[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "columnWidth",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedCardId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedColumnId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"card\"; readonly cardId: string; } | { readonly kind: \"column\"; readonly columnId: string; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "dragActivationDistance",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dragActivationHoldMs",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dragDisabled",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "dropAcceptance",
+              "type": "undefined | (context: KanbanDropAcceptanceContext<TCard>) => boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedCardId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedColumnId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | KanbanMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCardClick",
+              "type": "undefined | (payload: KanbanCardClickPayload<TCard>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCardDelete",
+              "type": "undefined | (card: TCard) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCardMove",
+              "type": "undefined | (payload: KanbanCardMovePayload<TCard>) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onColumnMove",
+              "type": "undefined | (payload: KanbanColumnMovePayload) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onDrop",
+              "type": "undefined | (payload: KanbanDropPayload<TCard>) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedCardChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedColumnChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "undefined | (selection: KanbanSelection) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderCard",
+              "type": "undefined | KanbanCardRenderer<TCard>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderColumn",
+              "type": "undefined | KanbanColumnRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderEmptyState",
+              "type": "undefined | KanbanEmptyStateRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"card\"; readonly cardId: string; } | { readonly kind: \"column\"; readonly columnId: string; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "virtualizeCards",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "virtualizeColumns",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/kanban",
+            "namedExports": [
+              "KanbanRoot"
+            ]
+          },
+          "source": {
+            "propsInterface": "KanbanRootProps"
+          }
+        }
+      ]
+    },
+    {
+      "packageName": "@kairoui-pro/permission-matrix",
+      "entryPoint": ".",
+      "components": [
+        {
+          "name": "PermissionMatrix",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixRootProps",
+          "props": [
+            {
+              "name": "actions",
+              "type": "readonly PermissionAction[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "cells",
+              "type": "readonly PermissionCell[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedActionId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedSubjectId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSearch",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"cell\"; readonly subjectId: string; readonly actionId: string; } | { readonly kind: \"row\"; readonly subjectId: string; } | { readonly kind: \"column\"; readonly actionId: string; } | { readonly kind: \"all\"; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "enableColumnToggle",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "enableRowToggle",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "enableSearch",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "enableSelectAll",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "filterFn",
+              "type": "undefined | (context: { readonly subject?: PermissionSubject | undefined; readonly action?: P…) => boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedActionId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedSubjectId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | PermissionMatrixMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "undefined | \"role-permission\" | \"resource-action\"",
+              "required": false,
+              "defaultValue": "\"role-permission\"",
+              "deprecated": false
+            },
+            {
+              "name": "onBulkChange",
+              "type": "undefined | (payload: PermissionMatrixBulkChangePayload) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCellChange",
+              "type": "undefined | (payload: PermissionMatrixCellChangePayload) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCellClick",
+              "type": "undefined | (payload: PermissionMatrixCellClickPayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onError",
+              "type": "undefined | (error: unknown) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedActionChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedSubjectChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSearchChange",
+              "type": "undefined | (query: string) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "undefined | (selection: PermissionMatrixSelection) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "overrideOnInheritedToggle",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "readOnly",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "renderCell",
+              "type": "undefined | PermissionMatrixCellRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderEmptyState",
+              "type": "undefined | PermissionMatrixEmptyStateRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "rowHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "search",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"cell\"; readonly subjectId: string; readonly actionId: string; } | { readonly kind: \"row\"; readonly subjectId: string; } | { readonly kind: \"column\"; readonly actionId: string; } | { readonly kind: \"all\"; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "subjects",
+              "type": "readonly PermissionSubject[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "toggleMode",
+              "type": "undefined | \"grant-only\" | \"grant-deny\" | \"grant-deny-only\"",
+              "required": false,
+              "defaultValue": "\"grant-only\"",
+              "deprecated": false
+            },
+            {
+              "name": "viewportHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "virtualizeRows",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrix"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixRootProps"
+          }
+        },
+        {
+          "name": "PermissionMatrixCell",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixCellProps",
+          "props": [
+            {
+              "name": "actionId",
+              "type": "string",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "subjectId",
+              "type": "string",
+              "required": true,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrixCell"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixCellProps"
+          }
+        },
+        {
+          "name": "PermissionMatrixColumnHeader",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixColumnHeaderProps",
+          "props": [
+            {
+              "name": "actionId",
+              "type": "string",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrixColumnHeader"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixColumnHeaderProps"
+          }
+        },
+        {
+          "name": "PermissionMatrixHeader",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixHeaderProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrixHeader"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixHeaderProps"
+          }
+        },
+        {
+          "name": "PermissionMatrixLegendItem",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixLegendItemProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "state",
+              "type": "\"granted\" | \"denied\" | \"unset\" | \"inherited\" | \"indeterminate\"",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrixLegendItem"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixLegendItemProps"
+          }
+        },
+        {
+          "name": "PermissionMatrixRoot",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixRootProps",
+          "props": [
+            {
+              "name": "actions",
+              "type": "readonly PermissionAction[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "cells",
+              "type": "readonly PermissionCell[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedActionId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedSubjectId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSearch",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultSelection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"cell\"; readonly subjectId: string; readonly actionId: string; } | { readonly kind: \"row\"; readonly subjectId: string; } | { readonly kind: \"column\"; readonly actionId: string; } | { readonly kind: \"all\"; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "enableColumnToggle",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "enableRowToggle",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "enableSearch",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "enableSelectAll",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "filterFn",
+              "type": "undefined | (context: { readonly subject?: PermissionSubject | undefined; readonly action?: P…) => boolean",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedActionId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "focusedSubjectId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | PermissionMatrixMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "mode",
+              "type": "undefined | \"role-permission\" | \"resource-action\"",
+              "required": false,
+              "defaultValue": "\"role-permission\"",
+              "deprecated": false
+            },
+            {
+              "name": "onBulkChange",
+              "type": "undefined | (payload: PermissionMatrixBulkChangePayload) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCellChange",
+              "type": "undefined | (payload: PermissionMatrixCellChangePayload) => void | Promise<void>",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onCellClick",
+              "type": "undefined | (payload: PermissionMatrixCellClickPayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onError",
+              "type": "undefined | (error: unknown) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedActionChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedSubjectChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSearchChange",
+              "type": "undefined | (query: string) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "undefined | (selection: PermissionMatrixSelection) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "overrideOnInheritedToggle",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "readOnly",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "renderCell",
+              "type": "undefined | PermissionMatrixCellRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "renderEmptyState",
+              "type": "undefined | PermissionMatrixEmptyStateRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "rowHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "search",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "selection",
+              "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"cell\"; readonly subjectId: string; readonly actionId: string; } | { readonly kind: \"row\"; readonly subjectId: string; } | { readonly kind: \"column\"; readonly actionId: string; } | { readonly kind: \"all\"; }",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "subjects",
+              "type": "readonly PermissionSubject[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "toggleMode",
+              "type": "undefined | \"grant-only\" | \"grant-deny\" | \"grant-deny-only\"",
+              "required": false,
+              "defaultValue": "\"grant-only\"",
+              "deprecated": false
+            },
+            {
+              "name": "viewportHeight",
+              "type": "undefined | number",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "virtualizeRows",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrixRoot"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixRootProps"
+          }
+        },
+        {
+          "name": "PermissionMatrixRowHeader",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixRowHeaderProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "subjectId",
+              "type": "string",
+              "required": true,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrixRowHeader"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixRowHeaderProps"
+          }
+        },
+        {
+          "name": "PermissionMatrixTable",
+          "packagePath": "@kairoui-pro/permission-matrix",
+          "propsInterface": "PermissionMatrixTableProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/permission-matrix",
+            "namedExports": [
+              "PermissionMatrixTable"
+            ]
+          },
+          "source": {
+            "propsInterface": "PermissionMatrixTableProps"
+          }
+        }
+      ]
+    },
+    {
+      "packageName": "@kairoui-pro/workflow",
+      "entryPoint": ".",
+      "components": [
+        {
+          "name": "Workflow",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowRootProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "currentStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultCurrentStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "focusedStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | WorkflowMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "navigationMode",
+              "type": "undefined | \"linear\" | \"non-linear\"",
+              "required": false,
+              "defaultValue": "\"linear\"",
+              "deprecated": false
+            },
+            {
+              "name": "onCurrentStepChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedStepChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onNavigate",
+              "type": "undefined | (payload: WorkflowNavigatePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onStepChange",
+              "type": "undefined | (payload: WorkflowStepChangePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onStepClick",
+              "type": "undefined | (payload: WorkflowStepChangePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "orientation",
+              "type": "undefined | \"horizontal\" | \"vertical\"",
+              "required": false,
+              "defaultValue": "\"horizontal\"",
+              "deprecated": false
+            },
+            {
+              "name": "renderStep",
+              "type": "undefined | WorkflowStepRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "showConnectors",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "showIndex",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "showProgress",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "steps",
+              "type": "readonly WorkflowStep[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "Workflow"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowRootProps"
+          }
+        },
+        {
+          "name": "WorkflowConnector",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowConnectorProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowConnector"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowConnectorProps"
+          }
+        },
+        {
+          "name": "WorkflowList",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowListProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowList"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowListProps"
+          }
+        },
+        {
+          "name": "WorkflowNav",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowNavProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowNav"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowNavProps"
+          }
+        },
+        {
+          "name": "WorkflowProgress",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowProgressProps",
+          "props": [
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowProgress"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowProgressProps"
+          }
+        },
+        {
+          "name": "WorkflowRoot",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowRootProps",
+          "props": [
+            {
+              "name": "aria-describedby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-label",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "aria-labelledby",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "currentStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultCurrentStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "defaultFocusedStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "dir",
+              "type": "undefined | \"ltr\" | \"rtl\"",
+              "required": false,
+              "defaultValue": "\"ltr\"",
+              "deprecated": false
+            },
+            {
+              "name": "focusedStepId",
+              "type": "undefined | null | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "id",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "locale",
+              "type": "undefined | string",
+              "required": false,
+              "defaultValue": "\"en\"",
+              "deprecated": false
+            },
+            {
+              "name": "messages",
+              "type": "undefined | WorkflowMessages",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "navigationMode",
+              "type": "undefined | \"linear\" | \"non-linear\"",
+              "required": false,
+              "defaultValue": "\"linear\"",
+              "deprecated": false
+            },
+            {
+              "name": "onCurrentStepChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onFocusedStepChange",
+              "type": "undefined | (id: string | null) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onNavigate",
+              "type": "undefined | (payload: WorkflowNavigatePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onStepChange",
+              "type": "undefined | (payload: WorkflowStepChangePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "onStepClick",
+              "type": "undefined | (payload: WorkflowStepChangePayload) => void",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "orientation",
+              "type": "undefined | \"horizontal\" | \"vertical\"",
+              "required": false,
+              "defaultValue": "\"horizontal\"",
+              "deprecated": false
+            },
+            {
+              "name": "renderStep",
+              "type": "undefined | WorkflowStepRenderer",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "showConnectors",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "showIndex",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "true",
+              "deprecated": false
+            },
+            {
+              "name": "showProgress",
+              "type": "undefined | boolean",
+              "required": false,
+              "defaultValue": "false",
+              "deprecated": false
+            },
+            {
+              "name": "steps",
+              "type": "readonly WorkflowStep[]",
+              "required": true,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowRoot"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowRootProps"
+          }
+        },
+        {
+          "name": "WorkflowStepDescription",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowStepDescriptionProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowStepDescription"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowStepDescriptionProps"
+          }
+        },
+        {
+          "name": "WorkflowStepIcon",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowStepIconProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowStepIcon"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowStepIconProps"
+          }
+        },
+        {
+          "name": "WorkflowStepLabel",
+          "packagePath": "@kairoui-pro/workflow",
+          "propsInterface": "WorkflowStepLabelProps",
+          "props": [
+            {
+              "name": "children",
+              "type": "undefined | ReactNode",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "className",
+              "type": "undefined | string",
+              "required": false,
+              "deprecated": false
+            },
+            {
+              "name": "style",
+              "type": "undefined | CSSProperties",
+              "required": false,
+              "deprecated": false
+            }
+          ],
+          "import": {
+            "packagePath": "@kairoui-pro/workflow",
+            "namedExports": [
+              "WorkflowStepLabel"
+            ]
+          },
+          "source": {
+            "propsInterface": "WorkflowStepLabelProps"
           }
         }
       ]

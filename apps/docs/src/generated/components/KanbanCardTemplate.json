@@ -1,0 +1,22 @@
+{
+  "name": "KanbanCardTemplate",
+  "packagePath": "@kairoui-pro/kanban",
+  "propsInterface": "KanbanCardTemplateProps",
+  "props": [
+    {
+      "name": "render",
+      "type": "KanbanCardRenderer<TCard>",
+      "required": true,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/kanban",
+    "namedExports": [
+      "KanbanCardTemplate"
+    ]
+  },
+  "source": {
+    "propsInterface": "KanbanCardTemplateProps"
+  }
+}

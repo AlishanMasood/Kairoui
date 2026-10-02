@@ -1,0 +1,34 @@
+{
+  "name": "KanbanColumnBody",
+  "packagePath": "@kairoui-pro/kanban",
+  "propsInterface": "KanbanColumnBodyProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/kanban",
+    "namedExports": [
+      "KanbanColumnBody"
+    ]
+  },
+  "source": {
+    "propsInterface": "KanbanColumnBodyProps"
+  }
+}

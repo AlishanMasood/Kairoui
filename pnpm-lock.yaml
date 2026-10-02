@@ -125,6 +125,18 @@ importers:
       '@kairoui-pro/data-grid':
         specifier: workspace:*
         version: link:../../packages/data-grid
+      '@kairoui-pro/kanban':
+        specifier: workspace:*
+        version: link:../../packages/kanban
+      '@kairoui-pro/permission-matrix':
+        specifier: workspace:*
+        version: link:../../packages/permission-matrix
+      '@kairoui-pro/scheduler':
+        specifier: workspace:*
+        version: link:../../packages/scheduler
+      '@kairoui-pro/workflow':
+        specifier: workspace:*
+        version: link:../../packages/workflow
       '@kairoui/core':
         specifier: workspace:*
         version: link:../../packages/core

@@ -1,0 +1,285 @@
+{
+  "name": "PermissionMatrixRoot",
+  "packagePath": "@kairoui-pro/permission-matrix",
+  "propsInterface": "PermissionMatrixRootProps",
+  "props": [
+    {
+      "name": "actions",
+      "type": "readonly PermissionAction[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "aria-describedby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "cells",
+      "type": "readonly PermissionCell[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultFocusedActionId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultFocusedSubjectId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSearch",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSelection",
+      "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"cell\"; readonly subjectId: string; readonly actionId: string; } | { readonly kind: \"row\"; readonly subjectId: string; } | { readonly kind: \"column\"; readonly actionId: string; } | { readonly kind: \"all\"; }",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "enableColumnToggle",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "enableRowToggle",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "enableSearch",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "enableSelectAll",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "filterFn",
+      "type": "undefined | (context: { readonly subject?: PermissionSubject | undefined; readonly action?: P…) => boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "focusedActionId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "focusedSubjectId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en\"",
+      "deprecated": false
+    },
+    {
+      "name": "messages",
+      "type": "undefined | PermissionMatrixMessages",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "mode",
+      "type": "undefined | \"role-permission\" | \"resource-action\"",
+      "required": false,
+      "defaultValue": "\"role-permission\"",
+      "deprecated": false
+    },
+    {
+      "name": "onBulkChange",
+      "type": "undefined | (payload: PermissionMatrixBulkChangePayload) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onCellChange",
+      "type": "undefined | (payload: PermissionMatrixCellChangePayload) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onCellClick",
+      "type": "undefined | (payload: PermissionMatrixCellClickPayload) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onError",
+      "type": "undefined | (error: unknown) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onFocusedActionChange",
+      "type": "undefined | (id: string | null) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onFocusedSubjectChange",
+      "type": "undefined | (id: string | null) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSearchChange",
+      "type": "undefined | (query: string) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "undefined | (selection: PermissionMatrixSelection) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "overrideOnInheritedToggle",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "readOnly",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "renderCell",
+      "type": "undefined | PermissionMatrixCellRenderer",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "renderEmptyState",
+      "type": "undefined | PermissionMatrixEmptyStateRenderer",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "rowHeight",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "search",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selection",
+      "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"cell\"; readonly subjectId: string; readonly actionId: string; } | { readonly kind: \"row\"; readonly subjectId: string; } | { readonly kind: \"column\"; readonly actionId: string; } | { readonly kind: \"all\"; }",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "subjects",
+      "type": "readonly PermissionSubject[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "toggleMode",
+      "type": "undefined | \"grant-only\" | \"grant-deny\" | \"grant-deny-only\"",
+      "required": false,
+      "defaultValue": "\"grant-only\"",
+      "deprecated": false
+    },
+    {
+      "name": "viewportHeight",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "virtualizeRows",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/permission-matrix",
+    "namedExports": [
+      "PermissionMatrixRoot"
+    ]
+  },
+  "source": {
+    "propsInterface": "PermissionMatrixRootProps"
+  }
+}

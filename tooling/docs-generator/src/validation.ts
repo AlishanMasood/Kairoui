@@ -66,7 +66,7 @@ export function formatReport(result: ValidationResult): string {
 
 // ─── Individual validators ──────────────────────────────────────────
 
-const KNOWN_PACKAGE_PREFIX = "@kairoui/";
+const KNOWN_PACKAGE_PREFIXES = ["@kairoui/", "@kairoui-pro/"];
 
 function validateSchemaVersion(output: GeneratorOutput, diags: ValidationDiagnostic[]): void {
   if (output.schemaVersion !== SCHEMA_VERSION) {
@@ -85,13 +85,13 @@ function validatePackagePath(
   pkg: PackageDocMeta,
   diags: ValidationDiagnostic[],
 ): void {
-  if (!comp.packagePath.startsWith(KNOWN_PACKAGE_PREFIX)) {
+  if (!KNOWN_PACKAGE_PREFIXES.some((p) => comp.packagePath.startsWith(p))) {
     diags.push({
       severity: "error",
       code: DIAG_CODES.INVALID_PACKAGE_PATH,
       message: `Component "${comp.name}" has invalid packagePath "${comp.packagePath}".`,
       location: `${pkg.packageName}/${comp.name}`,
-      hint: `Expected a path starting with "${KNOWN_PACKAGE_PREFIX}".`,
+      hint: `Expected a path starting with one of: ${KNOWN_PACKAGE_PREFIXES.join(", ")}.`,
     });
   }
   if (!comp.packagePath.startsWith(pkg.packageName)) {

@@ -1,0 +1,28 @@
+{
+  "name": "WorkflowProgress",
+  "packagePath": "@kairoui-pro/workflow",
+  "propsInterface": "WorkflowProgressProps",
+  "props": [
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/workflow",
+    "namedExports": [
+      "WorkflowProgress"
+    ]
+  },
+  "source": {
+    "propsInterface": "WorkflowProgressProps"
+  }
+}

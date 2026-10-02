@@ -1,0 +1,271 @@
+{
+  "name": "Kanban",
+  "packagePath": "@kairoui-pro/kanban",
+  "propsInterface": "KanbanRootProps",
+  "props": [
+    {
+      "name": "aria-describedby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "cardDraggable",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "cardDropBoundary",
+      "type": "undefined | \"none\" | \"column\" | \"board\"",
+      "required": false,
+      "defaultValue": "\"board\"",
+      "deprecated": false
+    },
+    {
+      "name": "cardHeight",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "cards",
+      "type": "readonly TCard[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "columnDraggable",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "columnDropBoundary",
+      "type": "undefined | \"none\" | \"board\"",
+      "required": false,
+      "defaultValue": "\"board\"",
+      "deprecated": false
+    },
+    {
+      "name": "columns",
+      "type": "readonly KanbanColumn[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "columnWidth",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultFocusedCardId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultFocusedColumnId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultSelection",
+      "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"card\"; readonly cardId: string; } | { readonly kind: \"column\"; readonly columnId: string; }",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "dragActivationDistance",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dragActivationHoldMs",
+      "type": "undefined | number",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dragDisabled",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "dropAcceptance",
+      "type": "undefined | (context: KanbanDropAcceptanceContext<TCard>) => boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "focusedCardId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "focusedColumnId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en\"",
+      "deprecated": false
+    },
+    {
+      "name": "messages",
+      "type": "undefined | KanbanMessages",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onCardClick",
+      "type": "undefined | (payload: KanbanCardClickPayload<TCard>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onCardDelete",
+      "type": "undefined | (card: TCard) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onCardMove",
+      "type": "undefined | (payload: KanbanCardMovePayload<TCard>) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onColumnMove",
+      "type": "undefined | (payload: KanbanColumnMovePayload) => void | Promise<void>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onDrop",
+      "type": "undefined | (payload: KanbanDropPayload<TCard>) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onFocusedCardChange",
+      "type": "undefined | (id: string | null) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onFocusedColumnChange",
+      "type": "undefined | (id: string | null) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "undefined | (selection: KanbanSelection) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "renderCard",
+      "type": "undefined | KanbanCardRenderer<TCard>",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "renderColumn",
+      "type": "undefined | KanbanColumnRenderer",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "renderEmptyState",
+      "type": "undefined | KanbanEmptyStateRenderer",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "selection",
+      "type": "undefined | { readonly kind: \"none\"; } | { readonly kind: \"card\"; readonly cardId: string; } | { readonly kind: \"column\"; readonly columnId: string; }",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "virtualizeCards",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "virtualizeColumns",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/kanban",
+    "namedExports": [
+      "Kanban"
+    ]
+  },
+  "source": {
+    "propsInterface": "KanbanRootProps"
+  }
+}

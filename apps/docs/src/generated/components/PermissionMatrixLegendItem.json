@@ -1,0 +1,40 @@
+{
+  "name": "PermissionMatrixLegendItem",
+  "packagePath": "@kairoui-pro/permission-matrix",
+  "propsInterface": "PermissionMatrixLegendItemProps",
+  "props": [
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "state",
+      "type": "\"granted\" | \"denied\" | \"unset\" | \"inherited\" | \"indeterminate\"",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/permission-matrix",
+    "namedExports": [
+      "PermissionMatrixLegendItem"
+    ]
+  },
+  "source": {
+    "propsInterface": "PermissionMatrixLegendItemProps"
+  }
+}

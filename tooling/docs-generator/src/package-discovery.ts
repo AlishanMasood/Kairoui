@@ -36,7 +36,21 @@ export interface DiscoveryConfig {
 
 // ─── Package discovery ──────────────────────────────────────────────
 
-const DEFAULT_PACKAGES = ["core", "hooks", "theme", "tokens", "utils", "icons"];
+const DEFAULT_PACKAGES = [
+  "core",
+  "hooks",
+  "theme",
+  "tokens",
+  "utils",
+  "icons",
+  // Enterprise (Pro) packages — @kairoui-pro/*
+  "data-grid",
+  "command",
+  "scheduler",
+  "kanban",
+  "permission-matrix",
+  "workflow",
+];
 
 const EXCLUDE_SUBPATHS = ["./package.json", "./styles.css"];
 

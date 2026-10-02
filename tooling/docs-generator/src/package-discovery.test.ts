@@ -29,6 +29,12 @@ describe("discoverPackages", () => {
     expect(names).toContain("@kairoui/tokens");
     expect(names).toContain("@kairoui/theme");
     expect(names).toContain("@kairoui/utils");
+    expect(names).toContain("@kairoui-pro/data-grid");
+    expect(names).toContain("@kairoui-pro/command");
+    expect(names).toContain("@kairoui-pro/scheduler");
+    expect(names).toContain("@kairoui-pro/kanban");
+    expect(names).toContain("@kairoui-pro/permission-matrix");
+    expect(names).toContain("@kairoui-pro/workflow");
   });
 
   it("discovers core entry points", () => {

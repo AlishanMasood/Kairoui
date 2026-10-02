@@ -1,0 +1,28 @@
+{
+  "name": "SchedulerTimeAxis",
+  "packagePath": "@kairoui-pro/scheduler",
+  "propsInterface": "SchedulerTimeAxisProps",
+  "props": [
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/scheduler",
+    "namedExports": [
+      "SchedulerTimeAxis"
+    ]
+  },
+  "source": {
+    "propsInterface": "SchedulerTimeAxisProps"
+  }
+}

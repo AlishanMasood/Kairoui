@@ -3,7 +3,47 @@ title: Kanban
 sidebar_position: 103
 ---
 
-import { ComponentHeader, ImportStatement, Callout } from "@kairoui/docs";
+import { ComponentHeader, ImportStatement, Callout, Demo, PropsTable } from "@kairoui/docs";
+import { toPropsList } from "@site/src/api-data";
+import KanbanMeta from "@site/src/generated/components/Kanban.json";
+import { useState } from "react";
+import { Kanban } from "@kairoui-pro/kanban";
+import "@kairoui-pro/kanban/styles.css";
+
+export function KanbanDemo() {
+  const [columns, setColumns] = useState([
+    { id: "backlog", title: "Backlog", order: 0 },
+    { id: "active", title: "In progress", order: 1 },
+    { id: "done", title: "Done", order: 2 },
+  ]);
+  const [cards, setCards] = useState([
+    { id: "audit", columnId: "backlog", title: "Review audit findings", order: 0 },
+    { id: "demo", columnId: "active", title: "Build component demos", order: 0 },
+    { id: "api", columnId: "done", title: "Generate API metadata", order: 0 },
+  ]);
+
+return (
+
+<div style={{ height: 420, maxWidth: 900 }}>
+<Kanban
+columns={columns}
+cards={cards}
+onCardMove={({ card, toColumnId, order }) =>
+setCards((current) =>
+current.map((item) =>
+item.id === card.id ? { ...item, columnId: toColumnId, order } : item,
+),
+)
+}
+onColumnMove={({ column, order }) =>
+setColumns((current) =>
+current.map((item) => (item.id === column.id ? { ...item, order } : item)),
+)
+}
+/>
+</div>
+);
+}
 
 <ComponentHeader
   name="Kanban"
@@ -26,6 +66,26 @@ Load styles once at your app root:
 ```ts
 import "@kairoui-pro/kanban/styles.css";
 ```
+
+## Live demo
+
+Move a card with pointer drag or the keyboard. Callback payloads update
+only this demo's React state; no backend or persistence is provided.
+
+<Demo
+  title="Move cards between columns"
+  code={`<Kanban
+  columns={columns}
+  cards={cards}
+  onCardMove={({ card, toColumnId, order }) =>
+    setCards((items) => items.map((item) =>
+      item.id === card.id ? { ...item, columnId: toColumnId, order } : item
+    ))
+  }
+/>`}
+>
+  <KanbanDemo />
+</Demo>
 
 ## Anatomy
 
@@ -98,7 +158,8 @@ Drag/drop is **not** the only interaction method. Every drag gesture has a keybo
 | `Escape` during move       | Cancel                                         |
 | `Delete` / `Backspace`     | Fire `onCardDelete` when the consumer wires it |
 
-The column header supports the same pickup / move / commit gesture via `Enter` + arrows.
+The column header supports pickup with `Space`, movement with arrows,
+commit with `Space`, and cancel with `Escape`.
 
 ## Callbacks
 
@@ -121,8 +182,10 @@ placeholder via `renderEmptyState` or `<Kanban.EmptyState>`.
 ## Accessibility
 
 - Root exposes `role="application"` + `aria-roledescription="Kanban board"`.
-- Board is `role="list"` `aria-orientation="horizontal"`; column bodies are `role="list"` `aria-orientation="vertical"`.
-- Cards are `<button>` with `aria-roledescription="Card"`, `aria-pressed` for selection, and `aria-posinset` / `aria-setsize` for position.
+- Board is `role="list"`; column bodies are `role="list"`.
+- Cards render inside `role="listitem"` wrappers that carry `aria-posinset` /
+  `aria-setsize`; the card action itself is a `<button>` with
+  `aria-roledescription="Card"` and `aria-pressed` for selection.
 - A single `aria-live="polite"` announcer speaks pickup / over / drop / cancel events.
 - All bindings honor `prefers-reduced-motion`.
 
@@ -138,3 +201,70 @@ placeholder via `renderEmptyState` or `<Kanban.EmptyState>`.
 - No hard-coded status presets.
 - No card content library — the consumer renders card bodies.
 - Drag/drop is not required — every gesture has a keyboard equivalent.
+
+## Controlled state
+
+Every stateful concern is controllable:
+
+- `selection` + `onSelectionChange`
+- `focusedCardId` + `onFocusedCardChange`
+- `focusedColumnId` + `onFocusedColumnChange`
+
+Omit a controlled value to let the Kanban own that slice.
+
+## Performance guidance
+
+- Set `virtualizeCards` + `cardHeight` on columns that routinely exceed
+  roughly 50 cards. The windowing walks the DOM for the viewport only.
+- Set `virtualizeColumns` + `columnWidth` for boards with more than
+  roughly 15 columns — horizontal virtualization reuses the same
+  `computeVirtualizedRange` helper as `@kairoui/hooks`.
+- `partitionCardsByColumn` runs once per render and is linear in the
+  card count. Memoize `cards` across renders.
+- `nextOrderBetween(before, after)` is a midpoint helper — a monotonic
+  `order` key avoids re-indexing when a card moves. Consumers who store
+  the raw index must rewrite neighboring cards on every move.
+
+## Backend independence
+
+The Kanban ships zero backend adapters.
+
+- Columns and cards are plain data. Fetch, store, and persist with
+  whatever stack you prefer.
+- The Kanban never mints ids. Duplicates or dangling `columnId`
+  references throw at ingest — a loud failure rather than silent data
+  corruption.
+- `onCardMove` / `onColumnMove` fire plain-data payloads with
+  `fromIndex` / `toIndex` / `order` so persistence maps one-to-one onto
+  the consumer's write path. The Kanban does not debounce or batch.
+- `dropAcceptance` is a predicate — the consumer decides whether a
+  particular drop is legal (per-user permissions, cross-board moves,
+  etc.). The Kanban enforces nothing.
+
+## Package boundary
+
+`Kanban` ships only in `@kairoui-pro/kanban`. The free tier does not
+include a board component. The Pro package re-uses
+`@kairoui/core` collection primitives, `@kairoui/hooks` focus
+helpers, and `@kairoui/utils` identity assertions; nothing is
+duplicated.
+
+## API and DX gaps
+
+- Ordering is intentionally consumer-owned. Apps without stable order
+  keys must design their own rebalance strategy.
+- The keyboard drag model is powerful but has a larger mental model
+  than pointer-only boards.
+- Horizontal and vertical virtualization are opt-in and require sizing
+  discipline (`columnWidth`, `cardHeight`) from consumers.
+
+## API Reference
+
+<PropsTable props={toPropsList(KanbanMeta)} />
+
+Compound children (`Kanban.Board`, `Kanban.Column`, `Kanban.ColumnHeader`,
+`Kanban.ColumnBody`, `Kanban.ColumnFooter`, `Kanban.CardTemplate`,
+`Kanban.EmptyState`, `Kanban.DragPreview`) expose a small props surface.
+Use `render` on `Kanban.CardTemplate` / `Kanban.DragPreview` and
+`className` / `style` passthrough props on structural slots to tailor
+the board layout.

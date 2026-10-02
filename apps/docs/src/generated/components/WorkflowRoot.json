@@ -1,0 +1,179 @@
+{
+  "name": "WorkflowRoot",
+  "packagePath": "@kairoui-pro/workflow",
+  "propsInterface": "WorkflowRootProps",
+  "props": [
+    {
+      "name": "aria-describedby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "currentStepId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultCurrentStepId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "defaultFocusedStepId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "dir",
+      "type": "undefined | \"ltr\" | \"rtl\"",
+      "required": false,
+      "defaultValue": "\"ltr\"",
+      "deprecated": false
+    },
+    {
+      "name": "focusedStepId",
+      "type": "undefined | null | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "locale",
+      "type": "undefined | string",
+      "required": false,
+      "defaultValue": "\"en\"",
+      "deprecated": false
+    },
+    {
+      "name": "messages",
+      "type": "undefined | WorkflowMessages",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "navigationMode",
+      "type": "undefined | \"linear\" | \"non-linear\"",
+      "required": false,
+      "defaultValue": "\"linear\"",
+      "deprecated": false
+    },
+    {
+      "name": "onCurrentStepChange",
+      "type": "undefined | (id: string | null) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onFocusedStepChange",
+      "type": "undefined | (id: string | null) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onNavigate",
+      "type": "undefined | (payload: WorkflowNavigatePayload) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onStepChange",
+      "type": "undefined | (payload: WorkflowStepChangePayload) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "onStepClick",
+      "type": "undefined | (payload: WorkflowStepChangePayload) => void",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "orientation",
+      "type": "undefined | \"horizontal\" | \"vertical\"",
+      "required": false,
+      "defaultValue": "\"horizontal\"",
+      "deprecated": false
+    },
+    {
+      "name": "renderStep",
+      "type": "undefined | WorkflowStepRenderer",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "showConnectors",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "showIndex",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "true",
+      "deprecated": false
+    },
+    {
+      "name": "showProgress",
+      "type": "undefined | boolean",
+      "required": false,
+      "defaultValue": "false",
+      "deprecated": false
+    },
+    {
+      "name": "steps",
+      "type": "readonly WorkflowStep[]",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/workflow",
+    "namedExports": [
+      "WorkflowRoot"
+    ]
+  },
+  "source": {
+    "propsInterface": "WorkflowRootProps"
+  }
+}

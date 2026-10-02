@@ -1,0 +1,46 @@
+{
+  "name": "PermissionMatrixCell",
+  "packagePath": "@kairoui-pro/permission-matrix",
+  "propsInterface": "PermissionMatrixCellProps",
+  "props": [
+    {
+      "name": "actionId",
+      "type": "string",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "subjectId",
+      "type": "string",
+      "required": true,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/permission-matrix",
+    "namedExports": [
+      "PermissionMatrixCell"
+    ]
+  },
+  "source": {
+    "propsInterface": "PermissionMatrixCellProps"
+  }
+}

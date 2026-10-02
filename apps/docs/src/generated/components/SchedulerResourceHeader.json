@@ -1,0 +1,28 @@
+{
+  "name": "SchedulerResourceHeader",
+  "packagePath": "@kairoui-pro/scheduler",
+  "propsInterface": "SchedulerResourceHeaderProps",
+  "props": [
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/scheduler",
+    "namedExports": [
+      "SchedulerResourceHeader"
+    ]
+  },
+  "source": {
+    "propsInterface": "SchedulerResourceHeaderProps"
+  }
+}

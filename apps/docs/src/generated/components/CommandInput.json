@@ -1,0 +1,46 @@
+{
+  "name": "CommandInput",
+  "packagePath": "@kairoui-pro/command",
+  "propsInterface": "CommandInputProps",
+  "props": [
+    {
+      "name": "aria-label",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "undefined | boolean",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "id",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "placeholder",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/command",
+    "namedExports": [
+      "CommandInput"
+    ]
+  },
+  "source": {
+    "propsInterface": "CommandInputProps"
+  }
+}

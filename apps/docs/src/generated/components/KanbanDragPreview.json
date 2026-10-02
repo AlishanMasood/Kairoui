@@ -1,0 +1,22 @@
+{
+  "name": "KanbanDragPreview",
+  "packagePath": "@kairoui-pro/kanban",
+  "propsInterface": "KanbanDragPreviewProps",
+  "props": [
+    {
+      "name": "render",
+      "type": "undefined | KanbanCardRenderer<TCard>",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/kanban",
+    "namedExports": [
+      "KanbanDragPreview"
+    ]
+  },
+  "source": {
+    "propsInterface": "KanbanDragPreviewProps"
+  }
+}

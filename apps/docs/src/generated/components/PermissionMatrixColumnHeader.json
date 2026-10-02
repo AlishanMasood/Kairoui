@@ -1,0 +1,40 @@
+{
+  "name": "PermissionMatrixColumnHeader",
+  "packagePath": "@kairoui-pro/permission-matrix",
+  "propsInterface": "PermissionMatrixColumnHeaderProps",
+  "props": [
+    {
+      "name": "actionId",
+      "type": "string",
+      "required": true,
+      "deprecated": false
+    },
+    {
+      "name": "children",
+      "type": "undefined | ReactNode",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "className",
+      "type": "undefined | string",
+      "required": false,
+      "deprecated": false
+    },
+    {
+      "name": "style",
+      "type": "undefined | CSSProperties",
+      "required": false,
+      "deprecated": false
+    }
+  ],
+  "import": {
+    "packagePath": "@kairoui-pro/permission-matrix",
+    "namedExports": [
+      "PermissionMatrixColumnHeader"
+    ]
+  },
+  "source": {
+    "propsInterface": "PermissionMatrixColumnHeaderProps"
+  }
+}

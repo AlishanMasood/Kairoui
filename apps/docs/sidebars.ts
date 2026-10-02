@@ -31,7 +31,14 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Enterprise (Pro)",
-      items: ["components/pro/data-grid", "components/pro/command"],
+      items: [
+        "components/pro/data-grid",
+        "components/pro/command",
+        "components/pro/scheduler",
+        "components/pro/kanban",
+        "components/pro/permission-matrix",
+        "components/pro/workflow",
+      ],
     },
     {
       type: "category",

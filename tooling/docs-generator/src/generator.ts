@@ -309,10 +309,13 @@ function findComponentDir(
   packageName: string,
   componentName: string,
 ): string | undefined {
-  const pkgShort = packageName.replace("@kairoui/", "");
+  const pkgShort = packageName.replace("@kairoui-pro/", "").replace("@kairoui/", "");
   const kebab = componentName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
-  const dir = resolve(monorepoRoot, "packages", pkgShort, "src/components", kebab);
-  return existsSync(dir) ? dir : undefined;
+  // Free packages use src/components/<kebab>; Pro packages are flat src/<kebab>.
+  const nested = resolve(monorepoRoot, "packages", pkgShort, "src/components", kebab);
+  if (existsSync(nested)) return nested;
+  const flat = resolve(monorepoRoot, "packages", pkgShort, "src");
+  return existsSync(flat) ? flat : undefined;
 }
 
 // ─── CLI entry point ────────────────────────────────────────────────
